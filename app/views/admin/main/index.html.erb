@@ -5,7 +5,7 @@
       <div class="pull-left header">
         <h3 class="title">
           <i class="icon-dashboard"></i>
-          Dashboard
+          管理首页
         </h3>
         <h5>
           A subtitle can be added here
@@ -68,7 +68,7 @@
 
         <div class="row-fluid">
           <div class="span6 action-nav-button">
-            <a href="#" title="New Project">
+            <a href="<%= admin_places_path %>" title="目的地">
               <i class="icon-file-alt"></i>
               <span>目的地</span>
             </a>
@@ -78,7 +78,7 @@
           <div class="span6 action-nav-button">
             <a href="#" title="Messages">
               <i class="icon-comments-alt"></i>
-              <span>Messages</span>
+              <span>用户评论</span>
             </a>
             <span class="label label-black">14</span>
           </div>
@@ -88,14 +88,14 @@
           <div class="span6 action-nav-button">
             <a href="#" title="Files">
               <i class="icon-folder-open-alt"></i>
-              <span>Files</span>
+              <span>话题</span>
             </a>
           </div>
 
           <div class="span6 action-nav-button">
             <a href="#" title="Users">
               <i class="icon-user"></i>
-              <span>Users</span>
+              <span>用户</span>
             </a>
             <span class="triangle-button green"><span class="inner">+3</span></span>
           </div>
@@ -105,7 +105,7 @@
           <div class="span6 action-nav-button">
             <a href="#" title="Friends">
               <i class="icon-facebook-sign"></i>
-              <span>Friends</span>
+              <span>路线</span>
             </a>
           </div>
 
@@ -148,12 +148,12 @@
                   <div class="dashboard-stats">
                     <ul class="inline">
                       <li class="glyph"><i class="icon-bolt icon-2x"></i></li>
-                      <li class="count">973,119</li>
+                      <li class="count"><%= @users %></li>
                     </ul>
                     <div class="progress progress-blue">
                       <div class="bar tip" title="80%" data-percent="80"></div>
                     </div>
-                    <div class="stats-label">Total Visits</div>
+                    <div class="stats-label">注册用户</div>
                   </div>
                 </div>
               </div>
@@ -163,12 +163,12 @@
                   <div class="dashboard-stats small">
                     <ul class="inline">
                       <li class="glyph"><i class="icon-user"></i></li>
-                      <li class="count">8800</li>
+                      <li class="count"><%=@places %></li>
                     </ul>
                     <div class="progress progress-blue">
                       <div class="bar tip" title="65%" data-percent="65"></div>
                     </div>
-                    <div class="stats-label">New Visitors</div>
+                    <div class="stats-label">目的地</div>
                   </div>
                 </div>
 
@@ -176,12 +176,12 @@
                   <div class="dashboard-stats small">
                     <ul class="inline">
                       <li class="glyph"><i class="icon-eye-open"></i></li>
-                      <li class="count">25668</li>
+                      <li class="count"><%= @comments %></li>
                     </ul>
                     <div class="progress progress-blue">
                       <div class="bar tip" title="80%" data-percent="80"></div>
                     </div>
-                    <div class="stats-label">Page Views</div>
+                    <div class="stats-label">评论总数</div>
                   </div>
                 </div>
               </div>

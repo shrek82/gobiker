@@ -52,21 +52,17 @@ class Admin::PlacesController < AdminController
     @place.is_fixed=params[:is_fixed]
     @place.is_recommended=params[:is_recommended]
     if @place.update_attributes(params[:place])
-      render_client :redirect_to=>admin_places_path,:notice=>'资料修改成功'
+      render_client :redirect_to => admin_places_path, :success => '资料修改成功'
     else
-      render_client :action=>'edit',:error=>@place.errors.full_messages
+      render_client :action => 'edit', :error => @place.errors.full_messages
     end
   end
 
   #删除
   def destroy
     @place = Place.find(params[:id])
-    @place.destro
-
-    respond_to do |format|
-      format.html { redirect_to places_url }
-      format.json { head :no_content }
-    end
+    @place.destroy
+    render_client :redirect_to => admin_places_path, :success => '资料删除成功'
   end
 
 end

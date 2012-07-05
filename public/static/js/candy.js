@@ -271,14 +271,41 @@ candyLayer.prototype.open=function(){
     });
 }
 //询问并删除记录
-candyLayer.prototype.deleteRecord = function (opts) {
-    var def={
+candyLayer.prototype.deleteRecord = function (cid,options) {
+    var opts= $.extend({},{
+        title:'删除确认',
+        message:'确定要删除该条记录吗？注意删除后将不能再恢复!',
+        data:{'_method':'delete',"_format":'json'},
+        type:'POST',
+        dataType:'json',
+        error:false,
+        beforeSend:false,
+        success:function(data){
+            var remove_tr=$('#record_'+cid);
+            if(remove_tr.length){
+                remove_tr.addClass("remove_tr").fadeOut(500);
+                setTimeout(function(){
+                    remove_tr.remove();
+                },600)
+            }
+        },
+        error:function(hxr){
+            alert('程序出错，请重试或与管理员联系');
+        }
+    },options);
 
-        data:'_method=DELETE'
-    };
-    artDialog.confirm('你再也不相信爱情了么？', function () {
-        $.ajax()
-    }, function () {
-        alert(opts.url);
+    return $.dialog({
+        title:opts.title,
+        id: 'Confirm',
+        fixed: true,
+        lock: false,
+        content: opts.message,
+        okValue: "确定",
+        cancelValue: "取消",
+        ok:function(){
+           $.ajax(opts);
+        },
+        cancel:true
     });
+
 }

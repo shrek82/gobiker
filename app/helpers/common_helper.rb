@@ -24,9 +24,13 @@ module CommonHelper
     if data[:success]
       data[:data].store("status", 1)
       data[:data].store("success", data[:success])
+      flash[:success]=data[:success] if format=='html'
     elsif data[:error]
       data[:data].store("status", 0)
       data[:data].store("error", data[:error])
+      flash[:error]=data[:error] if format=='html'
+    else
+      data[:data].store("status",1)
     end
 
     #根据不同格式需求方式呈现不同结果

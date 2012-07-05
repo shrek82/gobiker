@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130624222505) do
+ActiveRecord::Schema.define(:version => 20130704230853) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -78,6 +78,18 @@ ActiveRecord::Schema.define(:version => 20130624222505) do
     t.string   "value"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+  end
+
+  create_table "photos", :force => true do |t|
+    t.string   "title",                 :limit => 50
+    t.string   "img_path",              :limit => 150
+    t.boolean  "is_verify"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.string   "img_path_file_name",    :limit => 30
+    t.string   "img_path_content_type", :limit => 20
+    t.string   "img_path_file_size",    :limit => 10
+    t.datetime "img_path_updated_at"
   end
 
   create_table "places", :force => true do |t|

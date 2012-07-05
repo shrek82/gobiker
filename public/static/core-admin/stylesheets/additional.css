@@ -20,6 +20,9 @@ td.record-cmthit{width: 60px;text-align: center}
 td.record-cmthit span{color: #258717
 }
 td.record-author{width: 60px;text-align: center}
+/*待移除的tr*/
+.remove_tr,.remove_tr td{background-color: #FCB4C6}
+
 .ui_page {
     float: right;
     margin-top: 7px;

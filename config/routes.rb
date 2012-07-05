@@ -1,5 +1,8 @@
 Gobiker::Application.routes.draw do
 
+  resources :photos
+
+
   #show、new、edit、update、destroy是单数，对单一元素操作
   #index、create是复数，对群集操作
   #place_path(@place)需要参数，根据HTTP动词决定show、update、destroy
