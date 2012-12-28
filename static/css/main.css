@@ -1,0 +1,39 @@
+body{background: url(../images/furley_bg.png);font-family: verdana; font-size: 12px}
+
+#header{
+    width: 100%;
+    height: 55px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    -webkit-box-shadow: 0px 0px 6px 0px #999; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    box-shadow: 0px 0px 6px 0px #999; /* Opera 10.5, IE9+, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+#footer{ color: #999; text-align: center}
+
+#header div{ border:0px solid #f60}
+#logo{ float: left; width: 150px}
+#header_nav{width: 550px; float: left}
+#header_nav ul{ list-style: none; margin-top: 10px}
+#header_nav ul li{ float: left; margin-right: 10px;width: 60px; text-align: center}
+#header_nav a:link,#header_nav a:visited{display: block; border: 1px solid #fff;color: #666;font-family:'微软雅黑','黑体';font-size:16px; padding:3px 6px}
+#header_nav a:hover{ border: 1px solid #eee; color: #40A252;-webkit-border-radius: 4px; background-color: #f7f7f7}
+#header_nav a.active:link,#header_nav a.active:visited{color: #fff;background-color: #71D183;border: 1px solid #64C476; -webkit-border-radius: 4px; border-radius:4px;}
+#header_search{float: left; width: 100px;}
+#header_links{ float: right;margin-top: 15px;width: 150px; }
+
+.btn{font-family:'微软雅黑','黑体';}
+
+/*圆角容器*/
+.container{
+    width: 960px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border: 1px solid #E6E6E6;
+    -webkit-border-radius: 8px; /* Safari 3-4, iOS 1-3.2, Android ≤1.6 */
+    border-radius: 8px; /* Opera 10.5, IE9+, Safari 5, Chrome, Firefox 4+, iOS 4, Android 2.1+ */
+}
