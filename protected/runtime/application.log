@@ -3887,3 +3887,51 @@ Stack trace:
 REQUEST_URI=/index.php?r=place/post
 HTTP_REFERER=http://localhost/index.php?r=place/view&id=1
 ---
+2013/01/06 15:05:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection 无法开启数据库连线: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in E:\works\gobiker\framework\db\CDbConnection.php:382
+Stack trace:
+#0 E:\works\gobiker\framework\db\CDbConnection.php(331): CDbConnection->open()
+#1 E:\works\gobiker\framework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 E:\works\gobiker\framework\base\CModule.php(388): CDbConnection->init()
+#3 E:\works\gobiker\framework\base\CApplication.php(431): CModule->getComponent('db')
+#4 E:\works\gobiker\framework\db\ar\CActiveRecord.php(615): CApplication->getDb()
+#5 E:\works\gobiker\framework\db\ar\CActiveRecord.php(2263): CActiveRecord->getDbConnection()
+#6 E:\works\gobiker\framework\db\ar\CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Place))
+#7 E:\works\gobiker\protected\models\Place.php(44): CActiveRecord::model('Place')
+#8 E:\works\gobiker\protected\query\PlaceQuery.php(45): Place::model()
+#9 E:\works\gobiker\protected\controllers\PlaceController.php(15): PlaceQuery::getList(Array)
+#10 E:\works\gobiker\framework\web\actions\CInlineAction.php(50): PlaceController->actionIndex()
+#11 E:\works\gobiker\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 E:\works\gobiker\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#13 E:\works\gobiker\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 E:\works\gobiker\framework\web\CWebApplication.php(276): CController->run('index')
+#15 E:\works\gobiker\framework\web\CWebApplication.php(135): CWebApplication->runController('place/index')
+#16 E:\works\gobiker\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 E:\works\gobiker\index.php(39): CApplication->run()
+#18 {main}
+REQUEST_URI=/index.php?r=place/index
+HTTP_REFERER=http://localhost/
+---
+2013/01/06 15:05:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection 无法开启数据库连线: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in E:\works\gobiker\framework\db\CDbConnection.php:382
+Stack trace:
+#0 E:\works\gobiker\framework\db\CDbConnection.php(331): CDbConnection->open()
+#1 E:\works\gobiker\framework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 E:\works\gobiker\framework\base\CModule.php(388): CDbConnection->init()
+#3 E:\works\gobiker\framework\base\CApplication.php(431): CModule->getComponent('db')
+#4 E:\works\gobiker\framework\db\ar\CActiveRecord.php(615): CApplication->getDb()
+#5 E:\works\gobiker\framework\db\ar\CActiveRecord.php(2263): CActiveRecord->getDbConnection()
+#6 E:\works\gobiker\framework\db\ar\CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Place))
+#7 E:\works\gobiker\protected\models\Place.php(44): CActiveRecord::model('Place')
+#8 E:\works\gobiker\protected\query\PlaceQuery.php(45): Place::model()
+#9 E:\works\gobiker\protected\controllers\PlaceController.php(15): PlaceQuery::getList(Array)
+#10 E:\works\gobiker\framework\web\actions\CInlineAction.php(50): PlaceController->actionIndex()
+#11 E:\works\gobiker\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 E:\works\gobiker\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#13 E:\works\gobiker\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 E:\works\gobiker\framework\web\CWebApplication.php(276): CController->run('index')
+#15 E:\works\gobiker\framework\web\CWebApplication.php(135): CWebApplication->runController('place/index')
+#16 E:\works\gobiker\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 E:\works\gobiker\index.php(39): CApplication->run()
+#18 {main}
+REQUEST_URI=/index.php?r=place/index
+HTTP_REFERER=http://localhost/index.php?r=user/register
+---
