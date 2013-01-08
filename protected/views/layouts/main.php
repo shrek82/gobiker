@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="en" />
-        <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.css?v=1.1" />
+        <link rel="stylesheet" type="text/css" href="/static/google-bootstrap/css/bootstrap.css?v=1.1" />
         <link rel="stylesheet" type="text/css" href="/static/css/global.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/routes.css" />
