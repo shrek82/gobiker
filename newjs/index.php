@@ -10,7 +10,7 @@
     </head>
     <body>
         <div style="margin: 100px auto;width: 800px;;padding: 20px;border: 1px solid #eee">
-            <form class="form-horizontal" id="form1" action="/member/login">
+            <form class="form-horizontal" id="myform" action="/member/login">
                 <div class="control-group">
                     <label class="control-label" for="inputEmail">Email</label>
                     <div class="controls">
@@ -35,6 +35,7 @@
                             <input type="checkbox" name="remember" value="1"> Remember me
                         </label>
                         <button type="button" class="btn btn-success" onclick="save()" style="cursor: pointer">ajax发送</button>
+                        <button type="button" class="btn btn-success" onclick="ajaxSubmit()" style="cursor: pointer">ajaxSubmit发送</button>
                         <button type="submit" class="btn" style="cursor: pointer">普通发送</button>
                     </div>
                 </div>
@@ -43,7 +44,13 @@
 
         <script type="text/javascript">
             function save(){
-                new panda.ajaxForm('form1').send();
+                new panda.ajaxForm('myform').send();
+            }
+
+            function ajaxSubmit(){
+                $('#myform').ajaxSubmit(function(){
+                    alert('发送成功');
+                });
             }
         </script>
 
