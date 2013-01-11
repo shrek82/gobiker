@@ -6,11 +6,14 @@
 ;
 (function() {
 
-    window.panda=new Object();
+    window.panda = new Object();
 
     //利用构造函数初始化表单对象
     panda.ajaxForm = function(formId, options) {
-        var form = $('#' + formId);
+        var joe = 'joe';
+        var johnny = 'johnny';
+        var quaid = 'quaid';
+        this.form = $('#' + formId);
     }
     //ajaxForm一些原型方法
     panda.ajaxForm.prototype = {
@@ -31,7 +34,10 @@
                 return false;
             }
             var opts = $.extend({}, this.opt);
+
+            if(opts.length) {} else {};
         }
+
     };
 
 
