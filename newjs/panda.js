@@ -10,9 +10,6 @@
 
     //利用构造函数初始化表单对象
     panda.ajaxForm = function(formId, options) {
-        var joe = 'joe';
-        var johnny = 'johnny';
-        var quaid = 'quaid';
         this.form = $('#' + formId);
     }
     //ajaxForm一些原型方法
