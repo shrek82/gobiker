@@ -5,44 +5,44 @@
 
 var MyClass = function(url, username) {
 
-		//普通属性
-		var url = url
+    //普通属性
+    var url = url
 
-		//普通方法
-		var get = function() {
-				console.log(url);
-			}
+    //普通方法
+    var get = function() {
+        console.log(url);
+    }
 
-		//构造属性
-		this.username = username
+    //构造属性
+    this.username = username
 
-		//构造方法
-		this.send = function() {
-			console.log(url);
-			console.log(this.username);
-		}
+    //构造方法
+    this.send = function() {
+        console.log(url);
+        console.log(this.username);
+    }
 
-		return this;
-	};
+    return this;
+};
 
 //原形方法
 MyClass.prototype.post = function() {
-	console.log(url);
-	console.log(this.username);
+    console.log(url);
+    console.log(this.username);
 }
 
 //----------------------------------------------------------
-//测试1、对象直接作为普通函数执行 
+//测试1、对象直接作为普通函数执行
 MyClass('http://test1.com','直接作为普通函数执行');
 window.username;  //ok
 window.send();    //ok
-window.url;     //error
-window.post(); //error
+//window.url;     //undefined
+//window.post(); //error
 
 /*
 //结论:
 对象被直接作为普通函数执行时:
-1、函数体内的普通变量url，普通方法get()只能在里面被调用
+1、函数体内的普通变量，普通方法只能在里面被调用
 2、构造属性username,构造方法send()被赋予给全局对象window，即window.username,window.send()可以执行
 3、原形方法post不会被赋予全局
 */
