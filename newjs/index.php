@@ -2,11 +2,7 @@
     <head>
         <title>seeyou.jsss</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" type="text/css" href="/themes/huaban/bootstrap/css/bootstrap.css" />
-        <link href="http://todc.github.com/css3-google-buttons/assets/css/google-bootstrap.css" rel="stylesheet">
-            <script type="text/javascript" src="/static/js/jquery-1.7.1.min.js"></script>
-            <script type="text/javascript" src="/static/js/jquery.form.js"></script>
-            <script type="text/javascript" src="/newjs/panda.js?v=<?=time()?>"></script>
+            <script type="text/javascript" src="/newjs/fun1.js?v=<?=time()?>"></script>
     </head>
     <body>
         <div style="margin: 100px auto;width: 800px;;padding: 20px;border: 1px solid #eee">

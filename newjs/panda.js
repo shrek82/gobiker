@@ -1,41 +1,23 @@
-/**
- * 名称 : 网站常用功能库
- * Author: seeyoup
- * 最后修改时间
- */
-;
-(function() {
+//1、作为纯函数调用，this就是代表全局;
+//2、当作this所在函数作为对象普通方法使用时，this总是指上一级
+//3、当作this所在函数被当作构造函数被调用时，this指向被实例的对象
+//4、当this所在函数被当作对象prototype方法调用时,this也指被实例的对象
+//3、原型方法测试
+var ajaxForm = function() {
+		this.username = '北京';
+		this.nikename = '天津';
+		this.send = function() {
+			console.log(this.username);
+		}
+		return this;
+	};
 
-    window.panda = new Object();
+ajaxForm.prototype.post = function() {
+	console.log(this.nikename);
+}
 
-    //利用构造函数初始化表单对象
-    panda.ajaxForm = function(formId, options) {
-        this.form = $('#' + formId);
-    }
-    //ajaxForm一些原型方法
-    panda.ajaxForm.prototype = {
-        opt: {
-            loading: true,
-            button: 'submit_button',
-            sendLabel: '发送中',
-            successLabel: '发送成功',
-            errorLabel: '重试',
-            before: function() {},
-            success: function() {},
-            error: function() {}
-        },
-        send: function() {
-            alert(form.action);
-            if(!form.length) {
-                alert('提示：您还没有选择表单对象，请先选择检查');
-                return false;
-            }
-            var opts = $.extend({}, this.opt);
-
-            if(opts.length) {} else {};
-        }
-
-    };
-
-
-})();
+var city=new ajaxForm();
+city.username='上海';
+city.send();
+city.nikename='杭州';
+city.post();
