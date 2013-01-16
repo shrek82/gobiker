@@ -1,11 +1,14 @@
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>seeyou.jsss</title>
+        <title>我的JS框架</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-            <script type="text/javascript" src="/newjs/fun1.js?v=<?=time()?>"></script>
+<link rel="stylesheet" type="text/css" href="/themes/huaban/bootstrap/css/bootstrap.css" />
+<script type="text/javascript" src="/static/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.form.js"></script>
+        <script type="text/javascript" src="/newjs/usho.js?v=<?=time()?>"></script>
     </head>
     <body>
-        <div style="margin: 100px auto;width: 800px;;padding: 20px;border: 1px solid #eee">
+        <div style="margin: 100px auto;width: 800px;padding: 20px;border: 1px solid #eee">
             <form class="form-horizontal" id="myform" action="/member/login">
                 <div class="control-group">
                     <label class="control-label" for="inputEmail">Email</label>
