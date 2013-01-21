@@ -7,10 +7,10 @@ var MyClass = function(testname) {
         console.log(testname + '----------------------------------------------');
 
         //局部变量
-        var privateValue = '对象内私有属性';
+        var privateValue = '对象局部变量';
 
         //构造属性
-        this.initValue = '对象的构造属性';
+        this.initValue = '对象内构造属性';
 
         //内部构造方法1
         this.initFunction = function() {
