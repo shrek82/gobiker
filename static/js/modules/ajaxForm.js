@@ -1,14 +1,17 @@
-define(function(require, exports, module) {
+;
+(function($) {
+	"use strict";
+	$.fn.ajaxForm = function(options) {
 
-	//var jqueryForm = require('jquery.form');
-	var ajaxForm = function(formId, options) {
-			this.form = $('#'+formId);
-			this.options = options || {};
+		console.log('123');
+
+		if(!this.length) {
+			log('您还没有选择表单');
+			return this;
+		}
+		else{
+			log(this.length);
 		}
 
-	ajaxForm.prototype.submit = function() {        
-		console.log(this.form.attr('action'));
-	}
-
-	module.exports = ajaxForm;
-});
+	};
+})(jQuery);

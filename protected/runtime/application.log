@@ -4055,3 +4055,25 @@ Stack trace:
 REQUEST_URI=/index.php?r=user/login
 HTTP_REFERER=http://localhost/index.php?r=site/index
 ---
+2013/01/11 08:02:54 [error] [exception.CException] exception 'CException' with message '属性 "ClubController.breadcrumbs" 未被定义.' in D:\phpnow\vhosts\gobiker\framework\base\CComponent.php:174
+Stack trace:
+#0 D:\phpnow\vhosts\gobiker\protected\views\club\view.php(4): CComponent->__set('breadcrumbs', Array)
+#1 D:\phpnow\vhosts\gobiker\framework\web\CBaseController.php(127): require('D:\phpnow\vhost...')
+#2 D:\phpnow\vhosts\gobiker\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\phpnow\vhost...', Array, true)
+#3 D:\phpnow\vhosts\gobiker\framework\web\CController.php(870): CBaseController->renderFile('D:\phpnow\vhost...', Array, true)
+#4 D:\phpnow\vhosts\gobiker\framework\web\CController.php(783): CController->renderPartial('view', Array, true)
+#5 D:\phpnow\vhosts\gobiker\protected\controllers\ClubController.php(20): CController->render('view', Array)
+#6 [internal function]: ClubController->actionView('6')
+#7 D:\phpnow\vhosts\gobiker\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ClubController), Array)
+#8 D:\phpnow\vhosts\gobiker\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ClubController), Object(ReflectionMethod), Array)
+#9 D:\phpnow\vhosts\gobiker\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 D:\phpnow\vhosts\gobiker\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 D:\phpnow\vhosts\gobiker\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\phpnow\vhosts\gobiker\framework\web\CWebApplication.php(276): CController->run('view')
+#13 D:\phpnow\vhosts\gobiker\framework\web\CWebApplication.php(135): CWebApplication->runController('club/view')
+#14 D:\phpnow\vhosts\gobiker\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 D:\phpnow\vhosts\gobiker\index.php(38): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=club/view&id=6
+HTTP_REFERER=http://gobiker.com/index.php?r=club/index
+---
