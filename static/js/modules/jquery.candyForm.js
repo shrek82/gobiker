@@ -26,9 +26,9 @@ define(function(require) {
                     sendingLabel: '发送中',
                     successLabel: '发送成功',
                     errorLabel: '发送失败',
-                    beforeSubmit:function(){},
-                    success:function(){},
-                    error:function(){}
+                    beforeSubmit: function() {},
+                    success: function() {},
+                    error: function() {}
                 };
 
                 //继承参数及方法
@@ -44,6 +44,14 @@ define(function(require) {
                     $button = $form.find('*[type=submit]');
                 }
 
+                //创建表单底部提示div
+                var statusTip=$('#statusTip');
+                if(!statusTip.length){
+                    $form.after('<div id="statusTip" class="display:none"><img src="/static/images/loading.gif"></div>');
+                    statusTip=$('#statusTip');
+                }
+
+
                 //追加发送前后系统状态提示
                 var sysAlert = {
                     //发送前
@@ -52,7 +60,8 @@ define(function(require) {
                         changeLabel($button, opts.sendingLabel, true);
                     },
                     //发送成功
-                    success: function(data) { 
+                    success: function(data) {
+                        statusTip.fideout();
                         changeLabel($button, opts.successLabel, true);
                         opts.success(data);
                     },
@@ -63,19 +72,19 @@ define(function(require) {
                     }
                 }
 
-                //标签名称及状态即使修改方法
+
+                //标签名称及状态及时修改方法
                 var changeLabel = function($button, label, disabled) {
-                    if($button[0].tagName == 'INPUT') {
-                        $button.attr('value', label);
+                        if($button[0].tagName == 'INPUT') {
+                            $button.attr('value', label);
+                        } else {
+                            $button.html(label);
+                        }
+                        return $button.attr('disabled', disabled);
                     }
-                    else {
-                        $button.html(label);
-                    }
-                    return $button.attr('disabled', disabled);
-                }
 
                 //异步提交表单
-                $form.ajaxSubmit($.extend({},opts,sysAlert));
+                $form.ajaxSubmit($.extend({}, opts, sysAlert));
 
             }
 
@@ -92,6 +101,6 @@ define(function(require) {
 
 
         })(jQuery);
-    //插件结束
+        //插件结束
     };
 });

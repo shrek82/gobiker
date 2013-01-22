@@ -38,12 +38,14 @@
                     </div>
                 </div>
             </form>
+
+            <div class="alert alert-error">sdfsd</div>
         </div>
 
         <script type="text/javascript">
             seajs.use(['/static/js/modules/main'],function(main){
                 $('#myform').candyForm({
-                    url:'http://gobiker.com/newjs/ajaxsub.php',
+                    url:'ajaxsub.php',
                     beforeSubmit:function(){
                         console.log('自定义提交前方法');
                     },
