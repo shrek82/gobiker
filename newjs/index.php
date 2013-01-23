@@ -4,10 +4,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css" href="/themes/huaban/bootstrap/css/bootstrap.css" />
         <script type="text/javascript" src="/static/js/sea.js"></script>
+        <script type="text/javascript" src="/static/js/modules/config.js?v=<?=time()?>>"></script>
     </head>
     <body>
         <div style="margin: 100px auto;width: 800px;padding: 20px;border: 1px solid #eee">
-            <form class="form-horizontal" id="myform" method='POST' action="http://gobiker.com/newjs/ajaxsub.php" datatype="222222222">
+            <form class="form-horizontal" id="myform" method='POST' action="ajaxsub.php" datatype="222222222">
                 <div class="control-group">
                     <label class="control-label" for="inputEmail">Email</label>
                     <div class="controls">
@@ -33,19 +34,20 @@
                         </label>
                         <button type="button" id="submitButton" class="btn btn-success" style="cursor: pointer">普通按钮</button>
                         <button type="submit" id="ajaxSubmit" class="btn btn-success" style="cursor: pointer">submit按钮</button>
+                        <button type="reset" class="btn" style="cursor: pointer">重置</button>
 
-                        <a href="/newjs/index.php/">index.php</a>
+                        &nbsp;&nbsp;<br><br><a href="/newjs/index.php/" style="color:#999">忘记密码了？</a>
                     </div>
                 </div>
             </form>
-
-            <div class="alert alert-error">sdfsd</div>
         </div>
 
         <script type="text/javascript">
-            seajs.use(['/static/js/modules/main'],function(main){
+            seajs.use(['main','candyForm'],function(/*不需要暴露，引入模块就初始化好鸟*/){
+
+                //绑定表单方法
                 $('#myform').candyForm({
-                    url:'ajaxsub.php',
+                    url:'/newjs/ajaxsub.php',
                     beforeSubmit:function(){
                         console.log('自定义提交前方法');
                     },
@@ -53,7 +55,7 @@
                         console.log('自定义提交成功后方法');
                         console.log(data);
                     }
-                })
+                });
             });
         </script>
 
