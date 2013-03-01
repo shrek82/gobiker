@@ -33,7 +33,7 @@
                             <input type="checkbox" name="remember" value="1"> Remember me
                         </label>
                         <button type="button" id="submitButton" class="btn btn-success" style="cursor: pointer">普通按钮</button>
-                        <button type="submit" id="ajaxSubmit" class="btn btn-success" style="cursor: pointer">submit按钮</button>
+                        <button type="submit" id="ajaxSubmit" class="btn btn-success" style="cursor: pointer">确定添加</button>
                         <button type="reset" class="btn" style="cursor: pointer">重置</button>
 
                         &nbsp;&nbsp;<br><br><a href="/newjs/index.php/" style="color:#999">忘记密码了？</a>
@@ -57,6 +57,16 @@
                     }
                 });
             });
+
+
+window.onerror = function(msg, url, line) {
+    console.log(msg + ':' + line+url);
+    // IE:"Object does't support this property or method:7"
+    // FF:"Script error.:0"
+    // Chrome:"Script error.:0"
+};
+M.unexistMethod();
+
         </script>
 
     </body>

@@ -1,14 +1,12 @@
-define(function(require) {
-
+define(function (require) {
     //引入需要的插件并初始化
     require('jquery.form')($);
 
     //返回插件的时候，已经初始化好了
-    return function($) {
+    return function ($) {
 
         //ajax提交方法
-        $.fn.candyAjaxSubmit = function(options) {
-
+        $.fn.candyAjaxSubmit = function (options) {
             options = options || {};
 
             //以下表单引用名称
@@ -26,9 +24,11 @@ define(function(require) {
                 sendingLabel: '发送中',
                 successLabel: '发送成功',
                 errorLabel: '发送失败',
-                beforeSubmit: function() {},
-                success: function() {},
-                error: function() {}
+                beforeSubmit: function () {},
+                success: function (data) {
+                    return data
+                },
+                error: function (error) {}
             };
 
             //继承参数及方法
@@ -36,9 +36,9 @@ define(function(require) {
 
             //获取提交按钮
             var $button;
-            if(typeof opts.submitButton == 'Object') {
+            if (typeof opts.submitButton == 'Object') {
                 $button = opts.submitButton;
-            } else if(typeof opts.submitButton == 'string') {
+            } else if (typeof opts.submitButton == 'string') {
                 $button = $('#' + opts.submitButton);
             } else {
                 $button = $form.find('*[type=submit]');
@@ -46,7 +46,7 @@ define(function(require) {
 
             //创建表单底部提示div
             var statusTip = $('#statusTip');
-            if(!statusTip.length) {
+            if (!statusTip.length) {
                 $form.after('<div id="statusTip" class="display:none"><img src="/static/images/loading.gif"></div>');
                 statusTip = $('#statusTip');
             }
@@ -56,38 +56,49 @@ define(function(require) {
             var sysAlert = {
 
                 //数据提交服务器之前
-                beforeSubmit: function() {
+                beforeSubmit: function () {
                     opts.beforeSubmit();
+                    //显示loading...
                     statusTip.removeClass('alert alert-success alert-error').html('<img src="/static/images/loading.gif">').show();
                     changeLabel($button, opts.sendingLabel, true);
                 },
 
-                //服务器响应成功，成功返回数据库
-                success: function(data) {
+                //服务器响应成功，成功返回数据结果
+                success: function (data) {
 
-                    //数据保存成功，随便做点什么吧
-                    if(opts.dataType == 'json' && (typeof data.error == 'undefined' || data.error == '')) {
-                        setTimeout(function() {
-                            statusTip.hide().html('内容发布成功!').addClass('alert alert-success').fadeIn(500);
-                            changeLabel($button, opts.successLabel, false);
-                            opts.success(data);
-                            $form[0].reset();
+                    //返回错误提示（例如数据不完整等等），你就随便做点什么吧
+                    if (opts.dataType == 'json' && data.error) {
+                        setTimeout(function () {
+                            statusTip.hide().html(data.error).addClass('alert alert-error').fadeIn(500);
+                            changeLabel($button, opts.errorLabel, false);
+                            //执行用户自定义错误方法
+                            opts.error(data);
                         }, 500);
 
-                        setTimeout(function() {
+                        setTimeout(function () {
+                            statusTip.fadeOut(300);
+                        }, 4000);
+                    }
+                    //数据保存成功
+                    else {
+                        setTimeout(function () {
+                            statusTip.hide().html('内容发布成功!').addClass('alert alert-success').fadeIn(500);
+                            changeLabel($button, opts.successLabel, false);
+                            //执行用户自定义成功后方法
+                            opts.success(data);
+                            $form.resetForm();
+                        }, 500);
+
+                        setTimeout(function () {
                             statusTip.fadeOut(300);
                         }, 2000);
-                    }
-                    //数据保存失败（用户原因，不如信息填写不完整等）
-                    else {
-
                     }
 
 
 
                 },
                 //发送失败（网络或系统原因，不如超时或程序出错）
-                error: function(data) {
+                error: function (data) {
                     changeLabel($button, opts.errorLabel, false);
                     statusTip.hide().html('很抱歉,系统超时或出错，请与管理员联系!').addClass('alert alert-error').fadeIn(500);
                     opts.error(data);
@@ -95,25 +106,25 @@ define(function(require) {
             }
 
             //标签名称及状态及时修改方法
-            var changeLabel = function($button, label, disabled) {
-                    if($button[0].tagName == 'INPUT') {
-                        $button.attr('value', label);
-                    } else {
-                        $button.html(label);
-                    }
-                    return $button.attr('disabled', disabled);
+            var changeLabel = function ($button, label, disabled) {
+                if ($button[0].tagName == 'INPUT') {
+                    $button.attr('value', label);
+                } else {
+                    $button.html(label);
                 }
+                return $button.attr('disabled', disabled);
+            }
 
-                //异步提交表单
-                $form.ajaxSubmit($.extend({}, opts, sysAlert));
+            //异步提交表单
+            $form.ajaxSubmit($.extend({}, opts, sysAlert));
 
         }
 
         //为form绑定ajax提交方法
-        $.fn.candyForm = function(options) {
-            if(this.length) {
+        $.fn.candyForm = function (options) {
+            if (this.length) {
                 var $form = this;
-                $form.bind('submit', function(e) {
+                $form.bind('submit', function (e) {
                     e.preventDefault();
                     $form.candyAjaxSubmit(options);
                 })
