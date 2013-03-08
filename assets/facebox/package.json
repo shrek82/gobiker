@@ -1,0 +1,5 @@
+{
+    "name":"facebox",
+    "parent":"../package.json",
+    "output":{"facebox.js":"."}
+}

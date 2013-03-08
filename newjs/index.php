@@ -65,8 +65,6 @@ window.onerror = function(msg, url, line) {
     // FF:"Script error.:0"
     // Chrome:"Script error.:0"
 };
-M.unexistMethod();
-
         </script>
 
     </body>

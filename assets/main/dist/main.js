@@ -1,0 +1,1 @@
+define("./main/1.0.0/main",[],function(a,b){b.getPub=function(){seajs.log("main function")}});

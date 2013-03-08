@@ -5,7 +5,7 @@ define(function (require) {
     //返回插件的时候，已经初始化好了
     return function ($) {
 
-        //ajax提交方法
+        //直接ajax提交方法
         $.fn.candyAjaxSubmit = function (options) {
             options = options || {};
 
@@ -24,6 +24,7 @@ define(function (require) {
                 sendingLabel: '发送中',
                 successLabel: '发送成功',
                 errorLabel: '发送失败',
+                footerLoading:'/static/images/loading.gif',
                 beforeSubmit: function () {},
                 success: function (data) {
                     return data
@@ -47,7 +48,7 @@ define(function (require) {
             //创建表单底部提示div
             var statusTip = $('#statusTip');
             if (!statusTip.length) {
-                $form.after('<div id="statusTip" class="display:none"><img src="/static/images/loading.gif"></div>');
+                $form.after('<div id="statusTip" class="display:none"><img src="'+opts.footerLoading+'"></div>');
                 statusTip = $('#statusTip');
             }
 
@@ -59,7 +60,7 @@ define(function (require) {
                 beforeSubmit: function () {
                     opts.beforeSubmit();
                     //显示loading...
-                    statusTip.removeClass('alert alert-success alert-error').html('<img src="/static/images/loading.gif">').show();
+                    statusTip.removeClass('alert alert-success alert-error').html('<img src="'+opts.footerLoading+'">').show();
                     changeLabel($button, opts.sendingLabel, true);
                 },
 
@@ -120,7 +121,7 @@ define(function (require) {
 
         }
 
-        //为form绑定ajax提交方法
+        //绑定ajax提交事件
         $.fn.candyForm = function (options) {
             if (this.length) {
                 var $form = this;
