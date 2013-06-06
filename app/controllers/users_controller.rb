@@ -87,24 +87,22 @@ class UsersController < ApplicationController
   #注册验证
   def ajax
     @email=params[:email]
-    action=params[:action]
+    @step=params[:step]
 
     #验证是否可用
-    if action=='checkemail'
-      user=User.find_all_by_email(@email)
+    if @step=='checkemail'
+      user=User.find_by_email(@email)
       if user
-        render json: {error:"该帐号已经被注册了!"}
+        render json: {error:1,msg:"该帐号已经被注册了!"}
       else
         render json: {error: 0}
       end
     end
 
     #发送激活邮件
-    if action=='step2'
+    if @step=='sendmail'
       render :template  => 'users/_reg_active_mail.html',:layout => false
     end
-
-   render :nothing => true
 
   end
 end

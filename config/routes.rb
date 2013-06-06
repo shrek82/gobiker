@@ -1,5 +1,8 @@
 Gobiker::Application.routes.draw do
 
+  resources :places
+
+
   resources :routes
   resource  :users
 
