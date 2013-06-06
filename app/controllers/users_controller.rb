@@ -1,3 +1,4 @@
+#coding: utf-8
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
@@ -81,15 +82,29 @@ class UsersController < ApplicationController
   end
 
   def register
-    @user="nihaoma"
   end
 
   #注册验证
   def ajax
-    print 'dfdfdf'
-    render :nothing => true
     @email=params[:email]
+    action=params[:action]
 
+    #验证是否可用
+    if action=='checkemail'
+      user=User.find_all_by_email(@email)
+      if user
+        render json: {error:"该帐号已经被注册了!"}
+      else
+        render json: {error: 0}
+      end
+    end
+
+    #发送激活邮件
+    if action=='step2'
+      render :template  => 'users/_reg_active_mail.html',:layout => false
+    end
+
+   render :nothing => true
 
   end
 end

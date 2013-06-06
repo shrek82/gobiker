@@ -70,6 +70,7 @@ jQuery(function () {
                 showError('reg_email', "email格式不正确");
                 return false;
             }
+            console.log('biaoji1');
             jQuery.postJSON(file + "?action=checkemail", "is_ajax=1&email=" + email, function (res) {
                 if ('0' != res.error) {
                     showError('reg_email', res.msg);
@@ -320,6 +321,7 @@ jQuery(function () {
         jQuery("#reg_submit").removeClass("ui_btn_big").addClass("ui_btn_big_load");
         var reg_test = jQuery("#reg_submit").val();
         jQuery("#reg_submit").val("");
+
         jQuery.post(file + "?action=step2", {
             email: email,
             verify: verify,
@@ -350,6 +352,7 @@ jQuery(function () {
         }, "json");
         return false;
     });
+    //提交表单
     jQuery("#registform").submit(function () {
         var password = jQuery("#reg_password").val();
         var username = jQuery("#reg_username").val();
