@@ -1,1 +1,0 @@
-define(function(a,b){b.bbs=function(){seajs.log("bbs")}});

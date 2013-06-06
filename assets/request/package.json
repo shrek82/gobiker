@@ -1,8 +1,0 @@
-{
-    "name":"request",
-    "parent":"../package.json",
-    "output":{"request.js":"*"},
-    "dependencies": {
-        "main":"main/1.0.0/main"
-    }
-}

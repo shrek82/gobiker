@@ -1,1 +1,0 @@
-define("./main/1.0.0/main",[],function(a,b){b.getPub=function(){seajs.log("main function")}}),define("./request/1.0.0/request",["main/1.0.0/main"],function(a,b){a("main/1.0.0/main");var d=function(){seajs.log("Request")};b.Requset=d});
