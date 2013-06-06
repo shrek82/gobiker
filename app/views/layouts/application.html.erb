@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title><%=@title %></title>
+  <meta name="keywords" content="旅行指南,攻略,游记,出境游,自助游">
+  <meta name="description" content="穷游网鼓励和帮助中国旅行者以自己的视角和方式体验世界，为出国旅行者提供专业、实用、全面的出境游旅行指南和旅游攻略，是中国出境游旅行者们分享旅游目的地信息和游记攻略的平台。">
+  <link rel="shortcut icon" href="http://www.qyer.com/favicon.ico"/>
+  <link rel="stylesheet" href="/static/css/base.css"/>
+  <link rel="stylesheet" href="/static/css/headfoot.css"/>
+  <link rel="stylesheet" href="/static/css/login/global.css"/>
+  <script type="text/javascript" src="/static/js/jquery-1.7.1.min.js"></script>
+  <script language="javascript" src="/static/js/global.js"></script>
+  <%= yield :head %>
+  <script>
+      if (/(MIDP|WAP|UP\.Browser|Smartphone|Obigo|AU\.Browser|wxd\.Mms|WxdB\.Browser|CLDC|UP\.Link|KM\.Browser|UCWEB|SEMC\-Browser|Mini|Symbian|Palm|Nokia|Panasonic|MOT\-|SonyEricsson|NEC\-|Alcatel|Ericsson|BENQ|BenQ|Amoisonic|Amoi\-|Capitel|PHILIPS|SAMSUNG|Lenovo|Mitsu|Motorola|SHARP|WAPPER|LG\-|LG\/|EG900|CECT|Compal|kejian|Bird|BIRD|G900\/V1.0|Arima|CTL|TDG|Daxian|DAXIAN|DBTEL|Eastcom|EASTCOM|PANTECH|Dopod|Haier|HAIER|KONKA|KEJIAN|LENOVO|Soutec|SOUTEC|SAGEM|SEC\-|SED\-|EMOL\-|INNO55|ZTE|iPhone|Android|Windows CE|Wget|Java|curl|Opera)/g.test(navigator.userAgent) && /qyer\.com/.test(document.referrer) == false) {
+          location.href = "http://m.qyer.com";
+      }
+  </script>
+</head>
+<body>
+<div class="qyer_header_fixed">
+  <div class="qyer_header_bg">
+    <div class="qyer_header">
+      <div class="qyer_head_logo">
+        <a href="/" data-bn-ipg="head-logo"><img src="/static/media/ind_logo.png" alt="穷游网" title="穷游网 - 旅途永无穷尽" width="106" height="38"/></a>
+      </div>
+      <ul class="qyer_head_nav">
+        <li class="qyer_head_nav_item" id="qyer_head_nav_item_place">
+          <a href="/place" class="qyer_head_nav_item_tit qyer_head_nav_item_place" data-bn-ipg="head-nav-place">目的地</a>
+        </li>
+        <li class="qyer_head_nav_item" id="qyer_head_nav_item_guide">
+          <a href="/guide/" class="qyer_head_nav_item_tit qyer_head_nav_item_guide" data-bn-ipg="head-nav-guide">穷游锦囊</a>
+        </li>
+        <li class="qyer_head_nav_item" id="qyer_head_nav_item_bbs">
+          <a href="/bbs/" class="qyer_head_nav_item_tit qyer_head_nav_item_bbs" data-bn-ipg="head-nav-bbs">论坛</a>
+        </li>
+        <li class="qyer_head_nav_item" id="qyer_head_nav_item_ask">
+          <a href="http://ask.qyer.com/" class="qyer_head_nav_item_tit qyer_head_nav_item_ask" data-bn-ipg="head-nav-ask">问答</a>
+        </li>
+        <li class="qyer_head_nav_item" id="qyer_head_nav_item_lastm">
+          <a href="http://www.qyer.com/lastminute/" class="qyer_head_nav_item_tit qyer_head_nav_item_lastm" data-bn-ipg="head-nav-lastminute">穷游折扣</a>
+        </li>
+        <li class="qyer_head_nav_item " id="qyer_head_nav_item_hotel">
+          <a href="http://hotel.qyer.com/" class="qyer_head_nav_item_tit qyer_head_nav_item_hotel" data-bn-ipg="head-nav-hotel">酒店</a>
+        </li>
+        <li class="qyer_head_nav_item " id="qyer_head_nav_item_yd">
+          <span class="qyer_head_nav_item_tit qyer_head_nav_item_yd">预订</span>
+
+          <div class="qyer_head_subnav_bg">
+            <div class="qyer_head_subnav_top"></div>
+            <ul class="qyer_head_subnav_list">
+              <li><a href="http://flight.qyer.com/" class="qyer_head_nav_item_plane" data-bn-ipg="head-nav-plane">机票</a>
+              </li>
+              <li><a href="http://bx.qyer.com/" class="qyer_head_nav_item_insure" data-bn-ipg="head-nav-insure">保险</a>
+              </li>
+              <li><a href="http://qz.qyer.com/" class="qyer_head_nav_item_visa" data-bn-ipg="head-nav-visa">签证</a></li>
+              <li>
+                <a href="http://www.qyer.com/hoteldeal/" class="qyer_head_nav_item_hoteldeal" data-bn-ipg="head-nav-hoteldeal">特价酒店</a>
+              </li>
+              <li>
+                <a href="http://www.qyer.com/shop/" class="qyer_head_nav_item_shop" data-bn-ipg="head-nav-shop">华人旅馆</a>
+              </li>
+              <li>
+                <a href="/goto.php?url=http://www.tapotiexie.com" target="_blank" class="qyer_head_nav_item_liner" data-bn-ipg="head-nav-liner">邮轮</a>
+              </li>
+              <li><a href="http://car.qyer.com/" class="qyer_head_nav_item_car" data-bn-ipg="head-nav-car">租车</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <script type="text/javascript" src="/static/js/user_action_logininfo_m_userloginsync.js"></script>
+      <script src="/static/js/search.js" type="text/javascript"></script>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    (function ($) {
+        $("#qyer_head_nav_item_yd").hover(function () {
+            $(this).addClass("qyer_head_nav_item_current");
+            $(this).find(".qyer_head_subnav_bg").show();
+        }, function () {
+            $(this).removeClass("qyer_head_nav_item_current");
+            $(this).find(".qyer_head_subnav_bg").hide();
+        });
+    })(jQuery);
+</script>
+
+<%= yield %>
+
+<div class="qyer_footer">
+  <div class="qyer_footerBox">
+    <ul class="qyer_footer_about">
+      <li>
+        <dl>
+          <dt>关于我们</dt>
+          <dd>
+            <a href="/htmlpages/about.html" target="_blank" rel="nofollow" data-bn-ipg="foot-about-1">穷游简介</a>
+          </dd>
+          <dd>
+            <a href="/htmlpages/contact.html" target="_blank" rel="nofollow" data-bn-ipg="foot-about-2">联系我们</a>
+          </dd>
+          <dd><a href="/partner/" target="_blank" rel="nofollow" data-bn-ipg="foot-about-3">合作伙伴</a>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>加入穷游</dt>
+          <dd><a href="/job/" target="_blank" rel="nofollow" data-bn-ipg="foot-join-1">招聘职位</a></dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>网站条款</dt>
+          <dd>
+            <a href="/htmlpages/member.html" target="_blank" rel="nofollow" data-bn-ipg="foot-clause-1">会员条款</a>
+          </dd>
+          <dd>
+            <a href="/htmlpages/bbsguide.html" target="_blank" rel="nofollow" data-bn-ipg="foot-clause-2">社区指南</a>
+          </dd>
+          <dd>
+            <a href="/htmlpages/copyright.html" target="_blank" rel="nofollow" data-bn-ipg="foot-clause-3">版权声明</a>
+          </dd>
+          <dd>
+            <a href="/htmlpages/exemption.html" target="_blank" rel="nofollow" data-bn-ipg="foot-clause-4">免责声明</a>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>帮助中心</dt>
+          <dd><a href="http://site.qyer.com/tyro/" target="_blank" rel="nofollow" data-bn-ipg="foot-help-1">新手上路</a>
+          </dd>
+          <dd><a href="http://bbs.qyer.com/faq.php" target="_blank" rel="nofollow" data-bn-ipg="foot-help-2">使用帮助</a>
+          </dd>
+          <dd>
+            <a href="http://www.surveygizmo.com/s3/465989/289a6cfbafa6" target="_blank" rel="nofollow" data-bn-ipg="foot-help-3">建议和投诉</a>
+          </dd>
+          <dd><a href="/sitemap.html" target="_blank" data-bn-ipg="foot-help-4">网站地图</a></dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>关注我们</dt>
+          <dd class="qyer_footer_attention">
+            <img src="/static/media/icon_attention.png" alt="" width="80" height="50" border="0" usemap="#Map_go2att"/>
+            <map name="Map_go2att" id="Map_go2att">
+              <area shape="rect" coords="0,0,20,20" href="http://t.sina.com.cn/go2eu" target="_blank" rel="nofollow" alt="穷游网@新浪微博" title="穷游网@新浪微博" onclick="_gaq.push(['_trackEvent','outlink','buttomlink','weibo',1]);" data-bn-ipg="foot-concern-1"/>
+              <area shape="rect" coords="30,0,50,20" href="http://www.flickr.com/photos/go2eu" target="_blank" rel="nofollow" alt="穷游网@flickr" title="穷游网@flickr" onclick="_gaq.push(['_trackEvent','outlink','buttomlink','flickr',1]);" data-bn-ipg="foot-concern-2"/>
+              <area shape="rect" coords="60,0,80,20" href="http://page.renren.com/600986584" target="_blank" rel="nofollow" alt="穷游网@人人" title="穷游网@人人" onclick="_gaq.push(['_trackEvent','outlink','buttomlink','renren',1]);" data-bn-ipg="foot-concern-3"/>
+              <area shape="rect" coords="0,30,20,50" href="http://site.douban.com/go2eu" target="_blank" rel="nofollow" alt="穷游网@豆瓣" title="穷游网@豆瓣" onclick="_gaq.push(['_trackEvent','outlink','buttomlink','douban',1]);" data-bn-ipg="foot-concern-4"/>
+              <area shape="rect" coords="30,30,50,50" href="http://www.facebook.com/#!/qiongyou" target="_blank" rel="nofollow" alt="穷游网@facebook" title="穷游网@facebook" onclick="_gaq.push(['_trackEvent','outlink','buttomlink','facebook',1]);" data-bn-ipg="foot-concern-5"/>
+              <area shape="rect" coords="60,30,82,50" href="http://twitter.com/go2eucom" target="_blank" rel="nofollow" alt="穷游网@twitter" title="穷游网@twitter" onclick="_gaq.push(['_trackEvent','outlink','buttomlink','twitter',1]);" data-bn-ipg="foot-concern-6"/>
+            </map>
+          </dd>
+        </dl>
+      </li>
+    </ul>
+    <div class="qyer_footer_appStore">
+      <a href="http://itunes.apple.com/cn/artist/qyer/id492202235" target="_blank" rel="nofollow" data-bn-ipg="foot-appstore"><img src="/static/media/appstore.png" width="118" height="39" alt="穷游网@App Store" title="穷游网@App Store"/></a>
+    </div>
+    <div class="qyer_footer_copyright">
+      <a href="/" rel="nofollow" data-bn-ipg="foot-logo"><img src="/static/media/foot_logo.png" width="100" height="30" alt="穷游网"/></a>
+
+      <p>2004-2013 &copy; 穷游网&trade; qyer.com All rights reserved. Version
+        v4.11&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备12003524号</a>&nbsp;&nbsp;京公网安备11010502023470
+      </p>
+
+      <p>穷游网为旅行者提供原创实用的出境游旅行指南和旅游攻略、旅行社区和问答交流平台，并提供签证、保险、机票、酒店预订、租车等服务。</p>
+    </div>
+
+    <dl class="ind_links">
+      <dt>友情链接：</dt>
+      <dd><a href="http://trip.elong.com/" target="_blank" data-bn-ipg="foot-hand-1">艺龙旅游指南</a></dd>
+      <dd><a href="http://www.etpass.com" target="_blank" data-bn-ipg="foot-hand-2">快乐e行</a></dd>
+      <dd><a href="http://place.qyer.com/" target="_blank" data-bn-ipg="foot-hand-3">旅游指南</a></dd>
+      <dd><a href="http://www.jiasule.com/" target="_blank" data-bn-ipg="foot-hand-4">加速乐</a></dd>
+      <dd><a href="http://guide.qyer.com/" target="_blank" data-bn-ipg="foot-hand-5">自助游攻略</a></dd>
+      <dd><a href="http://bbs.qyer.com/" target="_blank" data-bn-ipg="foot-hand-6">旅行社区</a></dd>
+      <dd><a href="http://vacations.ctrip.com " target="_blank" data-bn-ipg="foot-hand-7">携程旅游网</a></dd>
+      <dd><a href="http://www.8264.com" target="_blank" data-bn-ipg="foot-hand-8">户外资料网</a></dd>
+    </dl>
+  </div>
+</div>
+<%= yield :footer %>
+</body>
+</html>
