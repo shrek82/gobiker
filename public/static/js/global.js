@@ -615,14 +615,14 @@ var tips = (function () {
     return ttt;
 })();
 var _ajax = {
-    "ajaxurl": "/ajax.php",
+    "ajaxurl": "/users/ajax",
     "get": function (action, data, callback) {
         var rnd = (+new Date());
-        jQuery.get(_ajax.ajaxurl + "?action=" + action + "&rnd=" + rnd, data, callback);
+        jQuery.get(_ajax.ajaxurl + "?act=" + action + "&rnd=" + rnd, data, callback);
     },
     getJSON: function (action, data, callback) {
         var rnd = (+new Date());
-        jQuery.getJSON(_ajax.ajaxurl + "?action=" + action + "&rnd=" + rnd, data, callback);
+        jQuery.getJSON(_ajax.ajaxurl + "?act=" + action + "&rnd=" + rnd, data, callback);
     },
     post: function (action, data, cb) {
         data = jQuery.merge(data, {

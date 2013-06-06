@@ -328,29 +328,13 @@ jQuery(function () {
             url: url,
             encode: encode
         }, function (res) {
-            console.log(res);
-            if (res.error != 0) {
-                jQuery("#reg_submit").val(reg_test);
-                jQuery("#reg_submit").removeClass("ui_btn_big_load").addClass("ui_btn_big");
-            }
-            if ('-4' == res.error) {
-                showError('reg_email', res.msg);
-            } else if ('-6' == res.error) {
-                showError('reg_email', res.msg);
-            } else if ('-9' == res.error) {
-                showError('reg_verify', res.msg);
-            } else if ('0' == res.error) {
-                jQuery("#content_reg_email").html(res.msg);
-                if (file == "/user/ajax") {
-                    //var baiduurl = "http://qt.qyer.com/beacon.gif?type=click&category=drw-2-popup&campaign=inpage&referer=" + encodeURIComponent(window.location.href) + "&referer_link=" + encodeURIComponent(document.referrer) + "&guid=" + getCookie("_guid") + "&user_id=0&session=" + getCookie("_session");
-                } else {
-                    //var baiduurl = "http://qt.qyer.com/beacon.gif?type=click&category=drpb-2-popup&campaign=inpage&referer=" + encodeURIComponent(window.location.href) + "&referer_link=" + encodeURIComponent(document.referrer) + "&guid=" + getCookie("_guid") + "&user_id=0&session=" + getCookie("_session");
-                }
-                //jQuery.get(baiduurl, function (data) {
-                //});
-            } else {
-            }
-        }, "json");
+            //if (res.error != 0) {
+            //    jQuery("#reg_submit").val(reg_test);
+            //    jQuery("#reg_submit").removeClass("ui_btn_big_load").addClass("ui_btn_big");
+            //}
+            jQuery("#content_reg_email").html(res);
+
+        }, "html");
         return false;
     });
     //提交表单
