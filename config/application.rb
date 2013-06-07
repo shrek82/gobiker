@@ -58,5 +58,13 @@ module Gobiker
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    #require "beer_creator" unless Rails.env.development?
+    #config.eager_load_paths += ["#{Rails.root}/lib}"] if Rails.env.development?
+    #config.eager_load_paths += ["#{Rails.root}/lib}"]
+
   end
 end
+
+#request my method
+require 'common'

@@ -1,14 +1,16 @@
 Gobiker::Application.routes.draw do
 
+  get "ceshi/index"
+
   match 'users/ajax'=>'users#ajax'
-  match 'users/mail'=>'users#mail'
+  match 'test'=>'users#mail'
+  match '/login'=>'users#login'
+  match '/register'=>'users#register'
 
   resources :places
   resources :routes
   resources :users
 
-  match '/login'=>'users#login'
-  match '/register'=>'users#register'
 
   #<%= link_to "About", register_path %>
   #register_path => '/register'

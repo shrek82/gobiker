@@ -27,7 +27,12 @@
     <div class="reg_tips"></div>
     <div class="reg_margin" id="content_reg_email">
       <!--注册内容 -->
-      <%= render 'reg_input_mail' %>
+      <% if @act=="verifyregister" %>
+          <%= render 'verifyregister' %>
+    <% elsif @act==nil %>
+          <%= render 'reg_input_mail' %>
+    <% else %>
+      <% end %>
     </div>
   </div>
 </div>

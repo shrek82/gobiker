@@ -31,6 +31,7 @@ group :development do
   gem "better_errors"
 end
 
+#send mail need
 gem 'tlsmail'
 
 # To use ActiveModel has_secure_password
