@@ -1,0 +1,43 @@
+<div class="reg_finish"><span class="icon_finish cGray">您已成功验证邮箱</span><strong class="fontYaHei f16 cGray mt5 block">填写用户名和密码就可以完成注册啦</strong>
+</div>
+
+<form action="/register.php?action=newregister" id="registform" method="post">
+    <div class="reg_main">
+        <div class="reg_form">
+            <div class="list email clearfix">
+                <span class="fl email_t">邮箱：</span>
+                <span class="fontArial cGray">seeyoup@qq.com</span>
+            </div>
+            <input type="hidden" name="regid" value="38164">
+            <input type="hidden" name="code" value="YkFURHU4SlcDHV5HNCZFQ2olXVwweldWAmdNVEN0fA">
+            <div class="list clearfix">
+                <span class="fl">用户名：</span>
+                <div class="input_div">
+                    <input type="text" class="ui_input fl" autocomplete="off" value="" id="reg_username" maxlength="15" name="username" placeholder="">
+                    <span class="i_zt"></span>
+                    <span class="i_tips"></span>
+                </div>
+                <p class="dl_p cGray">您以后可以使用此用户名或邮箱登录穷游网</p>
+            </div>
+            <div class="list clearfix">
+                <span class="fl">密码：</span>
+                <div class="input_div" style="z-index:12;">
+                    <input type="password" class="ui_input fl" autocomplete="off" value="" placeholder="" id="reg_password" maxlength="16" name="password">
+                    <span class="i_zt"></span>
+                    <span class="i_tips"></span>
+                </div>
+            </div>
+            <div class="list clearfix">
+                <span class="fl">重复密码：</span>
+                <div class="input_div">
+                    <input type="password" class="ui_input fl" value="" autocomplete="off" placeholder="" id="reg_repassword" maxlength="16" name="repassword">
+                    <span class="i_zt"></span>
+                    <span class="i_tips"></span>
+                </div>
+            </div>
+            <div class="list mt10 clearfix">
+                <input type="submit" class="ui_btn_big fontYaHei" value="完成注册">
+            </div>
+        </div>
+    </div>
+</form>
