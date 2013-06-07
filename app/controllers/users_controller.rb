@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -82,15 +81,22 @@ class UsersController < ApplicationController
   end
 
   def register
+    @act=params[:act]
+    @code=params[:code]
+
+  end
+
+  def mail
+    render('users/_reg_input_mail',:layout => false)
   end
 
   #注册验证
   def ajax
     @email=params[:email]
-    @step=params[:step]
+    @act=params[:act]
 
     #验证是否可用
-    if @step=='checkemail'
+    if @act=='checkemail'
       user=User.find_by_email(@email)
       if user
         render json: {error:1,msg:"该帐号已经被注册了!"}
@@ -100,8 +106,9 @@ class UsersController < ApplicationController
     end
 
     #发送激活邮件
-    if @step=='sendmail'
-      render :template  => 'users/_reg_active_mail.html',:layout => false
+    if @email&&(@act=='sendmail'||@act=='resentcode')
+      UserMailer.activation_mail(@email).deliver
+      render :template  => 'users/_reg_active_mail',:layout => false
     end
 
   end

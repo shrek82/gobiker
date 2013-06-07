@@ -27,6 +27,12 @@ group :rspec do
   gem 'rspec-rails', '>=1.3.2'
 end
 
+group :development do
+  gem "better_errors"
+end
+
+gem 'tlsmail'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

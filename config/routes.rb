@@ -1,10 +1,11 @@
 Gobiker::Application.routes.draw do
 
+  match 'users/ajax'=>'users#ajax'
+  match 'users/mail'=>'users#mail'
+
   resources :places
-
-
   resources :routes
-  resource  :users
+  resources :users
 
   match '/login'=>'users#login'
   match '/register'=>'users#register'
@@ -12,9 +13,6 @@ Gobiker::Application.routes.draw do
   #<%= link_to "About", register_path %>
   #register_path => '/register'
   #register_url  => 'http://localhost:3000/register'
-
-  match 'users/ajax'=>'users#ajax'
-
 
   #match 'main/test'
 

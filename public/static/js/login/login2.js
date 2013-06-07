@@ -70,7 +70,7 @@ jQuery(function () {
                 showError('reg_email', "email格式不正确");
                 return false;
             }
-            jQuery.postJSON(file + "?step=checkemail", "is_ajax=1&email=" + email, function (res) {
+            jQuery.postJSON(file + "?act=checkemail", "is_ajax=1&email=" + email, function (res) {
                 console.log(res);
                 if ('0' != res.error) {
                     showError('reg_email', res.msg);
@@ -106,7 +106,7 @@ jQuery(function () {
             jQuery.ajaxSetup({
                 async: false
             });
-            jQuery.postJSON(file + "?step=checkusername", "is_ajax=1&username=" + encodeURI(username), function (res) {
+            jQuery.postJSON(file + "?act=checkusername", "is_ajax=1&username=" + encodeURI(username), function (res) {
                 if ('0' != res.error) {
                     check_username = false;
                     return showError('reg_username', res.msg);
@@ -148,7 +148,7 @@ jQuery(function () {
                 return showError('reg_verify', "请填写验证码");
             }
             showloading("reg_verify");
-            jQuery.postJSON(file + "?step=checkverify", "is_ajax=1&verify=" + verify, function (res) {
+            jQuery.postJSON(file + "?act=checkverify", "is_ajax=1&verify=" + verify, function (res) {
                 if ('0' != res.error) {
                     return showError('reg_verify', res.msg);
                 } else {
@@ -217,7 +217,7 @@ jQuery(function () {
     }
 
     function resetVerify() {
-        var url = file + '?step=captcha&_'
+        var url = file + '?act=captcha&_'
         jQuery("#refucaptcha").attr("src", function () {
             var t = Math.round(new Date().getTime());
             return url + t;
@@ -322,7 +322,7 @@ jQuery(function () {
         var reg_test = jQuery("#reg_submit").val();
         jQuery("#reg_submit").val("");
 
-        jQuery.post(file + "?step=sendmail", {
+        jQuery.post(file + "?act=sendmail", {
             email: email,
             verify: verify,
             url: url,
@@ -363,7 +363,7 @@ jQuery(function () {
                 text: '发送邮件成功！'
             });
         }
-        jQuery.post(file + "?step=resentcode", {
+        jQuery.post(file + "?act=resentcode", {
             code: code
         }, function (res) {
             if (res.error == 0) {
