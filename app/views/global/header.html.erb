@@ -1,0 +1,66 @@
+<div class="qyer_header_fixed">
+  <div class="qyer_header_bg">
+    <div class="qyer_header">
+      <div class="qyer_head_logo">
+        <a href="/" data-bn-ipg="head-logo"><img src="/static/media/ind_logo.png" alt="穷游网" title="穷游网 - 旅途永无穷尽" width="106" height="38"/></a>
+      </div>
+      <ul class="qyer_head_nav">
+        <li class="qyer_head_nav_item" id="qyer_head_nav_item_place">
+          <a href="/place" class="qyer_head_nav_item_tit qyer_head_nav_item_place" data-bn-ipg="head-nav-place">目的地</a>
+        </li>
+        <li class="qyer_head_nav_item" id="qyer_head_nav_item_guide">
+          <a href="/guide/" class="qyer_head_nav_item_tit qyer_head_nav_item_guide" data-bn-ipg="head-nav-guide">穷游锦囊</a>
+        </li>
+        <li class="qyer_head_nav_item" id="qyer_head_nav_item_bbs">
+          <a href="/bbs/" class="qyer_head_nav_item_tit qyer_head_nav_item_bbs" data-bn-ipg="head-nav-bbs">论坛</a>
+        </li>
+        <li class="qyer_head_nav_item" id="qyer_head_nav_item_ask">
+          <a href="http://ask.qyer.com/" class="qyer_head_nav_item_tit qyer_head_nav_item_ask" data-bn-ipg="head-nav-ask">问答</a>
+        </li>
+        <li class="qyer_head_nav_item" id="qyer_head_nav_item_lastm">
+          <a href="http://www.qyer.com/lastminute/" class="qyer_head_nav_item_tit qyer_head_nav_item_lastm" data-bn-ipg="head-nav-lastminute">穷游折扣</a>
+        </li>
+        <li class="qyer_head_nav_item " id="qyer_head_nav_item_hotel">
+          <a href="http://hotel.qyer.com/" class="qyer_head_nav_item_tit qyer_head_nav_item_hotel" data-bn-ipg="head-nav-hotel">酒店</a>
+        </li>
+        <li class="qyer_head_nav_item " id="qyer_head_nav_item_yd">
+          <span class="qyer_head_nav_item_tit qyer_head_nav_item_yd">预订</span>
+
+          <div class="qyer_head_subnav_bg">
+            <div class="qyer_head_subnav_top"></div>
+            <ul class="qyer_head_subnav_list">
+              <li><a href="http://flight.qyer.com/" class="qyer_head_nav_item_plane" data-bn-ipg="head-nav-plane">机票</a>
+              </li>
+              <li><a href="http://bx.qyer.com/" class="qyer_head_nav_item_insure" data-bn-ipg="head-nav-insure">保险</a>
+              </li>
+              <li><a href="http://qz.qyer.com/" class="qyer_head_nav_item_visa" data-bn-ipg="head-nav-visa">签证</a></li>
+              <li>
+                <a href="http://www.qyer.com/hoteldeal/" class="qyer_head_nav_item_hoteldeal" data-bn-ipg="head-nav-hoteldeal">特价酒店</a>
+              </li>
+              <li>
+                <a href="http://www.qyer.com/shop/" class="qyer_head_nav_item_shop" data-bn-ipg="head-nav-shop">华人旅馆</a>
+              </li>
+              <li>
+                <a href="/goto.php?url=http://www.tapotiexie.com" target="_blank" class="qyer_head_nav_item_liner" data-bn-ipg="head-nav-liner">邮轮</a>
+              </li>
+              <li><a href="http://car.qyer.com/" class="qyer_head_nav_item_car" data-bn-ipg="head-nav-car">租车</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <script type="text/javascript" src="/static/js/user_action_logininfo_m_userloginsync.js"></script>
+      <script src="/static/js/search.js" type="text/javascript"></script>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    (function ($) {
+        $("#qyer_head_nav_item_yd").hover(function () {
+            $(this).addClass("qyer_head_nav_item_current");
+            $(this).find(".qyer_head_subnav_bg").show();
+        }, function () {
+            $(this).removeClass("qyer_head_nav_item_current");
+            $(this).find(".qyer_head_subnav_bg").hide();
+        });
+    })(jQuery);
+</script>
