@@ -1,5 +1,8 @@
 Gobiker::Application.routes.draw do
 
+  resources :provinces
+
+
   resources :comments
 
 

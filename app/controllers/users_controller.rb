@@ -1,4 +1,12 @@
 #coding: utf-8
+#1. 多个部分统一运行：
+#rake test
+#rake test:units
+#rake test:funtionals
+
+#2. 单独测试某个文件
+#rake test:units TEST=test/unit/some_test.rb
+
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
