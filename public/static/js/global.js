@@ -868,7 +868,8 @@ function setCookie(name, value) {
     var Days = 365;
     document.cookie = name + "=" + escape(value) + "; path=/;domain=ask.qyer.com";
 }
-loadjscssfile("http://static.qyer.com/js/common/jquery.cookie.js", "js");
+
+loadjscssfile("/static/js/jquery.cookie.js", "js");
 
 function getABFromGuid() {
     var re = new RegExp("(^| )_guid=([^;]*)(;|$)", "i");

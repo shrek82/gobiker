@@ -11,15 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606224654) do
+ActiveRecord::Schema.define(:version => 20130612104625) do
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "place_id"
+    t.integer  "route_id"
+    t.integer  "bbs_unit_id"
+  end
 
   create_table "places", :force => true do |t|
     t.string   "name"
     t.string   "intro"
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "tags"
+    t.integer  "category_id"
+    t.string   "img_path"
+    t.string   "banner_path"
+    t.integer  "province_id"
+    t.integer  "city_id"
+    t.string   "source"
+    t.integer  "been_num"
+    t.integer  "interested_num"
+    t.integer  "favorites_num"
+    t.integer  "hits_num"
+    t.integer  "good_num"
+    t.boolean  "is_recommended"
+    t.boolean  "is_fixed"
+    t.string   "map"
   end
 
   create_table "routes", :force => true do |t|

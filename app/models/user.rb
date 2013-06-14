@@ -1,5 +1,9 @@
+#coding: utf-8
+
 class User < ActiveRecord::Base
   attr_accessible :avatar_path, :email, :login_date, :memo, :password, :point, :reg_date, :username
+  has_many :comments,:dependent => :destroy
+  before_destroy :before_delete_user
 
   #http://hi.baidu.com/jiazom/item/079c91c3475f0f000bd93a53
   #validates_presence_of       :email,  :message => "邮箱不能为空!"
@@ -11,4 +15,14 @@ class User < ActiveRecord::Base
   #validates_presence_of     :password_confirmation,  :message =>"请再输入一次密码!"
   #validates_confirmation_of :password,  :message => "两次密码不一致!"
   #validates_format_of  :email, :message => "邮箱格式不正确!", :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+
+  private
+  def before_delete_user
+    if comments.empty?
+      return true
+    else
+      errors.add(:base,'error smsmsmsm')
+      return false
+    end
+  end
 end

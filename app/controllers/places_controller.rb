@@ -3,6 +3,7 @@ class PlacesController < ApplicationController
   # GET /places.json
   def index
     @places = Place.all
+    @recommend=Place.find_all_by_is_recommended(1)
 
     respond_to do |format|
       format.html # index.html.erb

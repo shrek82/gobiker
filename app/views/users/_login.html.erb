@@ -1,0 +1,63 @@
+<% if flash[:success] %>
+    <div class="reg_finish">
+      <span class="icon_finish cGray">登陆成功</span>
+    </div>
+    <div class="reg_main" style="height: 200px">
+      <strong class="fontYaHei f16 cGray mt5 block">恭喜您登陆成功，3秒后跳转至首页</strong>
+    </div>
+<% else %>
+    <% if flash[:error] %>
+        <div class="reg_finish">
+          <span class="icon_error cGray"><%= flash[:error] %></span>
+        </div>
+    <% end %>
+    <div class="reg_main">
+      <form id="reg_form" class="reg_form" method="post">
+        <div class="clearfix"><strong class="fl f16 fontYaHei fb cGray">使用以下帐号直接登录</strong></div>
+        <div class="tc mt15">
+          <a href="javascript:void(0);" onfocus="this.blur();" class="weibo_btn _jsweibologin" url="http%3A%2F%2Fwww.qyer.com%2F">微博登录</a>
+          <a href="javascript:void(0);" onfocus="this.blur();" class="qq_btn _jsqqlogin" url="http%3A%2F%2Fwww.qyer.com%2F">QQ登录</a>
+        </div>
+        <div class="tc mt20">
+          <img src="/static/media/huo_icon.png" width="400" height="16" alt=""/>
+        </div>
+
+        <div class="clearfix mt15">
+          <strong class="fl f16 fontYaHei fb cGray">使用奇趣网帐号</strong><span class="fr cGray">还没有有帐号？<a href="/register/">注册</a></span>
+        </div>
+
+
+        <div class="list clearfix" style="margin-top: 10px">
+          <span class="fl">邮箱：</span>
+
+          <div class="input_div">
+            <input type="text" class="ui_input fl" autocomplete="off" value="" id="login_email" maxlength="15" name="email" placeholder="">
+            <span class="i_zt"></span>
+            <span class="i_tips"></span>
+          </div>
+          <p class="dl_p cGray">请使用注册时输入的邮箱地址</p>
+        </div>
+
+        <div class="list clearfix">
+          <span class="fl">密码：</span>
+
+          <div class="input_div" style="z-index:12;">
+            <input type="password" class="ui_input fl" autocomplete="off" value="" placeholder="" id="login_password" maxlength="16" name="password">
+            <span class="i_zt"></span>
+            <span class="i_tips"></span>
+          </div>
+        </div>
+
+        <div class="list email clearfix">
+          <span class="fl email_t"></span>
+          <span class="fontArial cGray"><label><input type="checkbox" checked="checked" id="reg_checkbox_agree"/>下次自动登陆</label></span>
+        </div>
+
+        <div class="list mt10 clearfix">
+          <input type="submit" class="ui_btn_big fontYaHei" value="立即登陆">
+        </div>
+
+      </form>
+    </div>
+<% end %>
+

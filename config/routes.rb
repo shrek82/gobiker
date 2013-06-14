@@ -1,6 +1,7 @@
 Gobiker::Application.routes.draw do
 
-  get "ceshi/index"
+  resources :comments
+
 
   match 'users/ajax'=>'users#ajax'
   match 'test'=>'users#mail'
@@ -68,7 +69,7 @@ Gobiker::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'main#index'
+  root :to => 'main#index',:as=>'main'
 
   # See how all your routes lay out with "rake routes"
 

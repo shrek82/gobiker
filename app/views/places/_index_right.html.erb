@@ -1,0 +1,33 @@
+<div class="gui_all">
+<h2 class="gui_title">全部穷游锦囊</h2>
+<div class="ui_sort gui_tab">
+  <a href="javascript:;" class="ui_sort_item ui_sort_item_current jsorderupdate" data-bn-ipg="20-1">按更新时间</a><span class="ui_sort_gap">|</span><a href="javascript:;" class="ui_sort_item jsorderdown" data-bn-ipg="20-2">最近7天下载量</a>
+</div>
+<div class="jsajaxshowpage">
+<ul class="gui_jnlist clearfix">
+  <% @places.each do |p| %>
+      <li class="gui_jnlist_item">
+        <div class="gui_jnlist_item_pic">
+          <a href="/places/<%=p.id%>" target="_blank" ><%=image_tag(p.img_path,{:width=>'130px',:height=>'90px',:alt=>p.name})%></a>
+        </div>
+        <p class="gui_jnlist_item_tit"><%=link_to p.name,p,{:target => '_blank'}%></p>
+        <p class="gui_jnlist_item_text">中国<br> 2013-06-09更新</p>
+      </li>
+  <% end %>
+</ul>
+
+<div class="ui_page">
+  <div class="ui_page">
+    <a data-bn-ipg="pages-3" href="javascript:jncomment.ajax_update_page(1)" class="ui_page_item ui_page_item_current">1</a>
+    <a data-bn-ipg="pages-3" href="javascript:jncomment.ajax_update_page(2)" class="ui_page_item">2</a>
+    <a data-bn-ipg="pages-3" href="javascript:jncomment.ajax_update_page(3)" class="ui_page_item">3</a>
+    <a data-bn-ipg="pages-3" href="javascript:jncomment.ajax_update_page(4)" class="ui_page_item">4</a>
+    <a data-bn-ipg="pages-3" href="javascript:jncomment.ajax_update_page(5)" class="ui_page_item">5</a>
+    <a data-bn-ipg="pages-4" href="javascript:jncomment.ajax_update_page(9)" class="ui_page_item" title="...9">...9</a>
+    <a data-bn-ipg="pages-5" href="javascript:jncomment.ajax_update_page(2)" class="ui_page_item ui_page_next" title="下一页">下一页</a>
+  </div>
+</div>
+<div class="cb"></div>
+</div>
+<div class="cb"></div>
+</div>

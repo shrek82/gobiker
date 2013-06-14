@@ -1,29 +1,35 @@
-<h1>Listing places</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Intro</th>
-    <th>Content</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @places.each do |place| %>
-  <tr>
-    <td><%= place.name %></td>
-    <td><%= place.intro %></td>
-    <td><%= place.content %></td>
-    <td><%= place.user_id %></td>
-    <td><%= link_to 'Show', place %></td>
-    <td><%= link_to 'Edit', edit_place_path(place) %></td>
-    <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% content_for:head do %>
+    <link rel="stylesheet" href="/static/css/place/style201209.css"/>
 <% end %>
-</table>
+<div class="qyer_head_crumbg">
+  <div class="qyer_head_crumb">
+    <span class="text"><%=link_to '首页',main_path %></span>
+    <span class="space">&gt;</span>
+    <h1 class="current">目的地</h1>
+  </div>
+</div>
 
-<br />
-
-<%= link_to 'New Place', new_place_path %>
+<div class="main">
+<div class="gui_top">
+  <img src="/static/place/jn_title.png" width="960" height="72" alt="穷游锦囊">
+</div>
+<div class="clearfix pr">
+<!--目的地导航开始-->
+<%=render 'navbox' %>
+<!--结束-->
+<!--幻灯片开始-->
+<%=render 'focus' %>
+<!--结束-->
+</div>
+<div class="clearfix mt30">
+<%=render 'recommended' %>
+</div>
+<div class="clearfix mt30">
+<div class="aside fl">
+<%=render 'index_sidebar' %>
+</div>
+<div class="content fr">
+<%=render 'index_right' %>
+</div>
+</div>
+</div>
