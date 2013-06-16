@@ -1,8 +1,18 @@
 Gobiker::Application.routes.draw do
 
+  namespace :admin do |admin|
+    resources :main
+    resources :forums
+    resource  :places
+    resource  :users
+    resource  :options
+    resource  :comments
+    resources :recommends
+    resources :managers
+  end
+
+
   resources :provinces
-
-
   resources :comments
 
 

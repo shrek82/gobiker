@@ -1,0 +1,39 @@
+<h1>Listing recommends</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Img path</th>
+    <th>Order num</th>
+    <th>Redirect</th>
+    <th>Intro</th>
+    <th>Is close</th>
+    <th>Is fixed</th>
+    <th>Hits</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @recommends.each do |recommend| %>
+  <tr>
+    <td><%= admin_recommend.name %></td>
+    <td><%= admin_recommend.type %></td>
+    <td><%= admin_recommend.img_path %></td>
+    <td><%= admin_recommend.order_num %></td>
+    <td><%= admin_recommend.redirect %></td>
+    <td><%= admin_recommend.intro %></td>
+    <td><%= recommend.is_close %></td>
+    <td><%= recommend.is_fixed %></td>
+    <td><%= recommend.hits %></td>
+    <td><%= link_to 'Show', recommend_path(recommend) %></td>
+    <td><%= link_to 'Edit', edit_recommend_path(recommend) %></td>
+    <td><%= link_to 'Destroy', recommend, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Recommend', new_admin_recommend_path %>

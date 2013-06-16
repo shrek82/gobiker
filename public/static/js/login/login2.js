@@ -48,7 +48,7 @@ jQuery(function () {
     jQuery(window).resize(function () {
         marCenter();
     });
-    if (window.location.host == "bbs.qyer.com") {
+    if (window.location.host == "forums.qyer.com") {
         file = '/users/ajax/bbsajax';
     } else {
         file = '/users/ajax';

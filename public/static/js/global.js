@@ -465,7 +465,7 @@ function isloginjump(url, cb) {
         location.href = url;
         return false;
     }
-    url = "http://bbs.qyer.com/" + url;
+    url = "http://forums.qyer.com/" + url;
     ajaxlogin(0, '', 'bbsajax.php', '', '', url);
 }
 

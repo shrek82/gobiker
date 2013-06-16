@@ -271,13 +271,13 @@ var planClipboard = (function($){
 		//判断是否需要在页面添加tooltips,只有bbs的详细页才会有
 		var href = location.href;
 		/*暂时去掉tips提醒
-		if(/^http:\/\/bbs\.qyer\.com\/(viewthread|thread)/.test(href)&& thiz.isfirst_seethis())
+		if(/^http:\/\/forums\.qyer\.com\/(viewthread|thread)/.test(href)&& thiz.isfirst_seethis())
 		{
 			//放置弹出层
 			var divhtml = [
 			           '<div style="width:231px;position:absolute;right:72px;top:-25px;">',
 			           '<div class="qyer_plan_mask_234xxsd" style="position:relative;width:231px;height:79px;background:url(http://static.qyer.com/images/plan/poppu/qyer_bbs_layout.png) no-repeat;">',
-			       	'<img title="关闭" style="position:absolute;right:6px;top:6px;cursor:pointer;" alt="关闭" onclick="javascript:planClipboard.clickbbstips();" src="http://static.qyer.com/images/bbs/tips_addroute_close.png">',
+			       	'<img title="关闭" style="position:absolute;right:6px;top:6px;cursor:pointer;" alt="关闭" onclick="javascript:planClipboard.clickbbstips();" src="http://static.qyer.com/images/forums/tips_addroute_close.png">',
 			       	'</div>',
 			       	'</div>'];
 			divhtml = divhtml.join("");
@@ -536,8 +536,8 @@ var planClipboard = (function($){
 			return;
 		}
 		
-		//var allowdomain = "bbs|place|ask|plan";
-		var allowdomain = "bbs";
+		//var allowdomain = "forums|place|ask|plan";
+		var allowdomain = "forums";
 		var exp = new RegExp("^http:\/\/("+allowdomain+")\.(qyer|go2eu)\.com", "i");
 		var href = location.href;
 		if(exp.test(href))

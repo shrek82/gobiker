@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @forum.name %>
+</p>
+
+<p>
+  <b>Order num:</b>
+  <%= @forum.order_num %>
+</p>
+
+<p>
+  <b>Unit count:</b>
+  <%= @forum.unit_count %>
+</p>
+
+<p>
+  <b>Club:</b>
+  <%= @forum.club_id %>
+</p>
+
+
+<%= link_to '编辑', edit_admin_forum_path(@forum) %> |
+<%= link_to '所有', admin_forums_path %>

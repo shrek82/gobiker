@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  type: 
+  img_path: MyString
+  order_num: 1
+  redirect: MyString
+  intro: MyString
+  is_close: false
+  is_fixed: false
+  hits: 1
+
+two:
+  name: MyString
+  type: 
+  img_path: MyString
+  order_num: 1
+  redirect: MyString
+  intro: MyString
+  is_close: false
+  is_fixed: false
+  hits: 1

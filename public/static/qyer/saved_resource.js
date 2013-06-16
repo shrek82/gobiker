@@ -47,7 +47,7 @@ filename=typeof filename=='undefined'?'ajax.php':filename;callback=typeof callba
 function pagereload(){location.reload();};function syncAfterLogin(uid,fuc)
 {QYER.uid=uid;fuc=fuc||"";jQuery.getJSON("http://user.qyer.com/user_action_logininfo?xxcb="+fuc+"&callback=?");}
 function isloginjump(url,cb){if(jQuery.browser.msie)url+=(url.indexOf('?')!=-1?'&':'?')+'referer='+escape(location.href);if(QYER.uid>0){location.href=url;return false;}
-url="http://bbs.qyer.com/"+url;ajaxlogin(0,'','bbsajax.php','','',url);}
+url="http://forums.qyer.com/"+url;ajaxlogin(0,'','bbsajax.php','','',url);}
 function getAjaxMsg(data){if(typeof(data)=="object"){if(data.status==1){jQuery("body").append(data.script);setTimeout(function(){window.location.href=data.url},2000);}}}
 function ajaxLogout(){tips.show('退出登录中...');jQuery.ajax({type:"get",dataType:"jsonp",url:"http://login.qyer.com/login.php?action=ajaxLogout&callback=?"});}
 jQuery(function(){window.uitab=function(){jQuery(".ui_tab").each(function(){jQuery(this).children(".ui_tab_trigger").find(".ui_tab_trigger_item").each(function(i){jQuery(this).live("click",function(){if(jQuery(this).hasClass("ui_tab_trigger_item_disabled")==false){jQuery(this).addClass("ui_tab_trigger_item_current").siblings(".ui_tab_trigger_item").removeClass("ui_tab_trigger_item_current");jQuery(this).parents(".ui_tab_trigger").siblings(".ui_tab_cnt").children(".ui_tab_cnt_item:eq("+i+")").addClass("ui_tab_cnt_item_current").siblings(".ui_tab_cnt_item").removeClass("ui_tab_cnt_item_current");}});});});}

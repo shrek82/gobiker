@@ -1,0 +1,70 @@
+<div id="content-header">
+  <h1>管理首页</h1>
+  <form class="form-search float_right" style="margin-top: -25px;margin-right: 10px">
+    <div class="input-append">
+      <input type="text" class="span3 search-query">
+      <button type="submit" class="btn">Search</button>
+    </div>
+  </form>
+</div>
+
+
+<div id="breadcrumb">
+  <a href="#"><i class="icon-search"></i> 快速筛选</a>
+  <a href="#">Dashboard</a>
+  <a href="#" class="current">Dashboard</a>
+</div>
+
+
+<div class="container-fluid padding_top10">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>Name:</b>
+    <%= @recommend.name %>
+  </p>
+
+  <p>
+    <b>Type:</b>
+    <%= @recommend.type %>
+  </p>
+
+  <p>
+    <b>Img path:</b>
+    <%= @recommend.img_path %>
+  </p>
+
+  <p>
+    <b>Order num:</b>
+    <%= @recommend.order_num %>
+  </p>
+
+  <p>
+    <b>Redirect:</b>
+    <%= @recommend.redirect %>
+  </p>
+
+  <p>
+    <b>Intro:</b>
+    <%= @recommend.intro %>
+  </p>
+
+  <p>
+    <b>Is close:</b>
+    <%= @recommend.is_close %>
+  </p>
+
+  <p>
+    <b>Is fixed:</b>
+    <%= @recommend.is_fixed %>
+  </p>
+
+  <p>
+    <b>Hits:</b>
+    <%= @recommend.hits %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_recommend_path(@recommend) %> |
+  <%= link_to 'Back', recommends_path %>
+</div>

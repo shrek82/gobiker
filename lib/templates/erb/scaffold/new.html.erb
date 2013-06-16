@@ -1,5 +1,22 @@
-<h1>New <%= singular_table_name %></h1>
+<div id="content-header">
+  <h1>添加<%= singular_table_name %></h1>
+  <form class="form-search float_right" style="margin-top: -25px;margin-right: 10px" action="/admin/<%= index_helper %>">
+    <div class="input-append">
+      <input type="text" class="span3 search-query">
+      <button type="submit" class="btn">Search</button>
+    </div>
+  </form>
+</div>
 
-<%%= render 'form' %>
 
-<%%= link_to 'Back', <%= index_helper %>_path %>
+<div id="breadcrumb">
+  <a href="#"><i class="icon-search"></i> 快速筛选</a>
+  <a href="#">Dashboard</a>
+  <a href="#" class="current">添加新记录</a>
+</div>
+
+
+<div class="container-fluid">
+  <%%= render 'form' %>
+
+</div>

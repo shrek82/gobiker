@@ -1,5 +1,5 @@
 // ui_feedback
-document.write("<div class='ui_feedback'><div class='ui_feedback_icon' title='意见反馈'></div><div class='ui_feedback_cnt'><form id='feedbackfrm' method='post'><textarea cols='50' rows='10' name='m' id='_fdm_' placeholder='有任何意见或建议请告诉我们'></textarea><p class='ui_feedback_help'>使用遇到问题？请先进入<a href='http://bbs.qyer.com/faq.php' target='_blank'>帮助中心</a></p><input name='' type='submit' value='提交' class='ui_button' /></form></div></div>");
+document.write("<div class='ui_feedback'><div class='ui_feedback_icon' title='意见反馈'></div><div class='ui_feedback_cnt'><form id='feedbackfrm' method='post'><textarea cols='50' rows='10' name='m' id='_fdm_' placeholder='有任何意见或建议请告诉我们'></textarea><p class='ui_feedback_help'>使用遇到问题？请先进入<a href='http://forums.qyer.com/faq.php' target='_blank'>帮助中心</a></p><input name='' type='submit' value='提交' class='ui_button' /></form></div></div>");
 
 $(function(){
 	var getwordlen = (function(){ 

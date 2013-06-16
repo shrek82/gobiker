@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Unicorn Admin</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/static/admin/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/static/css/todc-bootstrap.css"/>
+  <link rel="stylesheet" href="/static/admin/css/fullcalendar.css" />
+  <link rel="stylesheet" href="/static/admin/css/unicorn.main.css" />
+  <link rel="stylesheet" href="/static/admin/css/unicorn.grey.css" class="skin-color" />
+  <link rel="stylesheet" href="/static/admin/css/gobiker.css"/>
+</head>
+<body>
+
+
+<div id="header">
+  <h1><a href="./dashboard.html">骑趣管理</a></h1>
+</div>
+
+<div id="user-nav" class="navbar navbar-inverse">
+  <ul class="nav btn-group">
+    <li><a title="" href="#"><i class="icon icon-user"></i> <span class="text">Profile</span></a></li>
+  </ul>
+</div>
+
+<div id="sidebar">
+  <%=render 'admin/global/sidebar' %>
+</div>
+
+<div id="content">
+  <%= yield %>
+
+  <div class="row-fluid">
+    <div id="footer" class="span12">
+      2012 © Unicorn Admin. Brought to you by <a href="https://wrapbootstrap.com/user/diablo9983">diablo9983</a>
+    </div>
+  </div>
+
+</div>
+
+
+<script src="/static/admin/js/excanvas.min.js"></script>
+<script src="/static/admin/js/jquery.min.js"></script>
+<script src="/static/admin/js/jquery.ui.custom.js"></script>
+<script src="/static/admin/js/bootstrap.min.js"></script>
+<script src="/static/admin/js/jquery.peity.min.js"></script>
+<script src="/static/admin/js/fullcalendar.min.js"></script>
+<script src="/static/admin/js/unicorn.js"></script>
+</body>
+</html>
