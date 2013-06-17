@@ -1,6 +1,6 @@
 Gobiker::Application.routes.draw do
 
-  namespace :admin_old do |admin|
+  namespace :admin do |admin|
     resources :main
     resources :forums
     resource  :places
