@@ -112,18 +112,41 @@ class UsersController < ApplicationController
           @user.save
           flash[:success]='恭喜您登陆成功，即将跳转至首页'
           format.html
-          format.json{render :json=>@user}
+          format.json { render :json => @user }
         elsif @user
           flash[:error]='很抱歉，密码错误，请重试！'
           format.html
-          format.json {render :json=>{:error=>'很抱歉，密码错误，请重试！'}}
+          format.json { render :json => {:error => '很抱歉，密码错误，请重试！'} }
         else
           flash[:error]='邮箱或密码不能为空'
           format.html
-          format.json {render :json=>{:error=>'邮箱或密码不能为空'}}
+          format.json { render :json => {:error => '邮箱或密码不能为空'} }
         end
       end
     end
+  end
+
+  #注册验证
+  def ajax
+    @email=params[:email]
+    @act=params[:act]
+
+    #验证是否可用
+    if @act=='checkemail'
+      user=User.find_by_email(@email)
+      if user
+        render json: {error: 1, msg: "该帐号已经被注册了!"}
+      else
+        render json: {error: 0}
+      end
+    end
+
+    #发送激活邮件
+    if @email&&(@act=='sendmail'||@act=='resentcode')
+      UserMailer.activation_mail(@email).deliver
+      render :template => 'users/_reg_active_mail', :layout => false
+    end
+
   end
 
 end

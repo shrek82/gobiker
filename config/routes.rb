@@ -1,6 +1,6 @@
 Gobiker::Application.routes.draw do
 
-  namespace :admin do |admin|
+  namespace :admin_old do |admin|
     resources :main
     resources :forums
     resource  :places
@@ -16,6 +16,7 @@ Gobiker::Application.routes.draw do
   resources :comments
 
 
+  match '/admin'=>'admin/main#index'
   match 'users/ajax'=>'users#ajax'
   match 'test'=>'users#mail'
   match '/login'=>'users#login'

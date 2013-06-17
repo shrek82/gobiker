@@ -1,12 +1,33 @@
-<p id="notice"><%%= notice %></p>
+<div id="content-header">
+  <h1>managers</h1>
 
-<% attributes.each do |attribute| -%>
-<p>
-  <b><%= attribute.human_name %>:</b>
-  <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
-</p>
+  <form class="form-search float_right" style="margin-top: -25px;margin-right: 10px">
+    <div class="input-append">
+      <input type="text" class="span3 search-query">
+      <button type="submit" class="btn">Search</button>
+    </div>
+  </form>
+</div>
 
-<% end -%>
+<div id="breadcrumb">
+  <a href="#"><i class="icon-search"></i> 快速筛选</a>
+  <%%= link_to '所有', admin_<%= index_helper %>_path %>
+  <a href="#" class="current">managers</a>
+</div>
 
-<%%= link_to '编辑', edit_admin_<%= singular_table_name %>_path(@<%= singular_table_name %>) %> |
-<%%= link_to '所有', admin_<%= index_helper %>_path %>
+<div class="container-fluid padding_top10">
+
+  <p id="notice"><%%= notice %></p>
+
+
+  <% attributes.each do |attribute| -%>
+      <p>
+        <b><%= attribute.human_name %>:</b>
+        <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+      </p>
+
+  <% end -%>
+
+  <%%= link_to '编辑', edit_admin_<%= singular_table_name %>_path(@<%= singular_table_name %>) %> |
+  <%%= link_to '所有', admin_<%= index_helper %>_path %>
+</div>
