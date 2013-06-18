@@ -165,6 +165,11 @@ class Study < ActiveRecord::Base
     Album.where(:release_year => 1960..1969).explain
   end
 
+  #使用分页查询插件
+  def pageation
+    Post.where(:published => true).paginate(:page => params[:page],:per_page => 20).order('id DESC')
+  end
+
   #修改记录
   def editrecord
     #简单的修改
