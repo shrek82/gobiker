@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
+    request.xhr?
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -108,6 +110,7 @@ class UsersController < ApplicationController
         if @user&&@user.password==params[:password]
           cookies[:uid]=@user.id
           cookies[:email]=@user.email
+          cookies[:username]=@user.username
           @user.login_date=Time.now
           @user.save
           flash[:success]='恭喜您登陆成功，即将跳转至首页'
