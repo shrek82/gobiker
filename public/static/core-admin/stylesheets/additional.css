@@ -15,3 +15,57 @@ td.record-operate .icon-edit{color: #4CA9D9}
 td.record-operate .icon-edit:hover{color: #086490}
 td.record-operate .icon-remove{color: #EA9381}
 td.record-operate .icon-remove:hover{color: #BC4B34}
+
+.ui_page {
+    float: right;
+    margin-top: 7px;
+    height: 22px;
+    line-height: 22px;
+}
+.ui_page a,.ui_page em,.ui_page span{
+    border-top: 1px solid #E2E2E2;
+    border-left: 1px solid #C9C9C9;
+    border-right: 1px solid #C9C9C9;
+    border-bottom: 1px solid #AEAEAE;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    border-radius: 3px;
+    padding: 4px 7px;
+    margin: 0 3px;
+    cursor: pointer;
+    color: #666;
+    font-weight: 600;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    -webkit-box-shadow: 0 1px 0 white inset;
+    -moz-box-shadow: 0 1px 0 white inset;
+    box-shadow: 0 1px 0 white inset;
+}
+.ui_page a{
+    background: #5a6573;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0%, #fdfdfd), color-stop(100%, #eaeaea));
+    background-image: -webkit-linear-gradient(top, #fdfdfd, #eaeaea);
+    background-image: -moz-linear-gradient(top, #fdfdfd, #eaeaea);
+    background-image: -o-linear-gradient(top, #fdfdfd, #eaeaea);
+    background-image: linear-gradient(top, #fdfdfd, #eaeaea);
+}
+.ui_page .disabled{
+    background: #eee;
+    color: #c5c5c5;
+    box-shadow: none;
+    border: 1px solid #E2E2E2;
+}
+.ui_page em{
+    border: 1px solid #AEAEAE;
+    -webkit-box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.2) inset, 0 1px 0 white;
+    -moz-box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.2) inset, 0 1px 0 white;
+    box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.2) inset, 0 1px 0 white;
+}
+.ui_page a:hover{
+    border: 1px solid #AEAEAE;
+}

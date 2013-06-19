@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  js_path: MyString
+  type: 
+  img_path: MyString
+  info: MyString
+  url: MyString
+  hits: 1
+  is_close: false
+
+two:
+  name: MyString
+  js_path: MyString
+  type: 
+  img_path: MyString
+  info: MyString
+  url: MyString
+  hits: 1
+  is_close: false

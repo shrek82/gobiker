@@ -37,6 +37,14 @@ gem 'will_paginate', '~> 3.0'
 #send mail need
 gem 'tlsmail'
 
+#search gem
+#https://github.com/huacnlee/redis-search/wiki/Usage-in-Chinese
+#gem 'redis','>= 2.1.1'
+#gem 'chinese_pinyin', '0.4.1'
+#gem 'rmmseg-cpp-huacnlee', '0.2.9'
+#gem 'redis-namespace','~> 1.1.0'
+#gem 'redis-search', '0.6.3'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
