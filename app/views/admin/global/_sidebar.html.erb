@@ -1,7 +1,9 @@
 <ul class="nav nav-collapse collapse nav-collapse-primary">
+  <% curpath='/'+controller_path%>
 
+  <br>
 
-  <li class="active">
+  <li <%=raw((curpath==admin_main_index_path)?'class="active"':nil)%>>
     <span class="glow"></span>
     <a href="<%=admin_main_index_path%>">
       <i class="icon-dashboard icon-2x"></i>
@@ -9,7 +11,7 @@
     </a>
   </li>
 
-  <li>
+  <li <%=raw((curpath==admin_places_path)?'class="active"':nil)%>>
     <span class="glow"></span>
     <a href="<%=admin_places_path%>">
       <i class="icon-flag icon-2x"></i>
@@ -17,7 +19,7 @@
     </a>
   </li>
 
-  <li>
+  <li <%=raw((curpath==admin_recommends_path)?'class="active"':nil)%>>
     <span class="glow"></span>
     <a href="<%=admin_recommends_path%>">
       <i class="icon-dashboard icon-2x"></i>
