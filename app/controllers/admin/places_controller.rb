@@ -16,10 +16,9 @@ class Admin::PlacesController < AdminController
   #添加
   def new
     @place = Place.new
-
   end
-
   #编辑
+
   def edit
     @place = Place.find(params[:id])
 

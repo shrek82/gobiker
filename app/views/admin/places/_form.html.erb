@@ -1,24 +1,35 @@
-<%= form_for(@place,:url=>admin_places_path,:html=>{:class=>'form-horizontal'}) do |f| %>
+<%= form_for(@place, :url => admin_places_path, :html => {:class => 'form-horizontal'}) do |f| %>
 
-  <div class="control-group">
-    <label class="control-label" for="inputEmail">名称</label>
-    <div class="controls">
-      <input type="text" name='place[name]' >
+    <%= validate_msg @place %>
+
+    <div class="control-group">
+      <%= f.label :name, '名称', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name %>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="inputPassword">Password</label>
-    <div class="controls">
-      <input type="password" id="inputPassword" placeholder="Password">
+
+    <div class="control-group">
+      <%= f.label :tags, '标签', :class => 'control-label',:size=>'40' %>
+      <div class="controls">
+        <%= f.text_field :tags %>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <label class="checkbox">
-        <input type="checkbox"> Remember me
-      </label>
-      <button type="submit" class="btn btn-primary">Sign in</button>
+
+    <div class="control-group">
+      <label class="control-label" for="inputPassword">Password</label>
+
+      <div class="controls">
+        <input type="password" id="inputPassword" placeholder="Password">
+      </div>
     </div>
-  </div>
+    <div class="control-group">
+      <div class="controls">
+        <label class="checkbox">
+          <input type="checkbox"> Remember me
+        </label>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </div>
+    </div>
 <% end %>
 
