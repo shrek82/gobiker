@@ -34,8 +34,10 @@ end
 ## Gemfile for Rails 3, Sinatra, and Merb
 gem 'will_paginate', '~> 3.0'
 
+#upload
+gem "paperclip", "~> 3.0"
 #send mail need
-gem 'tlsmail'
+#gem 'tlsmail'
 
 #search gem
 #https://github.com/huacnlee/redis-search/wiki/Usage-in-Chinese

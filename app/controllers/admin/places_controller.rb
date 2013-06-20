@@ -62,13 +62,19 @@ class Admin::PlacesController < AdminController
   #删除
   def destroy
     @place = Place.find(params[:id])
-    @place.destroy
+    @place.destro
 
     respond_to do |format|
       format.html { redirect_to places_url }
       format.json { head :no_content }
     end
   end
+
+  def float(arg)
+  super
+  end
+
+
 end
 
 

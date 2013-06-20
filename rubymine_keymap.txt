@@ -1,0 +1,34 @@
+window default
+Editing
+Ctrl_Space, Basic code completion (any class, method or variable name)
+Ctrl_Shift_Ente,Complete current statement
+Ctrl_P, Parameter info (within method call arguments)
+Ctrl_Q, Quick documentation lookup
+Ctrl_mouse over code, Brief Info
+Ctrl_F1, Show descriptions of error or warning at caret
+Alt_Insert, Generate code... (e.g. Rails Generators)
+Ctrl_O, Override methods
+Ctrl_Alt_T, Surround with... (begin...end, if...then...end, etc.)
+Ctrl_/, Comment/uncomment with line comment
+Ctrl_Shift_/, Comment/uncomment with block comment
+Ctrl_W, Select successively increasing code blocks
+Ctrl_Shift_W, Decrease current selection to previous state
+Alt_Enter, Show intention actions/quick-fixes
+Ctrl_Alt_L, Reformat code
+Ctrl_Alt_I, Auto-indent line(s)
+Tab / Shift_Tab, Indent/unindent selected lines
+Ctrl_X or Shift_Delete, Cut current line or selected block to buffer
+Ctrl_C or Ctrl_Insert, Copy current line or selected block to buffer
+Ctrl_V or Shift_Insert, Paste from buffer
+Ctrl_Shift_V, Paste from recent buffers
+Ctrl_D, Duplicate current line or selected block
+Ctrl_Y, Delete line at caret
+Shift_Enter, Start new line
+Ctrl_Shift_U, Toggle case for word at caret or selected block
+Ctrl_Alt_U, Toggle Camel/Snake Case
+Ctrl_Shift_] / [, Select till code block end/start
+Ctrl_Delete, Delete to word end
+Ctrl_Backspace, Delete to word start
+Ctrl_NumPad_/-, Expand/collapse code block
+Ctrl_Shift_NumPad_/-, Expand/collapse all
+Ctrl_Shift_Up/Down, Move line/selection up/down
