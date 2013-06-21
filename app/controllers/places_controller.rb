@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
   # GET /places.json
   def index
     #@places = Place.all
-    @places = Place.paginate(:page => params[:page], :per_page =>16)
+    @places = Place.paginate(:page => params[:page], :per_page => 16)
     @recommend=Place.where(:is_recommended => 1).limit(1)
 
     respond_to do |format|
@@ -85,3 +85,5 @@ class PlacesController < ApplicationController
     end
   end
 end
+
+#test

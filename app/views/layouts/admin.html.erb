@@ -7,6 +7,7 @@
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <!-- Use title if it's in the page YAML frontmatter -->
   <title>Core Admin Theme</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.css"/>
   <link rel="stylesheet" href="/static/css/todc-bootstrap.css"/>
   <link href="/static/core-admin/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css"/>
   <link rel="stylesheet" href="/static/core-admin/stylesheets/additional.css"/>
@@ -17,7 +18,7 @@
 <body>
 
 <div class="navbar navbar-top navbar-inverse">
-<%=render 'admin/global/header' %>
+  <%= render 'admin/global/header' %>
 </div>
 <div class="sidebar-background">
   <div class="primary-sidebar-background"></div>
@@ -25,7 +26,7 @@
 
 <div class="primary-sidebar">
 
-  <%=render 'admin/global/sidebar' %>
+  <%= render 'admin/global/sidebar' %>
 
 </div>
 <div class="main-content">

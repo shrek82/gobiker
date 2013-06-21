@@ -167,7 +167,7 @@ class Study < ActiveRecord::Base
 
   #使用分页查询插件
   def pageation
-    Post.where(:published => true).paginate(:page => params[:page],:per_page => 20).order('id DESC')
+    Post.where(:published => true).paginate(:page => params[:page], :per_page => 20).order('id DESC')
   end
 
   #修改记录
@@ -190,7 +190,10 @@ class Study < ActiveRecord::Base
     #一气呵成（查询并修改）
     Album.where(:name => 'Another Test').first.update_attributes(:name => 'The Beatles')
 
-    
+
   end
 
+  def keymaptest(abc)
+    sdfsdf
+  end
 end
