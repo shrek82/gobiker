@@ -72,18 +72,20 @@ class PlacesController < ApplicationController
       end
     end
   end
+end
 
-  # DELETE /places/1
-  # DELETE /places/1.json
-  def destroy
-    @place = Place.find(params[:id])
-    @place.destroy
+# DELETE /places/1
+# DELETE /places/1.json
+def destroy
+  @place = Place.find(params[:id])
+  @place.destroy
 
-    respond_to do |format|
-      format.html { redirect_to places_url }
-      format.json { head :no_content }
-    end
+  respond_to do |format|
+    format.html { redirect_to places_url }
+    format.json { head :no_content }
   end
+end
+
 end
 
 #test
