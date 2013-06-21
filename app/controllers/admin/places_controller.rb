@@ -17,6 +17,7 @@ class Admin::PlacesController < AdminController
   def new
     @place = Place.new
   end
+
   #编辑
 
   def edit
@@ -70,7 +71,7 @@ class Admin::PlacesController < AdminController
   end
 
   def float(arg)
-  super
+    super
   end
 
 
