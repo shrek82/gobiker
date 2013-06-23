@@ -3,6 +3,7 @@
 class User < ActiveRecord::Base
   attr_accessible :avatar_path, :email, :login_date, :memo, :password, :point, :reg_date, :username
   has_many :comments,:dependent => :destroy
+  has_many :places
   before_destroy :before_delete_user
 
   #http://hi.baidu.com/jiazom/item/079c91c3475f0f000bd93a53

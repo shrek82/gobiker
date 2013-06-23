@@ -64,7 +64,7 @@
           <% @places.each do |r| %>
               <tr>
                 <td class="record-checkbox"><input type="checkbox" name="cid[]" value="1"></td>
-                <td class="record-title"><a href="<%= admin_place_path(r, :format => 'html') %>"><%= r.name %></a></td>
+                <td class="record-title"><a href="<%= edit_admin_place_path(r, :format => 'html') %>"><%= r.name %></a></td>
                 <td class="record-date"><%= r.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
                 <td class="record-operate">
                   <a href="<%= admin_place_path(r) %>"><i class="icon-search"></i></a>

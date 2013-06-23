@@ -47,10 +47,12 @@ class Admin::PlacesController < AdminController
   #保存修改
   def update
     @place = Place.find(params[:id])
-
+    @place.is_fixed=params[:is_fixed]
+    @place.is_recommended=params[:is_recommended]
     respond_to do |format|
       if @place.update_attributes(params[:place])
-        format.html { redirect_to @place, notice: 'Place was successfully updated.' }
+        format.html { redirect_to admin_places_path, notice: 'Place was successfully updated.' }
+        #format.html { redirect_to @place, notice: 'Place was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

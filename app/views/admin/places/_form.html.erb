@@ -1,13 +1,36 @@
-<%= form_for(@place, :url => admin_places_path, :html => {:class => 'form-horizontal'}) do |f| %>
+<%
+   if @place.is_saved?
+     method_path=admin_place_path(@place.id)
+   else
+     method_path=admin_places
+   end
+%>
+<%= form_for(@place, :url => method_path, :html => {:class => 'form-horizontal'}) do |f| %>
 
     <%= validate_msg @place %>
 
     <div class="control-group">
-      <%= f.label :name, '名称', :class => 'control-label' %>
+      <%= f.label :name, '标题', :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :name, :class => 'input-xxlarge' %>
       </div>
     </div>
+
+
+    <div class="control-group">
+      <%= f.label :province_id, '所属地区', :class => 'control-label' %>
+      <div class="controls">
+        <%= province_city_area_select :place, @place %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :address, '详细地址', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :address, :class => 'input-xxlarge' %>
+      </div>
+    </div>
+
 
     <div class="control-group">
       <%= f.label :tags, '标签', :class => 'control-label' %>
@@ -17,19 +40,47 @@
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="inputPassword">Password</label>
+      <%= f.label :intro, '简介', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :intro, :rows => '3',:class=>'span10' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :content, '详细介绍', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :content, :rows => '6',:class=>'span10' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :user_id, '作者', :class => 'control-label' %>
+      <div class="controls">
+        <%=@place.user.username%>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :is_recommended, '管理属性', :class => 'control-label' %>
 
       <div class="controls">
-        <input type="password" id="inputPassword" placeholder="Password">
+        <label class="checkbox inline">
+          <input type="checkbox" name="is_recommended" <%= 'checked' if @place.is_recommended %> > 推荐
+        </label>
+
+        <label class="checkbox inline"´>
+          <input type="checkbox" name="is_fixed" <%= 'checked' if @place.is_fixed %>> 置顶
+        </label>
       </div>
     </div>
+
     <div class="control-group">
       <div class="controls">
-        <label class="checkbox">
-          <input type="checkbox"> Remember me
-        </label>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <%= f.submit :class=>"btn btn-primary" %>
+        <button type="button" class="btn">Cancel</button>
       </div>
     </div>
+
+
 <% end %>
 

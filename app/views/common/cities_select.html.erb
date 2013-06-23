@@ -1,0 +1,9 @@
+<select name="city_id" id="cities" onchange="get_areas(this.value)">
+  <% if @cities.blank? %>
+      <option>选择县市</option>
+  <% else %>
+      <% @cities.each do |c| %>
+          <option value="<%= c.id %>"><%= c.name %></option>
+      <% end %>
+  <% end %>
+</select>

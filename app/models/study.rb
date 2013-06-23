@@ -1,5 +1,15 @@
-#coding: utf-8
+´#coding: utf-8
 #我创建的学习用的控制器
+#判断值是否为空的方法
+#
+# nil.blank? == true
+# false.blank? == true
+# [].blank? == true
+# {}.blank? == true
+# "".blank? == true
+# 5.blank? == false
+# " ".empty? == false
+
 class Study < ActiveRecord::Base
   attr_accessible :content, :intro, :is_close, :login_at, :name
 

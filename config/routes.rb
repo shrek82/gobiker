@@ -1,13 +1,5 @@
 Gobiker::Application.routes.draw do
 
-  get "places/index"
-
-  get "places/edit"
-
-  get "places/show"
-
-  get "places/upload"
-
   #show、new、edit、update、destroy是单数，对单一元素操作
   #index、create是复数，对群集操作
   #place_path(@place)需要参数，根据HTTP动词决定show、update、destroy
@@ -155,12 +147,7 @@ Gobiker::Application.routes.draw do
   #     end
   #   end
 
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
@@ -171,6 +158,7 @@ Gobiker::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
 
+  #其他的
   #match ':controller(/:action(/:id))(.:format)'
   #上述這一行設定就包括六種路徑方式：
 

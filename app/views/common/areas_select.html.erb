@@ -1,0 +1,9 @@
+<select name="area_id" id="areas">
+  <% if @areas.blank? %>
+      <option>选择区</option>
+  <% else %>
+      <% @areas.each do |a| %>
+          <option value="<%= a.id %>"><%= a.name %></option>
+      <% end %>
+  <% end %>
+</select>

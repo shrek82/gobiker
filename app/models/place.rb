@@ -2,11 +2,12 @@
 #rails g  migration  add_fieldone_to_place tags:string category_id:integer img_path:string banner_path:string
 class Place < ActiveRecord::Base
   default_scope :order => 'id'
-  #字段白名单，可以通过parrt[:place]获取post值
-  #attr_accessible :name,:content,:tags,:category_id,:img_path,:province_id,:city_id
+  #字段白名单，可以通过parrt[:place]
+  #会影响rake db:seed数据导入
+  attr_accessible :name,:content,:tags,:category_id,:img_path,:province_id,:city_id,:area_id,:address,:is_recommended, :interested_num, :favorites_num, :hits_num, :good_num,:intro,:content
 
   #黑名单
-  attr_protected :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num
+  #attr_protected :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num
 
   #不允许为空
   validates_presence_of :name, :message => '标题不能为空', :text => '电风扇地方'
@@ -17,6 +18,7 @@ class Place < ActiveRecord::Base
   #不验证
   #Place.save(:validate => false)
 
+  belongs_to :user
 
   has_many :comments
 end

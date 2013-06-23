@@ -35,6 +35,65 @@ module ApplicationHelper
       str+='<ul></div>'
     end
     raw(str)
+  end
 
+  #自动显示省市区下拉菜单并选择
+  def province_city_area_select(object,record)
+    provinces=Province.all
+    html='<select name="'+object.to_s+'[province_id]" id="provinces" onchange="get_cities(this.value)" class="span2">'
+    html+='<option>选择省份</option>'
+    provinces.each do |p|
+      selected=''
+      selected='selected' if record && p.id==record.province_id
+      html+='<option value="'+p.id.to_s+'"'+selected+'>'+p.name+'</option>'
+    end
+
+    html+='</select>'
+
+    #显示市
+    html+='&nbsp;<span id="city_select">'
+    if (record && record.province_id>100000)
+      cities=City.where(:province_id => record.province_id)
+      html+='<select name="'+object.to_s+'[city_id]" id="cities" onchange="get_area(this.value)" class="span2">'
+      html+='<option>选择县市</option>'
+      cities.each do |c|
+        selected=''
+        selected='selected' if record && c.id==record.city_id
+        html+='<option value="'+c.id.to_s+'"'+selected+'>'+c.name+'</option>'
+      end
+      html+='</select>'
+    end
+    html+='</span>'
+
+    #区
+    html+='&nbsp;<span id="area_select">'
+    if (record && record.city_id>100000)
+      areas=Area.where(:city_id => record.city_id)
+      html+='<select name="'+object.to_s+'[area_id]" id="areas" class="span2">'
+      html+='<option>选择区</option>'
+      areas.each do |a|
+        selected=''
+        selected='selected' if record && a.id==record.area_id
+        html+='<option value="'+a.id.to_s+'"'+selected+'>'+a.name+'</option>'
+      end
+      html+='</select>'
+    end
+    html+='</span>'
+
+    raw(html)
+  end
+
+
+  #显示省份下拉菜单
+  def province_select(selected_id=0)
+    provinces=Province.all
+    html='<select name="province_id" id="provinces" onchange="get_cities(this.value)" class="span2">'
+    html+='<option>选择省份</option>'
+    provinces.each do |p|
+      selected=''
+      selected='selected' if p.id==selected_id
+      html+='<option value="'+p.id.to_s+'"'+selected+'>'+p.name+'</option>'
+    end
+    raw(html+='</select>')
   end
 end

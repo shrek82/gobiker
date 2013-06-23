@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619224644) do
+ActiveRecord::Schema.define(:version => 20130623013946) do
+
+  create_table "_places_old_20130623", :force => true do |t|
+    t.string   "name"
+    t.string   "intro"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "tags"
+    t.integer  "category_id"
+    t.string   "img_path"
+    t.string   "banner_path"
+    t.integer  "province_id"
+    t.integer  "city_id"
+    t.string   "source"
+    t.integer  "been_num"
+    t.integer  "interested_num"
+    t.integer  "favorites_num"
+    t.integer  "hits_num"
+    t.integer  "good_num"
+    t.boolean  "is_recommended"
+    t.boolean  "is_fixed"
+    t.string   "map"
+    t.integer  "area_id"
+  end
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -26,12 +51,21 @@ ActiveRecord::Schema.define(:version => 20130619224644) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "areas", :force => true do |t|
+    t.string   "name"
+    t.integer  "city_id"
+    t.integer  "area_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "cities", :force => true do |t|
     t.string   "name"
     t.integer  "province_id"
     t.integer  "order_num"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "city_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -78,12 +112,14 @@ ActiveRecord::Schema.define(:version => 20130619224644) do
     t.integer  "user_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.string   "tags"
     t.integer  "category_id"
     t.string   "img_path"
     t.string   "banner_path"
     t.integer  "province_id"
     t.integer  "city_id"
+    t.integer  "area_id"
+    t.string   "tags"
+    t.string   "map"
     t.string   "source"
     t.integer  "been_num"
     t.integer  "interested_num"
@@ -92,13 +128,14 @@ ActiveRecord::Schema.define(:version => 20130619224644) do
     t.integer  "good_num"
     t.boolean  "is_recommended"
     t.boolean  "is_fixed"
-    t.string   "map"
+    t.string   "address"
   end
 
   create_table "provinces", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "province_id"
   end
 
   create_table "recommends", :force => true do |t|
@@ -146,6 +183,7 @@ ActiveRecord::Schema.define(:version => 20130619224644) do
     t.string   "map"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.integer  "area_id"
   end
 
   create_table "studies", :force => true do |t|
