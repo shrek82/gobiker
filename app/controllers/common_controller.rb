@@ -13,19 +13,20 @@ class CommonController < ApplicationController
 
   #县市下拉菜单
   def cities_select
-    @cities=City.select("id,name").where(:province_id=>params[:province_id]).all
+    @cities=City.select("id,name").where(:province_id => params[:province_id]).all
     respond_to do |format|
-       format.html {render :layout => false}
-       format.json { render json: @cities }
+      format.html { render :layout => false }
+      format.json { render json: @cities }
     end
   end
 
   #区下拉菜单
   def areas_select
-    @areas=Area.select("id,name").where(:city_id=>params[:city_id]).all
+    @areas=Area.select("id,name").where(:city_id => params[:city_id]).all
     respond_to do |format|
-      format.html {render :layout => false}
+      format.html { render :layout => false }
       format.json { render json: @areas }
     end
   end
+
 end
