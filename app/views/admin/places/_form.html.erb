@@ -1,10 +1,11 @@
 <%
-   if @place.is_saved?
-     method_path=admin_place_path(@place.id)
+   if @place.new_record?
+     method_path=admin_places_path
    else
-     method_path=admin_places
+     method_path=admin_place_path(@place.id)
    end
 %>
+
 <%= form_for(@place, :url => method_path, :html => {:class => 'form-horizontal'}) do |f| %>
 
     <%= validate_msg @place %>
@@ -20,7 +21,7 @@
     <div class="control-group">
       <%= f.label :province_id, '所属地区', :class => 'control-label' %>
       <div class="controls">
-        <%= province_city_area_select :place, @place %>
+        <%= province_city_area_select :place, @place.province_id,@place.city_id,@place.area_id %>
       </div>
     </div>
 
@@ -56,7 +57,7 @@
     <div class="control-group">
       <%= f.label :user_id, '作者', :class => 'control-label' %>
       <div class="controls">
-        <%=@place.user.username%>
+        <%=@place.user.username unless @place.new_record?%>
       </div>
     </div>
 

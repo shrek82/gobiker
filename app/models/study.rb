@@ -173,6 +173,12 @@ class Study < ActiveRecord::Base
 
     #explain调试，可以看到用了什么索引
     Album.where(:release_year => 1960..1969).explain
+
+    #json
+    User.find(:all, :limit => 10,
+              :joins => "LEFT JOIN `user_points` ON user_points.user_id = users.id" ,
+              :select => "users.*, count(user_points.id)", :group =>
+            "user_points.user_id")
   end
 
   #使用分页查询插件

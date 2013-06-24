@@ -15,7 +15,10 @@ td.record-operate .icon-edit{color: #4CA9D9}
 td.record-operate .icon-edit:hover{color: #086490}
 td.record-operate .icon-remove{color: #EA9381}
 td.record-operate .icon-remove:hover{color: #BC4B34}
-
+/*表格评论点击*/
+td.record-cmthit{width: 60px;text-align: center}
+td.record-cmthit span{color: #258717
+}
 .ui_page {
     float: right;
     margin-top: 7px;

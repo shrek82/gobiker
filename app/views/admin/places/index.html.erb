@@ -54,6 +54,7 @@
           <tr>
             <td class="record-checkbox">选择</td>
             <td class="record-title">标题</td>
+            <td class="record-cmthit">评论/点击</td>
             <td class="record-date">发布日期</td>
             <td class="record-operate">操作</td>
           </tr>
@@ -65,6 +66,7 @@
               <tr>
                 <td class="record-checkbox"><input type="checkbox" name="cid[]" value="1"></td>
                 <td class="record-title"><a href="<%= edit_admin_place_path(r, :format => 'html') %>"><%= r.name %></a></td>
+                <td class="record-cmthit"><span><%=r.comments_num %></span>/<%= r.hits_num %></td>
                 <td class="record-date"><%= r.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
                 <td class="record-operate">
                   <a href="<%= admin_place_path(r) %>"><i class="icon-search"></i></a>

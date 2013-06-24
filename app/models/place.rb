@@ -1,7 +1,8 @@
 #coding: utf-8
 #rails g  migration  add_fieldone_to_place tags:string category_id:integer img_path:string banner_path:string
 class Place < ActiveRecord::Base
-  default_scope :order => 'id'
+  #有这个字段的不管什么时候都有用id排序,很讨厌
+  #default_scope :order => 'id'
   #字段白名单，可以通过parrt[:place]
   #会影响rake db:seed数据导入
   attr_accessible :name,:content,:tags,:category_id,:img_path,:province_id,:city_id,:area_id,:address,:is_recommended, :interested_num, :favorites_num, :hits_num, :good_num,:intro,:content
