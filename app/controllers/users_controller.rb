@@ -129,6 +129,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    session[:uid] = nil
+  end
+
   #注册验证
   def ajax
     @email=params[:email]

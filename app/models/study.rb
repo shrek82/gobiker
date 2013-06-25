@@ -101,6 +101,32 @@ class Study < ActiveRecord::Base
     #判断是否存在id=50的记录
     Album.exists?(50)
 
+    # find first
+    Person.find(:first) # returns the first object fetched by SELECT * FROM people
+    Person.find(:first, :conditions => [ "user_name = ?", user_name])
+    Person.find(:first, :conditions => [ "user_name = :u", { :u => user_name }])
+    Person.find(:first, :order => "created_on DESC", :offset => 5)
+
+    # find last
+    Person.find(:last) # returns the last object fetched by SELECT * FROM people
+    Person.find(:last, :conditions => [ "user_name = ?", user_name])
+    Person.find(:last, :order => "created_on DESC", :offset => 5)
+
+    # find by id
+    Person.find(1)       # returns the object for ID = 1
+    Person.find(1, 2, 6) # returns an array for objects with IDs in (1, 2, 6)
+    Person.find([7, 17]) # returns an array for objects with IDs in (7, 17)
+    Person.find([1])     # returns an array for the object with ID = 1
+    Person.find(1, :conditions => "administrator = 1", :order => "created_on DESC")
+
+    # find all
+    Person.find(:all) # returns an array of objects for all the rows fetched by SELECT * FROM people
+    Person.find(:all, :conditions => [ "category IN (?)", categories], :limit => 50)
+    Person.find(:all, :conditions => { :friends => ["Bob", "Steve", "Fred"] }
+    Person.find(:all, :offset => 10, :limit => 10)
+    Person.find(:all, :include => [ :account, :friends ])
+    Person.find(:all, :group => "category")
+
     #使用find_by总是会返回一个数组
     Album.where(:release_year => 1966).first #0.1ms
     Album.find_by_release_year(1966) #0.3ms
@@ -179,11 +205,26 @@ class Study < ActiveRecord::Base
               :joins => "LEFT JOIN `user_points` ON user_points.user_id = users.id" ,
               :select => "users.*, count(user_points.id)", :group =>
             "user_points.user_id")
+
+    @posts = Place.find(:all,
+                       :select => "DISTINCT *",
+                       :include => [:user, {:track => :artist}],
+                       :conditions => ["user_id IN (?) AND NOT track_id = ?", users, @track.id],
+                       :group => "track_id",
+                       :order => 'id desc',
+                       :form =>'posts p'
+                       :limit => '5')
   end
+
+
 
   #使用分页查询插件
   def pageation
-    Post.where(:published => true).paginate(:page => params[:page], :per_page => 20).order('id DESC')
+    Place.paginate(:page => params[:page], :per_page => 10)
+    Place.paginate(:page => params[:page], :per_page => 10,:conditions =>'p.is_recommended=1').order('id DESC')
+    Place.paginate(:page => params[:page], :per_page => 10,:conditions =>['p.is_recommended=? AND p.id>?',1,20]).order('id ASC')
+    Place.paginate(:from=>'places p',:page => 1, :per_page => 10,:select=>'p.id,p.name',:conditions =>['p.is_recommended=? AND p.id>?',1,20],:joins=>'LEFT JOIN users u on u.id=p.user_id')
+    Place.where(:published => true).paginate(:page => params[:page], :per_page => 20).order('id DESC')
   end
 
   #修改记录
@@ -211,5 +252,10 @@ class Study < ActiveRecord::Base
 
   def keymaptest(abc)
     sdfsdf
+  end
+
+  #复杂的查询
+  def other
+    Place.paginate(:from=>'places p',:page => 1, :per_page => 10,:select=>'p.id,p.name',:conditions =>['p.is_recommended=? AND p.id>?',true,20],:joins=>'LEFT JOIN users u on u.id=p.user_id',:order=>'p.id DESC').order('p.user_id ASC')
   end
 end

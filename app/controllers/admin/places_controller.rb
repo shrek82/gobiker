@@ -76,6 +76,27 @@ class Admin::PlacesController < AdminController
     super
   end
 
+  #Renders
+  def search
+    @results = Search.find(params[:query])
+    case @results.count
+      when 0 then render :action => "no_results"
+      when 1 then render :action => "show"
+      when 2..10 then render :action => "show_many"
+    end
+  end
+
+  #Redirects
+  def create
+    @entry = Entry.new(params[:entry])
+    if @entry.save
+      # The entry was saved correctly, redirect to show
+      redirect_to :action => 'show', :id => @entry.id
+    else
+      # things didn't go so well, do something else
+    end
+  end
+
 
 end
 

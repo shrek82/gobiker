@@ -13,31 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130624222505) do
 
-  create_table "_places_old_20130623", :force => true do |t|
-    t.string   "name"
-    t.string   "intro"
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "tags"
-    t.integer  "category_id"
-    t.string   "img_path"
-    t.string   "banner_path"
-    t.integer  "province_id"
-    t.integer  "city_id"
-    t.string   "source"
-    t.integer  "been_num"
-    t.integer  "interested_num"
-    t.integer  "favorites_num"
-    t.integer  "hits_num"
-    t.integer  "good_num"
-    t.boolean  "is_recommended"
-    t.boolean  "is_fixed"
-    t.string   "map"
-    t.integer  "area_id"
-  end
-
   create_table "ads", :force => true do |t|
     t.string   "name"
     t.string   "js_path"
@@ -55,16 +30,16 @@ ActiveRecord::Schema.define(:version => 20130624222505) do
     t.string   "name"
     t.integer  "city_id"
     t.integer  "area_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "cities", :force => true do |t|
     t.string   "name"
     t.integer  "province_id"
     t.integer  "order_num"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "city_id"
   end
 
@@ -112,14 +87,12 @@ ActiveRecord::Schema.define(:version => 20130624222505) do
     t.integer  "user_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "tags"
     t.integer  "category_id"
     t.string   "img_path"
     t.string   "banner_path"
     t.integer  "province_id"
     t.integer  "city_id"
-    t.integer  "area_id"
-    t.string   "tags"
-    t.string   "map"
     t.string   "source"
     t.integer  "been_num"
     t.integer  "interested_num"
@@ -128,14 +101,16 @@ ActiveRecord::Schema.define(:version => 20130624222505) do
     t.integer  "good_num"
     t.boolean  "is_recommended"
     t.boolean  "is_fixed"
+    t.string   "map"
+    t.integer  "area_id"
     t.string   "address"
     t.integer  "comments_num"
   end
 
   create_table "provinces", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "province_id"
   end
 
