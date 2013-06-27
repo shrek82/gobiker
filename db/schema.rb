@@ -30,16 +30,16 @@ ActiveRecord::Schema.define(:version => 20130624222505) do
     t.string   "name"
     t.integer  "city_id"
     t.integer  "area_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "cities", :force => true do |t|
     t.string   "name"
     t.integer  "province_id"
     t.integer  "order_num"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "city_id"
   end
 
@@ -85,32 +85,32 @@ ActiveRecord::Schema.define(:version => 20130624222505) do
     t.string   "intro"
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "tags"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "category_id"
     t.string   "img_path"
     t.string   "banner_path"
     t.integer  "province_id"
     t.integer  "city_id"
-    t.string   "source"
-    t.integer  "been_num"
-    t.integer  "interested_num"
-    t.integer  "favorites_num"
-    t.integer  "hits_num"
-    t.integer  "good_num"
-    t.boolean  "is_recommended"
-    t.boolean  "is_fixed"
-    t.string   "map"
     t.integer  "area_id"
+    t.string   "tags"
+    t.string   "map"
+    t.string   "source"
+    t.integer  "been_num",       :default => 0
+    t.integer  "interested_num", :default => 0
+    t.integer  "favorites_num",  :default => 0
+    t.integer  "hits_num",       :default => 0
+    t.integer  "good_num",       :default => 0
+    t.boolean  "is_recommended", :default => false
+    t.boolean  "is_fixed",       :default => false
     t.string   "address"
-    t.integer  "comments_num"
+    t.integer  "comments_num",   :default => 0
   end
 
   create_table "provinces", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "province_id"
   end
 

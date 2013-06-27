@@ -19,6 +19,7 @@ td.record-operate .icon-remove:hover{color: #BC4B34}
 td.record-cmthit{width: 60px;text-align: center}
 td.record-cmthit span{color: #258717
 }
+td.record-author{width: 60px;text-align: center}
 .ui_page {
     float: right;
     margin-top: 7px;

@@ -1,5 +1,6 @@
 #coding: utf-8
 class Admin::PlacesController < AdminController
+  
   def index
     #@conditions=['id>10']
     #@places = Place.paginate(:page => params[:page], :per_page => 10)
@@ -9,8 +10,15 @@ class Admin::PlacesController < AdminController
     #    :per_page => 10,
     #    :conditions => ["city_id = ? and name LIKE ?", 1, "%#{keyword}%"]
     #)
-    @places=Place.paginate(:page => params[:page], :per_page => 10)
-
+    conditions=Array.new
+    if params[:q]
+      conditions << "name LIKE ?"
+      conditions << "%#{params[:q]}%"
+    end
+    @places=Place.paginate(:page => params[:page], :per_page => 10,:conditions=>conditions,:include=>:user)
+    @places.each do |p|
+      p.user.username
+    end
   end
 
   #添加
@@ -80,9 +88,12 @@ class Admin::PlacesController < AdminController
   def search
     @results = Search.find(params[:query])
     case @results.count
-      when 0 then render :action => "no_results"
-      when 1 then render :action => "show"
-      when 2..10 then render :action => "show_many"
+      when 0 then
+        render :action => "no_results"
+      when 1 then
+        render :action => "show"
+      when 2..10 then
+        render :action => "show_many"
     end
   end
 
