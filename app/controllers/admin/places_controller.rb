@@ -1,6 +1,6 @@
 #coding: utf-8
 class Admin::PlacesController < AdminController
-  
+
   def index
     #@conditions=['id>10']
     #@places = Place.paginate(:page => params[:page], :per_page => 10)
@@ -15,7 +15,7 @@ class Admin::PlacesController < AdminController
       conditions << "name LIKE ?"
       conditions << "%#{params[:q]}%"
     end
-    @places=Place.paginate(:page => params[:page], :per_page => 10,:conditions=>conditions,:include=>:user)
+    @places=Place.paginate(:page => params[:page], :per_page => 10, :conditions => conditions, :include => :user)
     @places.each do |p|
       p.user.username
     end

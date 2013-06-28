@@ -4,6 +4,7 @@ class PlacesController < ApplicationController
   def index
     #@places = Place.all
     @places = Place.paginate(:page => params[:page], :per_page => 16)
+    @recommend=Place.where(:is_recommended => 1).limit(6)
 
     respond_to do |format|
       format.html # index.html.erb
