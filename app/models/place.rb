@@ -20,6 +20,7 @@ class Place < ActiveRecord::Base
   #Place.save(:validate => false)
 
   belongs_to :user
-
+  has_one :province
+  has_one :city
   has_many :comments
 end

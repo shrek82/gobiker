@@ -8,6 +8,7 @@
 #rake test:units TEST=test/unit/some_test.rb
 
 class UsersController < ApplicationController
+
   # GET /users
   # GET /users.json
   def index

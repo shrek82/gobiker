@@ -13,14 +13,14 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
-    begin
-      @comment = Comment.find(params[:id])
-    else
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @comment }
-      end
+
+    @comment = Comment.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @comment }
     end
+
   end
 
   # GET /comments/new
