@@ -63,3 +63,5 @@ gem "paperclip", "~> 3.0"
 # gem 'debugger'
 
 gem 'simple_form'
+
+gem "thin"
