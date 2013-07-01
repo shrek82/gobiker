@@ -1,10 +1,17 @@
 class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
+
+  #caches_page :index, :show
+
+  def update_cache
+    expire_page :action => :index
+  end
+
   def index
     #@places = Place.all
     @places = Place.paginate(:page => params[:page], :per_page => 16)
-    @recommend=Place.where(:is_recommended => 1).limit(6)
+    @recommend=Place.where(:is_recommended =>true).limit(2)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -62,6 +62,9 @@ Gobiker::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  #静态页面缓存
+  config.action_controller.page_cache_directory = RAILS_ROOT + "/public/cache/"
+
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5

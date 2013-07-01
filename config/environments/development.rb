@@ -15,6 +15,9 @@ Gobiker::Application.configure do
 
   #允许开发模式下试用缓存
   config.action_controller.perform_caching = true
+  #静态页面缓存
+  config.action_controller.page_cache_directory = "#{Rails.root}/public/cache/"
+  config.action_controller.page_cache_extension = ".htm"
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
@@ -37,6 +40,7 @@ Gobiker::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
 
   #fen ge rizhi
   config.logger = Logger.new(config.paths["log"].first, 'daily') # 或 weekly,monthly
