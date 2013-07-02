@@ -1,65 +1,5 @@
 #coding: utf-8
 #我创建的学习用的控制器
-#判断值是否为空的方法
-#
-# nil.blank? == true
-# false.blank? == true
-# [].blank? == true
-# {}.blank? == true
-# "".blank? == true
-# 5.blank? == false
-# " ".empty? == false
-
-#其他学习
-=begin
-    可以找到命名空间spec下的所有命令，如： rake spec, rake spec:controllers ...
-rake about              # 列出版本的所有Rails框架和ENV...
-rake assets:clean       # 删除编译资产
-rake assets:precompile  # Compile all the assets named in config.assets.pre...
-rake db:create          # Create the database from DATABASE_URL or config/d...
-rake db:drop            # Drops the database using DATABASE_URL or the curr...
-rake db:fixtures:load   # Load fixtures into the current environment's data...
-rake db:migrate         # Migrate the database (options: VERSION=x, VERBOSE...
-rake db:migrate:status  # Display status of migrations
-rake db:rollback        # Rolls the schema back to the previous version (sp...
-rake db:schema:dump     # Create a db/schema.rb file that can be portably u...
-rake db:schema:load     # Load a schema.rb file into the database
-rake db:seed            # Load the seed data from db/seeds.rb
-rake db:setup           # Create the database, load the schema, and initial...
-rake db:structure:dump  # Dump the database structure to db/structure.sql
-rake db:version         # Retrieves the current schema version number
-rake doc:app            # Generate docs for the app -- also available doc:r...
-rake log:clear          # Truncates all *.log files in log/ to zero bytes
-rake middleware         # Prints out your Rack middleware stack
-rake notes              # Enumerate all annotations (use notes:optimize, :f...
-rake notes:custom       # Enumerate a custom annotation, specify with ANNOT...
-rake rails:template     # Applies the template supplied by LOCATION=(/path/...
-rake rails:update       # Update configs and some other initially generated...
-rake routes             # Print out all defined routes in match order, with...
-rake secret             # Generate a cryptographically secure secret key (t...
-rake stats              # Report code statistics (KLOCs, etc) from the appl...
-rake test               # Runs test:units, test:functionals, test:integrati...
-rake test:recent        # Run tests for {:recent=>"test:prepare"} / Test re...
-rake test:single        # Run tests for {:single=>"test:prepare"}
-rake test:uncommitted   # Run tests for {:uncommitted=>"test:prepare"} / Te...
-rake time:zones:all     # Displays all time zones, also available: time:zon...
-rake tmp:clear          # Clear session, cache, and socket files from tmp/ ...
-rake tmp:create         # Creates tmp directories for sessions, cache, sock...
-
-与db有关的rake任务
-
-db:charset 检索当前环境下数据库的字符设置
-db:collation 检索当前环境下数据库的校对
-db:create 用config\database.yml中的定义创建当前 RAILS_ENV 项目环境下的数据库
-db:create:all 用config\database.yml中的定义创建所有数据库
-db:drop 删除当前 RAILS_ENV项目环境中的数据库
-db:drop:all 删除所有在 config\database.yml中定义的数据库
-db:reset 从db\schema.rb中为当前环境重建数据库（先删后建）.
-db:rollback 回滚(清华出版社一本SQLSERVER书的名词[很奇怪为什么不直接用滚回])数据库到前一个版本. 指定回滚到哪一步要用 STEP=n 参数
-db:version 检索当前模式下的版本
-
-=end
-
 
 class Study < ActiveRecord::Base
   attr_accessible :content, :intro, :is_close, :login_at, :name
@@ -197,6 +137,19 @@ class Study < ActiveRecord::Base
     i_got_a_woman = Album.find_or_initialize_by_name('I Got a Woman', :release_year => 1955)
     i_got_a_woman.save
 
+    #where方法
+    #第一种是String，相当于直接传入SQL语句，为了防止SQL注入的风险，最好只用于硬编码或变量全部由我们自己控制的SQL语句，千万不要将用户输入的变量值直接放在语句里。
+    Subject.where("position = '2' AND name='Second Subject'")
+
+    #第二种是Array，第一个参数和需要写的SQL语句格式完全一样，字段值的地方用?问号代替。后面的参数按照顺序提供条件值。
+    Subject.where(["position = ? AND name=?" ,"2","Second Subject"])
+
+    #第三种是Hash，每个参数都是一套值对。这种方式非常简单直观，不过有点局限就是表现力有点差，只能表示AND，无法表示OR。
+    Subject.where(:position =>"2" ,:name=>"Second Subject")
+
+    #所以选择用哪种条件表达式方式就得根据实际情况而定了，一般来说简单的查询使用Hash方式，当复杂性无法满足的时候使用Array型。至于String方式直接写SQL语句的最好还是别用了。
+    #查询返回的结果可以当做一个Array使用，如果什么都没查到，返回的长度为0。
+
     #性能差异
     Album.where(:release_year => 1966).count #0.2ms
     Album.find_all_by_release_year(1966).count #0.3ms
@@ -206,7 +159,7 @@ class Study < ActiveRecord::Base
 
     Album.where(:release_year => 1960..1966, :id => 1..5)
     Album.where(:release_year => [1966, 1968])
-
+    Album.where(['release_year=? AND id>?',true,2])
     Album.where(:release_year => [1966, 1968]).first
 
     #SQL语句查询
@@ -311,25 +264,3 @@ class Study < ActiveRecord::Base
   end
 end
 
-=begin
-
-RAILS_ENV=production rake db:create db:schema:load
-
-:binary
-:boolean
-:date
-:datetime
-:decimal
-:float
-:integer
-:primary_key
-:string
-:text
-:time
-:timestamp
-$ rails generate migration AddPartNumberToProducts part_number:string
-$ rails generate migration RemovePartNumberFromProducts part_number:string
-$ rails generate migration AddDetailsToProducts part_number:string price:decimal
-rails generate scaffold routes title:string short_title:string tags:string category_id:integer user_id:integer img_path:string banner_path:string province_id:integer city_id:integer duration:integer distance:integer starting:string destination:string intro:string content:text source:string been_num:integer interested_num:integer favorites_num:integer hits_num:integer good_num:integer along_the_scenic:string is_recommended:boolean is_fixed:boolean recommendation_index:integer landscape_index:integer road_index:integer map:string
-rails g scaffold Users username:string password:string email:string reg_date:datetime login_date:datetime avatar_path:string point:integer memo:string -f
-=end

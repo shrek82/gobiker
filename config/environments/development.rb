@@ -13,11 +13,12 @@ Gobiker::Application.configure do
   # Show full error reports and disable caching
   config.consider_all_requests_local = true
 
-  #允许开发模式下试用缓存
+  #允许开发模式下使用缓存
   config.action_controller.perform_caching = true
+
   #静态页面缓存
-  config.action_controller.page_cache_directory = "#{Rails.root}/public/cache/"
-  config.action_controller.page_cache_extension = ".htm"
+  config.action_controller.page_cache_directory = "#{Rails.root}/public/cache"
+  config.action_controller.page_cache_extension = ".html"
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false

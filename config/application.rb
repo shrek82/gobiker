@@ -3,8 +3,6 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-require_relative "custom/railtie"
-
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
@@ -70,7 +68,8 @@ module Gobiker
     #config.eager_load_paths += ["#{Rails.root}/lib}"]
 
     #自定义配置
-    config.custom.site_name = '骑趣'
+    #USE:Rails.application.config.custom.site_name
+    #config.custom.site_name = '骑趣'
 
   end
 end

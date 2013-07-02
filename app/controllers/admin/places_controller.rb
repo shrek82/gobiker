@@ -1,6 +1,8 @@
 #coding: utf-8
 class Admin::PlacesController < AdminController
 
+  cache_sweeper :place_sweeper, :only => [:create, :update, :destroy]
+
   def index
     #@conditions=['id>10']
     #@places = Place.paginate(:page => params[:page], :per_page => 10)

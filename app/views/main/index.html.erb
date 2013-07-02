@@ -1,4 +1,4 @@
-<% @title='骑趣' %>
+<% @title=Gobiker::Application.config.site_name %>
 
 <% content_for:head do %>
     <%= javascript_include_tag "/static/js/hotel/oper_hotel.js" %>
@@ -10,10 +10,6 @@
 <% end %>
 
 <%= render 'focus' %>
-
-<%=link_to 'Home',main_path%>
-<%= link_to "About", register_path %>
-<%= link_to 'New Route', new_route_path %>
 
 <div class="ind_main">
 <div class="ind_content">
@@ -29,7 +25,7 @@
 
     <li>
       <p class="pic">
-        <a href="http://guide.qyer.com/malta/" data-bn-ipg="guide-1-2" target="_blank"><img src="http://site.qyer.com/uploadfile/2013/0529/20130529044944810.jpg" width="100" height="150" alt="马耳他穷游锦囊" title="马耳他穷游锦囊"/><span class="new"></span></a>
+        <a href="http://guide.qyer.com/malta/" data-bn-ipg="guide-1-2" target="_blank"><img src="/uploads/pics/201307/20130529044944810.jpg" width="100" height="150" alt="马耳他穷游锦囊" title="马耳他穷游锦囊"/><span class="new"></span></a>
       </p>
 
       <p class="title">
@@ -41,7 +37,7 @@
 
     <li>
       <p class="pic">
-        <a href="http://guide.qyer.com/taste-of-italy/" data-bn-ipg="guide-2-2" target="_blank"><img src="http://site.qyer.com/uploadfile/2013/0523/20130523032325624.jpg" width="100" height="150" alt="意大利美食穷游锦囊" title="意大利美食穷游锦囊"/><span class="new"></span></a>
+        <a href="http://guide.qyer.com/taste-of-italy/" data-bn-ipg="guide-2-2" target="_blank"><img src="/uploads/pics/201307/20130523032325624.jpg" width="100" height="150" alt="意大利美食穷游锦囊" title="意大利美食穷游锦囊"/><span class="new"></span></a>
       </p>
 
       <p class="title">
@@ -54,7 +50,7 @@
 
     <li>
       <p class="pic">
-        <a href="http://guide.qyer.com/nha-trang/" data-bn-ipg="guide-3-2" target="_blank"><img src="http://site.qyer.com/uploadfile/2013/0522/20130522064018296.jpg" width="100" height="150" alt="芽庄穷游锦囊" title="芽庄穷游锦囊"/><span class="new"></span></a>
+        <a href="http://guide.qyer.com/nha-trang/" data-bn-ipg="guide-3-2" target="_blank"><img src="/uploads/pics/201307/20130522064018296.jpg" width="100" height="150" alt="芽庄穷游锦囊" title="芽庄穷游锦囊"/><span class="new"></span></a>
       </p>
 
       <p class="title">
@@ -66,7 +62,7 @@
 
     <li>
       <p class="pic">
-        <a href="http://guide.qyer.com/hoi-an/" data-bn-ipg="guide-4-2" target="_blank"><img src="http://site.qyer.com/uploadfile/2013/0517/20130517074835476.jpg" width="100" height="150" alt="会安穷游锦囊" title="会安穷游锦囊"/><span class="new"></span></a>
+        <a href="http://guide.qyer.com/hoi-an/" data-bn-ipg="guide-4-2" target="_blank"><img src="/uploads/pics/201307/20130517074835476.jpg" width="100" height="150" alt="会安穷游锦囊" title="会安穷游锦囊"/><span class="new"></span></a>
       </p>
 
       <p class="title"><a href="http://guide.qyer.com/hoi-an/" title="会安" data-bn-ipg="guide-4-1" target="_blank">会安</a>
@@ -78,7 +74,7 @@
 
     <li>
       <p class="pic">
-        <a href="http://guide.qyer.com/buenos-aires/" data-bn-ipg="guide-5-2" target="_blank"><img src="http://site.qyer.com/uploadfile/2013/0517/20130517053413189.jpg" width="100" height="150" alt="布宜诺斯艾利斯穷游锦囊" title="布宜诺斯艾利斯穷游锦囊"/><span class="new"></span></a>
+        <a href="http://guide.qyer.com/buenos-aires/" data-bn-ipg="guide-5-2" target="_blank"><img src="/uploads/pics/201307/20130517053413189.jpg" width="100" height="150" alt="布宜诺斯艾利斯穷游锦囊" title="布宜诺斯艾利斯穷游锦囊"/><span class="new"></span></a>
       </p>
 
       <p class="title">

@@ -63,7 +63,8 @@ Gobiker::Application.configure do
   config.active_support.deprecation = :notify
 
   #静态页面缓存
-  config.action_controller.page_cache_directory = RAILS_ROOT + "/public/cache/"
+  config.action_controller.page_cache_directory = "#{Rails.root}/public/cache"
+  config.action_controller.page_cache_extension = ".html"
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)

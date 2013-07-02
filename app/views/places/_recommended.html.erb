@@ -4,15 +4,18 @@
   </div>
   <ul class="gui_jnlist clearfix jsrecommcontent">
 
-    <% @recommend.each do |p| %>
-        <li class="gui_jnlist_item gui_jnlist_item_first">
-          <div class="gui_jnlist_item_pic">
-            <a href="/places/<%=p.id%>" target="_blank" ><img src="<%=p.img_path%>" alt="<%=p.name%>" title="<%=p.name%>" width="130" height="90px"></a>
-            <span class="new"></span>
-          </div>
-          <p class="gui_jnlist_item_tit"><%=link_to p.name,p,{:target => '_blank'}%></p>
-          <p class="gui_jnlist_item_text">中国<br><span class="sum">27</span>人去过</p>
-        </li>
+    <% cache do %>
+        <% Place.get_recommended(3, :order => 'id DESC', :where => ['id>? AND is_recommended=?', 10, true]).each do |p| %>
+            <li class="gui_jnlist_item gui_jnlist_item_first">
+              <div class="gui_jnlist_item_pic">
+                <a href="/places/<%= p.id %>" target="_blank"><img src="<%= p.img_path %>" alt="<%= p.name %>" title="<%= p.name %>" width="130" height="90px"></a>
+                <span class="new"></span>
+              </div>
+              <p class="gui_jnlist_item_tit"><%= link_to p.name, p, {:target => '_blank'} %></p>
+
+              <p class="gui_jnlist_item_text">中国<br><span class="sum">27</span>人去过</p>
+            </li>
+        <% end %>
     <% end %>
   </ul>
 </div>

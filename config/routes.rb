@@ -28,7 +28,8 @@ Gobiker::Application.routes.draw do
   resources :comments
 
   #as帮助我们生产一个admin_path和一个admin_url
-  match '/admin' => 'admin/main#index',:as=>'admin'
+  match '/admin' => 'admin#frame',:as=>'admin'
+  match '/admin/dashboard' => 'admin#dashboard',:as=>'admin_dashboard'
 
 
   match 'users/ajax' => 'users#ajax'

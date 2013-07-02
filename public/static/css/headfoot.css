@@ -940,7 +940,7 @@ a {
     width: 100%;
     min-width: 960px;
     text-align: left;
-    background: #363636 url(/images/common/foot_bg.png) repeat-x 0 top;
+    background: #363636 url(/static/media/foot_bg.png) repeat-x 0 top;
     font: 12px/1.5 helvetica,arial,"hiragino sans gb","\5b8b\4f53",sans-serif;
     color: #959595;
     clear: both;
@@ -1007,4 +1007,43 @@ img {
     float: left;
     margin: 5px
     0 0 -110px;
+}
+
+
+.ui_page {
+    float: right;
+    margin-top: 7px;
+    height: 22px;
+    line-height: 22px;
+    padding-right: 20px;
+}
+
+.ui_page a,.ui_page em,.ui_page span{
+    float: left;
+    display: inline;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 5px;
+    border: 1px solid #ccc;
+    margin-left: 2px;
+    color: #063;
+}
+.ui_page .disabled{
+    background: #eee;
+    color: #c5c5c5;
+    box-shadow: none;
+    border: 1px solid #E2E2E2;
+}
+.ui_page em{
+    background-color: #063;
+    color: #fff;
+    text-decoration: none;
+    border-color: #063;
+    cursor: default;
+}
+.ui_page a:hover{
+    background-color: #063;
+    color: #fff;
+    border-color: #063;
+    text-decoration: none;
 }
