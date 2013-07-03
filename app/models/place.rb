@@ -15,8 +15,11 @@ class Place < ActiveRecord::Base
   validates_presence_of :content, :message => '说明不能为空'
   validates_presence_of :address, :message => '地址不能为空', :text => '地址'
   validates_presence_of :intro, :message => '简介不能为空', :text => '地址'
+  validates_length_of :name, :in => (2..30),:message=>'标题不能少于2个字符'
+  #validates_format_of :name, :with => /^[\w\.]+$/,
 
-  #学习笔记
+
+                      #学习笔记
   #不验证
   #Place.save(:validate => false)
 

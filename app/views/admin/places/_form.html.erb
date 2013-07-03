@@ -1,11 +1,11 @@
 <%
    if @place.new_record?
-     method_path=admin_places_path :format => 'json'
+     method_path=admin_places_path
    else
-     method_path=admin_place_path(@place.id, :format => 'json')
+     method_path=admin_place_path(@place.id)
    end
 %>
-
+<%= request.format %>
 <%= form_for(@place, :url => method_path, :html => {:id => 'form1', :class => 'form-horizontal'}) do |f| %>
 
     <%= validate_msg @place %>
@@ -84,7 +84,7 @@
 <% end %>
 
 <script type="text/javascript">
-    readyScript.form = function () {
+    readyScript.bindAjaxForm = function () {
         $('#form1').bind("submit", function (e) {
             e.preventDefault();
             new ajaxForm($(this), function () {

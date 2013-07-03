@@ -97,6 +97,11 @@ function ajaxForm(form, opts) {
             _this.form.after('<div id="statusTools"></div>');
         })
 
+        //指定rails返回格式
+        fetchObj('_format',function(){
+            _this.form.append('<input type="hidden" name="_format" value="'+_this.opts.dataType+'">');
+        })
+
         //载入loading提示符
         //_this.statusTools.removeClass('alert-block').removeClass('alert-error').removeClass('alert-success').html('<img src="/static/images/loading.gif">').fadeIn(200);
 
@@ -114,11 +119,11 @@ function ajaxForm(form, opts) {
         var is_error = false;
         var error_message = null;
 
-        log(data);
-        return false;
+        console.log(data);
 
         //返回json格式
         if (_this.opts.dataType == 'json' && data.error) {
+            console.log(data.error);
             is_error = true;
             error_message = data.error;
         }
@@ -163,7 +168,7 @@ function ajaxForm(form, opts) {
                 _this.statusTools.fadeIn(500);
                 setTimeout(function () {
                     _this.statusTools.fadeOut(400);
-                }, 3000);
+                }, 6000);
             }
             //系统弹出窗口
             else if (_this.opts.errorDisplayType == 'alert') {

@@ -38,7 +38,7 @@ module ApplicationHelper
   end
 
   #自动显示省市区下拉菜单并选择
-  def province_city_area_select(object,pid=nil,cid=nil,aid=nil)
+  def province_city_area_select(object, pid=nil, cid=nil, aid=nil)
     provinces=Province.all
     html='<select name="'+object.to_s+'[province_id]" id="provinces" onchange="get_cities(this.value)" class="span2">'
     html+='<option>选择省份</option>'

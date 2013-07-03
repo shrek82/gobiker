@@ -24,7 +24,6 @@ class Admin::PlacesController < AdminController
   #编辑记录
   def edit
     @place = Place.find(params[:id])
-
   end
 
   #提交新建
@@ -51,14 +50,10 @@ class Admin::PlacesController < AdminController
     @place = Place.find(params[:id])
     @place.is_fixed=params[:is_fixed]
     @place.is_recommended=params[:is_recommended]
-    respond_to do |format|
-      if @place.update_attributes(params[:place])
-        format.html { redirect_to admin_places_path, notice: '资料修改成功!' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json:@place.errors.full_messages}
-      end
+    if @place.update_attributes(params[:place])
+      render_success :redirect_to=>admin_places_path
+    else
+      render_error :action=>'edit',:error=>@place.errors.full_messages
     end
   end
 
