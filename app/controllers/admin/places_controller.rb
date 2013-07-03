@@ -51,7 +51,7 @@ class Admin::PlacesController < AdminController
     @place.is_fixed=params[:is_fixed]
     @place.is_recommended=params[:is_recommended]
     if @place.update_attributes(params[:place])
-      render_success :redirect_to=>admin_places_path
+      render_success :redirect_to=>admin_places_path,:success=>'资料修改成功!',:notice=>'资料没有发生变化'
     else
       render_error :action=>'edit',:error=>@place.errors.full_messages
     end

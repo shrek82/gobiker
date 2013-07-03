@@ -98,9 +98,7 @@ function ajaxForm(form, opts) {
         })
 
         //指定rails返回格式
-        fetchObj('_format',function(){
-            _this.form.append('<input type="hidden" name="_format" value="'+_this.opts.dataType+'">');
-        })
+        _this.form.append('<input type="hidden" name="_format" value="'+_this.opts.dataType+'">');
 
         //载入loading提示符
         //_this.statusTools.removeClass('alert-block').removeClass('alert-error').removeClass('alert-success').html('<img src="/static/images/loading.gif">').fadeIn(200);

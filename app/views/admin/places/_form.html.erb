@@ -5,7 +5,6 @@
      method_path=admin_place_path(@place.id)
    end
 %>
-<%= request.format %>
 <%= form_for(@place, :url => method_path, :html => {:id => 'form1', :class => 'form-horizontal'}) do |f| %>
 
     <%= validate_msg @place %>
@@ -85,7 +84,7 @@
 
 <script type="text/javascript">
     readyScript.bindAjaxForm = function () {
-        $('#form1').bind("submit", function (e) {
+        $('#form12').bind("submit", function (e) {
             e.preventDefault();
             new ajaxForm($(this), function () {
             }).send();

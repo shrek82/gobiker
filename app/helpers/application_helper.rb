@@ -25,6 +25,17 @@ module ApplicationHelper
     will_paginate record, :page_links => true, :class => 'ui_page', :previous_label => '上一页', :next_label => '下一页'
   end
 
+  #信息提示
+  def block_alert
+    if flash[:notice]
+      return raw '<div class="alert alert-block"> <button type="button" class="close" data-dismiss="alert">×</button>'+flash[:notice].to_s+'</div>'
+    elsif flash[:error]
+      return raw '<div class="alert alert-error"> <button type="button" class="close" data-dismiss="alert">×</button> <strong>操作错误!</strong>'+flash[:error].to_s+'</div>'
+    elsif flash[:success]
+      return raw '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button> <strong>操作成功!</strong>'+flash[:success].to_s+'</div>'
+    end
+  end
+
   #表单验证提示
   def validate_msg(record)
     if record.errors.any?

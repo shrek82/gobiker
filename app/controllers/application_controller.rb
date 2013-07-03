@@ -19,12 +19,15 @@ class ApplicationController < ActionController::Base
     data[:data]||={:status => 1}
     data[:action]||=action_name
     data[:status]||=200
+    data[:notice]||=nil
+    data[:success]||=nil
     data[:layout]=true
     data[:layout]=false if request.xhr?
     #有跳转，优先执行跳转
-    redirect_to data[:redirect_to], :notice => data[:notice] if data[:redirect_to]
+    if data[:redirect_to]
+    redirect_to data[:redirect_to], :notice => data[:notice],:success=>data[:success]
     #根据请求返回不同格式的结果
-    if format=='json'
+    elsif format=='json'
       render :json => data[:data].to_json
     elsif format=='xml'
       render :xml => data[:data].to_xml
