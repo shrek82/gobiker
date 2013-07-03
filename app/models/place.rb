@@ -11,9 +11,10 @@ class Place < ActiveRecord::Base
   #attr_protected :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num
 
   #不允许为空
-  validates_presence_of :name, :message => '标题不能为空', :text => '电风扇地方'
+  validates_presence_of :name, :message => '标题不能为空', :text => '标题'
   validates_presence_of :content, :message => '说明不能为空'
-  #validates_presence_of :user_id,:message => '作者不能为空'
+  validates_presence_of :address, :message => '地址不能为空', :text => '地址'
+  validates_presence_of :intro, :message => '简介不能为空', :text => '地址'
 
   #学习笔记
   #不验证
@@ -25,8 +26,12 @@ class Place < ActiveRecord::Base
   has_many :comments
 
   #获取记录
-  def Place.get(options)
-
+  def Place.get(*args)
+    options = args.extract_options!
+    puts "Arguments:  #{args.inspect}"
+    puts "Options:    #{options.inspect}"
+    get(1, 2)
+    get(1, 2, :a => :b)
   end
 
   #推荐目的地

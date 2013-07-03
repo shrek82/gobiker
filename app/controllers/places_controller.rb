@@ -1,15 +1,18 @@
 #coding: utf-8
 class PlacesController < ApplicationController
   # GET /places
-  # GET /places.json
 
   #页面缓冲
-  #caches_page :index
+  #caches_page :index,:show
 
   def index
-    #@places = Place.all
     @places = Place.paginate(:page => params[:page], :per_page => 16)
-    @recommend=Place.where(:is_recommended =>true).limit(6)
+
+    #删除所有缓存
+    #Rails.cache.clear
+    @recommended=Rails.cache.fetch 'recommended_places' do
+      Place.get_recommended(6, :order => 'id DESC', :where => ['id>? AND is_recommended=?', 10, true])
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,8 +23,9 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show
-    @place = Place.find(params[:id])
-    @placeddd = Place.find(params[:id])
+    @place = Rails.cache.fetch "place#{params[:id]}" do
+      Place.find(params[:id])
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @place }

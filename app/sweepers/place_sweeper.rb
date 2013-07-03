@@ -1,5 +1,6 @@
 #coding:utf-8
 class PlaceSweeper < ActionController::Caching::Sweeper
+
   # 跟随缓存变换的model
   observe Place
 

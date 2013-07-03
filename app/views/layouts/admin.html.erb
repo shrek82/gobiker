@@ -8,15 +8,19 @@
   <link href="/static/core-admin/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css"/>
   <link rel="stylesheet" href="/static/core-admin/stylesheets/additional.css"/>
   <link rel="stylesheet" href="/static/core-admin/stylesheets/font-awesome.css"/>
-  <script src="http://todc.github.io/todc-bootstrap/assets/js/jquery.js"></script>
+  <script src="/static/js/jQuery-1.9.1.js"></script>
+  <script src="/static/layer/layer.js"></script>
+  <script src="/static/js/jquery.form.js"></script>
+  <script src="/static/js/candy.js"></script>
 </head>
-
 <body>
+<%= yield %>
+<script src="/static/js/bootstrap-dropdown.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        readyRun();
+    });
+</script>
 
-
-  <%= yield %>
-
-
-<script src="http://todc.github.io/todc-bootstrap/assets/js/bootstrap-dropdown.js"></script>
 </body>
 </html>

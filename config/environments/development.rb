@@ -20,6 +20,7 @@ Gobiker::Application.configure do
   config.action_controller.page_cache_directory = "#{Rails.root}/public/cache"
   config.action_controller.page_cache_extension = ".html"
 
+
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 
@@ -51,10 +52,10 @@ end
 
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-    :address        => "smtp.163.com",
-    :port           => 25,
-    :domain         => "www.163.com",
+    :address => "smtp.163.com",
+    :port => 25,
+    :domain => "www.163.com",
     :authentication => :login,
-    :user_name      => "hmilyo2008",
-    :password       => "orange320"
+    :user_name => "hmilyo2008",
+    :password => "orange320"
 }

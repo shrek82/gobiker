@@ -11,5 +11,6 @@ class ApplicationController < ActionController::Base
   #  render :file => "#{Rails.root}/public/500.html", :status => 500,:layout=>false
   #end
 
+  cache_sweeper :place_sweeper, :only => [:create,:update,:destroy]
 
 end

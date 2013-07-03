@@ -3,15 +3,8 @@ class Admin::PlacesController < AdminController
 
   cache_sweeper :place_sweeper, :only => [:create, :update, :destroy]
 
+  #目的地列表
   def index
-    #@conditions=['id>10']
-    #@places = Place.paginate(:page => params[:page], :per_page => 10)
-    #keyword='植物园'
-    #@places = Place.paginate(
-    #    :page => params[:page],
-    #    :per_page => 10,
-    #    :conditions => ["city_id = ? and name LIKE ?", 1, "%#{keyword}%"]
-    #)
     conditions=Array.new
     if params[:q]
       conditions << "name LIKE ?"
@@ -23,13 +16,12 @@ class Admin::PlacesController < AdminController
     end
   end
 
-  #添加
+  #添加记录
   def new
     @place = Place.new
   end
 
-  #编辑
-
+  #编辑记录
   def edit
     @place = Place.find(params[:id])
 
@@ -61,12 +53,11 @@ class Admin::PlacesController < AdminController
     @place.is_recommended=params[:is_recommended]
     respond_to do |format|
       if @place.update_attributes(params[:place])
-        format.html { redirect_to admin_places_path, notice: 'Place was successfully updated.' }
-        #format.html { redirect_to @place, notice: 'Place was successfully updated.' }
+        format.html { redirect_to admin_places_path, notice: '资料修改成功!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
+        format.json { render json:@place.errors.full_messages}
       end
     end
   end
@@ -81,35 +72,6 @@ class Admin::PlacesController < AdminController
       format.json { head :no_content }
     end
   end
-
-  def float(arg)
-    super
-  end
-
-  #Renders
-  def search
-    @results = Search.find(params[:query])
-    case @results.count
-      when 0 then
-        render :action => "no_results"
-      when 1 then
-        render :action => "show"
-      when 2..10 then
-        render :action => "show_many"
-    end
-  end
-
-  #Redirects
-  def create
-    @entry = Entry.new(params[:entry])
-    if @entry.save
-      # The entry was saved correctly, redirect to show
-      redirect_to :action => 'show', :id => @entry.id
-    else
-      # things didn't go so well, do something else
-    end
-  end
-
 
 end
 

@@ -71,6 +71,9 @@ module Gobiker
     #USE:Rails.application.config.custom.site_name
     #config.custom.site_name = '骑趣'
 
+    #载入缓存监控配置文件
+    config.autoload_paths += %W(#{Rails.root}/app/sweepers)
+
   end
 end
 

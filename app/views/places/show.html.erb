@@ -1,3 +1,4 @@
+<% @title=@place.name %>
 <div class="main">
 
 <p id="notice"><%= notice %></p>
@@ -21,7 +22,6 @@
   <b>User:</b>
   <%= @place.user_id %>
 </p>
-
 
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>
