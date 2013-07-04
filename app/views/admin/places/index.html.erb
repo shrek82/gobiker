@@ -23,7 +23,7 @@
 <div class="container-fluid padded">
   <div class="row-fluid">
 
-   <%= block_alert %>
+    <%= block_alert %>
 
     <div class="box">
 
@@ -55,7 +55,7 @@
       </div>
 
       <div class="box-content">
-        <table class="table table-normal">
+        <table class="table table-normal" id="record_table">
           <thead>
           <tr>
             <td class="record-checkbox">审核</td>
@@ -70,16 +70,17 @@
           <tbody>
 
           <% @places.each do |r| %>
-              <tr>
+              <tr id="record<%= r.id %>">
                 <td class="record-checkbox"><input type="checkbox" name="cid[]" value="1"></td>
                 <td class="record-title"><a href="<%= edit_admin_place_path(r, :format => 'html') %>"><%= r.name %></a></td>
-                <td class="record-cmthit"><span><%=r.comments_num %></span>/<%= r.hits_num %></td>
-                <td class="record-author"><%=r.user.username %></td>
-                <td class="record-date"><%= r.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+                <td class="record-cmthit"><span><%= r.comments_num %></span>/<%= r.hits_num %></td>
+                <td class="record-author"><%= r.user.username %></td>
+                <td class="record-date"><%= to_pretty(r.created_at) %>
+                  <% r.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
                 <td class="record-operate">
                   <a href="<%= admin_place_path(r) %>"><i class="icon-search"></i></a>
                   <a href="<%= edit_admin_place_path(r) %>" "><i class="icon-edit"></i></a>
-                  <a href="javascript:;" onclick="delete(<%=r.id%>)"><i class="icon-remove"></i></a>
+                  <a href="javascript:;"><i class="icon-remove" cid="<%= r.id %>"></i></a>
                 </td>
               </tr>
           <% end %>
@@ -89,7 +90,7 @@
 
         <div class="table-footer">
 
-          <div class="dataTables_info" id="DataTables_Table_0_info"><%= page_entries_info @places,:html=>false %></div>
+          <div class="dataTables_info" id="DataTables_Table_0_info"><%= page_entries_info @places, :html => false %></div>
           <%= go_pager @places %>
 
         </div>
@@ -99,3 +100,18 @@
   </div>
 
 </div>
+
+<%= request.method %>
+
+<script type="text/javascript">
+    readyScript.bind = function () {
+        $("#record_table .icon-remove").each(function () {
+            $(this).bind("click", function () {
+                var cid=$(this).attr('cid');
+                new candyLayer().deleteRecord({
+                    url:'/admin/places/'+cid
+                });
+            })
+        })
+    }
+</script>

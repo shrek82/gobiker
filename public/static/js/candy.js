@@ -68,6 +68,8 @@ function ajaxForm(form, opts) {
         errorDisplayType: 'formError',
         loading: false,
         redirect: false,
+        auto_redirect_to: true,
+        auto_redirect_delay: 600,
         callback: false,
         before: false,
         error: false,
@@ -98,7 +100,7 @@ function ajaxForm(form, opts) {
         })
 
         //指定rails返回格式
-        _this.form.append('<input type="hidden" name="_format" value="'+_this.opts.dataType+'">');
+        _this.form.append('<input type="hidden" name="_format" value="' + _this.opts.dataType + '">');
 
         //载入loading提示符
         //_this.statusTools.removeClass('alert-block').removeClass('alert-error').removeClass('alert-success').html('<img src="/static/images/loading.gif">').fadeIn(200);
@@ -119,7 +121,7 @@ function ajaxForm(form, opts) {
 
         console.log(data);
 
-        //返回json格式
+        //判断请求结果是否包含警告或错误(用户错误)
         if (_this.opts.dataType == 'json' && data.error) {
             console.log(data.error);
             is_error = true;
@@ -145,6 +147,24 @@ function ajaxForm(form, opts) {
             //用户自定义成功后方法
             if (typeof _this.opts.callback == 'function') {
                 _this.opts.callback(data);
+            }
+
+            //json返回包含跳转地址，可自动调整
+            if (_this.opts.dataType == 'json' && _this.opts.auto_redirect_to && data.redirect_to) {
+
+                if (_this.btn.get(0).tagName == 'INPUT') {
+                    _this.btn.attr('disabled', true);
+                    _this.btn.attr('value', '跳转中...');
+                }
+                else if (_this.btn.get(0).tagName == 'BUTTON') {
+                    _this.btn.attr('disabled', true);
+                    _this.btn.html('跳转中...');
+                }
+                setTimeout(function () {
+                    window.location.href = data.redirect_to;
+                }, _this.opts.auto_redirect_delay);
+
+                return false;
             }
         }
         //返回错误信息---------------------------------
@@ -226,3 +246,39 @@ ajaxForm.prototype.send = function () {
     this.form.ajaxSubmit(this.opts);
     return false;
 };
+
+
+//弹出框
+var candyLayer=function(){
+}
+
+candyLayer.prototype.open=function(){
+    $.layer({
+        shade: false,
+        area: ['auto', 'auto'],
+        dialog: {
+            msg: 'dffffff',
+            btns: 2,
+            type: 4,
+            btn: ['确定', '取消'],
+            yes: function () {
+                layer.msg('您选择了重要。', 2, 1);
+            },
+            no: function () {
+                layer.msg('奇葩!!!', 2, 4);
+            }
+        }
+    });
+}
+//询问并删除记录
+candyLayer.prototype.deleteRecord = function (opts) {
+    var def={
+
+        data:'_method=DELETE'
+    };
+    artDialog.confirm('你再也不相信爱情了么？', function () {
+        $.ajax()
+    }, function () {
+        alert(opts.url);
+    });
+}

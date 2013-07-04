@@ -10,7 +10,7 @@
     <%= validate_msg @place %>
 
     <div class="control-group">
-      <%= f.label :name, '标题', :class => 'control-label' %>
+      <%= f.label :name, '自定义标题', :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :name, :class => 'input-xxlarge' %>
       </div>
@@ -18,14 +18,14 @@
 
 
     <div class="control-group">
-      <%= f.label :province_id, '所属地区', :class => 'control-label' %>
+      <%= f.label :province_id,:class => 'control-label' %>
       <div class="controls">
         <%= province_city_area_select :place, @place.province_id, @place.city_id, @place.area_id %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :address, '详细地址', :class => 'control-label' %>
+      <%= f.label :address,:class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :address, :class => 'input-xxlarge' %>
       </div>
@@ -33,35 +33,35 @@
 
 
     <div class="control-group">
-      <%= f.label :tags, '标签', :class => 'control-label' %>
+      <%= f.label :tags,:class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :tags, :class => 'input-xxlarge' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :intro, '简介', :class => 'control-label' %>
+      <%= f.label :intro,:class => 'control-label' %>
       <div class="controls">
         <%= f.text_area :intro, :rows => '3', :class => 'span10' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :content, '详细介绍', :class => 'control-label' %>
+      <%= f.label :content,:class => 'control-label' %>
       <div class="controls">
         <%= f.text_area :content, :rows => '6', :class => 'span10' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :user_id, '作者', :class => 'control-label' %>
+      <%= f.label :user_id,:class => 'control-label' %>
       <div class="controls">
         <%= @place.user.username unless @place.new_record? %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :is_recommended, '管理属性', :class => 'control-label' %>
+      <%= f.label :is_recommended,:class => 'control-label' %>
 
       <div class="controls">
         <label class="checkbox inline">
@@ -77,16 +77,17 @@
     <div class="control-group">
       <div class="controls">
         <%= f.button :class => "btn btn-primary", :id => 'submit_button' %>
-        <button type="button" class="btn">Cancel</button>
+        <button type="button" class="btn" id="cancel_button" onclick="window.local.back()">取消</button>
       </div>
     </div>
 <% end %>
 
 <script type="text/javascript">
     readyScript.bindAjaxForm = function () {
-        $('#form12').bind("submit", function (e) {
+        $('#form1').bind("submit", function (e) {
             e.preventDefault();
-            new ajaxForm($(this), function () {
+            new ajaxForm($(this), {
+                dataType: 'json'
             }).send();
         })
     }
