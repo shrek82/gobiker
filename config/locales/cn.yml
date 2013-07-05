@@ -2,6 +2,8 @@ cn:
   attributes:
     created_at: "创建日期"
     updated_at: "修改日期"
+  will_paginate:
+    page_gap: "..."
   helpers:
     submit:
       create: "发布%{model}"

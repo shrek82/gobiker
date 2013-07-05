@@ -10,7 +10,6 @@
     //实例化编辑器
     var options = {
         toolbars: [['FullScreen','Undo','Redo','FontSize','FontFamily','ForeColor','Bold','Italic','Underline','BackColor','StrikeThrough','Emotion','InsertImage','JustifyLeft','JustifyCenter','JustifyRight','JustifyJustify','lineheight','RemoveFormat','FormatMatch','PastePlain','ImageNone','ImageLeft','ImageRight','ImageCenter','Superscript','Subscript','InsertVideo','Attachment','Date','Time','Map','Spechars','InsertTable','DeleteTable','MergeRight','MergeDown','SplittoRows','SplittoCols','SplittoCells','MergeCells','InsertCol','InsertRow','DeleteCol','DeleteRow','InsertParagraphBeforeTable','InsertUnorderedList','InsertOrderedList','horizontal','indent','Link','Unlink','ClearDoc','SelectAll','SearchReplace','Preview','Source']],
-
         imageUrl: UEDITOR_HOME_URL + "../yunserver/yunImageUp.php",
         imagePath: "http://",
 
@@ -39,11 +38,10 @@
         langPath: UEDITOR_HOME_URL + "lang/",
 
         webAppKey: "9HrmGf2ul4mlyK8ktO2Ziayd",
-        initialFrameWidth: 860,
-        initialFrameHeight: 420,
+        initialFrameHeight: 350,
         focus: true
     };
 
-    var ue = UE.getEditor('editor', options);
+    var ue = UE.getEditor('<%=id %>', options);
 
 </script>

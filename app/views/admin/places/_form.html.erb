@@ -49,7 +49,8 @@
     <div class="control-group">
       <%= f.label :content,:class => 'control-label' %>
       <div class="controls">
-        <%= f.text_area :content, :rows => '6', :class => 'span10' %>
+        <%= f.text_area :content, :rows => '6',:id=>'content', :class => 'span10' %>
+        <%= render 'global/ueditor',:id => 'content' %>
       </div>
     </div>
 
@@ -77,13 +78,11 @@
     <div class="control-group">
       <div class="controls">
         <%= f.button :class => "btn btn-primary", :id => 'submit_button' %>
-        <button type="button" class="btn" id="cancel_button" onclick="window.local.back()">取消</button>
+        <button type="button" class="btn" id="cancel_button" onclick="history.back()">取消</button>
       </div>
     </div>
 <% end %>
 
-
-<%= render 'global/ueditor' %>
 <script type="text/javascript">
     readyScript.bindAjaxForm = function () {
         $('#form1').bind("submit", function (e) {

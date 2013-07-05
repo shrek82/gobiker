@@ -11,11 +11,11 @@ class Place < ActiveRecord::Base
   #attr_protected :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num
 
   #不允许为空
-  validates_presence_of :name, :message => '标题不能为空', :text => '标题'
-  validates_presence_of :content, :message => '说明不能为空'
-  validates_presence_of :address, :message => '地址不能为空', :text => '地址'
-  validates_presence_of :intro, :message => '简介不能为空', :text => '地址'
-  validates_length_of :name, :in => (2..30),:message=>'标题不能少于2个字符'
+  validates_presence_of :name, :message => '不能为空', :text => '标题'
+  validates_presence_of :content, :message => '不能为空'
+  validates_presence_of :address, :message => '不能为空', :text => '地址'
+  validates_presence_of :intro, :message => '不能为空', :text => '地址'
+  validates_length_of :name, :in => (2..30),:message=>'不能少于2个字符'
   #validates_format_of :name, :with => /^[\w\.]+$/,
 
 

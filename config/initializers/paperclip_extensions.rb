@@ -13,3 +13,5 @@ end
 Paperclip.interpolates :full_time do |attachment, style|
   return Time.now.strftime('%Y%m%d')
 end
+
+render 'global/ueditor'
