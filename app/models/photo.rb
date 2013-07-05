@@ -1,11 +1,10 @@
 #coding: utf-8
 class Photo < ActiveRecord::Base
   attr_accessible :img_path, :is_verify, :title
-  attr_accessor :img_path_file_name
-  attr_accessor :img_path_content_type
-  attr_accessor :img_path_file_size
-  attr_accessor :img_path_updated_at
-  has_attached_file :img_path, :styles => {:origin=>"800x800>",:medium => "600x600>", :thumb => "250x250>",:mini=>"100x100>" }, :default_url => "/images/:style/missing.png"
-
-
+  has_attached_file :img_path,
+                    :styles => {:thumb => "200x200>",:mini=>"100x100>",:medium => "400x400>",:large=> "600x600>"},
+                    :default_url => "/images/:style/missing.png",
+                    :url => "/uploads/pics/:id/:id_:style.:extension",
+                    :path => ":rails_root/public/uploads/pics/:id/:id_:style.:extension"
+  validates_attachment_content_type :img_path, :content_type => [ 'image/gif', 'image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/jpg']
 end

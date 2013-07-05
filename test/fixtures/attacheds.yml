@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  att: MyString
+  is_verify: false
+  att_file_name: MyString
+  att_content_type: MyString
+  att_file_size: 1
+  att_updated_at: 2013-07-05 12:53:21
+
+two:
+  name: MyString
+  att: MyString
+  is_verify: false
+  att_file_name: MyString
+  att_content_type: MyString
+  att_file_size: 1
+  att_updated_at: 2013-07-05 12:53:21
