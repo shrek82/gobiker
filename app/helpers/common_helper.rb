@@ -1,12 +1,17 @@
 #encoding:utf-8
 module CommonHelper
 
-  #是否为ajax请求
+  #查找记录,不存在返回错误页面
+  def find_record(&block)
+
+  end
+
+#是否为ajax请求
   def is_ajax?
     request.xhr?
   end
 
-  #结束输出到客户端
+#结束输出到客户端
   def render_client(data={})
 
     #获取客户端请求格式
@@ -22,15 +27,15 @@ module CommonHelper
 
     #返回成功或错误标示及详细信息
     if data[:success]
+      flash[:success]=data[:success] if data[:redirect_to]
       data[:data].store("status", 1)
       data[:data].store("success", data[:success])
-      flash[:success]=data[:success] if format=='html'
     elsif data[:error]
+      flash[:error]=data[:error] if data[:redirect_to]
       data[:data].store("status", 0)
       data[:data].store("error", data[:error])
-      flash[:error]=data[:error] if format=='html'
     else
-      data[:data].store("status",1)
+      data[:data].store("status", 1)
     end
 
     #根据不同格式需求方式呈现不同结果
@@ -62,4 +67,5 @@ module CommonHelper
       render nothing: true, status: data[:status]
     end
   end
+
 end

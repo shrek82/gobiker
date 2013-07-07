@@ -23,9 +23,9 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show
-    @place = Rails.cache.fetch "place#{params[:id]}" do
-      Place.find(params[:id])
-    end
+    #@place = Rails.cache.fetch "place#{params[:id]}" do
+    @place=Place.find(params[:id])
+    #end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @place }

@@ -157,4 +157,9 @@ class UsersController < ApplicationController
 
   end
 
+
+  def minilogin
+    render :template => 'users/mini_login',:layout => false
+  end
+
 end

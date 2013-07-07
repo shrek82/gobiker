@@ -43,24 +43,27 @@ Gobiker::Application.routes.draw do
   match '/login' => 'users#login'
   match '/register' => 'users#register'
 
-  resources :places
-  resources :routes
-  resources :users
-
   #可以透过:via 参数指定HTTP Verb 动词
   match "account/overview" => "account#overview", :via => "get"
   #或者
   get "account/overview" => "account#overview"
   get "account/setup" => "account#setup"
   post "account/setup" => "account#setup"
+  get "users/minilogin"=>"users#minilogin"
 
   #我们可以利用:constraints设定一些参数限制，例如限制:id必须是整数。
-  match "/events/show/:id" => "events#show", :constraints => {:id => /\d/}
+  #match "/events/show/:id" => "events#show", :constraints => {:id => /\d/}
+
+  resources :places
+  resources :routes
+  resources :users
+
 
   #嵌套resources
   resources :projects do
     resources :tasks, :people
   end
+
   #helper如下
   #project_tasks       GET    /projects/:project_id/tasks(.:format)           tasks#index
   #                    POST   /projects/:project_id/tasks(.:format)           tasks#create
