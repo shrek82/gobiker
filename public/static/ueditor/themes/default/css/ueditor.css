@@ -148,12 +148,6 @@ div.edui-box {
     box-shadow:0 1px 4px rgba(204, 204, 204, 0.6);
     border-top-left-radius:2px;
     border-top-right-radius:2px;
-    border-top-right-radius:2px;
-    
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-   -webkit-border-bottom-left-radius: 0;
-    -webkit-border-bottom-right-radius: 0;
 }
 
 .edui-default .edui-editor-toolbarboxouter {
@@ -174,11 +168,6 @@ div.edui-box {
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-    
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-   -webkit-border-bottom-left-radius: 0;
-    -webkit-border-bottom-right-radius: 0;
 }
 
 .edui-default .edui-editor-toolbarboxinner {

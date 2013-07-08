@@ -31,7 +31,7 @@
     });
     window.onload = function () {
         var settings = {
-            upload_url:'/upload/uploadAttachedfile/',           //附件上传服务器地址
+            upload_url:editor.options.fileUrl,           //附件上传服务器地址
             file_post_name:editor.options.fileFieldName,      //向后台提交的表单名
             flash_url:"../../third-party/swfupload/swfupload.swf",
             flash9_url:"../../third-party/swfupload/swfupload_fp9.swf",
@@ -112,7 +112,7 @@
                 str="";
             for(var i=0,ci;ci=filesList[i++];){
                 var src = editor.options.UEDITOR_HOME_URL + "dialogs/attachment/fileTypeImages/"+(map[ci.type]||"icon_default.png");
-                str += "<p style='line-height: 16px;'><img src='"+ src + "' data_ue_src='"+src+"' />" +
+                str += "<p style='line-height: 16px;'><img src='"+ src + "' _src='"+src+"' />" +
                        "<a href='"+editor.options.filePath + ci.url+"'>" + ci.original + "</a></p>";
             }
             editor.execCommand("insertHTML",str);

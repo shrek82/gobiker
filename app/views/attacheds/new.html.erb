@@ -61,11 +61,13 @@
                 'successTimeout': 30,
                 'buttonText': '选择文件...',
                 'swf': '/static/uploadify/uploadify.swf',
-                'uploader': 'http://localhost:3000/attacheds/upload',
+                'uploader': '/attacheds/upload',
                 'fileObjName':'attached[img]',
                 'formData': {
+                    "_uploader":"uploadify",
+                    "_format":"json",
                     "<%= key = Rails.application.config.session_options[:key] %>" : "<%= cookies[key] %>",
-                    "<%= request_forgery_protection_token %>" : "<%= form_authenticity_token %>",
+                    "<%= request_forgery_protection_token %>" : "<%= form_authenticity_token %>"
                 }
             });
         });

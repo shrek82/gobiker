@@ -88,9 +88,8 @@ class AttachedsController < ApplicationController
   def upload
     @attached = Attached.new(params[:attached])
     if @attached.save
-      render_client :data => {:url=>'/uploads/pics/2013/0708/123_thumb.jpg',:title=>'sdfsdf',:original=>'123_thumb.jpg',:state=>'SUCCESS'}
-      #file_path="/uploads/pics/"+@attached[:created_at].strftime('%Y').to_s+'/'+@attached[:created_at].strftime('%m%n').to_s+'/'+@attached[:id].to_s+"_thumb.jpg"
-      #render_client :data => {:state=>'SUCCESS',:url=>file_path,:file_id => @attached[:id], :fileName => @attached[:img_file_name],:fileType=>@attached[:img_content_type],:fileSize => @attached[:img_file_size]}, :success => '资料修改成功'
+      file_path="/uploads/pics/"+@attached[:created_at].strftime('%Y').to_s+'/'+@attached[:created_at].strftime('%m%d').to_s+'/'+@attached[:id].to_s+"_thumb.jpg"
+      render_client :data => {:state=>'SUCCESS',:url=>file_path,:file_id => @attached[:id], :fileName => @attached[:img_file_name],:fileType=>@attached[:img_content_type],:fileSize => @attached[:img_file_size]}, :success => '资料修改成功'
       #render json: @attached, status: :created, location: @attached
     else
       render json: @attached.errors, status: :unprocessable_entity
