@@ -50,6 +50,7 @@ Gobiker::Application.routes.draw do
   get "account/setup" => "account#setup"
   post "account/setup" => "account#setup"
   get "users/minilogin"=>"users#minilogin"
+  post "attacheds/upload" => "attacheds#upload"
 
   #我们可以利用:constraints设定一些参数限制，例如限制:id必须是整数。
   #match "/events/show/:id" => "events#show", :constraints => {:id => /\d/}
@@ -179,5 +180,8 @@ Gobiker::Application.routes.draw do
   #match '/:controller/:action.:format'
   #match '/:controller/:action/:id.:format'
 
+  #在路由中添加参数
+  match '/home/action2' => 'home#action1', :has_params => 'yes'
+  #这样就在action2的路由里添加了参数 params[:has_params], 其值为 ‘yes’
 
 end

@@ -9,6 +9,7 @@ module ApplicationHelper
   end
 
   def to_pretty(time)
+    Time.now.
     a = Time.now.to_i-time.to_i
     case a
       when 0 then '刚刚'

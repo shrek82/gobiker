@@ -1,4 +1,8 @@
+#coding: utf-8
 class AttachedsController < ApplicationController
+
+  skip_before_filter :verify_authenticity_token, :only => [:upload]
+
   # GET /attacheds
   # GET /attacheds.json
   def index
@@ -40,16 +44,15 @@ class AttachedsController < ApplicationController
   # POST /attacheds
   # POST /attacheds.json
   def create
+
     @attached = Attached.new(params[:attached])
 
-    respond_to do |format|
-      if @attached.save
-        format.html { redirect_to @attached, notice: 'Attached was successfully created.' }
-        format.json { render json: @attached, status: :created, location: @attached }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @attached.errors, status: :unprocessable_entity }
-      end
+    if @attached.save
+      render :text => '{"url":"/uploads/pics/2013/0708/123_thumb.jpg","title":"sdfsdf","original":"123_thumb.jpg","state":"SUCCESS"}'
+      #file_path="/uploads/pics/"+@attached[:create_at].strftime('%Y').to_s+'/'+@attached[:create_at].strftime('%m%n').to_s+'/'+@attached[:id].to_s+"_thumb.jpg"
+      #render_client :data => {:state=>'SUCCESS',:url=>file_path,:file_id => @attached[:id], :fileName => @attached[:img_file_name],:fileType=>'jpg',:fileSize => @attached[:img_file_size]}, :success => '资料修改成功'
+    else
+      render json: @attached.errors, status: :unprocessable_entity
     end
   end
 
@@ -80,4 +83,18 @@ class AttachedsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def upload
+    @attached = Attached.new(params[:attached])
+    if @attached.save
+      render_client :data => {:url=>'/uploads/pics/2013/0708/123_thumb.jpg',:title=>'sdfsdf',:original=>'123_thumb.jpg',:state=>'SUCCESS'}
+      #file_path="/uploads/pics/"+@attached[:created_at].strftime('%Y').to_s+'/'+@attached[:created_at].strftime('%m%n').to_s+'/'+@attached[:id].to_s+"_thumb.jpg"
+      #render_client :data => {:state=>'SUCCESS',:url=>file_path,:file_id => @attached[:id], :fileName => @attached[:img_file_name],:fileType=>@attached[:img_content_type],:fileSize => @attached[:img_file_size]}, :success => '资料修改成功'
+      #render json: @attached, status: :created, location: @attached
+    else
+      render json: @attached.errors, status: :unprocessable_entity
+    end
+  end
+
 end

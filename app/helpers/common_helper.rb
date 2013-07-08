@@ -51,7 +51,7 @@ module CommonHelper
       elsif data[:template]
         render template: data[:template]
       else
-        render :text => '<div class="alert alert-block">未指定action或template名称!</div>'
+        render :text => '<div class="alert alert-block">html格式需指定action或template名称!</div>'
       end
       #输出json格式结果
     elsif format=='json'

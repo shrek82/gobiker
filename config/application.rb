@@ -40,7 +40,9 @@ module Gobiker
     # config.i18n.default_locale = :de
 
     #指定本地化语言
-    config.i18n.default_locale = :cn
+
+    config.i18n.default_locale = "zh-CN"
+    #config.i18n.default_locale = :cn
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

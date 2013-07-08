@@ -65,3 +65,7 @@ gem "paperclip", "~> 3.0"
 gem "paperclip", "~> 3.0"
 
 gem "thin"
+
+gem 'rails-footnotes', '>= 3.7.9', :group => :development
+
+gem 'mime-types', :require => 'mime/types'
