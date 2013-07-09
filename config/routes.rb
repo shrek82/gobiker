@@ -13,7 +13,7 @@ Gobiker::Application.routes.draw do
 
   #as帮助我们生产一个admin_path和一个admin_url
   match '/admin' => 'admin#frame',:as=>'admin'
-  match '/admin/dashboard' => 'admin#dashboard',:as=>'admin_dashboard'
+  match '/admin/dashboard' => 'admin#dashboard'
   match 'users/ajax' => 'users#ajax'
   match 'test' => 'users#mail'
   match '/login' => 'users#login'
@@ -67,6 +67,16 @@ Gobiker::Application.routes.draw do
       get :select_forums
     end
   end
+
+  resources :events do
+    collection do
+      post :sign_up
+      post :sign_out
+      get  :tags
+    end
+  end
+
+
 
   #这样一来，除了惯例的几个actions外，还有
   #sold_ads GET    /ads/sold(.:format)                             ads#sold

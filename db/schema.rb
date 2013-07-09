@@ -13,26 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130709091806) do
 
-  create_table "_threads_old_20130709", :force => true do |t|
-    t.string   "title",                  :limit => 150
-    t.integer  "forum_id"
-    t.integer  "subject_id",             :limit => 2
-    t.integer  "club_id"
-    t.integer  "user_id"
-    t.string   "title_color",            :limit => 10
-    t.boolean  "is_fixed"
-    t.boolean  "is_comment"
-    t.boolean  "is_good"
-    t.boolean  "is_recommend"
-    t.integer  "hits_num"
-    t.integer  "comments_num"
-    t.integer  "last_comment_user_id"
-    t.string   "last_comment_user_name", :limit => 50
-    t.datetime "last_comment_time"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
-  end
-
   create_table "ads", :force => true do |t|
     t.string   "name"
     t.string   "js_path"
@@ -269,7 +249,7 @@ ActiveRecord::Schema.define(:version => 20130709091806) do
   create_table "threads", :force => true do |t|
     t.string   "title",                  :limit => 150
     t.integer  "forum_id"
-    t.integer  "subject_id"
+    t.integer  "subject_id",             :limit => 2
     t.integer  "club_id"
     t.integer  "user_id"
     t.string   "title_color",            :limit => 10
@@ -284,7 +264,6 @@ ActiveRecord::Schema.define(:version => 20130709091806) do
     t.datetime "last_comment_time"
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
-    t.text     "content"
   end
 
   create_table "users", :force => true do |t|
