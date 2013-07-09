@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  forum_id: 1
+  subject_id: 1
+  club_id: 1
+  user_id: 1
+  title_color: MyString
+  is_fixed: false
+  is_comment: false
+  is_good: false
+  is_recommend: false
+  hits_num: 1
+  comments_num: 1
+  last_comment_user_id: 1
+  last_comment_user_name: MyString
+  last_comment_time: 2013-07-09 11:29:15
+
+two:
+  title: MyString
+  forum_id: 1
+  subject_id: 1
+  club_id: 1
+  user_id: 1
+  title_color: MyString
+  is_fixed: false
+  is_comment: false
+  is_good: false
+  is_recommend: false
+  hits_num: 1
+  comments_num: 1
+  last_comment_user_id: 1
+  last_comment_user_name: MyString
+  last_comment_time: 2013-07-09 11:29:15

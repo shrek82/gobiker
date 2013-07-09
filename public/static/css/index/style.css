@@ -31,6 +31,29 @@
     height: 54px;
 }
 
+.qyer_head_nav_item_home {
+    background-position: -440px 8px;
+}
+.qyer_head_nav_item_home:hover {
+    background-position: -440px -92px;
+    border-bottom: 2px solid #74b089;
+}
+
+.qyer_head_nav_item_raiders {
+    background-position: -300px 8px;
+}
+.qyer_head_nav_item_raiders:hover {
+    background-position: -300px -92px;
+}
+
+.qyer_head_nav_item_place {
+    background-position: -3px 8px;
+}
+
+.qyer_head_nav_item_guide {
+    background-position: -67px 8px;
+}
+
 .qyer_head_nav_item_place {
     background-position: -3px 8px;
 }

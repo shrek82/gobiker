@@ -111,10 +111,37 @@ a {
     overflow: hidden;
 }
 
+.qyer_head_nav_item_home {
+    width: 52px;
+    background-position: -440px -2px;
+}
+
+.qyer_head_nav_item_home:hover {
+    background-position: -440px -102px;
+    border-bottom: 2px solid #74b089;
+}
+
+.qyer_head_nav_item_raiders {
+    width: 52px;
+    background-position: -300px -2px;
+}
+
+.qyer_head_nav_item_raiders:hover {
+    background-position: -300px -102px;
+    border-bottom: 2px solid #74b089;
+}
+
+
 .qyer_head_nav_item_place {
     width: 64px;
     background-position: -3px -2px;
 }
+
+.qyer_head_nav_item_place:hover {
+    background-position: -3px -102px;
+    border-bottom: 2px solid #74b089;
+}
+
 
 .qyer_head_nav_item_guide {
     width: 52px;
@@ -132,7 +159,7 @@ a {
 }
 
 .qyer_head_nav_item_lastm {
-    width: 84px;
+    width: 74px;
     background-position: -218px -2px;
 }
 
@@ -146,10 +173,7 @@ a {
     background-position: -358px -2px;
 }
 
-.qyer_head_nav_item_place:hover {
-    background-position: -3px -102px;
-    border-bottom: 2px solid #74b089;
-}
+
 
 .qyer_head_nav_item_guide:hover {
     background-position: -67px -102px;

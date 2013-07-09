@@ -785,6 +785,7 @@ a {
 .ui_pupBox_main {
     background-color:#fff;
     border:1px solid #7e7e7e;
+    min-height:45px;
 }
 
 .ui_pupBox_head {

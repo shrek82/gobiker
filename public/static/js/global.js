@@ -43,7 +43,7 @@ jQuery(function () {
 (function ($) {
     var popup = {};
     var initial = true;
-    var pupcode = '<div class="ui_popup_bg"><div class="ui_popup"><p class="ui_popup_close"></p><div class="ui_popup_main"></div></div></div>';
+    var pupcode = '<div class="ui_popup_bg"><div class="ui_popup"><p class="ui_popup_close"></p><div class="ui_popup_main"><div style="text-align: center;color:#999;height: 50px;line-height:50px">正在加载中，请稍候....</div></div></div></div>';
 
     function pupClose() {
         $(".ui_popup_bg").hide();

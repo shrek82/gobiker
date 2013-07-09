@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705045903) do
+ActiveRecord::Schema.define(:version => 20130709091806) do
+
+  create_table "_threads_old_20130709", :force => true do |t|
+    t.string   "title",                  :limit => 150
+    t.integer  "forum_id"
+    t.integer  "subject_id",             :limit => 2
+    t.integer  "club_id"
+    t.integer  "user_id"
+    t.string   "title_color",            :limit => 10
+    t.boolean  "is_fixed"
+    t.boolean  "is_comment"
+    t.boolean  "is_good"
+    t.boolean  "is_recommend"
+    t.integer  "hits_num"
+    t.integer  "comments_num"
+    t.integer  "last_comment_user_id"
+    t.string   "last_comment_user_name", :limit => 50
+    t.datetime "last_comment_time"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+  end
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -70,13 +90,51 @@ ActiveRecord::Schema.define(:version => 20130705045903) do
     t.integer  "bbs_unit_id"
   end
 
-  create_table "forums", :force => true do |t|
-    t.string   "name"
-    t.integer  "order_num"
-    t.integer  "unit_count"
+  create_table "events", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "title",             :limit => 200
+    t.integer  "subject_id",        :limit => 2
+    t.string   "tags",              :limit => 100
+    t.string   "intro"
+    t.string   "address"
+    t.text     "content"
     t.integer  "club_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.string   "title_color",       :limit => 10
+    t.datetime "sign_start_at"
+    t.datetime "sign_finish_at"
+    t.datetime "start_at"
+    t.datetime "finish_at"
+    t.integer  "sign_limit"
+    t.string   "icon_path",         :limit => 200
+    t.string   "img_path",          :limit => 200
+    t.boolean  "is_fixed"
+    t.boolean  "is_comment"
+    t.boolean  "is_recommend"
+    t.boolean  "is_closed"
+    t.boolean  "is_suspend"
+    t.boolean  "is_stop_sign"
+    t.boolean  "is_allow_everyone"
+    t.integer  "signed_num"
+    t.integer  "hits_num"
+    t.integer  "comments_num"
+    t.integer  "interested_num"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "forums", :force => true do |t|
+    t.string   "name",        :limit => 20
+    t.string   "intro"
+    t.integer  "province_id"
+    t.integer  "city_id"
+    t.integer  "club_id"
+    t.integer  "threads_num"
+    t.integer  "order_num"
+    t.boolean  "is_systemic"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.string   "ico_path",    :limit => 250
   end
 
   create_table "managers", :force => true do |t|
@@ -199,6 +257,34 @@ ActiveRecord::Schema.define(:version => 20130705045903) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "thread_moderators", :force => true do |t|
+    t.integer  "thread_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "threads", :force => true do |t|
+    t.string   "title",                  :limit => 150
+    t.integer  "forum_id"
+    t.integer  "subject_id"
+    t.integer  "club_id"
+    t.integer  "user_id"
+    t.string   "title_color",            :limit => 10
+    t.boolean  "is_fixed"
+    t.boolean  "is_comment"
+    t.boolean  "is_good"
+    t.boolean  "is_recommend"
+    t.integer  "hits_num"
+    t.integer  "comments_num"
+    t.integer  "last_comment_user_id"
+    t.string   "last_comment_user_name", :limit => 50
+    t.datetime "last_comment_time"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.text     "content"
   end
 
   create_table "users", :force => true do |t|

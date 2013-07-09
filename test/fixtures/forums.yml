@@ -2,12 +2,20 @@
 
 one:
   name: MyString
-  order_num: 1
-  unit_count: 1
+  intro: MyString
+  province_id: 1
+  city_id: 1
   club_id: 1
+  threads_num: 1
+  order_num: 1
+  is_systemic: false
 
 two:
   name: MyString
-  order_num: 1
-  unit_count: 1
+  intro: MyString
+  province_id: 1
+  city_id: 1
   club_id: 1
+  threads_num: 1
+  order_num: 1
+  is_systemic: false
