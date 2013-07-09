@@ -76,12 +76,8 @@ Gobiker::Application.routes.draw do
     end
   end
 
-
-
   #这样一来，除了惯例的几个actions外，还有
-  #sold_ads GET    /ads/sold(.:format)                             ads#sold
-  #ffer_ads POST   /ads/ffer(.:format)                             ads#ffer
-
+  #sold_products GET    /ads/sold(.:format)                             ads#sold
   resources :products do
     get :sold, :on => :member
   end
@@ -93,6 +89,7 @@ Gobiker::Application.routes.draw do
   resources :places
   resources :routes
   resources :users
+  resources :asks
 
   namespace :admin do |admin|
     resources :ads

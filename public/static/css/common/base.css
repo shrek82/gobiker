@@ -1509,14 +1509,14 @@ span {
     display:inline-block;
     line-height:18px;
     color:#077345;
-    background:url(/static/media/tag_ask.png) no-repeat 0 0;
+    background:url(/static/images/asks/tag_ask.png) no-repeat 0 0;
     _background:#e6f4d9;
     padding-left:10px;
     margin:5px 0;
 }
 
 .ask_tag:hover {
-    background:url(/static/media/tag_ask.png) no-repeat 0 -18px;
+    background:url(/static/images/asks/tag_ask.png) no-repeat 0 -18px;
     _background:#077345;
     color:#fff;
     text-decoration:none;
@@ -1525,7 +1525,7 @@ span {
 .ask_tag
 .ask_tag_strong {
     display:inline-block;
-    background:url(/static/media/tag_ask.png) no-repeat right -36px;
+    background:url(/static/images/asks/tag_ask.png) no-repeat right -36px;
     _background:#e6f4d9;
     white-space:nowrap;
     font-family:\5b8b\4f53,sans-serif;
@@ -1534,7 +1534,7 @@ span {
 
 .ask_tag:hover
 .ask_tag_strong {
-    background:url(/static/media/tag_ask.png) no-repeat right -54px;
+    background:url(/static/images/asks/tag_ask.png) no-repeat right -54px;
     _background:#077345;
 }
 

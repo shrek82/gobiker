@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709091806) do
+ActiveRecord::Schema.define(:version => 20130709223202) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,24 @@ ActiveRecord::Schema.define(:version => 20130709091806) do
     t.integer  "area_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "asks", :force => true do |t|
+    t.string   "title",          :limit => 200
+    t.string   "intro"
+    t.integer  "province_id"
+    t.string   "city_integer"
+    t.string   "tags",           :limit => 50
+    t.integer  "user_id"
+    t.integer  "hits_num"
+    t.integer  "answers_num"
+    t.integer  "useful_num"
+    t.integer  "base_answer_id"
+    t.boolean  "is_resolved"
+    t.boolean  "is_recommended"
+    t.boolean  "is_fixed"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "attacheds", :force => true do |t|
