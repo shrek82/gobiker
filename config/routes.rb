@@ -1,3 +1,4 @@
+#coding: utf-8
 Gobiker::Application.routes.draw do
 
   #show、new、edit、update、destroy是单数，对单一元素操作
@@ -16,8 +17,8 @@ Gobiker::Application.routes.draw do
   match '/admin/dashboard' => 'admin#dashboard'
   match 'users/ajax' => 'users#ajax'
   match 'test' => 'users#mail'
-  match '/login' => 'users#login'
-  match '/register' => 'users#register'
+  match '/login' => 'users#login',:as=>'login'
+  match '/register' => 'users#register',:as=>'register'
   match '/forums/threads/:id' => 'forums#thread', :constraints => {:id => /\d/},:as=>'forum_thread'
 
   #可以透过:via 参数指定HTTP Verb 动词
@@ -90,6 +91,10 @@ Gobiker::Application.routes.draw do
   resources :routes
   resources :users
   resources :asks
+
+  namespace :user do |user|
+    resources :places
+  end
 
   namespace :admin do |admin|
     resources :ads

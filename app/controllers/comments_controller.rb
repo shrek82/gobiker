@@ -27,8 +27,6 @@ class CommentsController < ApplicationController
   # GET /comments/new.json
   def new
     @comment = Comment.new
-    redirect_to
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @comment }
@@ -40,9 +38,23 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
+  def create
+    @comment = Comment.new(params[:comment])
+    action = Agent::AddComment.new(1,@comment)
+    if action.run()
+      render :text => 'add success'
+      #flash_success_on_redirect "Comment was added."
+      #redirect_to prospect_path(action.comment.touch_log)
+    else
+      render :text => 'add error'
+      #flash_error_on_redirect "Please enter a comment."
+      #redirect_to prospect_path(action.comment.touch_log)
+    end
+  end
+
   # POST /comments
   # POST /comments.json
-  def create
+  def create_bak
     @comment = Comment.new(params[:comment])
 
     respond_to do |format|

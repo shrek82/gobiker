@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709223202) do
+ActiveRecord::Schema.define(:version => 20130710005517) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(:version => 20130709223202) do
     t.integer  "province_id"
     t.integer  "city_id"
     t.integer  "club_id"
-    t.integer  "threads_num"
+    t.integer  "topics_num"
     t.integer  "order_num"
     t.boolean  "is_systemic"
     t.datetime "created_at",                 :null => false
@@ -264,10 +264,10 @@ ActiveRecord::Schema.define(:version => 20130709223202) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "threads", :force => true do |t|
+  create_table "topics", :force => true do |t|
     t.string   "title",                  :limit => 150
     t.integer  "forum_id"
-    t.integer  "subject_id",             :limit => 2
+    t.integer  "subject_id"
     t.integer  "club_id"
     t.integer  "user_id"
     t.string   "title_color",            :limit => 10
@@ -282,6 +282,7 @@ ActiveRecord::Schema.define(:version => 20130709223202) do
     t.datetime "last_comment_time"
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
+    t.text     "content"
   end
 
   create_table "users", :force => true do |t|

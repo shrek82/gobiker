@@ -159,7 +159,36 @@ class UsersController < ApplicationController
 
 
   def minilogin
-    render :template => 'users/mini_login',:layout => false
+    render :template => 'users/mini_login', :layout => false
+  end
+
+
+  #管理员授权并
+  #获得authorize_url并引到至授权页面
+  def new_binding
+    client = WeiboOAuth2::Client.new
+    authorize_url = client.authorize_url
+    redirect_to authorize_url
+  end
+
+  #返回授权结果
+  #当用户拒绝授权时，浏览器会重定向到redirect_uri，并附加错误信息
+  #当用户同意授权时，浏览器会重定向到redirect_uri，并附加autorization_code
+  #注意：此请求必须是HTTP POST方式 例如：
+  def callback
+    client = WeiboOAuth2::Client.new
+    #使用未授权的Request token获取Access token
+    access_token = client.auth_code.get_token(params[:code].to_s)
+    #授权用户id
+    session[:uid] = access_token.params["uid"]
+    #用户令牌
+    session[:access_token] = access_token.token
+    #周期
+    session[:expires_at] = access_token.expires_at
+
+    #使用授权的Access token获取用户信息
+    @user = client.users.show_by_uid(session[:uid].to_i)
+    redirect '/'
   end
 
 end
