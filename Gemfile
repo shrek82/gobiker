@@ -70,3 +70,6 @@ gem 'rails-footnotes', '>= 3.7.9', :group => :development
 
 #sina weibo
 gem 'weibo_2'
+
+#genghao de fenye
+#gem 'kaminari', '~> 0.13.0'

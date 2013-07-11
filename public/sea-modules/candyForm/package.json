@@ -1,0 +1,9 @@
+{
+    "family": "sea-modules",
+    "name": "candyForm",
+    "version": "1.0.1",
+    "description": "hello spm",
+    "spm": {
+        "output": ["candyForm.js"]
+    }
+}
