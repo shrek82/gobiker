@@ -86,6 +86,15 @@ module Gobiker
   end
 end
 
+#--no-test-framework， --no-helper，和--no-assets.
+config.generators do |g|
+  g.stylesheets false
+  g.test_framework false
+  g.helper false
+  g.assets false
+  g.fixture_replacement false
+end
+
 #request my method
 require 'common'
 
