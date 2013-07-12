@@ -150,6 +150,10 @@ class Study < ActiveRecord::Base
     #所以选择用哪种条件表达式方式就得根据实际情况而定了，一般来说简单的查询使用Hash方式，当复杂性无法满足的时候使用Array型。至于String方式直接写SQL语句的最好还是别用了。
     #查询返回的结果可以当做一个Array使用，如果什么都没查到，返回的长度为0。
 
+    
+    #方法
+    Model.where()+first[|count|]+order(:id)+limit(7)
+
     #性能差异
     Album.where(:release_year => 1966).count #0.2ms
     Album.find_all_by_release_year(1966).count #0.3ms

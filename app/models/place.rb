@@ -17,9 +17,23 @@ class Place < ActiveRecord::Base
   validates_presence_of :intro, :message => '不能为空', :text => '地址'
   validates_length_of :name, :in => (2..30),:message=>'不能少于2个字符'
   #validates_format_of :name, :with => /^[\w\.]+$/,
+  #一般查询预览字段
+  scope :base_field,select("places.id,places.name")
+  #范围快捷设置
+  scope :recommended,where(:is_recommended=>true)
+  #用户信息
+  scope :join_user,select("users.username").joins("LEFT JOIN users ON users.id=places.user_id")
+  #地址位置信息
+  scope :join_city,select("provinces.name,cities.name").joins("LEFT JOIN provinces ON provinces.id=places.province_id LEFT JOIN cities ON cities.id=places.city_id")
+  #查询
+  scope :search, lambda { |k,a| where('places.name like ? OR places.name like ?', "%#{k}%","%#{a}%") }
 
+  #还可以这样追加model的方法
+  def self.fixed
+    where(:is_fixed=>true)
+  end
 
-                      #学习笔记
+  #学习笔记
   #不验证
   #Place.save(:validate => false)
 

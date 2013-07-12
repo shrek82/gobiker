@@ -771,7 +771,7 @@ function setCookie(name, value) {
     document.cookie = name + "=" + escape(value) + "; path=/;domain=ask.qyer.com";
 }
 
-loadjscssfile("/static/js/jquery.cookie.js", "js");
+loadjscssfile("/js/jquery.cookie.js", "js");
 
 function getABFromGuid() {
     var re = new RegExp("(^| )_guid=([^;]*)(;|$)", "i");

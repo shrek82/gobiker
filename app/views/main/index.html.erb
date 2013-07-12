@@ -1,12 +1,12 @@
 <% @title=Gobiker::Application.config.site_name %>
 
 <% content_for:head do %>
-    <%= javascript_include_tag "/static/js/hotel/oper_hotel.js" %>
-    <link rel="stylesheet" href="/static/css/index/style.css"/>
-    <link rel="stylesheet" href="/static/css/jquery.ui.datepicker.css"/>
-    <script type="text/javascript" src="/static/js/jquery.datetimeplus.js"></script>
-    <script type="text/javascript" src="/static/js/jquery.ui.core.js"></script>
-    <script type="text/javascript" src="/static/js/jquery.ui.datepicker.js"></script>
+    <%= javascript_include_tag "/js/hotel/oper_hotel.js" %>
+    <link rel="stylesheet" href="/css/index/style.css"/>
+    <link rel="stylesheet" href="/css/jquery.ui.datepicker.css"/>
+    <script type="text/javascript" src="/js/jquery.datetimeplus.js"></script>
+    <script type="text/javascript" src="/js/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
 <% end %>
 <%= render 'focus' %>
 <div class="ind_main">
@@ -908,11 +908,11 @@
     </map>
   </div>
 </div>
-<script src="/static/js/slides.jquery.js" type="text/javascript"></script>
+<script src="/js/slides.jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
-    setTimeout('loadjscssfile("/static/js/beforelogin.js","js")', 1000);
+    setTimeout('loadjscssfile("/js/beforelogin.js","js")', 1000);
 </script>
 
 <% content_for:footer do %>
-    <script type="text/javascript" src="/static/js/www/index_subjoin.js"></script>
+    <script type="text/javascript" src="/js/www/index_subjoin.js"></script>
 <% end %>

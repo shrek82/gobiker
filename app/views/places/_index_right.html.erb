@@ -11,7 +11,7 @@
           <a href="/places/<%=p.id%>" target="_blank" ><%=image_tag(p.img_path,{:width=>'130px',:height=>'90px',:alt=>p.name})%></a>
         </div>
         <p class="gui_jnlist_item_tit"><%=link_to p.name,p,{:target => '_blank'}%></p>
-        <p class="gui_jnlist_item_text">中国<br> 2013-06-09更新</p>
+        <p class="gui_jnlist_item_text">中国<br> <%= localize p.created_at,:format => :default %>更新</p>
       </li>
   <% end %>
 </ul>
