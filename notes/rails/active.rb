@@ -204,6 +204,8 @@ class Study < ActiveRecord::Base
     #explain调试，可以看到用了什么索引
     Album.where(:release_year => 1960..1969).explain
 
+    Place.joins(:user).where();
+
     #json
     User.find(:all, :limit => 10,
               :joins => "LEFT JOIN `user_points` ON user_points.user_id = users.id" ,
