@@ -124,4 +124,10 @@ module ApplicationHelper
     end
     raw(html+='</select>')
   end
+
+
+  #显示附件照片
+  def img_path(p={},size='thumb')
+    return '/uploads/pics/'+p[:created_at].strftime('%Y')+'/'+p[:created_at].strftime('%m%d')+'/'+p[:id].to_s+'_'+size+'.jpg'
+  end
 end

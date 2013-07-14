@@ -90,3 +90,31 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	height: 3px;
 	width: 1px;
 }
+
+
+#upload-browse {
+    float: left;
+    background: url(/static/images/album_button_select.gif) no-repeat;
+    display: block;
+    width: 135px;
+    height: 34px;
+    margin-right: 5px
+}
+
+#upload-clear {
+    float: left;
+    background: url(/static/images/album_button_delete.gif) no-repeat;
+    display: block;
+    width: 135px;
+    height: 34px;
+    margin-right: 5px
+}
+
+#upload-upload {
+    float: left;
+    background: url(/static/images/album_button_upload.gif) no-repeat;
+    display: block;
+    width: 135px;
+    height: 34px;
+    margin-right: 5px
+}

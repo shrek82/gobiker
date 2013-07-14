@@ -47,37 +47,13 @@
     var uploaded_id = null;
     $(document).ready(function () {
         $(function () {
-            $("#file_upload").uploadify({
-                'auto': true,
-                'fileTypeExts': '*.gif; *.jpg; *.png',
-                'removeCompleted': true,
-                'fileSizeLimit': '3MB',
-                'width': 160,
-                'queueSizeLimit': 50,
-                'uploadLimit': 50,
-                'method': 'post',
-                'multi': true,
-                'removeTimeout': 0.5,
-                'successTimeout': 30,
-                'buttonText': '选择文件...',
-                'swf': '/static/uploadify/uploadify.swf',
-                'uploader': '/attacheds/upload',
-                'fileObjName':'attached[img]',
-                'formData': {
-                    "_uploader":"uploadify",
-                    "_format":"json",
-                    "<%= key = Rails.application.config.session_options[:key] %>" : "<%= cookies[key] %>",
-                    "<%= request_forgery_protection_token %>" : "<%= form_authenticity_token %>"
-                }
-            });
+
         });
     });
 
 </script>
 
-<form action="/attacheds/upload" method="post" enctype="multipart/form-data" id="pics_upload_form">
   <input type="file" name="file_upload" id="file_upload"/>
-</form><br><br>
 <div style=" text-align: center; margin: 10px;  display: none">
   <input type="button" onclick="upload_pic()" class="button_blue" value="开始上传" id="start_button">
 </div>

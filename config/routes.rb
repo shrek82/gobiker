@@ -164,7 +164,7 @@ Gobiker::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
 
   #其他的
-  #match ':controller(/:action(/:id))(.:format)'
+  match ':controller(/:action(/:id))(.:format)'
   #上述這一行設定就包括六種路徑方式：
 
   #match '/:controller'

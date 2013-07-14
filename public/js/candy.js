@@ -1,11 +1,40 @@
 var readyScript = {};
-var readyRun = function () {
+
+function readyRun() {
     var statrTime;
     $.each(readyScript, function (name, script) {
         statrTime = new Date().getTime();
         script();
         console.log('run ' + name + ':' + (new Date().getTime() - statrTime) / 1000 + 's');
     });
+}
+
+//获取城市下拉菜单
+function get_cities(pid){
+    $.ajax({
+        url:'/common/cities_select',
+        type:'post',
+        dataType:'html',
+        data:{province_id:pid},
+        success:function(data){
+            console.log(data);
+            $('#cities').html(data);
+        }
+    })
+}
+
+//获取城市下拉菜单
+function get_area(cid){
+    $.ajax({
+        url:'/common/areas_select',
+        type:'post',
+        dataType:'html',
+        data:{city_id:cid},
+        success:function(data){
+            console.log(data);
+            $('#areas').html(data);
+        }
+    })
 }
 
 //打印log
@@ -307,5 +336,83 @@ candyLayer.prototype.deleteRecord = function (cid,options) {
         },
         cancel:true
     });
+
+}
+
+//uploader
+function go_uploader(options){
+
+    var upload_file_ids='';
+    var img_ids=$('#img_ids');
+    var img_path=$('#img_path');
+    var includBefore=$('#includBefore');
+    var uploadify_preview=$('#uploadify_preview');
+    var _this=this;
+
+    var def={
+        'auto': true,
+        'fileTypeExts': '*.gif; *.jpg; *.png',
+        'removeCompleted': true,
+        'fileSizeLimit': '3MB',
+        'width': 160,
+        'queueSizeLimit': 20,
+        'uploadLimit': 20,
+        'method': 'post',
+        'multi': true,
+        'removeTimeout': 0.5,
+        'successTimeout': 30,
+        'buttonText': '添加照片...',
+        'swf': '/static/uploadify/uploadify.swf',
+        'uploader': '/attacheds/upload',
+        'fileObjName':'attached[img]',
+        'formData': {
+            "_uploader":"uploadify",
+            "_format":"json",
+            "<%= key = Rails.application.config.session_options[:key] %>" : "<%= cookies[key] %>",
+            "<%= request_forgery_protection_token %>" : "<%= form_authenticity_token %>"
+        },
+        //初始化完成
+        'onInit': function(instance) {
+        },
+        //即将上传
+        'onUploadStart' : function(file) {
+        },
+        //当每一个文件上传成功时触发
+        'onUploadSuccess' : function(file, data, response) {
+            uploadify_preview.css('display','block');
+            if(data){
+                var json = eval("(" + data + ")");
+                if(json.state=="SUCCESS"){
+                    upload_file_ids=upload_file_ids?upload_file_ids+','+json['file_id']:json['file_id'];
+                    img_ids.val(img_ids.val().length>0?img_ids.val()+','+json['file_id']:json['file_id']);
+                    img_path.val(img_path.val().length==0?json['url']:img_path.val());
+                    includBefore.before('<li><img src="'+json['url']+'"></li>')
+                }
+                else{
+                    alert('很抱歉，照片上传失败，原因：\n\n'+json.error);
+                }
+            }
+        },
+        //队列完成时触发
+        'onQueueComplete' : function(queueData) {
+            _this.preview();
+        }
+    };
+
+    this.opt= $.extend({},def,options);
+
+    //绑定上传事件
+    this.uploadify=function(){
+        $("#file_upload").uploadify(this.opt);
+    }
+
+    //绑定以预览图片事件
+    this.preview=function(){
+        var preview=uploadify_preview.find('li');
+        preview.bind('click',function(e){
+            preview.removeClass('cur');
+            $('#img_path').val($(this).addClass('cur').find('img').attr('src'));
+        })
+    }
 
 }

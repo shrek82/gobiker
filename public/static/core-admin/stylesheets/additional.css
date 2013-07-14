@@ -77,3 +77,9 @@ td.record-author{width: 60px;text-align: center}
     border: 1px solid #AEAEAE;
 }
 .alert ul{margin-left: 15px}
+
+/*上传预览区*/
+#uploadify_preview ul{list-style:none;padding: 0;margin: 0}
+#uploadify_preview li{width:100px;height:75px;margin-bottom:5px;overflow:hidden;float: left;margin-right: 4px;padding:4px;border: 1px solid #cccccc;}
+#uploadify_preview li img{width:100px;height: 75px}
+#uploadify_preview li.cur{border: 1px solid #36ba16;background-color: #ddffda}

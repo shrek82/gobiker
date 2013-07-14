@@ -5,7 +5,7 @@ class Place < ActiveRecord::Base
   #default_scope :order => 'id'
   #字段白名单，可以通过parrt[:place]
   #会影响rake db:seed数据导入
-  attr_accessible :name, :content, :tags, :category_id, :img_path, :province_id, :city_id, :area_id, :address, :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num, :intro, :content
+  attr_accessible :name, :content, :tags, :category_id, :img_path,:img_ids, :province_id, :city_id, :area_id, :address, :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num, :intro, :content
 
   #黑名单
   #attr_protected :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num

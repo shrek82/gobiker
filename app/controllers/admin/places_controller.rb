@@ -1,8 +1,6 @@
 #coding: utf-8
 class Admin::PlacesController < AdminController
 
-  cache_sweeper :place_sweeper, :only => [:create, :update, :destroy]
-
   #目的地列表
   def index
     conditions=Array.new
@@ -24,6 +22,7 @@ class Admin::PlacesController < AdminController
   #编辑记录
   def edit
     @place = Place.find(params[:id])
+    @pics=(@place.img_ids.blank?)?[]:Attached.where(:id=>@place.img_ids.split(','))
   end
 
   #提交新建

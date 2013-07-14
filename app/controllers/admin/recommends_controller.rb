@@ -1,47 +1,30 @@
 #coding: utf-8
 class Admin::RecommendsController < AdminController
-  # GET /admin/recommends
-  # GET /admin/recommends.json
+
+  #目的地列表
   def index
-    @recommends = Recommend.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @recommends }
+    conditions=Array.new
+    if params[:q]
+      conditions << "name LIKE ?"
+      conditions << "%#{params[:q]}%"
     end
+    @recommends=Recommend.paginate(:page => params[:page], :per_page => 10, :conditions => conditions)
   end
 
-  # GET /admin/recommends/1
-  # GET /admin/recommends/1.json
-  def show
-    @recommend = Recommend.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @recommend }
-    end
-  end
-
-  # GET /admin/recommends/new
-  # GET /admin/recommends/new.json
+  #添加记录
   def new
     @recommend = Recommend.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @recommend }
-    end
   end
 
-  # GET /admin/recommends/1/edit
+  #编辑记录
   def edit
     @recommend = Recommend.find(params[:id])
+    @pics=(@recommend.img_ids.blank?)?[]:Attached.where(:id=>@recommend.img_ids.split(','))
   end
 
-  # POST /admin/recommends
-  # POST /admin/recommends.json
+  #提交新建
   def create
-    @recommend = Recommend.new(params[:admin_recommend])
+    @recommend = Recommend.new(params[:recommend])
 
     respond_to do |format|
       if @recommend.save
@@ -54,32 +37,24 @@ class Admin::RecommendsController < AdminController
     end
   end
 
-  # PUT /admin/recommends/1
-  # PUT /admin/recommends/1.json
+  #保存修改
   def update
-    @recommend = Recommend.find(params[:id])
 
-    respond_to do |format|
-      if @recommend.update_attributes(params[:admin_recommend])
-        format.html { redirect_to @recommend, notice: 'Recommend was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @recommend.errors, status: :unprocessable_entity }
-      end
+    @recommend = Recommend.find(params[:id])
+    @recommend.is_fixed=params[:is_fixed]
+    @recommend.is_recommended=params[:is_recommended]
+    if @recommend.update_attributes(params[:recommend])
+      render_client :redirect_to => admin_recommends_path, :success => '资料修改成功'
+    else
+      render_client :action => 'edit', :error => @recommend.errors.full_messages
     end
   end
 
-  # DELETE /admin/recommends/1
-  # DELETE /admin/recommends/1.json
+  #删除
   def destroy
     @recommend = Recommend.find(params[:id])
     @recommend.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_recommends_url }
-      format.json { head :no_content }
-    end
+    render_client :redirect_to => admin_recommends_path, :success => '资料删除成功'
   end
+
 end
-          

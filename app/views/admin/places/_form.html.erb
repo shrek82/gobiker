@@ -1,3 +1,9 @@
+<% content_for:head do %>
+    <link rel="stylesheet" type="text/css" href="/static/uploadify/uploadify.css">
+    <script type="text/javascript" src="/static/uploadify/jquery.uploadify-3.1.min.js"></script>
+<% end %>
+
+
 <%
    if @place.new_record?
      method_path=admin_places_path
@@ -5,6 +11,7 @@
      method_path=admin_place_path(@place.id)
    end
 %>
+
 <%= form_for(@place, :url => method_path, :html => {:id => 'form1', :class => 'form-horizontal'}) do |f| %>
 
     <%= validate_msg @place %>
@@ -54,6 +61,25 @@
       </div>
     </div>
 
+    <div class="control-group" id="uploadify_preview" style="display:<%= (@pics.blank?)?'none':'block' %>">
+      <div class="controls">
+        <ul>
+          <% @pics.each do |p| %>
+          <li><img src="<%=img_path p %>" alt=""/></li>
+          <% end %>
+          <li id="includBefore" style="display: none"></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= f.hidden_field :img_ids, :class => 'input-xxlarge',:id=>"img_ids" %>
+        <%= f.hidden_field :img_path, :class => 'input-xxlarge',:id=>"img_path" %>
+        <input type="file" name="file_upload" id="file_upload"/>
+      </div>
+    </div>
+
     <div class="control-group">
       <%= f.label :user_id,:class => 'control-label' %>
       <div class="controls">
@@ -84,12 +110,15 @@
 <% end %>
 
 <script type="text/javascript">
-    readyScript.bindAjaxForm = function () {
+    readyScript.bind = function () {
         $('#form1').bind("submit", function (e) {
             e.preventDefault();
             new ajaxForm($(this), {
                 dataType: 'json'
             }).send();
-        })
+        });
+        var uploader=new go_uploader();
+        uploader.preview();
+        uploader.uploadify();
     }
 </script>
