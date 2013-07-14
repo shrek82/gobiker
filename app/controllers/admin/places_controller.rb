@@ -22,21 +22,18 @@ class Admin::PlacesController < AdminController
   #编辑记录
   def edit
     @place = Place.find(params[:id])
-    @pics=(@place.img_ids.blank?)?[]:Attached.where(:id=>@place.img_ids.split(','))
+    @pics=(@place.img_ids.blank?) ? [] : Attached.where(:id => @place.img_ids.split(','))
   end
 
   #提交新建
   def create
     @place = Place.new(params[:place])
 
-    respond_to do |format|
-      if @place.save
-        format.html { redirect_to @place, notice: 'Place was successfully created.' }
-        format.json { render json: @place, status: :created, location: @place }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
+    if @place.save
+      render_client :redirect_to => admin_places_path, :success => '目的地添加成功'
+    else
+      #render :text => @place.errors.full_messages
+      render_client :action => 'new', :error => @place.errors.full_messages
     end
   end
 

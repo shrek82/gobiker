@@ -1,6 +1,8 @@
 <% content_for:head do %>
     <link rel="stylesheet" type="text/css" href="/static/uploadify/uploadify.css">
     <script type="text/javascript" src="/static/uploadify/jquery.uploadify-3.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.all.js"></script>
 <% end %>
 
 
@@ -25,14 +27,14 @@
 
 
     <div class="control-group">
-      <%= f.label :province_id,:class => 'control-label' %>
+      <%= f.label :province_id, :class => 'control-label' %>
       <div class="controls">
         <%= province_city_area_select :place, @place.province_id, @place.city_id, @place.area_id %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :address,:class => 'control-label' %>
+      <%= f.label :address, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :address, :class => 'input-xxlarge' %>
       </div>
@@ -40,32 +42,34 @@
 
 
     <div class="control-group">
-      <%= f.label :tags,:class => 'control-label' %>
+      <%= f.label :tags, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :tags, :class => 'input-xxlarge' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :intro,:class => 'control-label' %>
+      <%= f.label :intro, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_area :intro, :rows => '3', :class => 'span10' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :content,:class => 'control-label' %>
+      <%= f.label :content, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_area :content, :rows => '6',:id=>'content', :class => 'span10' %>
-        <%= render 'global/ueditor',:id => 'content',:options=>{:initialFrameHeight=>'250'} %>
+        <%= f.text_area :content, :rows => '6', :id => 'content', :class => 'span10' %>
+        <%= render 'global/ueditor', :id => 'content', :options => {:initialFrameHeight => '250'} %>
       </div>
     </div>
 
-    <div class="control-group" id="uploadify_preview" style="display:<%= (@pics.blank?)?'none':'block' %>">
+    <div class="control-group" id="uploadify_preview" style="display:<%= (@pics.blank?) ? 'none' : 'block' %>">
       <div class="controls">
         <ul>
-          <% @pics.each do |p| %>
-          <li><img src="<%=img_path p %>" alt=""/></li>
+          <% if @pics %>
+              <% @pics.each do |p| %>
+                  <li><img src="<%= img_path p %>" alt=""/></li>
+              <% end %>
           <% end %>
           <li id="includBefore" style="display: none"></li>
         </ul>
@@ -74,21 +78,21 @@
 
     <div class="control-group">
       <div class="controls">
-        <%= f.hidden_field :img_ids, :class => 'input-xxlarge',:id=>"img_ids" %>
-        <%= f.hidden_field :img_path, :class => 'input-xxlarge',:id=>"img_path" %>
+        <%= f.hidden_field :img_ids, :class => 'input-xxlarge', :id => "img_ids" %>
+        <%= f.hidden_field :img_path, :class => 'input-xxlarge', :id => "img_path" %>
         <input type="file" name="file_upload" id="file_upload"/>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :user_id,:class => 'control-label' %>
+      <%= f.label :user_id, :class => 'control-label' %>
       <div class="controls">
         <%= @place.user.username unless @place.new_record? %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :is_recommended,:class => 'control-label' %>
+      <%= f.label :is_recommended, :class => 'control-label' %>
 
       <div class="controls">
         <label class="checkbox inline">
@@ -111,13 +115,13 @@
 
 <script type="text/javascript">
     readyScript.bind = function () {
-        $('#form1').bind("submit", function (e) {
+        $('#form12').bind("submit", function (e) {
             e.preventDefault();
             new ajaxForm($(this), {
                 dataType: 'json'
             }).send();
         });
-        var uploader=new go_uploader();
+        var uploader = new go_uploader();
         uploader.preview();
         uploader.uploadify();
     }

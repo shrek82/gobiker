@@ -152,9 +152,21 @@ cn:
       update: "修改%{model}"
   activerecord:
     models:
+      recommend: "推荐设置"
+      comment: "评论"
+      route: "路线"
       place: "目的地"
-      user: "用户"
+      user: "会员"
+      forum: "论坛"
+      event: "活动"
+      manager: "管理员"
     attributes:
+      recommend:
+        name: "名称"
+        type: "类型"
+        order_num: "排序"
+        redirect: "跳转地址"
+        intro: "简介"
       place:
         name:  "名称"
         address: "地址"
