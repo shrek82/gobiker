@@ -18,13 +18,13 @@ function get_cities(pid){
         data:{province_id:pid},
         success:function(data){
             console.log(data);
-            $('#cities').html(data);
+            $('#city_select').html(data);
         }
     })
 }
 
 //获取城市下拉菜单
-function get_area(cid){
+function get_areas(cid){
     $.ajax({
         url:'/common/areas_select',
         type:'post',
@@ -32,7 +32,7 @@ function get_area(cid){
         data:{city_id:cid},
         success:function(data){
             console.log(data);
-            $('#areas').html(data);
+            $('#area_select').html(data);
         }
     })
 }

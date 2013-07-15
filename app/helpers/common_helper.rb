@@ -12,7 +12,7 @@ module CommonHelper
   end
 
 #结束输出到客户端
-  def render_client(data={})
+  def respond(data={})
 
     #获取客户端请求格式
     format=params[:_format]||'html'

@@ -26,14 +26,15 @@ class Admin::PlacesController < AdminController
   end
 
   #提交新建
-  def create
-    @place = Place.new(params[:place])
 
+  def create
+
+    @place = Place.new(params[:place])
     if @place.save
-      render_client :redirect_to => admin_places_path, :success => '目的地添加成功'
+      respond :redirect_to => admin_places_path, :success => '目的地添加成功'
     else
       #render :text => @place.errors.full_messages
-      render_client :action => 'new', :error => @place.errors.full_messages
+      respond :action => 'new', :error => @place.errors.full_messages
     end
   end
 
@@ -48,9 +49,9 @@ class Admin::PlacesController < AdminController
     @place.is_fixed=params[:is_fixed]
     @place.is_recommended=params[:is_recommended]
     if @place.update_attributes(params[:place])
-      render_client :redirect_to => admin_places_path, :success => '资料修改成功'
+      respond :redirect_to => admin_places_path, :success => '资料修改成功'
     else
-      render_client :action => 'edit', :error => @place.errors.full_messages
+      respond :action => 'edit', :error => @place.errors.full_messages
     end
   end
 
@@ -58,7 +59,7 @@ class Admin::PlacesController < AdminController
   def destroy
     @place = Place.find(params[:id])
     @place.destroy
-    render_client :redirect_to => admin_places_path, :success => '资料删除成功'
+    respond :redirect_to => admin_places_path, :success => '资料删除成功'
   end
 
 end

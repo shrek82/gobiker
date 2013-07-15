@@ -16,6 +16,9 @@ class Place < ActiveRecord::Base
   validates_presence_of :address, :message => '不能为空', :text => '地址'
   validates_presence_of :intro, :message => '不能为空', :text => '地址'
   validates_length_of :name, :in => (2..30),:message=>'不能少于2个字符'
+  validates_length_of :intro, :maximum => 250
+
+
   #validates_format_of :name, :with => /^[\w\.]+$/,
   #一般查询预览字段
   scope :base_field,select("places.id,places.name")

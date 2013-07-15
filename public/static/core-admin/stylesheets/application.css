@@ -6860,7 +6860,7 @@ form {
 }
 
 .input-prepend input[type="text"], .input-prepend input[type="password"], .input-prepend input[type="email"], .input-prepend input[type="number"] {
-    padding-left: 45px
+    padding-left: 5px
 }
 
 div.uploader {

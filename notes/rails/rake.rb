@@ -49,4 +49,8 @@ db:reset 从db\schema.rb中为当前环境重建数据库（先删后建）.
 db:rollback 回滚(清华出版社一本SQLSERVER书的名词[很奇怪为什么不直接用滚回])数据库到前一个版本. 指定回滚到哪一步要用 STEP=n 参数
 db:version 检索当前模式下的版本
 
+
+使用 rake db:scheme:load 取代 rake db:migrate 来初始化空的数据库。
+使用 rake db:test:prepare 来更新测试数据库的 schema。
+
 =end

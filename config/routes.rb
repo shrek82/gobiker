@@ -13,11 +13,11 @@ Gobiker::Application.routes.draw do
   #浏览器支援PUT跟DELETE吗？Rails其实偷藏了_method参数。HTML规格只定义了GET/POST，所以HTML表单是没有PUT/DELETE的。但是XmlHttpRequest规格(也就是Ajax用的)有定义GET/POST/PUT/DELETE/HEAD/OPTIONS。
 
   #as帮助我们生产一个admin_path和一个admin_url
-  match '/admin' => 'admin#frame',:as=>'admin'
-  match '/admin/dashboard' => 'admin#dashboard'
-  match 'users/ajax' => 'users#ajax'
+  match '/admin' => 'admin#frame',:as=>'admin',:via => [:get,:post]
+  match '/admin/dashboard' => 'admin#dashboard',:via => [:get,:post]
+  match 'users/ajax' => 'users#ajax',:via => [:get,:post]
   match 'test' => 'users#mail'
-  match '/login' => 'users#login',:as=>'login'
+  match '/login' => 'users#login',:as=>'login',:via => [:get,:post]
   match '/register' => 'users#register',:as=>'register'
   match '/forums/threads/:id' => 'forums#thread', :constraints => {:id => /\d/},:as=>'forum_thread'
 
@@ -38,6 +38,7 @@ Gobiker::Application.routes.draw do
 
 
   #路径层次关系(增加tasks6种操作，路径有链接，controller没在一起)
+  #使用嵌套路由(nested routes)来更佳地表达与 ActiveRecord 模型的关系。
   resources :projects do
     resources :tasks
   end
@@ -62,6 +63,7 @@ Gobiker::Application.routes.draw do
 
   #自定群集路由Collection
   #除了 ​​惯例中的七个Actions外，如果你需要自定群集的Action，可以这样设定：
+  #若你需要定义多个 member/collection 路由时，使用替代的区块语法(block syntax)。
   resources :forums do
     collection do
       get :list
@@ -77,8 +79,8 @@ Gobiker::Application.routes.draw do
     end
   end
 
-  #这样一来，除了惯例的几个actions外，还有
-  #sold_products GET    /ads/sold(.:format)                             ads#sold
+  #当需要加入一个或多个动作至一个 RESTful(create,post,update...) 资源
+  #/products/:id/sold(.:format)                   products#sold
   resources :products do
     get :sold, :on => :member
   end
@@ -92,6 +94,7 @@ Gobiker::Application.routes.draw do
   resources :users
   resources :asks
 
+  #使用命名空间路由来群组相关的行为。
   namespace :user do |user|
     resources :places
   end

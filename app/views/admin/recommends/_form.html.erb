@@ -4,6 +4,10 @@
 <% end %>
 
 
+<%=Time.now.wday %>
+<br>
+<%= time_ago_in_words(Time.new-13.second,true) %>
+<%= distance_of_time_in_words(Time.new, Time.new + 15.seconds, true) %>
 <%
    if @recommend.new_record?
      method_path=admin_recommends_path
@@ -97,7 +101,7 @@
 
 <script type="text/javascript">
     readyScript.bind = function () {
-        $('#form12').bind("submit", function (e) {
+        $('#form1').bind("submit", function (e) {
             e.preventDefault();
             new ajaxForm($(this), {
                 dataType: 'json'

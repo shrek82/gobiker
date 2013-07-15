@@ -56,7 +56,7 @@ module ApplicationHelper
   #表单验证提示
   def validate_msg(record)
     if record.errors.any?
-      str='<div class="alert alert-block"> <button type="button" class="close" data-dismiss="alert">×</button> <h4>错误的操作('+@place.errors.count.to_s+'处)</h4> <ul>'
+      str='<div class="alert alert-block"> <button type="button" class="close" data-dismiss="alert">×</button> <h4>错误的操作('+record.errors.count.to_s+'处)</h4> <ul>'
       record.errors.full_messages.each do |msg|
         str+='<li>'+msg+'</li>'
       end
@@ -82,7 +82,7 @@ module ApplicationHelper
     html+='&nbsp;<span id="city_select">'
     if pid
       cities=City.where(:province_id => pid)
-      html+='<select name="'+object.to_s+'[city_id]" id="cities" onchange="get_area(this.value)" class="span2">'
+      html+='<select name="'+object.to_s+'[city_id]" id="cities" onchange="get_areas(this.value)" class="span2">'
       html+='<option>选择县市</option>'
       cities.each do |c|
         selected=''

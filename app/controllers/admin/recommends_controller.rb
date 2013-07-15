@@ -26,14 +26,11 @@ class Admin::RecommendsController < AdminController
   def create
     @recommend = Recommend.new(params[:recommend])
 
-    respond_to do |format|
-      if @recommend.save
-        format.html { redirect_to @recommend, notice: 'Recommend was successfully created.' }
-        format.json { render json: @recommend, status: :created, location: @recommend }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @recommend.errors, status: :unprocessable_entity }
-      end
+    if @recommend.save
+      respond :redirect_to => admin_recommends_path, :success =>I18n.t('activerecord.models.recommend')+'添加成功'
+    else
+      #render :text => @place.errors.full_messages
+      respond :action => 'new', :error => @recommend.errors.full_messages
     end
   end
 

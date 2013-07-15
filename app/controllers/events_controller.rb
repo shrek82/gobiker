@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   def edit
   end
 
-  def update
+  def update1
   end
 
   def sign_up

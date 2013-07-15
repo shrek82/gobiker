@@ -5,7 +5,7 @@ class Attached < ActiveRecord::Base
                   :att, :att_content_type, :att_file_name, :att_file_size, :att_updated_at
 
   has_attached_file :img,
-                    :styles => {:thumb => "150x150>"},
+                    :styles => {:thumb => "150x150>",:original => {:geometry => '550x400>',:watermark_path => "#{Rails.root}/public/images/x5.png",:position => 'Center'} },
                     #:styles => {:thumb => "150x150>", :mini => "100x100>",:square=>"80x80#",:medium => "300x300>", :large => "600x600>"},
                     :default_url => "/images/:style/missing.png",
                     :url => "/uploads/pics/:year/:month:day/:id_:style.:extension",
