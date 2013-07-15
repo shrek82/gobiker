@@ -44,12 +44,12 @@ module ApplicationHelper
 
   #信息提示
   def block_alert
-    if flash[:notice]
-      return raw '<div class="alert alert-block"> <button type="button" class="close" data-dismiss="alert">×</button>'+flash[:notice].to_s+'</div>'
-    elsif flash[:error]
-      return raw '<div class="alert alert-error"> <button type="button" class="close" data-dismiss="alert">×</button> <strong>操作错误!</strong>'+flash[:error].to_s+'</div>'
+    if flash[:error]
+      return raw '<div class="alert alert-error"> <button type="button" class="close" data-dismiss="alert">×</button> <strong></strong>'+flash[:error].to_s+'</div>'
     elsif flash[:success]
-      return raw '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button> <strong>操作成功!</strong>'+flash[:success].to_s+'</div>'
+      return raw '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button> <strong></strong>'+flash[:success].to_s+'</div>'
+    elsif flash[:notice]
+      return raw '<div class="alert alert-block"> <button type="button" class="close" data-dismiss="alert">×</button>'+flash[:notice].to_s+'</div>'
     end
   end
 

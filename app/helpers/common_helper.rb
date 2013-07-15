@@ -20,18 +20,18 @@ module CommonHelper
     #服务器返回参数
     data[:data]||={}
     data[:status]||=200
-    data[:layout]=true
+    data[:layout]=true unless defined? data[:layout]
     data[:layout]=false if is_ajax?
     data[:data].store("redirect_to", data[:redirect_to]) if data[:redirect_to]
     data[:data].store("notice", data[:notice]) if data[:notice]
 
     #返回成功或错误标示及详细信息
     if data[:success]
-      flash[:success]=data[:success] if data[:redirect_to]
+      flash[:success]=data[:success] unless is_ajax?
       data[:data].store("status", 1)
       data[:data].store("success", data[:success])
     elsif data[:error]
-      flash[:error]=data[:error] if data[:redirect_to]
+      flash[:error]=data[:error] unless data[:redirect_to]
       data[:data].store("status", 0)
       data[:data].store("error", data[:error])
     else
@@ -43,12 +43,13 @@ module CommonHelper
     #普通方式请求且指定运行结束后跳转，优先进行跳转
     #ajax请求时，不执行跳转，否则ajax获取结果会是跳转后的页面
     if data[:redirect_to] && !is_ajax?
-      redirect_to data[:redirect_to], :notice => data[:notice], :success => data[:success]
-      #仅当指定action才渲染模板(并根据是否为ajax觉得是否使用layout),一般是提交页面没有模板
+      redirect_to data[:redirect_to], :notice => data[:notice]
+
+    #仅当指定action才渲染模板(并根据是否为ajax觉得是否使用layout),一般是提交页面没有模板
     elsif format=='html'
-      if data[:action]
+      if defined? data[:action]
         render action: data[:action], layout: data[:layout], status: data[:status]
-      elsif data[:template]
+      elsif defined? data[:template]
         render template: data[:template]
       else
         render :text => '<div class="alert alert-block">html格式需指定action或template名称!</div>'

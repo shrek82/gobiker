@@ -13,8 +13,6 @@ Gobiker::Application.routes.draw do
   #浏览器支援PUT跟DELETE吗？Rails其实偷藏了_method参数。HTML规格只定义了GET/POST，所以HTML表单是没有PUT/DELETE的。但是XmlHttpRequest规格(也就是Ajax用的)有定义GET/POST/PUT/DELETE/HEAD/OPTIONS。
 
   #as帮助我们生产一个admin_path和一个admin_url
-  match '/admin' => 'admin#frame',:as=>'admin',:via => [:get,:post]
-  match '/admin/dashboard' => 'admin#dashboard',:via => [:get,:post]
   match 'users/ajax' => 'users#ajax',:via => [:get,:post]
   match 'test' => 'users#mail'
   match '/login' => 'users#login',:as=>'login',:via => [:get,:post]
@@ -100,6 +98,10 @@ Gobiker::Application.routes.draw do
   end
 
   namespace :admin do |admin|
+    get '/' => 'admin#frame',:as=>'/'
+    post 'login'=>'admin#login'
+    get 'login'=>'admin#login'
+    get 'dashboard' => 'admin#dashboard'
     resources :ads
     resources :main
     resources :forums

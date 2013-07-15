@@ -152,7 +152,6 @@ function ajaxForm(form, opts) {
 
         //判断请求结果是否包含警告或错误(用户错误)
         if (_this.opts.dataType == 'json' && data.error) {
-            console.log(data.error);
             is_error = true;
             error_message = data.error;
         }
