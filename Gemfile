@@ -29,6 +29,7 @@ end
 
 group :development do
   gem "better_errors"
+  gem 'rails-footnotes', '>= 3.7.9'
 end
 
 ## Gemfile for Rails 3, Sinatra, and Merb
@@ -37,7 +38,7 @@ gem 'will-paginate-i18n'
 
 #upload
 gem "paperclip", "~> 3.0"
-#send mail need
+#send mail needattribute
 #gem 'tlsmail'
 
 #search gem
@@ -67,7 +68,6 @@ gem "paperclip", "~> 3.0"
 
 gem "thin"
 
-gem 'rails-footnotes', '>= 3.7.9', :group => :development
 
 #sina weibo
 gem 'weibo_2'

@@ -1,6 +1,11 @@
 #coding: utf-8
 module ApplicationHelper
 
+  def server_ip
+    location = request.env["SERVER_ADDR"]
+    render :text => "This server hosted at #{location}"
+  end
+
   def title(_title)
     content_for :title do
       _title

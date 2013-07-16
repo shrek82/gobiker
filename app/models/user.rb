@@ -1,11 +1,12 @@
 #coding: utf-8
 
 class User < ActiveRecord::Base
-  attr_accessible :avatar_path, :email, :login_date, :memo, :password, :point, :reg_date, :username
+  attr_accessible :avatar_path, :email, :login_date, :memo, :password,:pass, :point, :reg_date, :username
   has_many :comments, :dependent => :destroy
   has_many :places
   has_many :topics
 
+  before_create :generate_password
   #before_destroy :before_delete_user
 
   #http://hi.baidu.com/jiazom/item/079c91c3475f0f000bd93a53
@@ -51,5 +52,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  private
+  def generate_password
+    salt=Array.new(5){rand(1024).to_s(36)}.join
+    self.password=Digest::SHA256.hexdigest(self.password+salt)
+  end
 
 end

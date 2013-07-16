@@ -11,23 +11,26 @@ Gobiker::Application.routes.draw do
   #_path结尾是相对网址，而_url结尾则会加上完整Domain网址。
 
   #浏览器支援PUT跟DELETE吗？Rails其实偷藏了_method参数。HTML规格只定义了GET/POST，所以HTML表单是没有PUT/DELETE的。但是XmlHttpRequest规格(也就是Ajax用的)有定义GET/POST/PUT/DELETE/HEAD/OPTIONS。
-
   #as帮助我们生产一个admin_path和一个admin_url
-  match 'users/ajax' => 'users#ajax',:via => [:get,:post]
-  match 'test' => 'users#mail'
-  match '/login' => 'users#login',:as=>'login',:via => [:get,:post]
-  match '/register' => 'users#register',:as=>'register'
-  match '/forums/threads/:id' => 'forums#thread', :constraints => {:id => /\d/},:as=>'forum_thread'
 
-  #可以透过:via 参数指定HTTP Verb 动词
-  match "account/overview" => "account#overview", :via => "get"
-  #或者
-  get "admin" => 'admin#frame',:as=>'admin'
-  get "account/overview" => "account#overview"
-  get "account/setup" => "account#setup"
-  post "account/setup" => "account#setup"
-  get "users/minilogin"=>"users#minilogin"
+  #公共路由
   post "attacheds/upload" => "attacheds#upload"
+  resources :attacheds,:only => [:new,:post,:show]
+
+  #用户相关路由
+  match '/login' => 'users#login', :as => 'login', :via => [:get, :post]
+  match '/register' => 'users#register', :as => 'register'
+  match 'users/ajax' => 'users#ajax', :via => [:get, :post]
+  get "users/minilogin" => "users#minilogin", :via => "get"
+
+
+  match 'test' => 'users#mail'
+  match '/forums/threads/:id' => 'forums#thread', :constraints => {:id => /\d/}, :as => 'forum_thread'
+
+
+
+  #管理员路径
+  get "admin" => 'admin#frame', :as => 'admin'
 
   #我们可以利用:constraints设定一些参数限制，例如限制:id必须是整数。
   #match "/events/show/:id" => "events#show", :constraints => {:id => /\d/}
@@ -74,7 +77,7 @@ Gobiker::Application.routes.draw do
     collection do
       post :sign_up
       post :sign_out
-      get  :tags
+      get :tags
     end
   end
 
@@ -84,20 +87,35 @@ Gobiker::Application.routes.draw do
     get :sold, :on => :member
   end
 
+  #shallow_path加前缀
+  scope :shallow_path => "sekret" do
+    resources :posts do
+      resources :cmt, :shallow => true
+    end
+  end
+
+  #resources :posts do
+  #  resources :comments, :except => [:show, :edit, :update, :destroy]
+  #end
+  #resources :cars, :except => [:new, :index, :delete]
+  #resources :cars, :only => [:show, :edit]
+
+  #公共路径
   resources :provinces
   resources :comments
-  resources :attacheds
   resources :photos
   resources :places
   resources :routes
-  resources :users
-  resources :asks
+  resources :users,:path_names => { :new => "tianjia" }
+  resources :asks ,:path => 'wenda'
 
+  #会员个人主页
   #使用命名空间路由来群组相关的行为。
   namespace :user do |user|
     resources :places
   end
 
+  #网站管理员
   namespace :admin do |admin|
     resources :ads
     resources :main
@@ -113,7 +131,6 @@ Gobiker::Application.routes.draw do
   #<%= link_to "About", register_path %>
   #register_path => '/register'
   #register_url  => 'http://localhost:3000/register'
-
 
 
   # The priority is based upon order of creation:

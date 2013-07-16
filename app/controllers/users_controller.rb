@@ -191,4 +191,8 @@ class UsersController < ApplicationController
     redirect '/'
   end
 
+  def authenticate
+
+  end
+
 end
