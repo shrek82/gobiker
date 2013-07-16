@@ -33,8 +33,7 @@ class Admin::PlacesController < AdminController
     if @place.save
       respond :redirect_to => admin_places_path, :success => '目的地添加成功'
     else
-      #render :text => @place.errors.full_messages
-      respond :action => 'new', :error => @place.errors.full_messages
+      respond :action => 'new',:error => @place.errors.full_messages
     end
   end
 

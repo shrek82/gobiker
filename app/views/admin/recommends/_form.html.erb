@@ -3,11 +3,6 @@
     <script type="text/javascript" src="/static/uploadify/jquery.uploadify-3.1.min.js"></script>
 <% end %>
 
-
-<%=Time.now.wday %>
-<br>
-<%= time_ago_in_words(Time.new-13.second,true) %>
-<%= distance_of_time_in_words(Time.new, Time.new + 15.seconds, true) %>
 <%
    if @recommend.new_record?
      method_path=admin_recommends_path
@@ -18,12 +13,12 @@
 
 <%= form_for(@recommend, :url => method_path, :html => {:id => 'form1', :class => 'form-horizontal'}) do |f| %>
 
-    <%= validate_msg @recommend %>
+    <%= block_alert @recommend %>
 
     <div class="control-group">
-      <%= f.label :type, :class => 'control-label' %>
+      <%= f.label :category, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :type, :class => 'input-xxlarge' %>
+        <%= select("recommend", "category", Recommend::ALL_CATEGORY.invert, {:include_blank => '选择分类'}) %>
       </div>
     </div>
 
@@ -93,8 +88,8 @@
 
     <div class="control-group">
       <div class="controls">
-        <%= f.button :class => "btn btn-primary", :id => 'submit_button' %>
-        <button type="button" class="btn" id="cancel_button" onclick="history.back()">取消</button>
+        <%= f.button :class => "btn btn-primary", :id => 'submit_button',:disable_with => "提交中..." %>
+        <%= f.button '取消',:type=>"button",:class => "btn",:id=>'cancel_button',:onclick=>'history.back()'  %>
       </div>
     </div>
 <% end %>

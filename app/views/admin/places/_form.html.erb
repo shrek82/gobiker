@@ -16,7 +16,7 @@
 
 <%= form_for(@place, :url => method_path, :html => {:id => 'form1', :class => 'form-horizontal'}) do |f| %>
 
-    <%= validate_msg @place %>
+    <%= block_alert @place %>
 
     <div class="control-group">
       <%= f.label :name, '自定义标题', :class => 'control-label' %>
@@ -115,7 +115,7 @@
 
 <script type="text/javascript">
     readyScript.bind = function () {
-        $('#form12').bind("submit", function (e) {
+        $('#form1').bind("submit", function (e) {
             e.preventDefault();
             new ajaxForm($(this), {
                 dataType: 'json'

@@ -22,6 +22,7 @@ Gobiker::Application.routes.draw do
   #可以透过:via 参数指定HTTP Verb 动词
   match "account/overview" => "account#overview", :via => "get"
   #或者
+  get "admin" => 'admin#frame',:as=>'admin'
   get "account/overview" => "account#overview"
   get "account/setup" => "account#setup"
   post "account/setup" => "account#setup"
@@ -98,10 +99,6 @@ Gobiker::Application.routes.draw do
   end
 
   namespace :admin do |admin|
-    get '/' => 'admin#frame',:as=>'/'
-    post 'login'=>'admin#login'
-    get 'login'=>'admin#login'
-    get 'dashboard' => 'admin#dashboard'
     resources :ads
     resources :main
     resources :forums

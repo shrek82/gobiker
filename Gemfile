@@ -33,6 +33,7 @@ end
 
 ## Gemfile for Rails 3, Sinatra, and Merb
 gem 'will_paginate', '~> 3.0'
+gem 'will-paginate-i18n'
 
 #upload
 gem "paperclip", "~> 3.0"

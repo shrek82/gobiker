@@ -9,6 +9,7 @@ class Admin::RecommendsController < AdminController
       conditions << "%#{params[:q]}%"
     end
     @recommends=Recommend.paginate(:page => params[:page], :per_page => 10, :conditions => conditions)
+
   end
 
   #添加记录
@@ -25,7 +26,6 @@ class Admin::RecommendsController < AdminController
   #提交新建
   def create
     @recommend = Recommend.new(params[:recommend])
-
     if @recommend.save
       respond :redirect_to => admin_recommends_path, :success =>I18n.t('activerecord.models.recommend')+'添加成功'
     else
@@ -36,14 +36,12 @@ class Admin::RecommendsController < AdminController
 
   #保存修改
   def update
-
     @recommend = Recommend.find(params[:id])
     @recommend.is_fixed=params[:is_fixed]
-    @recommend.is_recommended=params[:is_recommended]
     if @recommend.update_attributes(params[:recommend])
-      render_client :redirect_to => admin_recommends_path, :success => '资料修改成功'
+      respond :redirect_to => admin_recommends_path, :success => '资料修改成功'
     else
-      render_client :action => 'edit', :error => @recommend.errors.full_messages
+      respond :action => 'edit', :error => @recommend.errors.full_messages
     end
   end
 
@@ -51,7 +49,7 @@ class Admin::RecommendsController < AdminController
   def destroy
     @recommend = Recommend.find(params[:id])
     @recommend.destroy
-    render_client :redirect_to => admin_recommends_path, :success => '资料删除成功'
+    respond :redirect_to => admin_recommends_path, :success => '资料删除成功'
   end
 
 end

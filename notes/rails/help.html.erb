@@ -1,0 +1,52 @@
+指定数组或hash <br>
+<%= select_tag "recommend[category]", options_for_select(Recommend.all_type, "MasterCard") %>
+<select id="recommend_category" name="recommend[category]">
+  <option value="目的地">place</option>
+  <option value="路线">route</option>
+</select>
+获取常量 <br>
+<%= select("post", "category", Recommend::all_type.invert, {:include_blank => true}) %>
+<select id="post_category" name="post[category]">
+  <option value=""></option>
+  <option value="place">目的地</option>
+  <option value="route">路线</option>
+</select>
+动态查询 <br>
+<%= select("post", "category", Manager.all.collect { |m| [m.name, m.id] }, {:include_blank => true}) %>
+<select id="post_category" name="post[category]"><option value=""></option>
+  <option value="1">admin</option></select>
+指定第一个空值名称
+<%= select("post", "person_id", Person.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}) %>
+<select name="post[person_id]">
+  <option value="">None</option>
+  <option value="1">David</option>
+  <option value="2" selected="selected">Sam</option>
+  <option value="3">Tobias</option>
+</select>
+
+手动输入 <br>
+<%= select("album", "genre", %w[rap rock country], {}, { :index => nil }) %>
+<select name="album[genre]" id="album__genre">
+  <option value="rap">rap</option>
+  <option value="rock">rock</option>
+  <option value="country">country</option>
+</select>
+
+<%= select("post", "category", Post::CATEGORIES, {:disabled => 'restricted'}) %>
+<select name="post[category]">
+<option></option>
+<option>joke</option>
+<option>poem</option>
+<option disabled="disabled">restricted</option>
+</select>
+
+从数据库中指定某些被禁用 <br>
+<%= collection_select(:post, :category_id, Category.all, :id, :name, {:disabled => lambda{|category| category.archived? }}) %>
+<select name="post[category_id]">
+  <option value="1" disabled="disabled">2008 stuff</option>
+  <option value="2" disabled="disabled">Christmas</option>
+  <option value="3">Jokes</option>
+  <option value="4">Poems</option>
+</select>
+
+<%= select_tag "people", options_from_collection_for_select(@people, "id", "name") %>
