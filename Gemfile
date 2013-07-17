@@ -50,7 +50,7 @@ gem "rails-settings-cached", "0.2.4"
 group :development do
   gem "thin"
   gem "better_errors"
-  #gem "hirb"
+  gem "hirb"
   gem "rails-footnotes", '>= 3.7.9'
   #gem "pry-rails"
 
@@ -86,3 +86,4 @@ end
 #gem 'kaminari', '~> 0.13.0'
 
 #在rails console中Hirb.enable
+#richrc: Github / Article – 在rails3中不用修改Gamfile，实现irb格式化和高亮语法
