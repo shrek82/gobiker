@@ -11,7 +11,8 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+    #@current_user ||= User.find_by_remember_token(cookies[:remember_token])
+    @current_user ||= User.find_by_id(4)
   end
 
   def current_user?(user)

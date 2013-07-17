@@ -118,7 +118,7 @@ function ajaxForm (form,opts) {
     before:false,
     error:false,
     submitButton:'submit_button',
-    successLabel:'成功发送',
+    successLabel:'提交成功',
     sendingLabel:'发送中',
     errorLabel:'重试'
   },opts);

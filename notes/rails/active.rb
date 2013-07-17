@@ -94,28 +94,28 @@ class Study < ActiveRecord::Base
 
     # find first
     Person.find(:first) # returns the first object fetched by SELECT * FROM people
-    Person.find(:first, :conditions => [ "user_name = ?", user_name])
-    Person.find(:first, :conditions => [ "user_name = :u", { :u => user_name }])
+    Person.find(:first, :conditions => ["user_name = ?", user_name])
+    Person.find(:first, :conditions => ["user_name = :u", {:u => user_name}])
     Person.find(:first, :order => "created_on DESC", :offset => 5)
 
     # find last
     Person.find(:last) # returns the last object fetched by SELECT * FROM people
-    Person.find(:last, :conditions => [ "user_name = ?", user_name])
+    Person.find(:last, :conditions => ["user_name = ?", user_name])
     Person.find(:last, :order => "created_on DESC", :offset => 5)
 
     # find by id
-    Person.find(1)       # returns the object for ID = 1
+    Person.find(1) # returns the object for ID = 1
     Person.find(1, 2, 6) # returns an array for objects with IDs in (1, 2, 6)
     Person.find([7, 17]) # returns an array for objects with IDs in (7, 17)
-    Person.find([1])     # returns an array for the object with ID = 1
+    Person.find([1]) # returns an array for the object with ID = 1
     Person.find(1, :conditions => "administrator = 1", :order => "created_on DESC")
 
     # find all
     Person.find(:all) # returns an array of objects for all the rows fetched by SELECT * FROM people
-    Person.find(:all, :conditions => [ "category IN (?)", categories], :limit => 50)
-    Person.find(:all, :conditions => { :friends => ["Bob", "Steve", "Fred"] }
+    Person.find(:all, :conditions => ["category IN (?)", categories], :limit => 50)
+    Person.find(:all, :conditions => {:friends => ["Bob", "Steve", "Fred"]}
     Person.find(:all, :offset => 10, :limit => 10)
-    Person.find(:all, :include => [ :account, :friends ])
+    Person.find(:all, :include => [:account, :friends])
     Person.find(:all, :group => "category")
 
     #使用find_by总是会返回一个数组
@@ -142,17 +142,17 @@ class Study < ActiveRecord::Base
     Subject.where("position = '2' AND name='Second Subject'")
 
     #第二种是Array，第一个参数和需要写的SQL语句格式完全一样，字段值的地方用?问号代替。后面的参数按照顺序提供条件值。
-    Subject.where(["position = ? AND name=?" ,"2","Second Subject"])
+    Subject.where(["position = ? AND name=?", "2", "Second Subject"])
 
     #第三种是Hash，每个参数都是一套值对。这种方式非常简单直观，不过有点局限就是表现力有点差，只能表示AND，无法表示OR。
-    Subject.where(:position =>"2" ,:name=>"Second Subject")
+    Subject.where(:position => "2", :name => "Second Subject")
 
     #所以选择用哪种条件表达式方式就得根据实际情况而定了，一般来说简单的查询使用Hash方式，当复杂性无法满足的时候使用Array型。至于String方式直接写SQL语句的最好还是别用了。
     #查询返回的结果可以当做一个Array使用，如果什么都没查到，返回的长度为0。
 
-    
+
     #方法
-    Model.where()+first[|count|]+order(:id)+limit(7)
+    Model.where()+first[ | count|]+order(:id)+limit(7)
 
     #性能差异
     Album.where(:release_year => 1966).count #0.2ms
@@ -163,7 +163,7 @@ class Study < ActiveRecord::Base
 
     Album.where(:release_year => 1960..1966, :id => 1..5)
     Album.where(:release_year => [1966, 1968])
-    Album.where(['release_year=? AND id>?',true,2])
+    Album.where(['release_year=? AND id>?', true, 2])
     Album.where(:release_year => [1966, 1968]).first
 
     #SQL语句查询
@@ -212,33 +212,53 @@ class Study < ActiveRecord::Base
 
     #json
     User.find(:all, :limit => 10,
-              :joins => "LEFT JOIN `user_points` ON user_points.user_id = users.id" ,
+              :joins => "LEFT JOIN `user_points` ON user_points.user_id = users.id",
               :select => "users.*, count(user_points.id)", :group =>
             "user_points.user_id")
 
     @posts = Place.find(:all,
-                       :select => "DISTINCT *",
-                       :include => [:user, {:track => :artist}],
-                       :conditions => ["user_id IN (?) AND NOT track_id = ?", users, @track.id],
-                       :group => "track_id",
-                       :order => 'id desc',
-                       :form =>'posts p'
-                       :limit => '5')
+                        :select => "DISTINCT *",
+                        :include => [:user, {:track => :artist}],
+                        :conditions => ["user_id IN (?) AND NOT track_id = ?", users, @track.id],
+                        :group => "track_id",
+                        :order => 'id desc',
+                        :form => 'posts p'
+    :limit => '5')
   end
-
 
 
   #使用分页查询插件
   def pageation
     Place.paginate(:page => params[:page], :per_page => 10)
-    Place.paginate(:page => params[:page], :per_page => 10,:conditions =>'p.is_recommended=1').order('id DESC')
-    Place.paginate(:page => params[:page], :per_page => 10,:conditions =>['p.is_recommended=? AND p.id>?',1,20]).order('id ASC')
-    Place.paginate(:from=>'places p',:page => 1, :per_page => 10,:select=>'p.id,p.name',:conditions =>['p.is_recommended=? AND p.id>?',1,20],:joins=>'LEFT JOIN users u on u.id=p.user_id')
+    Place.paginate(:page => params[:page], :per_page => 10, :conditions => 'p.is_recommended=1').order('id DESC')
+    Place.paginate(:page => params[:page], :per_page => 10, :conditions => ['p.is_recommended=? AND p.id>?', 1, 20]).order('id ASC')
+    Place.paginate(:from => 'places p', :page => 1, :per_page => 10, :select => 'p.id,p.name', :conditions => ['p.is_recommended=? AND p.id>?', 1, 20], :joins => 'LEFT JOIN users u on u.id=p.user_id')
     Place.where(:published => true).paginate(:page => params[:page], :per_page => 20).order('id DESC')
   end
 
   #修改记录
   def editrecord
+
+    Model.where(:foo => 'bar').where(:attr => 1).update_all("author = 'David'")
+
+    # Update all customers with the given attributes
+    Customer.update_all :wants_email => true
+
+    # Update all books with 'Rails' in their title
+    Book.update_all "author = 'David'", "title LIKE '%Rails%'"
+
+    # Update all avatars migrated more than a week ago
+    Avatar.update_all ['migrated_at = ?', Time.now.utc], ['migrated_at > ?', 1.week.ago]
+
+    # Update all books that match conditions, but limit it to 5 ordered by date
+    Book.update_all "author = 'David'", "title LIKE '%Rails%'", :order => 'created_at', :limit => 5
+
+    # Conditions from the current relation also works
+    Book.where('title LIKE ?', '%Rails%').update_all(:author => 'David')
+
+    # The same idea applies to limit and order
+    Book.where('title LIKE ?', '%Rails%').order(:created_at).limit(5).update_all(:author => 'David')
+
     #简单的修改
     album = Album.where(:name => 'The Beatles').first
     album.name = 'A Test'
@@ -266,7 +286,7 @@ class Study < ActiveRecord::Base
 
   #复杂的查询
   def other
-    Place.paginate(:from=>'places p',:page => 1, :per_page => 10,:select=>'p.id,p.name',:conditions =>['p.is_recommended=? AND p.id>?',true,20],:joins=>'LEFT JOIN users u on u.id=p.user_id',:order=>'p.id DESC').order('p.user_id ASC')
+    Place.paginate(:from => 'places p', :page => 1, :per_page => 10, :select => 'p.id,p.name', :conditions => ['p.is_recommended=? AND p.id>?', true, 20], :joins => 'LEFT JOIN users u on u.id=p.user_id', :order => 'p.id DESC').order('p.user_id ASC')
   end
 end
 

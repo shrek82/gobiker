@@ -4,59 +4,21 @@ cn:
       default: ! '%Y-%m-%d'
       long: ! '%Y年%b%d日'
       short: ! '%b%d日'
+    am: "上午"
+    pm: "下午"
   date:
-    abbr_day_names:
-    - 日
-    - 一
-    - 二
-    - 三
-    - 四
-    - 五
-    - 六
-    abbr_month_names:
-    - 
-    - 1月
-    - 2月
-    - 3月
-    - 4月
-    - 5月
-    - 6月
-    - 7月
-    - 8月
-    - 9月
-    - 10月
-    - 11月
-    - 12月
-    day_names:
-    - 星期日
-    - 星期一
-    - 星期二
-    - 星期三
-    - 星期四
-    - 星期五
-    - 星期六
+    abbr_day_names: [一, 二, 三, 四, 五, 六, 日]
+    abbr_month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+    day_names: [星期一, 星期二, 星期三, 星期四, 星期五, 星期六, 星期日]
     formats:
       default: ! '%Y-%m-%d'
       long: ! '%Y年%b%d日'
       short: ! '%b%d日'
-    month_names:
-    - 
-    - 一月
-    - 二月
-    - 三月
-    - 四月
-    - 五月
-    - 六月
-    - 七月
-    - 八月
-    - 九月
-    - 十月
-    - 十一月
-    - 十二月
-    order:
-    - :year
-    - :month
-    - :day
+    month_names: [~, 一月, 二月, 三月, 四月, 五月, 六月, 七月, 八月, 九月, 十月, 十一月, 十二月]
+    order: 
+      - :year
+      - :month
+      - :day
   datetime:
     distance_in_words:
       about_x_hours:
@@ -139,6 +101,13 @@ cn:
   attributes:
     created_at: "创建日期"
     updated_at: "修改日期"
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " 和 "
+      last_word_connector: ", 和 "
+    select:
+      prompt: "请选择"
   will_paginate:
     next_label: "下一页"
     page_entries_info:

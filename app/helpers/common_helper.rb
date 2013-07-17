@@ -3,7 +3,6 @@ module CommonHelper
 
   #查找记录,不存在返回错误页面
   def find_record(&block)
-
   end
 
 #是否为ajax请求

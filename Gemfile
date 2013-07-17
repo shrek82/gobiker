@@ -1,3 +1,5 @@
+#coding: utf-8
+
 source 'http://ruby.taobao.org/'
 
 gem 'rails', '3.2.13'
@@ -27,17 +29,33 @@ group :rspec do
   gem 'rspec-rails', '>=1.3.2'
 end
 
-group :development do
-  gem "better_errors"
-  gem 'rails-footnotes', '>= 3.7.9'
-end
+#sina微博oauth
+gem 'weibo_2'
 
-## Gemfile for Rails 3, Sinatra, and Merb
+#i18n国际化分页插件
 gem 'will_paginate', '~> 3.0'
 gem 'will-paginate-i18n'
 
-#upload
+#基于角色控制的插件
+gem "cancan",'~>1.6.7'
+
+#图片和文件上传组件
 gem "paperclip", "~> 3.0"
+
+#配置缓存
+#这个 Gem 是用来给 ActiveRecord 做设置项存储的，数据保存在数据库里面，读取将会有自动缓存。
+gem "rails-settings-cached", "0.2.4"
+
+#开发模式用到的
+group :development do
+  gem "thin"
+  gem "better_errors"
+  #gem "hirb"
+  gem "rails-footnotes", '>= 3.7.9'
+  #gem "pry-rails"
+
+end
+
 #send mail needattribute
 #gem 'tlsmail'
 
@@ -64,13 +82,7 @@ gem "paperclip", "~> 3.0"
 # To use debugger
 # gem 'debugger'
 
-gem "paperclip", "~> 3.0"
-
-gem "thin"
-
-
-#sina weibo
-gem 'weibo_2'
-
 #genghao de fenye
 #gem 'kaminari', '~> 0.13.0'
+
+#在rails console中Hirb.enable

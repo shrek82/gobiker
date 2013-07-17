@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716005517) do
+ActiveRecord::Schema.define(:version => 20130717095306) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -153,6 +153,22 @@ ActiveRecord::Schema.define(:version => 20130716005517) do
     t.datetime "updated_at",               :null => false
   end
 
+  create_table "permissions", :force => true do |t|
+    t.string   "action"
+    t.string   "subject"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "permissions_users", :id => false, :force => true do |t|
+    t.integer "permission_id"
+    t.integer "user_id"
+  end
+
+  add_index "permissions_users", ["permission_id", "user_id"], :name => "index_permissions_users_on_permission_id_and_user_id"
+  add_index "permissions_users", ["user_id", "permission_id"], :name => "index_permissions_users_on_user_id_and_permission_id"
+
   create_table "photos", :force => true do |t|
     t.string   "title",                 :limit => 50
     t.string   "img_path",              :limit => 150
@@ -249,6 +265,17 @@ ActiveRecord::Schema.define(:version => 20130716005517) do
     t.integer  "area_id"
     t.integer  "place_id"
   end
+
+  create_table "settings", :force => true do |t|
+    t.string   "var",                      :null => false
+    t.text     "value"
+    t.integer  "thing_id"
+    t.string   "thing_type", :limit => 30
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "settings", ["thing_type", "thing_id", "var"], :name => "index_settings_on_thing_type_and_thing_id_and_var", :unique => true
 
   create_table "studies", :force => true do |t|
     t.string   "name"

@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   has_many :places
   has_many :topics
 
+  #权限控制
+  has_and_belongs_to_many :permissions
+
   before_create :generate_password
   #before_destroy :before_delete_user
 
