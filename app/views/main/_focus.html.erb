@@ -12,23 +12,11 @@
     <div id="ind_focus" class="ind_focus">
       <div class="slides_container">
         <div class="slides_control">
-          <div class="slide" data-bn-ipg="50">
-            <img src="/static/media/9766c498fd81d48a42c8ef6a459c1a47.jpg" alt=""/>
-          </div>
-          <div class="slide" data-bn-ipg="51">
-            <img src="/static/media/4ccc5f4a239e6517cb663bb85957a9d0.jpg" alt=""/>
-
-          </div>
-          <div class="slide" data-bn-ipg="52">
-            <img src="/static/media/8afb276ff88362474a436128a1175ae6.jpg" alt=""/>
-
-          </div>
-          <div class="slide" data-bn-ipg="53">
-            <img src="/static/media/9766c498fd81d48a42c8ef6a459c1a47.jpg" alt=""/>
-          </div>
-          <div class="slide" data-bn-ipg="54">
-            <img src="/static/media/8afb276ff88362474a436128a1175ae6.jpg" alt=""/>
-          </div>
+          <% @focus.each do |f| %>
+              <div class="slide" >
+                <img src="<%= img_style f.img_path,'original' %>" alt="<%= f.name %>"/>
+              </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -39,7 +27,7 @@
         </li>
         <li class="bbs">
           <a href="http://bbs.qyer.com" data-bn-ipg="leftnav-bbs"><span class="title fontYaHei">论坛</span>
-            <span class="text">					6615167篇帖子</span></a>
+            <span class="text">6615167篇帖子</span></a>
         </li>
         <li class="ask">
           <a href="http://ask.qyer.com" data-bn-ipg="leftnav-ask"><span class="title fontYaHei">问答</span><span class="text">248404个旅行问题</span></a>

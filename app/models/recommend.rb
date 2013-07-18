@@ -9,6 +9,16 @@ class Recommend < ActiveRecord::Base
 
   #在rails的model中，生产环境中是缓存类的，比如一个Country模型中定义一个常量表示所有的国家（当model加载的时候将会做Country.all查询）
   COUNTRIES = self.all
-  ALL_CATEGORY={:place=>'目的地',:route=>'路线'}
+  ALL_CATEGORY={:home=>'首页',:place=>'目的地',:route=>'路线'}
+
+  #幻灯片
+  scope :focus,select("id,name,img_path,redirect,category").where("is_close=?",false).order('is_fixed DESC,order_num ASC,id DESC')
+  scope :cat,lambda { |category| where("category=?",category)}
+
+  before_save :set_boolean
+
+  private
+  def set_boolean
+  end
 
 end

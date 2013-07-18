@@ -37,7 +37,6 @@ class Admin::RecommendsController < AdminController
   #保存修改
   def update
     @recommend = Recommend.find(params[:id])
-    @recommend.is_fixed=params[:is_fixed]
     if @recommend.update_attributes(params[:recommend])
       respond :redirect_to => admin_recommends_path, :success => '资料修改成功'
     else

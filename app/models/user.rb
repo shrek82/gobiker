@@ -55,7 +55,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  private
   def generate_password
     salt=Array.new(5){rand(1024).to_s(36)}.join
     self.password=Digest::SHA256.hexdigest(self.password+salt)

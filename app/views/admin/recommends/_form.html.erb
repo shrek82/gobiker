@@ -77,11 +77,11 @@
 
       <div class="controls">
         <label class="checkbox inline">
-          <input type="checkbox" name="is_close" <%= 'checked' if @recommend.is_close %> > 关闭
+          <input type="checkbox" name="recommend[is_close]" <%= 'checked' if @recommend.is_close %> > 关闭
         </label>
 
-        <label class="checkbox inline"´>
-        <input type="checkbox" name="is_fixed" <%= 'checked' if @recommend.is_fixed %>> 置顶
+        <label class="checkbox inline">
+        <input type="checkbox" name="recommend[is_fixed]" <%= 'checked' if @recommend.is_fixed %>> 置顶
         </label>
       </div>
     </div>
