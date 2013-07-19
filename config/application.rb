@@ -93,10 +93,10 @@ end
 #--no-test-framework， --no-helper，和--no-assets.
 Gobiker::Application.config.generators do |g|
   g.stylesheets false
-  g.test_framework false
+  #g.test_framework false
   g.helper false
   g.assets false
-  g.fixture_replacement false
+  #g.fixture_replacement false
 end
 
 #request my method
