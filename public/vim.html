@@ -1,0 +1,1219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <meta charset="utf-8">
+<TITLE>vig plugin</TITLE>
+ </HEAD>
+
+ <BODY>
+<p>
+      我的想法：
+</p>
+<p>
+    <br />
+</p>
+<p>
+    vindows/vim/vimfiles/bundle 下放置一些支持Pathogen支撑的插件(例如git过来的)
+</p>
+<p>
+    如果没有安装Pathogen，也可以将插件里面的文件分别放置到`autoload`, `plugin`,
+</p>
+<p>
+    `doc`目录下
+</p>
+<p>
+    ------------------------------------------------------------------------------------
+</p>
+<p>
+    :h runtimepath 可以了解下各个目录是做什么用的
+</p>
+<p>
+    <br />
+</p>
+<p>
+    -------------------------------------------------------------------------
+</p>
+<p>
+    nerdtree
+</p>
+<p>
+    windows git到vim72/bundle/nerdtree，不配置就可以了,。。。/vim/vimfiles/bundle下就不可以，奇怪了
+</p>
+<p>
+    let NERDTreeWinPos=1
+</p>
+<p>
+    右边显示
+</p>
+<p>
+    如果只是临时需要的话，切换到NERDTree的窗口再&lt;c-w&gt;L（大写）这个把窗口右移的命令
+</p>
+<p>
+    3、进入当前目录的树形界面，通过小键盘上下键，能移动选中的目录或文件
+</p>
+<p>
+    4、目录前面有+号，摁Enter会展开目录，文件前面是-号，摁Enter会在右侧窗口展现该文件的内容，并光标的焦点focus右侧。
+</p>
+<p>
+    5、ctr+w+h  光标focus左侧树形目录，ctrl+w+l 光标focus右侧文件显示窗口。多次摁 ctrl+w，光标自动在左右侧窗口切换
+</p>
+<p>
+    6、光标focus左侧树形窗口，摁? 弹出NERDTree的帮助，再次摁？关闭帮助显示
+</p>
+<p>
+    7、输入:q回车，关闭光标所在窗口
+</p>
+<p>
+    --------------------------------------------------------------------------
+</p>
+<p>
+    代码对齐线
+</p>
+<p>
+    vim-indent-guides
+</p>
+<p>
+    Windows:在安装了Pathogen后，直接拷贝到/vim/vimfiles/bundle
+</p>
+<p>
+    默认打开效果快捷键 `&lt;Leader&gt;ig`
+</p>
+<p>
+    --------------------------------------------------------------------------
+</p>
+<p>
+    <br />
+</p>
+<p>
+    查看vim已经载入的脚本
+</p>
+<p>
+    :scriptnames
+</p>
+<p>
+    :commands
+</p>
+<p>
+    :functions
+</p>
+<p>
+    ========================================================
+</p>
+<p>
+    //vim插件收藏及使用笔记
+</p>
+<p>
+    //easy-through-pairing.vim
+</p>
+<p>
+    //示例代码：
+</p>
+<p>
+    //(&quot;&#39;[{hello}]&#39;&quot;)
+</p>
+<p>
+    //光标不同位置说明：(&quot;&#39;[{hello1}2]3&#39;4&quot;5)6，其中“123456”分别代表光标当前所在的位置，真是情况光标只在其中某一处
+</p>
+<p>
+    //1、快捷&lt;C-j&gt;
+</p>
+<p>
+    //说明：如果光标目前在1处(须光标在括号内的最后)，按ctrl+j光标会到2处，再按会到3处，再按会到4处，依次向括号外面移动光标
+</p>
+<p>
+    //2、快捷键键&lt;C-q&gt;或&lt;C-b&gt;
+</p>
+<p>
+    //说明：将光标移至当前括号最上一级符号内最后位置。
+</p>
+<p>
+    //3、快捷键键&lt;A-q&gt;或&lt;A-b&gt;
+</p>
+<p>
+    //说明：将光标移至当前括号最上一级符号内前面位置。
+</p>
+<p>
+    <br />
+</p>
+<p>
+    --------------------------------------------------
+</p>
+<p>
+    快速复制前后字符
+</p>
+<p>
+    //IndentifierMovement.vim
+</p>
+<p>
+    //C+n快速复制下后面的字词
+</p>
+<p>
+    //C+p快速复制上面一个字词
+</p>
+<p>
+    ----------------------------------------------------------------------------------------------------------
+</p>
+<p>
+    //PowerLine
+</p>
+<p>
+    PowerLine是一个增强的Vim状态栏插件。当Vim处于NORMAL、INSERT、BLOCK等状态时，状态栏会呈现不同的颜色，同时状态栏还会显示当前编辑文件的格式（uft-8等）、文件类型（java、xml等）和光标位置等。
+</p>
+<p>
+    <br />
+</p>
+<p>
+    从https://github.com/Lokaltog/vim-powerline下载PowerLine插件，将文件解压得到的autoload、doc、plugin和fontpatcher文件夹放到~/Vim/Vim73/bundler目录下，往_vimrc文件中增加下面配置即可：
+</p>
+<p>
+    <br />
+</p>
+<p>
+    &quot;powerline
+</p>
+<p>
+     set guifont=PowerlineSymbols\ for\ Powerline
+</p>
+<p>
+     set nocompatible
+</p>
+<p>
+     set t_Co=256
+</p>
+<p>
+     let g:Powerline_symbols = &#39;fancy&#39;
+</p>
+<p>
+    <br />
+</p>
+<p>
+    ----------------------------------------------------------------------------------------------------------
+</p>
+<p>
+     1、pathogen安装
+</p>
+<p>
+    pathogen是一款管理插件的插件，它采用bundle方式管理Vim插件。
+</p>
+<p>
+    从 https://github.com/tpope/vim-pathogen 下载pathogen插件，在~/Vim/Vim73下增加一个bundle目录，并且把pathogen.vim放到autoload目录下，往_vimrc中添加下面代码：
+</p>
+<p>
+    <br />
+</p>
+<p>
+    call pathogen#infect()
+</p>
+<p>
+    <br />
+</p>
+<p>
+    Windows放在 Vim72\autoload\下
+</p>
+<p>
+    <br />
+</p>
+<p>
+    ----------------------------------------------------------------------------------------------------------
+</p>
+<p>
+    漂亮的状态栏样式，安装简单
+</p>
+<p>
+    mystatusline.vim
+</p>
+<p>
+    <br />
+</p>
+<p>
+    windows:拷贝到vim73/plugin
+</p>
+<p>
+    mac:没试成功
+</p>
+<p>
+    <br />
+</p>
+<p>
+    配置：
+</p>
+<p>
+    set laststatus=2 
+</p>
+<p>
+    let g:mystatusline_actived = 1 
+</p>
+<p>
+    <br />
+</p>
+<p>
+    文档：
+</p>
+<p>
+    <br />
+</p>
+<p>
+    install details
+</p>
+<p>
+    first, put &quot;mystatusline.vim&quot;(this file) to dir vim73/plugin or vimfiles/plugin 
+</p>
+<p>
+    second, add the follow sentences to your .vimrc or _vimrc : 
+</p>
+<p>
+    <br />
+</p>
+<p>
+    <br />
+</p>
+<p>
+    -----------------------------------------------------------------------------------------
+</p>
+<p>
+    statusline.vim
+</p>
+<p>
+    windows:没试过
+</p>
+<p>
+    mac:直接拷贝到
+</p>
+<p>
+    不拷贝直接用~/.vim/plugin/statusline.vim 就能用了，都没配置
+</p>
+<p>
+    <br />
+</p>
+<p>
+    autocmd! ColorScheme *  source c:/vim/vimfiles/plugin/statusline.vim 
+</p>
+<p>
+    autocmd! ColorScheme *  source ~/.vim/plugin/statusline.vim
+</p>
+<p>
+    <br />
+</p>
+<p>
+    --------------------------------------------------------------------------
+</p>
+<p>
+    <br />
+</p>
+<p>
+    ruby语法检查
+</p>
+<p>
+    ruby-syntaxchecker
+</p>
+<p>
+    <br />
+</p>
+<p>
+    description
+</p>
+<p>
+    ruby-syntaxchecker.vim 
+</p>
+<p>
+    <br />
+</p>
+<p>
+    https://github.com/vantares/ruby-syntaxchecker.vim 
+</p>
+<p>
+    <br />
+</p>
+<p>
+    ruby syntax checker, toggles a quickfix window with the error list 
+</p>
+<p>
+    <br />
+</p>
+<p>
+    description 
+</p>
+<p>
+    You need to install ruby It\\&#39;s a simple program that just checks if your ruby code have any syntax warning or error. 
+</p>
+<p>
+    <br />
+</p>
+<p>
+    Pressing F4 will run it using the \\\&quot;quickfix\\\&quot; feature. This way you can \\\&quot;navigate\\\&quot; through errors using :cn and other standard commands.
+</p>
+<p>
+     
+</p>
+<p>
+    install details
+</p>
+<p>
+    install details 
+</p>
+<p>
+    just put the file in your ~/.vim/ftplugin/ruby directory (if that doesn\\&#39;t exist, create it) 
+</p>
+<p>
+    <br />
+</p>
+<p>
+    The default mapping is F4, you can change it putting let g:ruby_syntaxcheck_map=\\&#39;whatever\\&#39; in your vimrc
+</p>
+<p>
+    ----------------------------------------------------------------------------------------------------------
+</p>
+<p>
+    <br />
+</p>
+<p>
+    <br />
+</p>
+<p>
+    多处光标插件
+</p>
+<p>
+    vim-multiple-cursors
+</p>
+<p>
+    好像很酷的样子
+</p>
+<p>
+    <br />
+</p>
+<p>
+    <br />
+</p>
+<p>
+    -----------------------------------------------
+</p>
+<p>
+    语法检查
+</p>
+<p>
+    Syntastic  
+</p>
+<p>
+    <br />
+</p>
+<p>
+    Syntastic is a syntax checking plugin that runs files through external syntax checkers and displays any resulting errors to the user. This can be done on demand, or automatically as files are saved. If syntax errors are detected, the user is notified and is happy because they didn&#39;t have to compile their code or execute their script to find them.
+</p>
+<p>
+    <br />
+</p>
+<p>
+    At the time of this writing, syntax checking plugins exist for ada, applescript, c, co, coffee, coq, cpp, cs, css, cucumber, cuda, d, dart, docbk, elixir, erlang, eruby, fortran, gentoo_metadata, go, haml, haskell, haxe, html, java, javascript, json, less, lisp, lua, matlab, nasm, objc, ocaml, perl, php, puppet, python, rst, ruby, rust, sass/scss, scala, sh, slim, tcl, tex, twig, typescript, vala, vhdl, xhtml, xml, xslt, yaml, z80, zpt, zsh
+</p>
+<p>
+    <br />
+</p>
+<p>
+    https://github.com/scrooloose/syntastic
+</p>
+<p>
+    <br />
+</p>
+<p>
+    <br />
+</p>
+<p>
+    ==================================================================
+</p>
+<p>
+    Ack – for 工程師用的 grep
+</p>
+<p>
+    <br />
+</p>
+<p>
+    身為一個工程師，每天要跟無數的程式碼奮戰，難免要在檔案間做一些搜尋和比對，通常我都是使用 grep, 不過最近我發現在寫 code 的時候, ack 變成我更好的選擇.
+</p>
+<p>
+    <br />
+</p>
+<p>
+    ack 是什麼呢, 下面借用 ack manual 上的說明:
+</p>
+<p>
+    <br />
+</p>
+<p>
+    ack is designed by a programmer, for programmers, for searching large trees of code.
+</p>
+<p>
+    <br />
+</p>
+<p>
+    ack 在搜尋的時候自動跳過一些己知不需要搜尋的 folder (e.g. .git, .svn) 或是一些非 source code 的檔案 (e.g. backup file, binary file, or core dump)，對於每次要用 find + grep 辛苦過濾檔案的工程師來說，可以省下一些打指令的時間。
+</p>
+<p>
+    <br />
+</p>
+<p>
+    ---------------------------------------------------------------------------------------
+</p>
+<p>
+    <br />
+</p>
+<p>
+    删除一行：dd
+</p>
+<p>
+    删除一个单词/光标之后的单词剩余部分：dw
+</p>
+<p>
+    删除当前字符：x
+</p>
+<p>
+    光标之后的该行部分：d$
+</p>
+<p>
+     
+</p>
+<p>
+     
+</p>
+<p>
+    文本删除
+</p>
+<p>
+    dd 删除一行
+</p>
+<p>
+    d$ 删除以当前字符开始的一行字符
+</p>
+<p>
+     
+</p>
+<p>
+    ndd 删除以当前行开始的n行
+</p>
+<p>
+    dw 删除以当前字符开始的一个字
+</p>
+<p>
+    ndw 删除以当前字符开始的n个字
+</p>
+<p>
+     
+</p>
+<p>
+    D 与d$同义
+</p>
+<p>
+     
+</p>
+<p>
+    d) 删除到下一句的开始
+</p>
+<p>
+     
+</p>
+<p>
+    d} 删除到下一段的开始
+</p>
+<p>
+    d回车 删除2行
+</p>
+<p>
+    ndw 或 ndW 删除光标处开始及其后的 n-1 个字符。
+</p>
+<p>
+    d0 删至行首。
+</p>
+<p>
+    d$ 删至行尾。
+</p>
+<p>
+    ndd 删除当前行及其后 n-1 行。
+</p>
+<p>
+    x 或 X 删除一个字符。
+</p>
+<p>
+    Ctrl+u 删除输入方式下所输入的文本。
+</p>
+<p>
+    ^R 恢复u的操作
+</p>
+<p>
+    J 把下一行合并到当前行尾
+</p>
+<p>
+    V 选择一行
+</p>
+<p>
+    ^V 按下^V后即可进行矩形的选择了
+</p>
+<p>
+    aw 选择单词
+</p>
+<p>
+    iw 内部单词(无空格)
+</p>
+<p>
+    as 选择句子
+</p>
+<p>
+    is 选择句子(无空格)
+</p>
+<p>
+    ap 选择段落
+</p>
+<p>
+    ip 选择段落(无空格)
+</p>
+<p>
+    D 删除到行尾
+</p>
+<p>
+    x,y 删除与复制包含高亮区
+</p>
+<p>
+    <br />
+</p>
+<p>
+    dl 删除当前字符（与x命令功能相同）
+</p>
+<p>
+    d0 删除到某一行的开始位置
+</p>
+<p>
+    d^ 删除到某一行的第一个字符位置（不包括空格或TAB字符）
+</p>
+<p>
+    dw 删除到某个单词的结尾位置
+</p>
+<p>
+    d3w 删除到第三个单词的结尾位置
+</p>
+<p>
+    db 删除到某个单词的开始位置
+</p>
+<p>
+    dW 删除到某个以空格作为分隔符的单词的结尾位置
+</p>
+<p>
+    dB 删除到某个以空格作为分隔符的单词的开始位置
+</p>
+<p>
+    d7B 删除到前面7个以空格作为分隔符的单词的开始位置
+</p>
+<p>
+    d） 删除到某个语句的结尾位置
+</p>
+<p>
+    d4） 删除到第四个语句的结尾位置
+</p>
+<p>
+    d（ 删除到某个语句的开始位置
+</p>
+<p>
+    d） 删除到某个段落的结尾位置
+</p>
+<p>
+    d{ 删除到某个段落的开始位置
+</p>
+<p>
+    d7{ 删除到当前段落起始位置之前的第7个段落位置
+</p>
+<p>
+    dd 删除当前行
+</p>
+<p>
+    d/text 删除从文本中出现“text”中所指定字样的位置，
+</p>
+<p>
+    一直向前直到下一个该字样所出现的位置（但不包括该字样）之间的内容
+</p>
+<p>
+    dfc 删除从文本中出现字符“c”的位置，一直向前直到下一个该字符所出现的位置（包括该字符）之间的内容
+</p>
+<p>
+    dtc 删除当前行直到下一个字符“c”所出现位置之间的内容
+</p>
+<p>
+    D 删除到某一行的结尾
+</p>
+<p>
+    d$ 删除到某一行的结尾
+</p>
+<p>
+    5dd 删除从当前行所开始的5行内容
+</p>
+<p>
+    dL 删除直到屏幕上最后一行的内容
+</p>
+<p>
+    dH 删除直到屏幕上第一行的内容
+</p>
+<p>
+    dG 删除直到工作缓存区结尾的内容
+</p>
+<p>
+    d1G 删除直到工作缓存区开始的内容
+</p>
+<p>
+     
+</p>
+<p>
+     
+</p>
+<p>
+    在Vi 中移动光标
+</p>
+<p>
+      k        上
+</p>
+<p>
+    h   l    左  右
+</p>
+<p>
+      j        下
+</p>
+<p>
+    <br />
+</p>
+<p>
+    ^        移动到该行第一个非空格的字符处
+</p>
+<p>
+    w        向前移动一个单词，将符号或标点当作单词处理
+</p>
+<p>
+    W        向前移动一个单词，不把符号或标点当作单词处理
+</p>
+<p>
+    b        向后移动一个单词，把符号或标点当作单词处理
+</p>
+<p>
+    B        向后移动一个单词，不把符号或标点当作单词处理
+</p>
+<p>
+    (        光标移至句首
+</p>
+<p>
+    )        光标移至句尾
+</p>
+<p>
+    {        光标移至段落开头
+</p>
+<p>
+    }        光标移至段落结尾
+</p>
+<p>
+    H        光标移至屏幕顶行
+</p>
+<p>
+    M        光标移至屏幕中间行
+</p>
+<p>
+    L        光标移至屏幕最后行 
+</p>
+<p>
+    0        到行首
+</p>
+<p>
+    $        到行尾
+</p>
+<p>
+    gg       到页首
+</p>
+<p>
+    G        到页末
+</p>
+<p>
+    行号+G   跳转到指定行
+</p>
+<p>
+    n+       光标下移n行
+</p>
+<p>
+    n-       光标上移n行 
+</p>
+<p>
+    Ctrl+g   查询当前行信息和当前文件信息
+</p>
+<p>
+    <br />
+</p>
+<p>
+    fx       向右跳到本行字符x处（x可以是任何字符）
+</p>
+<p>
+    Fx       向左跳到本行字符x处（x可以是任何字符）
+</p>
+<p>
+    <br />
+</p>
+<p>
+    tx       和fx相同，区别是跳到字符x前
+</p>
+<p>
+    Tx       和Fx相同，区别是跳到字符x后
+</p>
+<p>
+    <br />
+</p>
+<p>
+    C-b      向上滚动一屏
+</p>
+<p>
+    C-f      向下滚动一屏
+</p>
+<p>
+    C-u      向上滚动半屏
+</p>
+<p>
+    C-d      向下滚动半屏
+</p>
+<p>
+    C-y      向上滚动一行
+</p>
+<p>
+    C-e      向下滚动一行
+</p>
+<p>
+    <br />
+</p>
+<p>
+    nz       将第n行滚至屏幕顶部，不指定n时将当前行滚至屏幕顶部。 
+</p>
+<p>
+    进入和退出Vi命令
+</p>
+<p>
+    vi filename               打开或新建文件，并将光标置于第一行首
+</p>
+<p>
+    vi +n filename            打开文件，并将光标置于第n行首
+</p>
+<p>
+    vi + filename             打开文件，并将光标置于最后一行首
+</p>
+<p>
+    vi +/pattern filename     打开文件，并将光标置于第一个与pattern匹配的串处
+</p>
+<p>
+    vi -r filename            在上次正用vi编辑时发生系统崩溃，恢复filename
+</p>
+<p>
+    vi filename ... filename  打开多个文件，依次进行编辑 
+</p>
+<p>
+    <br />
+</p>
+<p>
+    ZZ                        退出vi并保存
+</p>
+<p>
+    :q!                       退出vi，不保存
+</p>
+<p>
+    :wq                       退出vi并保存
+</p>
+<p>
+    重复操作
+</p>
+<p>
+    .        重复上一次操作
+</p>
+<p>
+    自动补齐
+</p>
+<p>
+    C-n      匹配下一个关键字
+</p>
+<p>
+    C-p      匹配上一个关键字
+</p>
+<p>
+    插入
+</p>
+<p>
+    o        在光标下方新开一行并将光标置于新行行首，进入插入模式。
+</p>
+<p>
+    O        同上，在光标上方。
+</p>
+<p>
+    <br />
+</p>
+<p>
+    a        在光标之后进入插入模式。
+</p>
+<p>
+    A        同上，在光标之前。
+</p>
+<p>
+    <br />
+</p>
+<p>
+    <br />
+</p>
+<p>
+    R        进入替换模式，直到按下Esc
+</p>
+<p>
+    set xxx  设置XXX选项。
+</p>
+<p>
+    行合并
+</p>
+<p>
+    J        把下面一行合并到本行后面
+</p>
+<p>
+    Vi中查找及替换命令
+</p>
+<p>
+    /pattern         从光标开始处向文件尾搜索pattern
+</p>
+<p>
+    ?pattern         从光标开始处向文件首搜索pattern
+</p>
+<p>
+    n                在同一方向重复上一次搜索命令
+</p>
+<p>
+    N                在反方向上重复上一次搜索命令
+</p>
+<p>
+    %                查找配对的括号
+</p>
+<p>
+    :s/p1/p2/g       将当前行中所有p1均用p2替代，若要每个替换都向用户询问则应该用gc选项
+</p>
+<p>
+    :n1,n2s/p1/p2/g  将第n1至n2行中所有p1均用p2替代
+</p>
+<p>
+    :g/p1/s//p2/g    将文件中所有p1均用p2替换
+</p>
+<p>
+    <br />
+</p>
+<p>
+    .*[]^%~$ 在Vi中具有特殊含义，若需要查找则应该加上转义字符&quot;\&quot;
+</p>
+<p>
+    查找的一些选项
+</p>
+<p>
+    设置高亮
+</p>
+<p>
+    :set hlsearch    设置高亮
+</p>
+<p>
+    :set nohlsearch  关闭高亮
+</p>
+<p>
+    :nohlsearch      关闭当前已经设置的高亮
+</p>
+<p>
+    增量查找
+</p>
+<p>
+    :set incsearch   设置增量查找
+</p>
+<p>
+    :set noincsearch 关闭增量查找
+</p>
+<p>
+    在Vi中删除
+</p>
+<p>
+    x        删除当前光标下的字符
+</p>
+<p>
+    dw       删除光标之后的单词剩余部分。
+</p>
+<p>
+    d$       删除光标之后的该行剩余部分。
+</p>
+<p>
+    dd       删除当前行。
+</p>
+<p>
+    <br />
+</p>
+<p>
+    c        功能和d相同，区别在于完成删除操作后进入INSERT MODE
+</p>
+<p>
+    cc       也是删除当前行，然后进入INSERT MODE
+</p>
+<p>
+    <br />
+</p>
+<p>
+    更改字符
+</p>
+<p>
+    rx       将当前光标下的字符更改为x（x为任意字符） 
+</p>
+<p>
+    ~        更改当前光标下的字符的大小写 
+</p>
+<p>
+     
+</p>
+<p>
+    键盘宏操作
+</p>
+<p>
+    qcharacter  开始录制宏，character为a到z的任意字符
+</p>
+<p>
+    q           终止录制宏
+</p>
+<p>
+    @character  调用先前录制的宏
+</p>
+<p>
+    <br />
+</p>
+<p>
+    恢复误操作
+</p>
+<p>
+    u        撤销最后执行的命令
+</p>
+<p>
+    U        修正之前对该行的操作
+</p>
+<p>
+    Ctrl+R   Redo
+</p>
+<p>
+    在Vi中操作Frame
+</p>
+<p>
+    c-w c-n  增加frame
+</p>
+<p>
+    c-w c-c  减少frame
+</p>
+<p>
+    c-w c-w  切换frame
+</p>
+<p>
+    c-w c-r  交换两个frame
+</p>
+<p>
+    VIM中的块操作
+</p>
+<p>
+    Vim支持多达26个剪贴板
+</p>
+<p>
+      选块   先用v，C-v，V选择一块，然后用y复制，再用p粘贴。
+</p>
+<p>
+      yy     复制当前整行
+</p>
+<p>
+      nyy    复制当前行开始的n行内容
+</p>
+<p>
+      ?nyy   将光标当前行及其下n行的内容保存到寄存器?中，其中?为一个字母，n为一个数字
+</p>
+<p>
+      ?nyw   将光标当前行及其下n个词保存到寄存器?中，其中?为一个字母，n为一个数字
+</p>
+<p>
+      ?nyl   将光标当前行及其下n个字符保存到寄存器?中，其中?为一个字母，n为一个数字
+</p>
+<p>
+      ?p     将寄存器?中的内容粘贴到光标位置之后。如果?是用yy复制的完整行，
+</p>
+<p>
+             则粘贴在光标所在行下面。这里?可以是一个字母，也可以是一个数字 
+</p>
+<p>
+      ?P     将寄存器a中的内容粘贴到光标位置之前。如果?是用yy复制的完整行，
+</p>
+<p>
+             则粘贴在光标所在行上面。这里?可以是一个字母，也可以是一个数字 
+</p>
+<p>
+      ay[motion]
+</p>
+<p>
+                ay$    复制光标位置到行末并保存在寄存器a中
+</p>
+<p>
+                ayft   复制光标位置到当前行第一个字母t并保存在寄存器a中
+</p>
+<p>
+    以上指令皆可去掉a工作，则y,p对未命名寄存器工作（所有d,c,x,y的对象都被保存在这里）。
+</p>
+<p>
+    剪切/复制/粘贴
+</p>
+<p>
+    所有删除的内容自动被保存，可以用p键粘贴
+</p>
+<p>
+    Vi的选项设置
+</p>
+<p>
+    all         列出所有选项设置情况
+</p>
+<p>
+    term        设置终端类型
+</p>
+<p>
+    ignorance   在搜索中忽略大小写
+</p>
+<p>
+    list        显示制表位(Ctrl+I)和行尾标志($)
+</p>
+<p>
+    number      显示行号
+</p>
+<p>
+    report      显示由面向行的命令修改过的数目
+</p>
+<p>
+    terse       显示简短的警告信息
+</p>
+<p>
+    warn        在转到别的文件时若没保存当前文件则显示NO write信息
+</p>
+<p>
+    nomagic     允许在搜索模式中，使用前面不带“\”的特殊字符
+</p>
+<p>
+    nowrapscan  禁止vi在搜索到达文件两端时，又从另一端开始
+</p>
+<p>
+    mesg        允许vi显示其他用户用write写到自己终端上的信息 
+</p>
+<p>
+    tips
+</p>
+<p>
+    对代码自动格式化 gg=G
+</p>
+<p>
+     
+</p>
+<p>
+     
+</p>
+<p>
+    在vi/vim中，跳到文件首尾快捷键:
+</p>
+<p>
+     
+</p>
+<p>
+    文件开始:shift + g
+</p>
+<p>
+    文件结束:G
+</p>
+<p>
+    <br />
+</p>
+<p>
+    ---------------------------------------------------------
+</p>
+<p>
+    windows手动安装vim-ruby
+</p>
+<p>
+    （不是手动直接git还没试）
+</p>
+<p>
+    直接从git@github.com:vim-ruby/vim-ruby.git
+</p>
+<p>
+    运行bin目录下的....rb文件
+</p>
+<p>
+    windows选择1，然后将输出的文件夹地址内所有文件拷贝到vim72目录下
+</p>
+<p>
+    1、修改vimfiles/ftplugin/ruby.vim 加入 
+</p>
+<p>
+    map &lt;F5&gt; :!ruby % &lt;CR&gt;  
+</p>
+<p>
+    这样，按F5就会在vim上面弹出一个dos窗口.. 
+</p>
+<p>
+    <br />
+</p>
+<p>
+    修改vimfiles/indent/ruby.vim 
+</p>
+<p>
+    加入： 
+</p>
+<p>
+    setlocal expandtab  
+</p>
+<p>
+    setlocal autowrite  
+</p>
+<p>
+    setlocal tabstop=2 shiftwidth=2 softtabstop=2  
+</p>
+<p>
+    setlocal autoindent  
+</p>
+<p>
+    这个windows没找到.没去管
+</p>
+<p>
+    <br />
+</p>
+<p>
+    2\End自动补全 
+</p>
+<p>
+    下载http://www.vim.org/scripts/download_script.php?src_id=1053 (ruby-macros.vim)
+</p>
+<p>
+    放到VIM72文件夹内 
+</p>
+<p>
+    编辑_vimrc,在前面加上： 
+</p>
+<p>
+    Vimscript代码  
+</p>
+<p>
+    source $VIMRUNTIME/ruby-macros.vim  
+</p>
+<p>
+    <br />
+</p>
+<p>
+    3.关键字和自定义变量补全 
+</p>
+<p>
+    ctrol + N 
+</p>
+<p>
+    ---------------------------------------------------------
+</p>
+<p>
+    macos安装vim-ruby
+</p>
+<p>
+    git载到了/User/Zhaojiangang/.vim/bundle下，按vim-ruby wike配置即可
+</p>
+<p>
+    <br />
+</p>
+
+
+ </BODY>
+</HTML>
+

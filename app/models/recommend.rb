@@ -8,7 +8,6 @@ class Recommend < ActiveRecord::Base
   #validates_format_of  :email, :message => "邮箱格式不正确!", :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   #在rails的model中，生产环境中是缓存类的，比如一个Country模型中定义一个常量表示所有的国家（当model加载的时候将会做Country.all查询）
-  COUNTRIES = self.all
   ALL_CATEGORY={:home=>'首页',:place=>'目的地',:route=>'路线'}
 
   #幻灯片

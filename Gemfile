@@ -23,11 +23,6 @@ end
 
 gem 'jquery-rails'
 
-group :rspec do
-  gem 'rspec', '>=1.3.0'
-  gem 'rspec-rails', '>=1.3.2'
-end
-
 #sina微博oauth
 gem 'weibo_2'
 
@@ -52,8 +47,45 @@ group :development do
   gem "hirb"
   gem "rails-footnotes", '>= 3.7.9'
   #gem "pry-rails"
-
 end
+
+#针对版本: rails 3.2, ruby 1.9.3
+
+#1、Rails 应用测试策略
+#根据我个人的经验, 对于 Rails 应用需要做两方面的测试:
+#单元测试: 针对 models, controllers, helpers, mailers 和 lib 下的代码.
+#其中对 controllers 的测试不是从集成测试的角度, 而是从 是否可以访问到某些 action 和 action 返回的 JSON 等数据是否正确 两个角度进行测试.
+#单元测试属于 白盒测试.
+#单元测试的代码位于 spec 文件夹下的同名的子文件夹, 例如 spec/models.
+#验收测试: 也叫 集成测试, 是指模拟用户在浏览器的操作, 对网站的功能进行测试.
+#验收测试以功能模块为单位进行测试, 例如用户注册, 添加文章等.
+#验收测试属于 黑盒测试.
+#验收测试的代码位于 spec/requests 文件夹下. (注: Cucumber 更适合用来做验收测试, 请参见续篇: 在 Rails 应用中使用 Cucumber 进行验收测试)
+#2、测试工具
+#rspec: BDD 测试框架, 替代 Rails 默认的 TestUnit.
+#factory_girl: 用于方便的创建测试数据, Rails Test Fixture 的替代品.
+#shoulda-matchers: 提供一些方便的测试 rails 应用的验证语句.
+#capybara: 验收测试框架, 用于模拟用户操作测试网站功能.
+#capybara-webkit: 为 capybara 提供 headless driver, 即在测试时不需要浏览器, 以便在 Linux 持续集成服务器上执行测试.
+#launchy: 在使用 capybara 测试时通过 save_and_open_save 方法来在浏览器打开当时状态的页面.
+#Database Cleaner: 用于在测试时清理数据库, 因为 capybara 不支持 rspec 默认的 transactional fixtures.
+#simplecov: 用于生成测试覆盖率报告.
+#zeus: 测试辅助工具, 用于加快执行测试和其他 Rails 命名的启动速度.
+
+group :test, :development do
+  gem 'rspec-rails', '~> 2.0'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  #gem 'capybara-webkit'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'simplecov', require: false
+end
+
 
 #send mail needattribute
 #gem 'tlsmail'

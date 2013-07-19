@@ -83,6 +83,10 @@ module Gobiker
     #载入缓存监控配置文件
     config.autoload_paths += %W(#{Rails.root}/app/sweepers)
 
+    #由于 Rails 不会自动加载 lib 下的文件, 所以我们需要打开 config/application.rb 并找到 config.autoload_paths 这一行, 改为:
+    #这里只是为了学习和测试rspec
+    config.autoload_paths += %W(#{config.root}/lib)
+
   end
 end
 
