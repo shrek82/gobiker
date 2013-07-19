@@ -6,7 +6,7 @@ class PlacesController < ApplicationController
   #caches_page :index,:show
 
   def index
-    @places = Place.paginate(:page => params[:page], :per_page => 8)
+    @places = Place.paginate(:page => params[:page], :per_page => 8,:order=>"places.id DESC")
 
     #删除所有缓存，引用表明是使用复数形式很重要
     #Rails.cache.clear

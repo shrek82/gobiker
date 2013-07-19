@@ -84,6 +84,10 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'simplecov', require: false
+  #加速测试
+  gem 'spork'
+  gem 'guard-spork', '0.3.2'
+
 end
 
 
