@@ -20,7 +20,7 @@ describe Place, '#publish_posts' do
        Place.create(:name=>'names1',:address=>'address',:user_id=>1,:content=>'content',:intro=>'intro')
     end
 
-    it 'should work' do
+    it '不好了，出问题了' do
       true.should be_true
     end
   end

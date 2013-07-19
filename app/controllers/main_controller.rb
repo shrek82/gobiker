@@ -1,5 +1,5 @@
 #coding:utf-8
-class MainController < ApplicationController
+  class MainController < ApplicationController
 
   #cancan验证方式一，认证一个controller中的所有action
   #这里会报错，奇怪了
