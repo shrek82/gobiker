@@ -5,6 +5,5 @@ class Admin::MainController < AdminController
     @users=User.count
     @places=Place.count
     @comments=Comment.count
-
   end
 end

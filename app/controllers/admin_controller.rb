@@ -40,8 +40,10 @@ class AdminController < ApplicationController
   end
 
   #是否登陆
+  REDIRECT_TO = redirect_to :action => 'login'
+
   def logged_in?
-    redirect_to :action => 'login' unless current_user
+    REDIRECT_TO unless current_user
   end
 
   before_filter :manager_check

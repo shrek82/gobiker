@@ -16,6 +16,9 @@ Gobiker::Application.routes.draw do
 
   root :to =>'main#index',:as=>'main'
 
+  #临时测试路径
+  get "/v1"=>'main#v1'
+
   #公共路由
   post "attacheds/upload" => "attacheds#upload"
   resources :attacheds,:only => [:new,:post,:show]

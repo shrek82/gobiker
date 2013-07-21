@@ -17,7 +17,7 @@ describe Place, '#publish_posts' do
   context '发布单条测试' do
 
     before do
-       Place.create(:name=>'names1',:address=>'address',:user_id=>1,:content=>'content',:intro=>'intro')
+       Place.create(:name=>'names1',:address=>'address',:user_id=>1,:content=>'content')
     end
 
     it '不好了，出问题了' do

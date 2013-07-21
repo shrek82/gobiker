@@ -3,7 +3,7 @@
 /*在application.css基础上附加的一些样式*/
 /*记录标题*/
 .icon-list{color: #999}
-td.record-date{width:150px;text-align: center}
+td.record-date{width:155px;text-align: center}
 /*单选框*/
 td.record-checkbox{width:40px;text-align: center}
 /*表格操作*/
@@ -11,7 +11,7 @@ td.record-operate{width:60px;text-align: center}
 td.record-operate a{margin-right:4px}
 td.record-operate .icon-search{color: #96C877}
 td.record-operate .icon-search:hover{color: #3B6A1F;}
-td.record-operate .icon-edit{color: #4CA9D9}
+td.record-operate .icon-edit{cdddolor: #4CA9D9}
 td.record-operate .icon-edit:hover{color: #086490}
 td.record-operate .icon-remove{color: #EA9381}
 td.record-operate .icon-remove:hover{color: #BC4B34}

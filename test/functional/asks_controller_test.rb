@@ -8,6 +8,7 @@ class AsksControllerTest < ActionController::TestCase
 
   test "should get new" do
     get :new
+    assent
     assert_response :success
   end
 

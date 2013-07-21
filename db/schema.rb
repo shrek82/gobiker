@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717093845) do
+ActiveRecord::Schema.define(:version => 20130721014400) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(:version => 20130717093845) do
     t.integer  "place_id"
     t.integer  "route_id"
     t.integer  "bbs_unit_id"
+  end
+
+  create_table "event_signs", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.integer  "num_people"
+    t.string   "intro"
+    t.boolean  "is_anonymous"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -207,6 +217,12 @@ ActiveRecord::Schema.define(:version => 20130717093845) do
     t.string   "address"
     t.integer  "comments_num",   :default => 0
     t.string   "img_ids"
+    t.integer  "rating"
+  end
+
+  create_table "places_tags", :id => false, :force => true do |t|
+    t.integer "place_id"
+    t.integer "tag_id"
   end
 
   create_table "provinces", :force => true do |t|
@@ -264,6 +280,7 @@ ActiveRecord::Schema.define(:version => 20130717093845) do
     t.datetime "updated_at",           :null => false
     t.integer  "area_id"
     t.integer  "place_id"
+    t.integer  "rating"
   end
 
   create_table "settings", :force => true do |t|
@@ -283,6 +300,13 @@ ActiveRecord::Schema.define(:version => 20130717093845) do
     t.boolean  "is_close"
     t.datetime "login_at"
     t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.integer  "num"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

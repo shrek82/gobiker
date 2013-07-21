@@ -21,7 +21,7 @@ class Place < ActiveRecord::Base
 
   #validates_format_of :name, :with => /^[\w\.]+$/,
   #一般查询预览字段
-  scope :base_field,select("places.id,places.name")
+  scope :base_field,select("places.id,places.name,place.img_path,place.rating")
   #范围快捷设置
   scope :recommended,where(:is_recommended=>true)
   #用户信息
@@ -30,6 +30,8 @@ class Place < ActiveRecord::Base
   scope :join_city,select("provinces.name,cities.name").joins("LEFT JOIN provinces ON provinces.id=places.province_id LEFT JOIN cities ON cities.id=places.city_id")
   #查询
   scope :search, lambda { |k,a| where('places.name like ? OR places.name like ?', "%#{k}%","%#{a}%") }
+  #热门目的地
+  scope :hot,order('hits_num DESC')
 
   #还可以这样追加model的方法
   def self.fixed
@@ -44,6 +46,7 @@ class Place < ActiveRecord::Base
   has_one :province
   has_one :city
   has_many :comments
+  has_and_belongs_to_many :tags
 
   #获取记录
   def Place.get(*args)

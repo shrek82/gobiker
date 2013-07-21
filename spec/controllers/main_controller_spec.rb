@@ -30,20 +30,49 @@ require 'spec_helper'
 describe MainController do
 
 #设置缓存
-  before(:each) do
+  before(:all) do
     Setting.home_focus_limit=5
     Setting.place_focus_limit=5
-    @places = FactoryGirl.create_list :place,10
-    FactoryGirl.create :user,:email=>'seeyoup@qq.com'
+    FactoryGirl.create_list :place, 10
+
+    Manager.create!(:name => "up", :password => "123456")
+
   end
 
-  context "当用户登录" do
+  context "When the user login" do
 
-    it '访问网站首页' do
+    it "displays the user's username after successful login" do
+      manager = Manager.create!(:name => "admin", :password => "123456")
+      u=Manager.find_by_name("admin")
+      u.name.should eq('admin')
+    end
+
+    it "be truesdfs" do
+      true.should be_true
+    end
+    it "returns 0 for all gutter game" do
+      0.should eq(0)
+    end
+
+    it 'Browse Home' do
       get :index
-      @place=Place.count
-      Rails.logger.info '测试数据共有'+@place.to_s
       should respond_with(:success)
+    end
+
+    it 'Should prompt for password error' do
+      visit '/admin/login'
+      fill_in "name", :with => "up"
+      fill_in "password", :with => "1234567"
+      click_button "登陆"
+      page.should have_content('密码错误')
+    end
+
+    it 'Should open Admin' do
+      visit '/admin/login'
+      fill_in "name", :with => "up"
+      fill_in "password", :with => "1234567"
+      click_button "登陆"
+      current_path.should ==admin_path
     end
 
   end
