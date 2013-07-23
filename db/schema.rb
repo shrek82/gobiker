@@ -321,7 +321,7 @@ ActiveRecord::Schema.define(:version => 20130721014400) do
   create_table "topics", :force => true do |t|
     t.string   "title",                  :limit => 150
     t.integer  "forum_id"
-    t.integer  "subject_id",             :limit => 2
+    t.integer  "subject_id"
     t.integer  "club_id"
     t.integer  "user_id"
     t.string   "title_color",            :limit => 10
@@ -336,6 +336,7 @@ ActiveRecord::Schema.define(:version => 20130721014400) do
     t.datetime "last_comment_time"
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
+    t.text     "content"
   end
 
   create_table "users", :force => true do |t|

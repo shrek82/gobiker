@@ -2,30 +2,29 @@
 class PlacesController < ApplicationController
   # GET /places
 
-  #页面缓冲
-  #caches_page :index,:show
-
   def index
-    @places = Place.paginate(:page => params[:page], :per_page => 8,:order=>"places.id DESC")
 
-    #删除所有缓存，引用表明是使用复数形式很重要
-    #Rails.cache.clear
-    @recommended=Place.get_recommended(6, :order => 'id DESC', :where => ['id>? AND is_recommended=?', 10, true])
-    #=>SELECT "places".* FROM "places" LIMIT 8 OFFSET 0
+    @recommended=Rails.cache.fetch('place_home_recommended', :expires_in => 30.minutes) do
+      Rails.logger.info "从数据读取"
+      Place.get_recommended(6)
+    end
+
+    @places = Place.paginate(:page => params[:page], :per_page => 8, :order => "places.id DESC")
+
 
     #=>SELECT "places".* FROM "places" INNER JOIN "users" ON "users"."id" = "places"."user_id" WHERE "places"."is_recommended" = 't' LIMIT 3
-    @recommended=Place.select("places.*").joins(:user).recommended.limit(3)
-    
-    #=>SELECT user.username FROM "places" LEFT JOIN user ON user.id=place.user_id LIMIT 4
-    @test=Place.select("places.id,places.name").join_user.limit(4)
-    
-    #=>SELECT "places".* FROM "places" WHERE "places"."is_fixed" = 't'
-    @fixed=Place.where(:is_fixed=>true)
+    #@recommended=Place.select("places.*").joins(:user).recommended.limit(3)
 
-    @address=Place.select("places.id,places.address").recommended.join_city.limit(6)
+    #=>SELECT user.username FROM "places" LEFT JOIN user ON user.id=place.user_id LIMIT 4
+    #@test=Place.select("places.id,places.name").join_user.limit(4)
+
+    #=>SELECT "places".* FROM "places" WHERE "places"."is_fixed" = 't'
+    #@fixed=Place.where(:is_fixed => true)
+
+    #@address=Place.select("places.id,places.address").recommended.join_city.limit(6)
 
     #枚举查询测试
-    @search=Place.base_field.search('华家池','茅').join_user.join_city.limit(2)
+    #@search=Place.base_field.search('华家池', '茅').join_user.join_city.limit(2)
     #=>SELECT places.id,places.name, users.username, provinces.name,cities.name FROM "places" LEFT JOIN users ON users.id=places.user_id LEFT JOIN provinces ON provinces.id=places.province_id LEFT JOIN cities ON cities.id=places.city_id WHERE (places.name like '%华家池%' OR places.name like '%茅%') LIMIT 2
     respond_to do |format|
       format.html # index.html.erb
@@ -107,9 +106,9 @@ class PlacesController < ApplicationController
     end
 
     Mail.new({:to => 'mikel@test.lindsaar.net',
-    'from' => 'bob@test.lindsaar.net',
-    :subject => 'This is an email',
-    :body => 'This is the body' })
+              'from' => 'bob@test.lindsaar.net',
+              :subject => 'This is an email',
+              :body => 'This is the body'})
 
   end
 end

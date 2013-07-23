@@ -63,6 +63,11 @@ module Gobiker
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
 
+    #缓存存储
+    #可以通过调用 Rails.cache 来读写 cache
+    #大小在初始化里面定义
+    config.cache_store = :memory_store
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
@@ -81,11 +86,11 @@ module Gobiker
     #config.custom.site_name = '骑趣'
 
     #载入缓存监控配置文件
-    config.autoload_paths += %W(#{Rails.root}/app/sweepers)
+    #config.autoload_paths += %W(#{config.root}/app/sweepers)
 
-    #由于 Rails 不会自动加载 lib 下的文件, 所以我们需要打开 config/application.rb 并找到 config.autoload_paths 这一行, 改为:
-    #这里只是为了学习和测试rspec
-    config.autoload_paths += %W(#{config.root}/lib)
+    #由于 Rails 不会自动加载 lib 下的文件
+    #不知道为什么，引入的文件都是空类
+    config.autoload_paths += Dir["#{config.root}/lib"]
 
   end
 end
@@ -98,6 +103,3 @@ Gobiker::Application.config.generators do |g|
   g.assets false
   #g.fixture_replacement false
 end
-
-#request my method
-require 'common'

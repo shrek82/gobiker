@@ -49,7 +49,7 @@ class Place < ActiveRecord::Base
   has_and_belongs_to_many :tags
 
   #获取记录
-  def Place.get(*args)
+  def self.get(*args)
     options = args.extract_options!
     puts "Arguments:  #{args.inspect}"
     puts "Options:    #{options.inspect}"
@@ -58,8 +58,8 @@ class Place < ActiveRecord::Base
   end
 
   #推荐目的地
-  def Place.get_recommended(limit=6,options={})
-    def_opt={:where=>["is_recommended=?",true],:order=>'id DESC',:select=>'id,name,img_path'}
+  def self.get_recommended(limit=6,options={})
+    def_opt={:select=>'id,name,img_path',:where=>["is_recommended=?",true],:order=>'id DESC'}
     opt=def_opt.merge! options
     Place.select(opt[:select]).where(opt[:where]).limit(limit).order(opt[:order])
   end
