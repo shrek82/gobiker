@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
   #根据get参数自动设置多语言版
   before_filter :set_locale
 
+  before_filter :set_localst
+
   #cancan认证方式三，认证整个项目
   #check_authorization
 
