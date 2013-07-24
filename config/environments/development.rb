@@ -51,6 +51,7 @@ Gobiker::Application.configure do
 end
 
 
+#如果找不到imagemagick组件，需要指明路径
 Paperclip.options[:command_path] = "/opt/ImageMagick/bin/"
 
 
@@ -58,8 +59,8 @@ ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
     :address => "smtp.163.com",
     :port => 25,
-    :domain => "www.163.com",
+    :domain => "163.com",
     :authentication => :login,
-    :user_name => "hmilyo2008",
+    :user_name => "hmilyo2008@163.com",
     :password => "orange320"
 }

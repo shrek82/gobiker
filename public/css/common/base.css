@@ -527,7 +527,8 @@ a {
 
 .ui_input {
     height:22px;
-    border:1px solid #ccc;
+    border-width:1px;
+    border-color: #a7a7a7 #ccc #ccc #a7a7a7;
     background-color:#fff;
     line-height:22px;
     font-family:helvetica,arial,\5b8b\4f53,sans-serif;

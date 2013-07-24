@@ -2,6 +2,8 @@
 
 Gobiker::Application.routes.draw do
 
+  get "mytest/index"
+
   #show、new、edit、update、destroy是单数，对单一元素操作
   #index、create是复数，对群集操作
   #place_path(@place)需要参数，根据HTTP动词决定show、update、destroy
@@ -27,7 +29,7 @@ Gobiker::Application.routes.draw do
   match '/login' => 'users#login', :as => 'login', :via => [:get, :post]
   match '/register' => 'users#register', :as => 'register'
   match 'users/ajax' => 'users#ajax', :via => [:get, :post]
-  get "users/minilogin" => "users#minilogin", :via => "get"
+  get "users/minilogin" => "users#minilogin"
 
 
   match 'test' => 'users#mail'

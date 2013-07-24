@@ -8,10 +8,9 @@
         <div class="reg_form">
             <div class="list email clearfix">
                 <span class="fl email_t">邮箱：</span>
-                <span class="fontArial cGray">seeyoup@qq.com</span>
+                <span class="fontArial cGray"><%= @act %></span>
             </div>
-            <input type="hidden" name="regid" value="38164">
-            <input type="hidden" name="code" value="YkFURHU4SlcDHV5HNCZFQ2olXVwweldWAmdNVEN0fA">
+            <input type="hidden" name="code" value="<%= @code %>">
             <div class="list clearfix">
                 <span class="fl">用户名：</span>
                 <div class="input_div">
@@ -19,12 +18,12 @@
                     <span class="i_zt"></span>
                     <span class="i_tips"></span>
                 </div>
-                <p class="dl_p cGray">您以后可以使用此用户名或邮箱登录穷游网</p>
+                <p class="dl_p cGray">使用该名称或邮箱均可登录网站</p>
             </div>
             <div class="list clearfix">
                 <span class="fl">密码：</span>
                 <div class="input_div" style="z-index:12;">
-                    <input type="password" class="ui_input fl" autocomplete="off" value="" placeholder="" id="reg_password" maxlength="16" name="password">
+                    <input type="password" class="ui_input fl" autocomplete="off" value="" id="reg_password" maxlength="16" name="password">
                     <span class="i_zt"></span>
                     <span class="i_tips"></span>
                 </div>
@@ -32,7 +31,7 @@
             <div class="list clearfix">
                 <span class="fl">重复密码：</span>
                 <div class="input_div">
-                    <input type="password" class="ui_input fl" value="" autocomplete="off" placeholder="" id="reg_repassword" maxlength="16" name="repassword">
+                    <input type="password" class="ui_input fl" value="" autocomplete="off" id="reg_repassword" maxlength="16" name="repassword">
                     <span class="i_zt"></span>
                     <span class="i_tips"></span>
                 </div>

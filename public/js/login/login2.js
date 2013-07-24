@@ -72,13 +72,13 @@ jQuery(function () {
       }
       jQuery.postJSON(file + "?act=checkemail", "is_ajax=1&email=" + email, function (res) {
         console.log(res);
-        if ('0' != res.error) {
+        if (res.error) {
           showError('reg_email', res.msg);
-          jQuery("#reg_submit").attr("disabled", "disabled");
+          jQuery("#reg_submit").attr("disabled", "disabled").val('请重试');
           return false;
         } else {
           showSuccess('reg_email');
-          jQuery("#reg_submit").attr("disabled",false);
+          jQuery("#reg_submit").attr("disabled",false).val('立即注册');
           return true;
         }
       });
@@ -86,7 +86,8 @@ jQuery(function () {
       return true;
     },
     username: function (username) {
-      var len = util.getwordlen(username);
+
+      var len = $('#reg_username').val().length;
       if (len == 0) {
         return showError('reg_username', "请输入用户名");
       }
@@ -109,7 +110,7 @@ jQuery(function () {
         async: false
       });
       jQuery.postJSON(file + "?act=checkusername", "is_ajax=1&username=" + encodeURI(username), function (res) {
-        if ('0' != res.error) {
+        if (res.error) {
           check_username = false;
           return showError('reg_username', res.msg);
         } else {

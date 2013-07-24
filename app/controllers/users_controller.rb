@@ -9,97 +9,20 @@
 
 class UsersController < ApplicationController
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-
-    request.xhr?
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
-  end
-
-  def show
-    @user = User.find(params[:id])
-    respond_to do |format|
-      if @user.present?
-        format.html
-        format.json { render :json => @user }
+  include UsersHelper
+  #注册
+  def register
+    #验证
+    if request.method=='GET' && params[:act] && params[:code]
+      @act=params[:act]
+      @code=params[:code]
+      if @code!=generate_activecode(@act)
+        flash[:error]='很抱歉，激活失败，请检查验证码!'
       else
-        format.any { head status: :not_found }
+        flash[:success]='恭喜您，您的邮箱已经验证通过'
       end
-    end
-  end
-
-  # GET /users/1
-  # GET /users/1.json
-  def show2
-    @user = User.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
-  end
-
-  # GET /users/new
-  # GET /users/new.json
-  def new
-    @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user }
-    end
-  end
-
-  # GET /users/1/edit
-  def edit
-    @user = User.find(params[:id])
-  end
-
-  # POST /users
-  # POST /users.json
-  def create
-    @user = User.new(params[:user])
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /users/1
-  # PUT /users/1.json
-  def update
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /users/1
-  # DELETE /users/1.json
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
+    elsif request.method=='POST'
+      render :text => 'post'
     end
   end
 
@@ -130,28 +53,39 @@ class UsersController < ApplicationController
     end
   end
 
-  def logout
-    session[:uid] = nil
-  end
-
   #注册验证
   def ajax
     @email=params[:email]
     @act=params[:act]
+    @user_name=params[:username]
 
-    #验证是否可用
+    #验证帐号是否被注册
     if @act=='checkemail'
       user=User.find_by_email(@email)
       if user
-        render json: {error: 1, msg: "该帐号已经被注册了!"}
+        respond :error => '该帐号已经被注册了!', :_format => 'json'
       else
-        render json: {error: 0}
+        respond :success => '帐号可以使用!', :_format => 'json'
+      end
+    end
+
+    #检查用户名是否被注册
+    if @act=='checkusername'
+      user=User.find_by_username(@user_name)
+      if user
+        respond :error => '该用户名已经被使用了!', :_format => 'json'
+      else
+        respond :success => '用户名可以使用!', :_format => 'json'
       end
     end
 
     #发送激活邮件
     if @email&&(@act=='sendmail'||@act=='resentcode')
-      UserMailer.activation_mail(@email).deliver
+      mail_data={:email => @email,
+                 :subject => "骑趣网———注册激活邮件",
+                 :url => "http://"+request.host_with_port+"/register?act="+@email+"&code="+generate_activecode(@email)
+      }
+      UserMailer.activation_mail(mail_data).deliver
       render :template => 'users/_reg_active_mail', :layout => false
     end
 
@@ -192,7 +126,10 @@ class UsersController < ApplicationController
   end
 
   def authenticate
+  end
 
+  def logout
+    session[:uid] = nil
   end
 
 end

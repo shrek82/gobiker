@@ -11,31 +11,34 @@ module CommonHelper
   end
 
 #结束输出到客户端
-  def respond(data={})
+  def respond(options={})
 
-    #获取客户端请求格式
-    format=params[:_format]||'html'
+    default={
+        :data => {:status => 1},
+        :_format => 'html',
+        :status => 200,
+        :layout => true
+    }
+
+    data=default.merge options
 
     #服务器返回参数
-    data[:data]||={}
-    data[:status]||=200
-    data[:layout]=true if data[:layout].nil?
     data[:layout]=false if is_ajax?
+
+    #返回方法
     data[:data].store("redirect_to", data[:redirect_to]) if data[:redirect_to]
     data[:data].store("notice", data[:notice]) if data[:notice]
 
+    format=data[:_format]
     #返回成功或错误标示及详细信息
     #有在非ajax请求的时候，才显示flash信息
     if data[:success]
       flash[:success]=data[:success] unless is_ajax?
-      data[:data].store("status", 1)
       data[:data].store("success", data[:success])
     elsif data[:error]
-      flash[:error]=data[:error]  unless is_ajax?
-      data[:data].store("status", 0)
+      flash[:error]=data[:error] unless is_ajax?
+      data[:data].status=0
       data[:data].store("error", data[:error])
-    else
-      data[:data].store("status", 1)
     end
 
     #根据不同格式需求方式呈现不同结果
@@ -45,10 +48,10 @@ module CommonHelper
     if data[:redirect_to] && !is_ajax?
       redirect_to data[:redirect_to], :notice => data[:notice]
 
-    #仅当指定action才渲染模板(并根据是否为ajax觉得是否使用layout),一般是提交页面没有模板
+      #仅当指定action才渲染模板(并根据是否为ajax觉得是否使用layout),一般是提交页面没有模板
     elsif format=='html'
       if defined? data[:action]
-        render action: data[:action], layout:data[:layout], status: data[:status]
+        render action: data[:action], layout: data[:layout], status: data[:status]
       elsif defined? data[:template]
         render template: data[:template]
       else

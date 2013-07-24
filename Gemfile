@@ -46,7 +46,6 @@ group :development do
   gem "better_errors"
   gem "hirb"
   gem "rails-footnotes", '>= 3.7.9'
-  gem "snipcheat"
   #gem "pry-rails"
 end
 
