@@ -1,12 +1,10 @@
 <form id="reg_form" >
-
   <% if flash[:error] %>
       <div class="reg_error" >
         <span class="icon_error cGray" ></span >
         <strong class="fontYaHei f16" ><%= flash[:error] %></strong >
       </div >
   <% end %>
-
   <div class="reg_main" >
     <div class="clearfix" ><strong class="fl f16 fontYaHei fb cGray" >使用以下帐号直接登录</strong ></div >
     <div class="tc mt15" >
@@ -15,7 +13,7 @@
     </div >
     <div class="tc mt20" >
       <img src="/static/media/huo_icon.png" width="400" height="16" alt="" /></div >
-    <div class="clearfix mt15" ><strong class="fl f16 fontYaHei fb cGray" >注册穷游帐号</strong ><span class="fr cGray" >已有帐号？<a href="/login/" >登录</a ></span >
+    <div class="clearfix mt15" ><strong class="fl f16 fontYaHei fb cGray" >注册骑趣帐号</strong ><span class="fr cGray" >已有帐号？<a href="/login/" >登录</a ></span >
     </div >
     <div class="clearfix mt15 reg_input" >
       <div class="input_div" >
@@ -24,7 +22,6 @@
         <span class="i_tips" ></span >
       </div >
     </div >
-    <input type="hidden" name="refer" id="reg_refer" value="http%3A%2F%2Fwww.qyer.com%2F" />
 
     <div class="clearfix mt10 cGray reg_checkbox" >
       <label ><input type="checkbox" checked="checked" id="reg_checkbox_agree" />我同意接受穷游网
@@ -33,3 +30,11 @@
     <div class="tc mt20" ><input type="button" id="reg_submit" class="ui_btn_big fontYaHei" value="立即注册" /></div >
   </div >
 </form >
+<% content_for:script do %>
+    <script type="text/javascript">
+        readyScript.check_email=function(){
+            ureg.check_email();
+            ureg.bindActiveButton();
+        }
+    </script>
+<% end %>

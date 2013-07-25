@@ -10,9 +10,12 @@
 class UsersController < ApplicationController
 
   include UsersHelper
+
+  layout "login_register", :only => [:register, :login]
+
   #注册
   def register
-    #验证
+    #验证并继续注册过程
     if request.method=='GET' && params[:act] && params[:code]
       @act=params[:act]
       @code=params[:code]
@@ -21,12 +24,18 @@ class UsersController < ApplicationController
       else
         flash[:success]='恭喜您，您的邮箱已经验证通过'
       end
-    elsif request.method=='POST'
-      render :text => 'post'
+    #正式注册
+    elsif request.method=='POST' & params[:user]
+      @user =User.new(params[:user])
+      if @user.save
+        respond :redirect_to => admin_places_path, :success => '恭喜您注册成功!'
+      else
+        respond :action => 'register', :error => @user.errors.full_messages
+      end
     end
   end
 
-  #登陆
+  #登录
   def login
     if request.post?
       @user=User.find_by_email(params[:email])
@@ -67,10 +76,16 @@ class UsersController < ApplicationController
       else
         respond :success => '帐号可以使用!', :_format => 'json'
       end
-    end
-
-    #检查用户名是否被注册
-    if @act=='checkusername'
+      #发送激活邮件，返回提示窗口
+    elsif @email&&(@act=='sendmail'||@act=='resentcode')
+      mail_data={:email => @email,
+                 :subject => "骑趣网———注册激活邮件",
+                 :url => "http://"+request.host_with_port+"/register?act="+@email+"&code="+generate_activecode(@email)
+      }
+      UserMailer.activation_mail(mail_data).deliver
+      render :template => 'users/_reg_active_mail', :layout => false
+      #检查用户名是否被注册
+    elsif @act=='checkusername'
       user=User.find_by_username(@user_name)
       if user
         respond :error => '该用户名已经被使用了!', :_format => 'json'
@@ -79,18 +94,7 @@ class UsersController < ApplicationController
       end
     end
 
-    #发送激活邮件
-    if @email&&(@act=='sendmail'||@act=='resentcode')
-      mail_data={:email => @email,
-                 :subject => "骑趣网———注册激活邮件",
-                 :url => "http://"+request.host_with_port+"/register?act="+@email+"&code="+generate_activecode(@email)
-      }
-      UserMailer.activation_mail(mail_data).deliver
-      render :template => 'users/_reg_active_mail', :layout => false
-    end
-
   end
-
 
   def minilogin
     render :template => 'users/mini_login', :layout => false

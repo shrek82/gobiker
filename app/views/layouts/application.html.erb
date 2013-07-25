@@ -2,25 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title><%=@title %></title>
+  <title><%= @title?(@title+" - "+Setting.site_name):Setting.site_name%></title>
   <meta name="keywords" content="<%= Gobiker::Application.config.site_keyword %>">
   <meta name="description" content="<%= Gobiker::Application.config.site_description %>">
   <%= favicon_link_tag 'http://www.qyer.com/favicon.ico' %>
   <link rel="stylesheet" href="/css/common/base.css"/>
   <link rel="stylesheet" href="/css/common/headfoot.css"/>
-  <%= javascript_include_tag "/js/jquery-1.7.1.min.js", "/js/global.js" %>
-  <%= yield :head %>
-  <script>
-      if (/(MIDP|WAP|UP\.Browser|Smartphone|Obigo|AU\.Browser|wxd\.Mms|WxdB\.Browser|CLDC|UP\.Link|KM\.Browser|UCWEB|SEMC\-Browser|Mini|Symbian|Palm|Nokia|Panasonic|MOT\-|SonyEricsson|NEC\-|Alcatel|Ericsson|BENQ|BenQ|Amoisonic|Amoi\-|Capitel|PHILIPS|SAMSUNG|Lenovo|Mitsu|Motorola|SHARP|WAPPER|LG\-|LG\/|EG900|CECT|Compal|kejian|Bird|BIRD|G900\/V1.0|Arima|CTL|TDG|Daxian|DAXIAN|DBTEL|Eastcom|EASTCOM|PANTECH|Dopod|Haier|HAIER|KONKA|KEJIAN|LENOVO|Soutec|SOUTEC|SAGEM|SEC\-|SED\-|EMOL\-|INNO55|ZTE|iPhone|Android|Windows CE|Wget|Java|curl|Opera)/g.test(navigator.userAgent) && /qyer\.com/.test(document.referrer) == false) {
-          location.href = "http://m.qyer.com";
-      }
-  </script>
+  <%= yield :style %>
 </head>
 <body>
-
-<%=render :template => 'global/header' %>
+<%= render :template => 'global/header' %>
 <%= yield %>
-<%render :template => 'global/footer' %>
+<%= render :template => 'global/footer' %>
 <%= yield :footer %>
+<%= javascript_include_tag "/js/jquery-1.7.1.min.js","/js/lib.js","/js/global.js"%>
+<%= yield :script %>
+<script type="text/javascript">
+    (function ($) {
+        runReadyScript();
+    })(jQuery);
+</script>
 </body>
 </html>

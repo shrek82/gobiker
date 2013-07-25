@@ -5,7 +5,7 @@
 Gobiker::Application.configure do
 
   #Setting缓存初始化
-  Setting[:site_name] = '骑趣' # 站点名称，如: Rabel
+  Setting[:site_name] = '骑趣网' # 站点名称，如: Rabel
   Setting[:welcome_tip] = '欢迎访问<strong>Rabel</strong>' # 网站欢迎语, 支持html标签
   Setting[:splash] = '<div class="hero-unit"><h1>Rabel</h1><p>新一代简洁社区软件</p></div>'
   Setting[:ga_id] = '' # Google Analytics ID

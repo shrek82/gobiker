@@ -2,19 +2,19 @@
   <span class="icon_finish cGray">您已成功验证邮箱</span>
   <strong class="fontYaHei f16 cGray mt5 block">填写用户名和密码就可以完成注册啦</strong>
 </div>
-
-<form action="/register.php?action=newregister" id="registform" method="post">
+<form action="<%= register_path %>" id="regist_form" method="post">
     <div class="reg_main">
         <div class="reg_form">
             <div class="list email clearfix">
                 <span class="fl email_t">邮箱：</span>
                 <span class="fontArial cGray"><%= @act %></span>
             </div>
-            <input type="hidden" name="code" value="<%= @code %>">
+            <input type="hidden" name="user[email]" value="<%= @act %>">
+            <input type="hidden" name="user[code]" value="<%= @code %>">
             <div class="list clearfix">
                 <span class="fl">用户名：</span>
                 <div class="input_div">
-                    <input type="text" class="ui_input fl" autocomplete="off" value="" id="reg_username" maxlength="15" name="username" placeholder="">
+                    <input type="text" class="ui_input fl" autocomplete="off" value="" id="reg_username" maxlength="15" name="user[username]" placeholder="">
                     <span class="i_zt"></span>
                     <span class="i_tips"></span>
                 </div>
@@ -23,7 +23,7 @@
             <div class="list clearfix">
                 <span class="fl">密码：</span>
                 <div class="input_div" style="z-index:12;">
-                    <input type="password" class="ui_input fl" autocomplete="off" value="" id="reg_password" maxlength="16" name="password">
+                    <input type="password" class="ui_input fl" autocomplete="off" value="" id="reg_password" maxlength="16" name="user[password]">
                     <span class="i_zt"></span>
                     <span class="i_tips"></span>
                 </div>
@@ -31,14 +31,22 @@
             <div class="list clearfix">
                 <span class="fl">重复密码：</span>
                 <div class="input_div">
-                    <input type="password" class="ui_input fl" value="" autocomplete="off" id="reg_repassword" maxlength="16" name="repassword">
+                    <input type="password" class="ui_input fl" value="" autocomplete="off" id="reg_repassword" maxlength="16" name="user[password_confirmation]">
                     <span class="i_zt"></span>
                     <span class="i_tips"></span>
                 </div>
             </div>
             <div class="list mt10 clearfix">
-                <input type="submit" class="ui_btn_big fontYaHei" value="完成注册">
+                <input type="submit" id="submit_button"  class="ui_btn_big fontYaHei" value="完成注册">
             </div>
         </div>
     </div>
 </form>
+<% content_for:script do %>
+<script type="text/javascript" >
+    readyScript.check_name_pws=function(){
+      ureg.check_name_pws();
+      ureg.bindCreateForm();
+  }
+</script >
+<% end %>

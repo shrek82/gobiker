@@ -59,16 +59,16 @@ module CommonHelper
       end
       #输出json格式结果
     elsif format=='json'
-      render :json => data[:data].to_json
+      render :json => data[:data].to_json, status: data[:status]
       #输出xml格式代码
     elsif format=='xml'
-      render :xml => data[:data].to_xml
+      render :xml => data[:data].to_xml, status: data[:status]
       #输出纯文本格式格式
     elsif format=='text'
-      render :text => data[:text]
+      render :text => data[:text], status: data[:status]
       #不输出任何内容
     else
-      render nothing: true, status: data[:status]
+      render nothing: true, status: data[:status], status: data[:status]
     end
   end
 

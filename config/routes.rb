@@ -16,25 +16,25 @@ Gobiker::Application.routes.draw do
   #浏览器支援PUT跟DELETE吗？Rails其实偷藏了_method参数。HTML规格只定义了GET/POST，所以HTML表单是没有PUT/DELETE的。但是XmlHttpRequest规格(也就是Ajax用的)有定义GET/POST/PUT/DELETE/HEAD/OPTIONS。
   #as帮助我们生产一个admin_path和一个admin_url
 
-  root :to =>'main#index',:as=>'main'
+  root :to => 'main#index', :as => 'main'
 
   #临时测试路径
-  get "/v1"=>'main#v1'
+  get "/v1" => 'main#v1'
 
   #公共路由
   post "attacheds/upload" => "attacheds#upload"
-  resources :attacheds,:only => [:new,:post,:show]
+  resources :attacheds, :only => [:new, :post, :show]
 
   #用户相关路由
-  match '/login' => 'users#login', :as => 'login', :via => [:get, :post]
-  match '/register' => 'users#register', :as => 'register'
+  match 'login' => 'users#login', :as => 'login', :via => [:get, :post]
+  match 'register' => 'users#register', :as => 'register'
   match 'users/ajax' => 'users#ajax', :via => [:get, :post]
-  get "users/minilogin" => "users#minilogin"
+  post 'users/create'=>'users#create'
+  get 'users/minilogin' => 'users#minilogin'
 
 
   match 'test' => 'users#mail'
   match '/forums/threads/:id' => 'forums#thread', :constraints => {:id => /\d/}, :as => 'forum_thread'
-
 
 
   #管理员路径
@@ -111,11 +111,10 @@ Gobiker::Application.routes.draw do
   #公共路径
   resources :provinces
   resources :comments
-  resources :photos
+  resources :photos,:path_names => {:new => "tianjia"}
   resources :places
   resources :routes
-  resources :users,:path_names => { :new => "tianjia" }
-  resources :asks ,:path => 'wenda'
+  resources :asks, :path => 'wenda'
 
   #会员个人主页
   #使用命名空间路由来群组相关的行为。
@@ -137,7 +136,7 @@ Gobiker::Application.routes.draw do
   end
 
   #其他的
-  match ':controller(/:action(/:id))(.:format)'
+  match ':controller(/:action(/:id))(.:format)',:constraints => {:id => /[\d]+/},:via => [:get]
   #上述這一行設定就包括六種路徑方式：
 
   #match '/:controller'
