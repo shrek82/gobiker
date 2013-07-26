@@ -25,7 +25,7 @@ class UsersController < ApplicationController
         flash[:success]='恭喜您，您的邮箱已经验证通过'
       end
     #正式注册
-    elsif request.method=='POST' & params[:user]
+    elsif request.method=='POST' && params[:user]
       @user =User.new(params[:user])
       if @user.save
         respond :redirect_to => admin_places_path, :success => '恭喜您注册成功!'

@@ -44,6 +44,12 @@ class User < ActiveRecord::Base
   #  errors.add(:base, "Must be friends to leave a comment") unless commenter.friend_of?(commentee)
   #end
 
+  def code
+  end
+
+  def code=(str)
+  end
+
   private
 
   def must_be_friends
