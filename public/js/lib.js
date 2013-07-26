@@ -106,7 +106,8 @@ function ajaxForm (form,opts) {
   var _this = this;
 
   //jquery表单对象
-  this.form = form;
+  this.form = $('#'+form);
+
   //提交按钮
   this.btn = false;
   //提交状体提示框
@@ -117,6 +118,7 @@ function ajaxForm (form,opts) {
     dataType:'json',
     timeout:3000,
     clearForm:false,
+    tool:true,
     errorDisplayType:'formError',
     loading:false,
     redirect:false,
@@ -139,6 +141,12 @@ function ajaxForm (form,opts) {
       opts.before();
     }
 
+    //提交状态提示框
+    if(!_this.form.length){
+      alert('很抱歉，未找到表单对象!');
+      return false;
+    }
+
     //提交按钮
     _this.btn = $('#' + _this.opts.submitButton);
     if (!_this.btn.length) {
@@ -146,7 +154,6 @@ function ajaxForm (form,opts) {
       return false;
     }
 
-    //提交状态提示框
     _this.flash_msg = fetchObj('flash_msg',function () {
       _this.form.after('<div id="flash_msg"></div>');
     })

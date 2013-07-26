@@ -1799,7 +1799,7 @@ form {
     background:#147850;
 }
 
-.ui_button:hover,.ui_buttonB:hover,.ui_button14:hover,.ui_btn_big:hover,.ui_btn_small:hover,.ui_btn_smallB:hover {
+.ui_button:hover,.ui_button_active,.ui_buttonB:hover,.ui_button14:hover,.ui_btn_big:hover,.ui_btn_small:hover,.ui_btn_smallB:hover {
     background:#5fa678;
     color:#fff;
     text-decoration:none;

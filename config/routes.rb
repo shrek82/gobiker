@@ -28,10 +28,9 @@ Gobiker::Application.routes.draw do
   #用户相关路由
   match 'login' => 'users#login', :as => 'login', :via => [:get, :post]
   match 'register' => 'users#register', :as => 'register'
-  match 'users/ajax' => 'users#ajax', :via => [:get, :post]
   post 'users/create'=>'users#create'
-  get 'users/minilogin' => 'users#minilogin'
-
+  get 'users/ajax'=>'users#ajax'
+  post 'users/ajax'=>'users#ajax'
 
   match 'test' => 'users#mail'
   match '/forums/threads/:id' => 'forums#thread', :constraints => {:id => /\d/}, :as => 'forum_thread'
@@ -136,7 +135,7 @@ Gobiker::Application.routes.draw do
   end
 
   #其他的
-  match ':controller(/:action(/:id))(.:format)',:constraints => {:id => /[\d]+/},:via => [:get]
+  #match ':controller(/:action(/:id))(.:format)',:constraints => {:id => /[\d]+/},:via => [:get]
   #上述這一行設定就包括六種路徑方式：
 
   #match '/:controller'

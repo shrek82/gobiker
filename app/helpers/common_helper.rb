@@ -13,65 +13,60 @@ module CommonHelper
 #结束输出到客户端
   def respond(options={})
 
-    default={
-        :data => {:status => 1},
-        :_format => 'html',
-        :status => 200,
-        :layout => true
-    }
+    #合并渲染参数
+    data={:layout => (is_ajax?) ? false : true,
+          :status => 200
+    }.merge options
 
-    data=default.merge options
-
-    #服务器返回参数
-    data[:layout]=false if is_ajax?
-
-    #返回方法
-    data[:data].store("redirect_to", data[:redirect_to]) if data[:redirect_to]
-    data[:data].store("notice", data[:notice]) if data[:notice]
-
-    format=data[:_format]
-    #返回成功或错误标示及详细信息
-    #有在非ajax请求的时候，才显示flash信息
-    if data[:success]
-      flash[:success]=data[:success] unless is_ajax?
-      data[:data].store("success", data[:success])
-    elsif data[:error]
-      flash[:error]=data[:error] unless is_ajax?
-      data[:data].status=0
-      data[:data].store("error", data[:error])
+    #约定：
+    #非ajax请求除非指定，否则均返回html格式
+    #ajax格式除非指定，否则均返回json格式
+    #本controller中一般省略_format
+    if !is_ajax?
+      flash[:success]=data[:success] if data[:success]
+      if data[:_format]
+        format=data[:_format]
+      elsif params[:_format]
+        format=params[:_format]
+      else
+        format='html'
+      end
+    #ajax请求无特别注明都返回json
+    elsif data[:_format]
+      format=data[:_format]
+    elsif params[:_format]
+      format=params[:_format]
+    else
+      format='json'
     end
-
-    #根据不同格式需求方式呈现不同结果
 
     #普通方式请求且指定运行结束后跳转，优先进行跳转
-    #ajax请求时，不执行跳转，否则ajax获取结果会是跳转后的页面
     if data[:redirect_to] && !is_ajax?
       redirect_to data[:redirect_to], :notice => data[:notice]
-
-      #仅当指定action才渲染模板(并根据是否为ajax觉得是否使用layout),一般是提交页面没有模板
+      #渲染html模板
     elsif format=='html'
-      if defined? data[:action]
-        render action: data[:action], layout: data[:layout], status: data[:status]
-      elsif defined? data[:template]
-        render template: data[:template]
-      else
-        render :text => '<div class="alert alert-block">html格式需指定action或template名称!</div>'
-      end
+      render_opt={:action => data[:action]} if data[:action]
+      render_opt={:template => data[:template]} if data[:template]
+      render_opt={:html => true} if (data[:action].nil? && data[:template].nil?)
       #输出json格式结果
     elsif format=='json'
-      render :json => data[:data].to_json, status: data[:status]
+      render_opt={:json => data}
       #输出xml格式代码
     elsif format=='xml'
-      render :xml => data[:data].to_xml, status: data[:status]
+      render_opt={:xml => data.to_xml}
       #输出纯文本格式格式
     elsif format=='text'
-      render :text => data[:text], status: data[:status]
+      render_opt={:text => data[:text]}
       #不输出任何内容
     else
-      render nothing: true, status: data[:status], status: data[:status]
+      render_opt={:nothing => true}
     end
+
+    render render_opt.merge({layout: data[:layout], status: data[:status]})
+
   end
 
+#自动转换链接
   def auto_link(mystr)
     require 'uri'
     x = URI.extract(mystr, ['http', 'https', 'ftp'])

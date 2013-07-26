@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     elsif request.method=='POST' && params[:user]
       @user =User.new(params[:user])
       if @user.save
-        respond :redirect_to => admin_places_path, :success => '恭喜您注册成功!'
+        respond :redirect_to => main_path, :success => '恭喜您注册成功!'
       else
         respond :action => 'register', :error => @user.errors.full_messages
       end
@@ -66,32 +66,34 @@ class UsersController < ApplicationController
   def ajax
     @email=params[:email]
     @act=params[:act]
-    @user_name=params[:username]
+    @username=params[:username]
 
     #验证帐号是否被注册
-    if @act=='checkemail'
-      user=User.find_by_email(@email)
+    if @email && @act=='checkemail'
+      user=User.exists?(@email)
       if user
         respond :error => '该帐号已经被注册了!', :_format => 'json'
       else
         respond :success => '帐号可以使用!', :_format => 'json'
       end
       #发送激活邮件，返回提示窗口
-    elsif @email&&(@act=='sendmail'||@act=='resentcode')
+    elsif @email && (@act=='sendmail'||@act=='resentcode')
       mail_data={:email => @email,
                  :subject => "骑趣网———注册激活邮件",
                  :url => "http://"+request.host_with_port+"/register?act="+@email+"&code="+generate_activecode(@email)
       }
       UserMailer.activation_mail(mail_data).deliver
-      render :template => 'users/_reg_active_mail', :layout => false
+      respond :action=>'reg_active_mail',:layout=>false
       #检查用户名是否被注册
-    elsif @act=='checkusername'
-      user=User.find_by_username(@user_name)
+    elsif @act=='checkusername' && @username
+      user=User.find_by_username(@username)
       if user
         respond :error => '该用户名已经被使用了!', :_format => 'json'
       else
         respond :success => '用户名可以使用!', :_format => 'json'
       end
+    else
+      respond :_format=>'json',:error=>'非法请求',:status=>403
     end
 
   end

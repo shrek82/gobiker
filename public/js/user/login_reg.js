@@ -55,6 +55,7 @@ Array.prototype.delRepeat = function () {
 var loginReg = function () {
 
   var file = '/users/ajax';
+  var email_is_valid = false;
   var name_is_valid = false;
   var _this = this;
 
@@ -113,17 +114,17 @@ var loginReg = function () {
         data: 'email=' + email,
         success: function (res) {
           if (res.error) {
-            _this.showError('reg_email', res.msg);
+            _this.showError('reg_email', res.error);
             $("#reg_submit").attr("disabled", "disabled").val('请重试');
             return false;
           } else {
             _this.showSuccess('reg_email');
             $("#reg_submit").attr("disabled", false).val('立即注册');
-            return true;
           }
         }
       });
       _this.showSuccess('reg_email');
+      email_is_valid = true;
       return true;
     },
     //验证用户名输入
@@ -152,13 +153,14 @@ var loginReg = function () {
       });
 
       $.ajax({
-        url: file + "?act=checkusername&username=" + encodeURI(username),
-        type: "GET",
+        url: file + "?act=checkusername",
+        type: "POST",
+        data:'username='+encodeURI(username),
         dataType: "json",
         success: function (res) {
           if (res.error) {
             name_is_valid = false;
-            return _this.showError('reg_username', res.msg);
+            return _this.showError('reg_username', res.error);
           } else {
             name_is_valid = true;
           }
@@ -204,7 +206,7 @@ var loginReg = function () {
       _this.showloading("reg_verify");
       $.postJSON(file + "?act=checkverify", "is_ajax=1&verify=" + verify, function (res) {
         if ('0' != res.error) {
-          return _this.showError('reg_verify', res.msg);
+          return _this.showError('reg_verify', res.error);
         } else {
           return _this.showSuccess('reg_verify');
         }
@@ -289,7 +291,13 @@ var loginReg = function () {
 
     $("#reg_email").blur(function () {
       var email = $(this).val();
-      return _this.check.email(email);
+      if (!_this.check.email(email)) {
+        $("#reg_submit").attr("disabled", false).removeClass("ui_btn_big_load ui_btn_big_disabled").addClass("ui_btn_big").val('重试');
+        return false;
+      }
+      else {
+        return true;
+      }
     });
   }
 
@@ -350,27 +358,23 @@ var loginReg = function () {
     });
   }
 
-  //绑定提交按钮和同意注册协议按钮（激活帐号）
+  //提交激活邮件账号进入发送
   this.bindActiveButton = function () {
 
     $("#reg_checkbox_agree").live("click", function () {
       if ($(this).attr("checked")) {
-        $("#reg_submit").attr("disabled", false);
-        $("#reg_submit").removeClass("ui_btn_big_disabled").addClass("ui_btn_big");
+        $("#reg_submit").attr("disabled", false).removeClass("ui_btn_big_disabled").addClass("ui_btn_big");
       } else {
-        $("#reg_submit").attr("disabled", "disabled");
-        $("#reg_submit").removeClass("ui_btn_big").addClass("ui_btn_big_disabled");
+        $("#reg_submit").attr("disabled", "disabled").removeClass("ui_btn_big").addClass("ui_btn_big_disabled");
       }
     });
 
     $("#reg_submit").live('click', function () {
       var email = $("#reg_email").val();
-      if (!_this.check.email(email)) {
+      if (!email_is_valid) {
         return false;
       }
-      $("#reg_submit").removeClass("ui_btn_big").addClass("ui_btn_big_load");
-      var reg_test = $("#reg_submit").val();
-      $("#reg_submit").val("");
+      $(this).removeClass("ui_btn_big").addClass("ui_btn_big_load").val("");
       $.ajax({
         url: file + "?act=sendmail",
         type: 'POST',
@@ -378,6 +382,9 @@ var loginReg = function () {
         data: 'email=' + email,
         success: function (res) {
           $("#content_reg_email").html(res);
+          _this.reRendActiveMail();
+        },
+        error: function () {
         }
       });
       return false;
@@ -400,43 +407,28 @@ var loginReg = function () {
       if (!_this.check.repassword()) {
         return false;
       }
-      new ajaxForm($(this), {
+
+      new ajaxForm('regist_form', {
         dataType: 'json'
       }).send();
+
+    });
+
+  }
+
+  //绑定重发激活邮件
+  this.reRendActiveMail = function () {
+    $("#resentcode a").live("click", function () {
+      $(this).html('正在重发激活邮件...');
+      $.ajax({
+        url: file + "?act=resentcode",
+        type: 'POST',
+        dataType: 'json',
+        data: 'email=' + $(this).attr('to'),
+        success: function (res) {
+          $(this).html('激活有点发送成功!')
+        }
+      });
     });
   }
 }
-
-
-$(function () {
-
-  //绑定重发激活邮件
-  var sentemail = 0;
-  $("#resentcode a").live("click", function () {
-    var temp = $("#resentcode").html();
-    var code = $("#codedata").attr("code");
-    if (code == undefined) {
-      return false;
-    }
-    if (sentemail < 3) {
-      popup.coast(250, '', {
-        text: '发送邮件成功！'
-      });
-    }
-    $.post(file + "?act=resentcode", {
-      code: code
-    }, function (res) {
-      if (res.error == 0) {
-        sentemail++;
-        if (sentemail >= 3) {
-          $("#resentcode").html('<a href="javascript:void(0);" class="cLightgray">重新发送验证邮件</a><span class="cRed_caution">操作过于频繁，请稍后再试！</span>');
-          setTimeout(function () {
-            $("#resentcode").html(temp);
-          }, 10000);
-          sentemail = 0;
-        }
-      }
-    }, "json");
-  });
-})
-;
