@@ -1,7 +1,7 @@
 #coding: utf-8
 
 class User < ActiveRecord::Base
-  attr_accessible :avatar_path, :email, :login_date, :memo, :password, :pass, :point, :reg_date,:username,:code, :password_confirmation
+  attr_accessible :avatar_path, :email, :login_date, :memo, :password, :pass, :point, :reg_date, :username, :code, :password_confirmation
   has_many :comments, :dependent => :destroy
   has_many :places
   has_many :topics
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, :message => "该用户名已存在!"
 
   validates_presence_of :password, :message => "密码不能为空!"
-  validates_length_of :password, :minimum => 6, :message => "密码长度须为6到16位字母或数字! "
+  validates_length_of :password, :minimum => 5, :message => "密码长度须为5到16位字母或数字! "
   validates_confirmation_of :password, :message => "两次密码不一致!"
 
   #注册时邮件激活码
@@ -62,7 +62,45 @@ class User < ActiveRecord::Base
     generate_activecode(email)
   end
 
+  #登录
+  def self.login(post={})
+    user=nil
+    back={:error => nil, :uid => nil, :user => nil}
+    if post[:email] && post[:password]
+      user=User.find_by_email post[:email]
+    elsif post[:account] && post[:password]
+      if /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i.match post[:account]
+        user=User.find_by_email post[:account]
+      else
+        user=User.find_by_username post[:account]
+      end
+    elsif post[:username] && post[:password]
+      user=User.find_by_username post[:username]
+    else
+      back[:error] = '很抱歉，登录邮箱/用户名或密码不能为空'
+    end
+
+    if user
+      if user[:password]==Digest::MD5.hexdigest(post[:password])
+        user.login_date=Time.now
+        user.save
+        back[:uid]=user[:id]
+        back[:user]=user
+        back[:success]='登录成功！'
+      else
+        back[:error]='很抱歉，密码错误，请重新输入'
+      end
+    else
+      back[:error]='很抱歉，帐号不存在，请重试或注册'
+    end
+
+    return back
+
+  end
+
   private
+
+  #保存session
 
   #检查激活码
   def check_code
@@ -89,8 +127,9 @@ class User < ActiveRecord::Base
 
   #生成正式密码
   def generate_password
-    salt=Array.new(5) { rand(1024).to_s(36) }.join
-    self.password=Digest::SHA256.hexdigest(self.password+salt)
+    #salt=Array.new(5) { rand(1024).to_s(36) }.join
+    #self.password=Digest::SHA256.hexdigest(self.password+salt)
+    self.password=Digest::MD5.hexdigest(self.password)
   end
 
 end

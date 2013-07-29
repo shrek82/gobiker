@@ -1,14 +1,17 @@
 <div class="ind_topbg">
   <div class="ind_topmain">
+
+    <% if cookies[:uid] %>
+    <p class="ind_slogan" id="_jsloginedtips">专注出境旅行 - 大家帮助大家, 共同探索美好世界</p>
+    <% else %>
     <div class="ind_slogan2_fix" id="_jslogintips">
       <div class="ind_slogan2">
         <p class="btns">
-          <a href="javascript:;" class="weibo _jsweibologin" data-bn-ipg="top-rl-weibo">微博登录</a><a href="javascript:;" class="qq _jsqqlogin" data-bn-ipg="top-rl-qq">QQ登录</a><a href="http://login.qyer.com/register.php" class="regist" data-bn-ipg="top-rl-mail">邮件注册</a>
+          <a href="javascript:;" class="weibo _jsweibologin" >微博登录</a><a href="javascript:;" class="qq _jsqqlogin" >QQ登录</a><a href="<%= register_path %>" class="regist" data-bn-ipg="top-rl-mail">邮件注册</a>
         </p>
       </div>
     </div>
-    <p class="ind_slogan" id="_jsloginedtips" style="display:none">专注出境旅行 - 大家帮助大家, 共同探索美好世界</p>
-
+    <% end %>
     <div id="ind_focus" class="ind_focus">
       <div class="slides_container">
         <div class="slides_control">

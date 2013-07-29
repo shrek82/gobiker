@@ -19,7 +19,7 @@ PasswordStrength.StrengthValue = function (pwd) {
   return strengthValue;
 }
 PasswordStrength.StrengthLevel = function (pwd) {
-  if (pwd.length < 6) {
+  if (pwd.length < 5) {
     return '1';
   }
   var cf = 0;
@@ -182,16 +182,16 @@ var loginReg = function () {
       if (0 >= password.length) {
         return _this.showError('reg_password', "请输入登录密码");
       }
-      if (6 > password.length) {
-        return _this.showError('reg_password', "密码长度6-16位，区分大小写");
+      if (5 > password.length) {
+        return _this.showError('reg_password', "密码长度5-16位，区分大小写");
       }
       return _this.showSuccess('reg_password');
     },
     repassword: function () {
       var password = $("#reg_password").val();
       var repassword = $("#reg_repassword").val();
-      if (6 > password.length) {
-        _this.showError('reg_password', "密码长度6-16位，区分大小写");
+      if (5 > password.length) {
+        _this.showError('reg_password', "密码长度5-16位，区分大小写");
       }
       if (password != repassword) {
         return _this.showError('reg_repassword', "两次密码不一致");
@@ -379,7 +379,7 @@ var loginReg = function () {
         url: file + "?act=sendmail",
         type: 'POST',
         dataType: 'html',
-        data: 'email=' + email,
+        data: '_format=html&email=' + email,
         success: function (res) {
           $("#content_reg_email").html(res);
           _this.reRendActiveMail();
@@ -393,7 +393,6 @@ var loginReg = function () {
 
   //绑定注册按钮
   this.bindCreateForm = function () {
-
     $('#regist_form').bind("submit", function (e) {
       e.preventDefault();
       var password = $("#reg_password").val();
@@ -401,8 +400,8 @@ var loginReg = function () {
       if (!_this.check.username(username)) {
         return false;
       }
-      if (6 > password.length) {
-        return _this.showError('reg_password', "密码长度6-16位，区分大小写");
+      if (5 > password.length) {
+        return _this.showError('reg_password', "密码长度5-16位，区分大小写");
       }
       if (!_this.check.repassword()) {
         return false;
@@ -413,7 +412,22 @@ var loginReg = function () {
       }).send();
 
     });
+  }
 
+  //绑定登录
+  this.bindLoginForm = function () {
+    $('#login_form').bind("submit", function (e) {
+      e.preventDefault();
+      new ajaxForm('login_form', {
+        dataType: 'json',
+        successLabel:'登录成功',
+        sendingLabel:'验证中..',
+        errorLabel:'重试登录',
+        callback:function(){
+          window.location.href='/';
+        }
+      }).send();
+    });
   }
 
   //绑定重发激活邮件

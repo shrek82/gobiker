@@ -3,7 +3,7 @@
 }
 
 .fontYaHei {
-    font-family: "hiragino sans gb", "Microsoft YaHei", \9ED1\4F53, \5b8b\4f53, sans-serif;
+    font-family: "Microsoft YaHei", \9ED1\4F53, \5b8b\4f53, sans-serif;
 }
 
 .reg_main
@@ -65,10 +65,9 @@ img {
 }
 
 .reg_error {
-    line-height: 62px;
-    background: #fff7a5;
-    border-bottom: 1px solid #c0c0c0;
-    text-align: center;
+    padding: 15px 0 10px 96px;
+    background: #f1ecae;
+    border-bottom: 1px solid #d7d7d7;
 }
 
 .reg_error span {

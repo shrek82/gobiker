@@ -61,6 +61,6 @@ ActionMailer::Base.smtp_settings = {
     :port => 25,
     :domain => "163.com",
     :authentication => :login,
-    :user_name => "hmilyo2008@163.com",
-    :password => "orange320"
+    :user_name => "server_gobiker@163.com",
+    :password => "gobiker2013"
 }

@@ -528,7 +528,7 @@ a {
 .ui_input {
     height:22px;
     border-width:1px;
-    border-color: #a7a7a7 #ccc #ccc #a7a7a7;
+    border-color: #ccc #ccc #ccc #ccc;
     background-color:#fff;
     line-height:22px;
     font-family:helvetica,arial,\5b8b\4f53,sans-serif;
@@ -771,7 +771,7 @@ a {
     left:0;
     width:100%;
     height:100%;
-    background:url(/static/images/common/popup_bg.png);
+    background:url(/images/common/popup_bg.png);
 }
 
 .ui_pupBox {
@@ -793,7 +793,7 @@ a {
     position:relative;
     height:36px;
     border-bottom:1px solid #ddd;
-    background:#f7f7f7 url(/static/images/common/pup_headbg.png) repeat-x;
+    background:#f7f7f7 url(/images/common/pup_headbg.png) repeat-x;
     font-size:14px;
     line-height:36px;
     font-weight:700;
@@ -1510,14 +1510,14 @@ span {
     display:inline-block;
     line-height:18px;
     color:#077345;
-    background:url(/static/images/asks/tag_ask.png) no-repeat 0 0;
+    background:url(/images/asks/tag_ask.png) no-repeat 0 0;
     _background:#e6f4d9;
     padding-left:10px;
     margin:5px 0;
 }
 
 .ask_tag:hover {
-    background:url(/static/images/asks/tag_ask.png) no-repeat 0 -18px;
+    background:url(/images/asks/tag_ask.png) no-repeat 0 -18px;
     _background:#077345;
     color:#fff;
     text-decoration:none;
@@ -1526,7 +1526,7 @@ span {
 .ask_tag
 .ask_tag_strong {
     display:inline-block;
-    background:url(/static/images/asks/tag_ask.png) no-repeat right -36px;
+    background:url(/images/asks/tag_ask.png) no-repeat right -36px;
     _background:#e6f4d9;
     white-space:nowrap;
     font-family:\5b8b\4f53,sans-serif;
@@ -1535,7 +1535,7 @@ span {
 
 .ask_tag:hover
 .ask_tag_strong {
-    background:url(/static/images/asks/tag_ask.png) no-repeat right -54px;
+    background:url(/images/asks/tag_ask.png) no-repeat right -54px;
     _background:#077345;
 }
 
@@ -1875,7 +1875,7 @@ a {
     right:5px;
     width:26px;
     height:26px;
-    background:url(/static/images/common/pup_close.png) no-repeat 0 0;
+    background:url(/images/common/pup_close.png) no-repeat 0 0;
     cursor:pointer;
 }
 

@@ -8,49 +8,6 @@ function is_defined(obj) {
   }
 }
 
-//取消flash信息提示
-function closeFlashMsg () {
-  var $flash_msg = $('#flash_msg');
-  var _this = this;
-  this.close = function () {
-    $flash_msg.fadeOut();
-  };
-  $flash_msg.find('.close').bind('click',function () {
-    _this.close();
-  });
-  setTimeout(function () {
-    _this.close();
-  },5000);
-}
-
-//获取城市下拉菜单
-function get_cities (pid) {
-  $.ajax({
-    url:'/common/cities_select',
-    type:'post',
-    dataType:'html',
-    data:{province_id:pid},
-    success:function (data) {
-      console.log(data);
-      $('#city_select').html(data);
-    }
-  })
-}
-
-//获取城市下拉菜单
-function get_areas (cid) {
-  $.ajax({
-    url:'/common/areas_select',
-    type:'post',
-    dataType:'html',
-    data:{city_id:cid},
-    success:function (data) {
-      console.log(data);
-      $('#area_select').html(data);
-    }
-  })
-}
-
 //打印log
 function log (msg) {
   if (window.console && window.console.log) {
@@ -67,6 +24,7 @@ function is_defined (obj) {
     return false;
   }
 }
+
 //返回一个jquery对象，没有则方法创建并再次返回
 function fetchObj (id,createFun) {
   var obj = $('#' + id);
@@ -183,7 +141,7 @@ function ajaxForm (form,opts) {
       is_error = true;
       var errors = (typeof data.error == 'string')?[data.error]:data.error;
       html_errors = '<ul>';
-      for (i in errors) {
+      for (i =0; i < errors.length; i++){
         html_errors += '<li>' + errors[i] + '</li>';
       }
       html_errors += '</ul>';
@@ -241,8 +199,12 @@ function ajaxForm (form,opts) {
 
       //在表单底部提示错误
       if (_this.opts.errorDisplayType == 'formError') {
+
+
         _this.flash_msg.addClass('alert alert-block');
+
         _this.flash_msg.html(html_errors);
+
         _this.flash_msg.hide();
         _this.flash_msg.fadeIn(500);
         setTimeout(function () {
@@ -262,6 +224,7 @@ function ajaxForm (form,opts) {
       else {
         alert(html_errors);
       }
+
     }
 
     //重新激活重试提交

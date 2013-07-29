@@ -8,14 +8,13 @@
   <%= favicon_link_tag 'http://www.qyer.com/favicon.ico' %>
   <link rel="stylesheet" href="/css/common/base.css"/>
   <link rel="stylesheet" href="/css/common/headfoot.css"/>
-  <%= yield :style %>
+  <%= yield :style %><%= javascript_include_tag "/js/jquery-1.7.1.min.js","/js/lib.js","/js/global.js"%>
 </head>
 <body>
 <%= render :template => 'global/header' %>
 <%= yield %>
 <%= render :template => 'global/footer' %>
 <%= yield :footer %>
-<%= javascript_include_tag "/js/jquery-1.7.1.min.js","/js/lib.js","/js/global.js"%>
 <%= yield :script %>
 <script type="text/javascript">
     (function ($) {

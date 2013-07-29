@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       else
         flash[:success]='恭喜您，您的邮箱已经验证通过'
       end
-    #正式注册
+      #正式注册
     elsif request.method=='POST' && params[:user]
       @user =User.new(params[:user])
       if @user.save
@@ -35,29 +35,27 @@ class UsersController < ApplicationController
     end
   end
 
+  #获取当前用户信息
+  def check_user
+    if cookies[:uid] && cookies[:email] && cookies[:username]
+      @user=User.find_by_id(cookies[:uid])
+    else
+      @user=nil
+    end
+    render :layout => false
+  end
+
   #登录
   def login
-    if request.post?
-      @user=User.find_by_email(params[:email])
-      respond_to do |format|
-        if @user&&@user.password==params[:password]
-          cookies[:uid]=@user.id
-          cookies[:email]=@user.email
-          cookies[:username]=@user.username
-          @user.login_date=Time.now
-          @user.save
-          flash[:success]='恭喜您登陆成功，即将跳转至首页'
-          format.html
-          format.json { render :json => @user }
-        elsif @user
-          flash[:error]='很抱歉，密码错误，请重试！'
-          format.html
-          format.json { render :json => {:error => '很抱歉，密码错误，请重试！'} }
-        else
-          flash[:error]='邮箱或密码不能为空'
-          format.html
-          format.json { render :json => {:error => '邮箱或密码不能为空'} }
-        end
+    if request.method=='POST'
+      u=User.login params[:login]
+      if u[:error]
+        respond :error => u[:error]
+      elsif u[:uid]
+        cookies[:uid]=u[:uid]
+        cookies[:email]=u[:user][:email]
+        cookies[:username]=u[:user][:username]
+        respond :uid => u[:uid], :success => '登录成功!'
       end
     end
   end
@@ -83,7 +81,7 @@ class UsersController < ApplicationController
                  :url => "http://"+request.host_with_port+"/register?act="+@email+"&code="+generate_activecode(@email)
       }
       UserMailer.activation_mail(mail_data).deliver
-      respond :action=>'reg_active_mail',:layout=>false
+      respond :action => 'reg_active_mail', :layout => false
       #检查用户名是否被注册
     elsif @act=='checkusername' && @username
       user=User.find_by_username(@username)
@@ -93,7 +91,7 @@ class UsersController < ApplicationController
         respond :success => '用户名可以使用!', :_format => 'json'
       end
     else
-      respond :_format=>'json',:error=>'非法请求',:status=>403
+      respond :_format => 'json', :error => '非法请求', :status => 403
     end
 
   end

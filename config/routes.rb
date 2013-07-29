@@ -20,6 +20,7 @@ Gobiker::Application.routes.draw do
 
   #临时测试路径
   get "/v1" => 'main#v1'
+  match 'test' => 'users#mail'
 
   #公共路由
   post "attacheds/upload" => "attacheds#upload"
@@ -29,15 +30,30 @@ Gobiker::Application.routes.draw do
   match 'login' => 'users#login', :as => 'login', :via => [:get, :post]
   match 'register' => 'users#register', :as => 'register'
   post 'users/create'=>'users#create'
-  get 'users/ajax'=>'users#ajax'
   post 'users/ajax'=>'users#ajax'
 
-  match 'test' => 'users#mail'
+  #会员个人主页
+  resources :u,:only => [:show] do |u|
+    resources :places,:only => [:index,:show]
+  end
+
+  #核心功能
   match '/forums/threads/:id' => 'forums#thread', :constraints => {:id => /\d/}, :as => 'forum_thread'
 
 
   #管理员路径
   get "admin" => 'admin#frame', :as => 'admin'
+  namespace :admin do |admin|
+    resources :ads
+    resources :main
+    resources :forums
+    resources :places
+    resources :users
+    resources :options
+    resources :comments
+    resources :recommends
+    resources :managers
+  end
 
   #我们可以利用:constraints设定一些参数限制，例如限制:id必须是整数。
   #match "/events/show/:id" => "events#show", :constraints => {:id => /\d/}
@@ -115,27 +131,8 @@ Gobiker::Application.routes.draw do
   resources :routes
   resources :asks, :path => 'wenda'
 
-  #会员个人主页
-  #使用命名空间路由来群组相关的行为。
-  namespace :user do |user|
-    resources :places
-  end
-
-  #网站管理员
-  namespace :admin do |admin|
-    resources :ads
-    resources :main
-    resources :forums
-    resources :places
-    resources :users
-    resources :options
-    resources :comments
-    resources :recommends
-    resources :managers
-  end
-
-  #其他的
-  #match ':controller(/:action(/:id))(.:format)',:constraints => {:id => /[\d]+/},:via => [:get]
+  #常见的
+  match ':controller(/:action(/:id))(.:format)',:constraints => {:id => /[\d]+/},:via => [:get]
   #上述這一行設定就包括六種路徑方式：
 
   #match '/:controller'

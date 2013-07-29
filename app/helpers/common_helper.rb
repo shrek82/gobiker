@@ -18,20 +18,23 @@ module CommonHelper
           :status => 200
     }.merge options
 
+    logger.info data
+
     #约定：
     #非ajax请求除非指定，否则均返回html格式
     #ajax格式除非指定，否则均返回json格式
     #本controller中一般省略_format
     if !is_ajax?
       flash[:success]=data[:success] if data[:success]
-      if data[:_format]
-        format=data[:_format]
-      elsif params[:_format]
+      flash[:error]=data[:error] if data[:error]
+      if params[:_format]
         format=params[:_format]
+      elsif data[:_format]
+        format=data[:_format]
       else
         format='html'
       end
-    #ajax请求无特别注明都返回json
+      #ajax请求无特别注明都返回json
     elsif data[:_format]
       format=data[:_format]
     elsif params[:_format]
