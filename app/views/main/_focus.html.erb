@@ -2,7 +2,7 @@
   <div class="ind_topmain">
 
     <% if cookies[:uid] %>
-    <p class="ind_slogan" id="_jsloginedtips">专注出境旅行 - 大家帮助大家, 共同探索美好世界</p>
+    <p class="ind_slogan" id="_jsloginedtips" style="height:10px"></p>
     <% else %>
     <div class="ind_slogan2_fix" id="_jslogintips">
       <div class="ind_slogan2">
@@ -17,7 +17,7 @@
         <div class="slides_control">
           <% @focus.each do |f| %>
               <div class="slide" >
-                <img src="<%= img_style f.img_path,'original' %>" alt="<%= f.name %>"/>
+                <a href="<%= f.redirect %>"><img src="<%= img_style f.img_path,'original' %>" alt="<%= f.name %>"/></a>
               </div>
           <% end %>
         </div>

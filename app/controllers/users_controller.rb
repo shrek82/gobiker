@@ -60,6 +60,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    session[:uid] = nil
+    cookies[:uid]=nil
+    cookies[:email]=nil
+    cookies[:username]=nil
+    respond :redirect_to=>'/'
+  end
+
   #注册验证
   def ajax
     @email=params[:email]
@@ -132,8 +140,6 @@ class UsersController < ApplicationController
   def authenticate
   end
 
-  def logout
-    session[:uid] = nil
-  end
+
 
 end

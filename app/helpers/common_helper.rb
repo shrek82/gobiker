@@ -15,10 +15,9 @@ module CommonHelper
 
     #合并渲染参数
     data={:layout => (is_ajax?) ? false : true,
-          :status => 200
+          :status => 200,
+          :notice=>nil,
     }.merge options
-
-    logger.info data
 
     #约定：
     #非ajax请求除非指定，否则均返回html格式
@@ -44,10 +43,7 @@ module CommonHelper
     end
 
     #普通方式请求且指定运行结束后跳转，优先进行跳转
-    if data[:redirect_to] && !is_ajax?
-      redirect_to data[:redirect_to], :notice => data[:notice]
-      #渲染html模板
-    elsif format=='html'
+    if format=='html'
       render_opt={:action => data[:action]} if data[:action]
       render_opt={:template => data[:template]} if data[:template]
       render_opt={:html => true} if (data[:action].nil? && data[:template].nil?)
@@ -65,7 +61,11 @@ module CommonHelper
       render_opt={:nothing => true}
     end
 
-    render render_opt.merge({layout: data[:layout], status: data[:status]})
+    if data[:redirect_to] && !is_ajax?
+      redirect_to data[:redirect_to],:notice => data[:notice]
+    else
+      render render_opt.merge({layout: data[:layout], status: data[:status]})
+    end
 
   end
 

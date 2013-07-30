@@ -9,7 +9,7 @@ class PlacesController < ApplicationController
       Place.get_recommended(6)
     end
 
-    @places = Place.paginate(:page => params[:page], :per_page => 8, :order => "places.id DESC")
+    @places = Place.paginate(:page => params[:page], :per_page => 12, :order => "places.id DESC")
 
 
     #=>SELECT "places".* FROM "places" INNER JOIN "users" ON "users"."id" = "places"."user_id" WHERE "places"."is_recommended" = 't' LIMIT 3

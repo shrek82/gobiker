@@ -46,7 +46,7 @@ d.to_default_s
 
 date.to_formatted_s(:db)            # => "2007-11-10"
 date.to_s(:db)                      # => "2007-11-10"
-ate.to_formatted_s(:short)         # => "10 Nov"
+date.to_formatted_s(:short)         # => "10 Nov"
 date.to_formatted_s(:long)          # => "November 10, 2007"
 date.to_formatted_s(:long_ordinal)  # => "November 10th, 2007"
 date.to_formatted_s(:rfc822)        # => "10 Nov 2007"
