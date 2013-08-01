@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130721014400) do
+ActiveRecord::Schema.define(:version => 20130801222741) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,33 @@ ActiveRecord::Schema.define(:version => 20130721014400) do
     t.integer  "area_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "article_categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "order_num"
+    t.string   "img_path"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "articles", :force => true do |t|
+    t.string   "title"
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.string   "tags"
+    t.string   "intro"
+    t.text     "content"
+    t.string   "source"
+    t.string   "img_path"
+    t.string   "img_ids"
+    t.integer  "hits_num"
+    t.integer  "useful_num"
+    t.integer  "comments_num"
+    t.boolean  "is_recommended"
+    t.boolean  "is_fixed"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "asks", :force => true do |t|
@@ -143,6 +170,33 @@ ActiveRecord::Schema.define(:version => 20130721014400) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.string   "ico_path",    :limit => 250
+  end
+
+  create_table "guide_categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "order_num"
+    t.string   "img_path"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "guides", :force => true do |t|
+    t.string   "title"
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.string   "tags"
+    t.string   "intro"
+    t.text     "content"
+    t.string   "source"
+    t.string   "img_path"
+    t.string   "img_ids"
+    t.integer  "hits_num"
+    t.integer  "useful_num"
+    t.integer  "comments_num"
+    t.boolean  "is_recommended"
+    t.boolean  "is_fixed"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "managers", :force => true do |t|
@@ -321,7 +375,7 @@ ActiveRecord::Schema.define(:version => 20130721014400) do
   create_table "topics", :force => true do |t|
     t.string   "title",                  :limit => 150
     t.integer  "forum_id"
-    t.integer  "subject_id"
+    t.integer  "subject_id",             :limit => 2
     t.integer  "club_id"
     t.integer  "user_id"
     t.string   "title_color",            :limit => 10
@@ -336,7 +390,6 @@ ActiveRecord::Schema.define(:version => 20130721014400) do
     t.datetime "last_comment_time"
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
-    t.text     "content"
   end
 
   create_table "users", :force => true do |t|

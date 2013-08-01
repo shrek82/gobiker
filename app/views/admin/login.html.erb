@@ -8,9 +8,10 @@
   <link rel="screen" href="/css/common/bootstrap.css"/>
   <link rel="stylesheet" href="/css/common/todc-bootstrap.css"/>
 
-  <script type="text/javascript" src="/js/jQuery-1.9.1.js"></script>
+  <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
   <script type="text/javascript" src="/js/jquery.form.js"></script>
-  <script type="text/javascript" src="/js/candy.js"></script>
+  <script type="text/javascript" src="/js/lib.js"></script>
+  <script type="text/javascript" src="/js/global.js"></script>
   <script type="text/javascript" src="/static/artDialog5/source/jquery.artDialog.js"></script>
 
 </head>
@@ -76,7 +77,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#form1').bind("submit",function (e) {
+        $('#form12').bind("submit",function (e) {
             e.preventDefault();
             new ajaxForm($(this),{
                 successLabel:'登录成功',

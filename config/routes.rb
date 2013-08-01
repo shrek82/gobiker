@@ -43,6 +43,7 @@ Gobiker::Application.routes.draw do
 
   #管理员路径
   get "admin" => 'admin#frame', :as => 'admin'
+  post 'admin/login' => 'admin#login'
   namespace :admin do |admin|
     resources :ads
     resources :main
@@ -53,6 +54,8 @@ Gobiker::Application.routes.draw do
     resources :comments
     resources :recommends
     resources :managers
+    resources :guides
+    resources :article
   end
 
   #我们可以利用:constraints设定一些参数限制，例如限制:id必须是整数。
