@@ -64,7 +64,8 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
     border-bottom: 2px solid #72b088;
     background: #147850;
     text-align: left;
-    font: 12px/1.5 helvetica,arial,"hiragino sans gb","\5b8b\4f53",sans-serif;
+    font-size:12px;
+    font-family: 'YaHei Consolas Hybrid','Microsoft YaHei';
     color: #323232;
     clear: both;
     box-shadow: 0 2px 2px rgba(0,0,0,0.2);

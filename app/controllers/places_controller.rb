@@ -6,7 +6,7 @@ class PlacesController < ApplicationController
 
     @recommended=Rails.cache.fetch('place_home_recommended', :expires_in => 30.minutes) do
       Rails.logger.info "从数据读取"
-      Place.get_recommended(6)
+      Place.get_recommended(5)
     end
 
     @places = Place.paginate(:page => params[:page], :per_page => 12, :order => "places.id DESC")
@@ -27,7 +27,7 @@ class PlacesController < ApplicationController
     #@search=Place.base_field.search('华家池', '茅').join_user.join_city.limit(2)
     #=>SELECT places.id,places.name, users.username, provinces.name,cities.name FROM "places" LEFT JOIN users ON users.id=places.user_id LEFT JOIN provinces ON provinces.id=places.province_id LEFT JOIN cities ON cities.id=places.city_id WHERE (places.name like '%华家池%' OR places.name like '%茅%') LIMIT 2
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @places }
     end
   end

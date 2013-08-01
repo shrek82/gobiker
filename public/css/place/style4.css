@@ -70,13 +70,13 @@
     margin: 4px 0 0 10px;
     padding-left: 17px;
     line-height: 14px;
-    background: url(/static/images/place/title_morebg.png) no-repeat 0 center
+    background: url(/images/place/title_morebg.png) no-repeat 0 center
 }
 
 .pl_title_gap {
     padding-right: 16px;
     margin-right: 15px;
-    background: url(/static/images/place/title_gap.png) no-repeat right center
+    background: url(/images/place/title_gap.png) no-repeat right center
 }
 
 .pl_titbig {
@@ -94,7 +94,7 @@
 .pl_titbig_gap {
     padding-right: 28px;
     margin-right: 27px;
-    background: url(/static/images/place/titbig_gap.png) no-repeat right center
+    background: url(/images/place/titbig_gap.png) no-repeat right center
 }
 
 .pl_tittag {
@@ -142,7 +142,7 @@ li {
     float: left;
     padding-right: 22px;
     margin-right: 21px;
-    background: url(/static/images/place/bar_h14a.png) no-repeat right center
+    background: url(/images/place/bar_h14a.png) no-repeat right center
 }
 
 .pl_tittag2
@@ -183,7 +183,7 @@ li.last {
 .pl_titmore
 a {
     padding-left: 20px;
-    background: url(/static/images/place/title_morebg.png) no-repeat 0 center
+    background: url(/images/place/title_morebg.png) no-repeat 0 center
 }
 
 .ui_seqencing {
@@ -229,14 +229,14 @@ span {
     padding-left: 22px;
     font-size: 14px;
     line-height: 16px;
-    background: url(/static/images/place/icon_more.png) no-repeat 0 center
+    background: url(/images/place/icon_more.png) no-repeat 0 center
 }
 
 .icon_arrow {
     padding-left: 22px;
     font-size: 14px;
     line-height: 16px;
-    background: url(/static/images/place/icon_more.png) no-repeat left center
+    background: url(/images/place/icon_more.png) no-repeat left center
 }
 
 .icon_hot {
@@ -244,7 +244,7 @@ span {
     height: 56px;
     overflow: hidden;
     line-height: 500px;
-    background: url(/static/images/place/icon_hot.png) no-repeat
+    background: url(/images/place/icon_hot.png) no-repeat
 }
 
 .icon_recommend {
@@ -252,7 +252,7 @@ span {
     height: 56px;
     overflow: hidden;
     line-height: 500px;
-    background: url(/static/images/place/icon_recommend.png) no-repeat
+    background: url(/images/place/icon_recommend.png) no-repeat
 }
 
 .icon_special {
@@ -260,7 +260,7 @@ span {
     height: 56px;
     overflow: hidden;
     line-height: 500px;
-    background: url(/static/images/place/icon_special.png) no-repeat
+    background: url(/images/place/icon_special.png) no-repeat
 }
 
 .icon_essence {
@@ -268,7 +268,7 @@ span {
     height: 56px;
     overflow: hidden;
     line-height: 500px;
-    background: url(/static/images/place/icon_essence.png) no-repeat
+    background: url(/images/place/icon_essence.png) no-repeat
 }
 
 .pl_topbox_wrap {
@@ -327,7 +327,7 @@ a {
 .pi_prompt
 .initial {
     padding-left: 14px;
-    background: url(/static/images/place/prompt_icon.png) no-repeat 0 -16px;
+    background: url(/images/place/prompt_icon.png) no-repeat 0 -16px;
     color: #fff;
     font-size: 14px;
     line-height: 28px;
@@ -354,7 +354,7 @@ a {
 .pi_prompt_lay
 .title {
     padding-left: 14px;
-    background: url(/static/images/place/prompt_icon.png) no-repeat 0 -36px;
+    background: url(/images/place/prompt_icon.png) no-repeat 0 -36px;
     font-size: 14px;
     line-height: 28px;
     color: #fff;
@@ -368,7 +368,7 @@ a {
     height: 9px;
     overflow: hidden;
     margin-top: 8px;
-    background: url(/static/images/place/prompt_icon.png) no-repeat;
+    background: url(/images/place/prompt_icon.png) no-repeat;
     cursor: pointer
 }
 
@@ -416,7 +416,7 @@ li {
     font-size: 14px;
     line-height: 32px;
     padding-left: 33px;
-    background: url(/static/images/place/want_been_lived.png) no-repeat 0 0;
+    background: url(/images/place/want_been_lived.png) no-repeat 0 0;
     color: #636363
 }
 
@@ -453,7 +453,7 @@ em {
     width: 9px;
     height: 5px;
     overflow: hidden;
-    background: url(/static/images/place/topbtn_numarrow.png) no-repeat
+    background: url(/images/place/topbtn_numarrow.png) no-repeat
 }
 
 .pl_topbox_want
@@ -521,7 +521,7 @@ li {
 a {
     display: block;
     padding-left: 25px;
-    background: url(/static/images/place/infonav.png) no-repeat;
+    background: url(/images/place/infonav.png) no-repeat;
     font-size: 14px;
     line-height: 22px;
     color: #636363
@@ -603,7 +603,7 @@ a {
     display: block;
     height: 26px;
     overflow: hidden;
-    background: url(/static/images/place/sortnav.png) no-repeat;
+    background: url(/images/place/sortnav.png) no-repeat;
     line-height: 200px
 }
 
@@ -679,7 +679,7 @@ li {
 li.gap {
     width: 42px;
     height: 30px;
-    background: url(/static/images/place/chan_gap.png) no-repeat center 0
+    background: url(/images/place/chan_gap.png) no-repeat center 0
 }
 
 .pl_channav li
@@ -688,7 +688,7 @@ a {
     width: 62px;
     height: 30px;
     overflow: hidden;
-    background: url(/static/images/place/channav.png) no-repeat;
+    background: url(/images/place/channav.png) no-repeat;
     line-height: 200px
 }
 
@@ -812,7 +812,7 @@ li {
     margin-top: 3px;
     padding-left: 15px;
     line-height: 14px;
-    background: url(/static/images/place/down_icon.png) no-repeat left center;
+    background: url(/images/place/down_icon.png) no-repeat left center;
     color: #636363
 }
 
@@ -964,7 +964,7 @@ img {
 .pl_focuspic_big .writer
 span {
     padding-left: 20px;
-    background: url(/static/images/place/writer_icon.png) no-repeat 0 center;
+    background: url(/images/place/writer_icon.png) no-repeat 0 center;
     line-height: 28px;
     color: #d7d7d7
 }
@@ -1044,7 +1044,7 @@ li.current {
 .pl_focuspic_add .btn
 span {
     padding: 2px 0 0 27px;
-    background: url(/static/images/place/focuspic_add.png) no-repeat 0 center
+    background: url(/images/place/focuspic_add.png) no-repeat 0 center
 }
 
 .pl_focuspic_add .btn:hover {
@@ -1061,7 +1061,7 @@ span {
 .pl_focuspic_more
 a {
     padding-left: 19px;
-    background: url(/static/images/place/morebg01.png) no-repeat 0 center
+    background: url(/images/place/morebg01.png) no-repeat 0 center
 }
 
 .pl_cityphoto_null {
@@ -1213,7 +1213,7 @@ a {
     display: inline-block;
     height: 18px;
     padding: 5px 29px 0 0;
-    background: url(/static/images/place/cmts_praise.png) no-repeat right 0;
+    background: url(/images/place/cmts_praise.png) no-repeat right 0;
     font-size: 14px;
     line-height: 16px
 }
@@ -1241,7 +1241,7 @@ li {
     width: 310px;
     height: 200px;
     padding: 15px;
-    background: url(/static/images/place/oneday_bg.png) no-repeat
+    background: url(/images/place/oneday_bg.png) no-repeat
 }
 
 .pl_oneday .pic
@@ -1509,7 +1509,7 @@ em {
     bottom: -4px;
     width: 5px;
     height: 4px;
-    background: url(/static/images/place/hotel_ydprice_arrow.png) no-repeat
+    background: url(/images/place/hotel_ydprice_arrow.png) no-repeat
 }
 
 .pl_hotellist
@@ -1542,7 +1542,7 @@ em {
 .cnhotel {
     display: inline-block;
     padding: 2px 0 1px 30px;
-    background: url(/static/images/place/icon_cnhotle.png) no-repeat 0 center;
+    background: url(/images/place/icon_cnhotle.png) no-repeat 0 center;
     font-size: 14px;
     line-height: 18px
 }
@@ -1616,7 +1616,7 @@ em {
     width: 190px;
     height: 36px;
     overflow: hidden;
-    background: url(/static/images/place/hotel_ydbtn.png) no-repeat;
+    background: url(/images/place/hotel_ydbtn.png) no-repeat;
     line-height: 200px;
     border-radius: 3px;
     box-shadow: 0 1px 1px #ddd
@@ -1711,7 +1711,7 @@ em {
     bottom: -4px;
     width: 5px;
     height: 4px;
-    background: url(/static/images/place/hotel_ydprice_arrow.png) no-repeat
+    background: url(/images/place/hotel_ydprice_arrow.png) no-repeat
 }
 
 .pl_hotellist2
@@ -1744,7 +1744,7 @@ em {
 .cnhotel {
     display: inline-block;
     padding: 2px 0 1px 30px;
-    background: url(/static/images/place/icon_cnhotle.png) no-repeat 0 center;
+    background: url(/images/place/icon_cnhotle.png) no-repeat 0 center;
     font-size: 14px;
     line-height: 18px
 }
@@ -1983,7 +1983,7 @@ del {
 .hotel_layer
 .loading {
     height: 133px;
-    background: url(/static/images/common/wait_34.gif) no-repeat center center
+    background: url(/images/common/wait_34.gif) no-repeat center center
 }
 
 .hotel_layer .pic
@@ -2109,7 +2109,7 @@ a {
     height: 17px;
     margin-left: 30px;
     overflow: hidden;
-    background: url(/static/images/place/sort18.png) no-repeat;
+    background: url(/images/place/sort18.png) no-repeat;
     line-height: 200px
 }
 
@@ -2271,7 +2271,7 @@ img {
     display: inline-block;
     margin-right: 10px;
     line-height: 16px;
-    background: url(/static/images/place/poi_wantbeen.png) no-repeat;
+    background: url(/images/place/poi_wantbeen.png) no-repeat;
     cursor: pointer;
     color: #959595
 }
@@ -2369,7 +2369,7 @@ img {
 .pl_bbsbox .bbsview, .pl_bbsbox .bbsreply, .pl_bbsbox
 .bbslike {
     margin-left: 15px;
-    background: url(/static/images/place/bbs_icon.png) no-repeat
+    background: url(/images/place/bbs_icon.png) no-repeat
 }
 
 .pl_bbsbox
@@ -2415,7 +2415,7 @@ img {
     padding-left: 32px;
     overflow: hidden;
     line-height: 24px;
-    background: url(/static/images/place/route_icon.png) no-repeat
+    background: url(/images/place/route_icon.png) no-repeat
 }
 
 .pl_bbsbox .bbsroute
@@ -2520,7 +2520,7 @@ input {
     height: 28px;
     overflow: hidden;
     border: none;
-    background: url(/static/images/place/btn_hotel_search.png) no-repeat;
+    background: url(/images/place/btn_hotel_search.png) no-repeat;
     cursor: pointer;
     border-radius: 3px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2)
@@ -2836,7 +2836,7 @@ li {
 
 .pl_innlist .icon
 span {
-    background: url(/static/images/place/bbs_icon.png) no-repeat;
+    background: url(/images/place/bbs_icon.png) no-repeat;
     color: #959595
 }
 
@@ -2879,7 +2879,7 @@ em {
     display: inline-block;
     text-indent: -9999px;
     cursor: pointer;
-    background: url(/static/images/place/cnhotel_chk_btn.png) no-repeat;
+    background: url(/images/place/cnhotel_chk_btn.png) no-repeat;
     overflow: hidden;
     text-align: left
 }
@@ -2910,7 +2910,7 @@ strong {
 
 .cn_icon_layout
 .cn_icon_arrow {
-    background: url(/static/images/place/cn_icon_arrow.png) no-repeat;
+    background: url(/images/place/cn_icon_arrow.png) no-repeat;
     position: absolute;
     top: -7px;
     left: 9px;
@@ -2977,7 +2977,7 @@ dd {
 .pl_listnull_other dd
 a {
     padding-left: 20px;
-    background: url(/static/images/place/li_icon.png) no-repeat left center
+    background: url(/images/place/li_icon.png) no-repeat left center
 }
 
 .pl_listnull_search {
@@ -3006,7 +3006,7 @@ a {
     border-left: none;
     overflow: hidden;
     text-indent: -100px;
-    background: #fff url(/static/images/place/search_icon.png) no-repeat center center;
+    background: #fff url(/images/place/search_icon.png) no-repeat center center;
     cursor: pointer
 }
 
@@ -3239,7 +3239,7 @@ img {
 .pl_planbox .bbsview, .pl_planbox
 .bbslike {
     margin-left: 15px;
-    background: url(/static/images/place/bbs_icon.png) no-repeat
+    background: url(/images/place/bbs_icon.png) no-repeat
 }
 
 .pl_planbox
@@ -3349,7 +3349,7 @@ li {
     width: 100%;
     height: 383px;
     margin: -20px 0 30px;
-    background: #f4f3ed url(/static/images/place/ind_mapbg.png) repeat-x 0 bottom
+    background: #f4f3ed url(/images/place/ind_mapbg.png) repeat-x 0 bottom
 }
 
 .pl_indmap {
@@ -3363,7 +3363,7 @@ li {
     width: 660px;
     height: 383px;
     overflow: hidden;
-    background: url(/static/images/place/ind_maps.png) no-repeat
+    background: url(/images/place/ind_maps.png) no-repeat
 }
 
 .pl_indmap_pic {
@@ -3393,7 +3393,7 @@ area {
     z-index: 2;
     width: 48px;
     height: 20px;
-    background: url(/static/images/place/ind_maphov.png) no-repeat;
+    background: url(/images/place/ind_maphov.png) no-repeat;
     line-height: 200px;
     overflow: hidden
 }
@@ -3491,7 +3491,7 @@ area {
     right: 9px;
     width: 26px;
     height: 26px;
-    background: url(/static/images/common/pup_close.png) no-repeat 0 0;
+    background: url(/images/common/pup_close.png) no-repeat 0 0;
     cursor: pointer
 }
 
@@ -3545,7 +3545,7 @@ dd {
     padding: 0 10px 0 38px;
     font-size: 14px;
     line-height: 30px;
-    background: #fff url(/static/images/place/ind_search.png) no-repeat 10px center
+    background: #fff url(/images/place/ind_search.png) no-repeat 10px center
 }
 
 .place_ind_search_drop {
@@ -3784,7 +3784,7 @@ a {
 .pl_poiphoto_no {
     width: 100%;
     height: 176px;
-    background: url(/static/images/place/nothing/nothing_poi_photo.png) no-repeat
+    background: url(/images/place/nothing/nothing_poi_photo.png) no-repeat
 }
 
 .pl_poiphoto_no
@@ -3802,18 +3802,18 @@ p {
 .pl_poiphoto_album {
     margin-right: 10px;
     padding-left: 19px;
-    background: url(/static/images/place/upload_album.png) no-repeat left center
+    background: url(/images/place/upload_album.png) no-repeat left center
 }
 
 .pl_poiphoto_native {
     padding-left: 14px;
-    background: url(/static/images/place/upload_native.png) no-repeat left center
+    background: url(/images/place/upload_native.png) no-repeat left center
 }
 
 .pl_poiphoto_more
 a.more {
     padding-right: 13px;
-    background: url(/static/images/place/icon_more.png) no-repeat right center
+    background: url(/images/place/icon_more.png) no-repeat right center
 }
 
 .pl_poidetail {
@@ -3973,14 +3973,14 @@ a {
 .icon_reply {
     display: inline-block;
     padding-left: 19px;
-    background: url(/static/images/place/yelp_icon.png) no-repeat 0 2px
+    background: url(/images/place/yelp_icon.png) no-repeat 0 2px
 }
 
 .pl_yelp_cnt
 .icon_useful {
     display: inline-block;
     padding: 2px 0 0 23px;
-    background: url(/static/images/place/yelp_icon.png) no-repeat 0 -20px
+    background: url(/images/place/yelp_icon.png) no-repeat 0 -20px
 }
 
 .pl_yelp_reply {
@@ -4031,7 +4031,7 @@ a {
     width: 7px;
     height: 7px;
     margin-left: 10px;
-    background: url(/static/images/place/yelp_icon.png) no-repeat 0 -45px;
+    background: url(/images/place/yelp_icon.png) no-repeat 0 -45px;
     cursor: pointer
 }
 
@@ -4210,7 +4210,7 @@ a {
     float: right;
     padding-left: 17px;
     line-height: 14px;
-    background: url(/static/images/place/title_morebg.png) no-repeat 0 center
+    background: url(/images/place/title_morebg.png) no-repeat 0 center
 }
 
 .talklist_object {
@@ -4311,7 +4311,7 @@ img {
     height: 33px;
     margin: 3px 15px 0 0;
     overflow: hidden;
-    background: url(/static/images/place/map_colse.png) no-repeat;
+    background: url(/images/place/map_colse.png) no-repeat;
     line-height: 100px;
     cursor: pointer
 }
@@ -4382,7 +4382,7 @@ span {
     top: 23px;
     width: 28px;
     height: 27px;
-    background: url(/static/images/place/app/pup_close.png) no-repeat;
+    background: url(/images/place/app/pup_close.png) no-repeat;
     cursor: pointer
 }
 
@@ -4404,7 +4404,7 @@ a {
     height: 34px;
     overflow: hidden;
     margin: 0 auto;
-    background: url(/static/images/place/app/btn_down.png) no-repeat;
+    background: url(/images/place/app/btn_down.png) no-repeat;
     line-height: 200px
 }
 

@@ -130,7 +130,8 @@ img {
 .qyer_head_login_entry
 .qyer_head_login_entry_tit {
     margin-left: 20px;
-    font: 16px/20px "hiragino sans gb","Microsoft YaHei",\9ED1\4F53,\5b8b\4f53,sans-serif;
+    font-family: 'YaHei Consolas Hybrid','Microsoft YaHei';
+    font-size: 16px;
 }
 
 .ind_title {
@@ -141,7 +142,7 @@ img {
 
 .ind_title_name {
     display: inline;
-    font: 18px/20px "hiragino sans gb","Microsoft YaHei",\9ED1\4F53,\5b8b\4f53,sans-serif;
+    font: 18px/20px 'YaHei Consolas Hybrid','Microsoft YaHei'
     color: #636363;
 }
 

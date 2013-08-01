@@ -7,7 +7,7 @@
 :root .jn_mask{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#00000000', EndColorStr='#00000000');}
 .jn_popup { position:relative; width:910px; margin:0 auto; background-color:#fff; border:1px solid #666; border-top:none; border-bottom:none; box-shadow:0 0 10px #666;}
 .jn_popup_head { position:fixed; _position:absolute; z-index:99991; top:0; width:880px; padding:10px 15px 20px; background:#fff url(../../images/guide/jn_popup_headbg.png) repeat-x 0 bottom;}
-.jn_popup_close { background:url(/static/images/place/jn_popup_close.png) no-repeat; position:absolute; z-index:100010; top:20px; right:20px;overflow:hidden; width:26px; height:26px; cursor:pointer;}
+.jn_popup_close { background:url(/images/place/jn_popup_close.png) no-repeat; position:absolute; z-index:100010; top:20px; right:20px;overflow:hidden; width:26px; height:26px; cursor:pointer;}
 .jn_popup_close img{cursor:pointer;}
 .jn_popup_close:hover img{margin-top:-26px;}
 .jn_popup_close:hover { background-position:0 -26px;}
@@ -48,7 +48,7 @@
 
 /*首页-穷游锦囊search*/
 .gui_search { position:relative; z-index:20; margin-top:10px; padding-left:20px;}
-.gui_search .ui_input { width:132px; background:#fff url(/static/images/place/inp_search.png) no-repeat 5px 4px; padding-left:24px;}
+.gui_search .ui_input { width:132px; background:#fff url(/images/place/inp_search.png) no-repeat 5px 4px; padding-left:24px;}
 .gui_search_lay { display:none; position:absolute; width:257px; left:20px; top:23px; background-color:#fff; border:1px solid #ccc; border-bottom:none;}
 .gui_search_lay_list li { border-bottom:1px solid #ccc;}
 .gui_search_lay_list li.current { background-color:#e6f4d9;}
@@ -70,8 +70,8 @@
 .gui_focus .slides_container { width:760px; height:360px;}
 .gui_focus .pagination { position:absolute; right:20px; bottom:20px; z-index:6;}
 .gui_focus .pagination li { float:left; margin-left:10px;}
-.gui_focus .pagination li a { float:left; width:12px; height:12px; overflow:hidden; padding:0; border:none; line-height:320px; background:url(/static/images/place/focus_dian.png) no-repeat;}
-.gui_focus .pagination .current a { background:url(/static/images/place/focus_dian_current.png) no-repeat;}
+.gui_focus .pagination li a { float:left; width:12px; height:12px; overflow:hidden; padding:0; border:none; line-height:320px; background:url(/images/place/focus_dian.png) no-repeat;}
+.gui_focus .pagination .current a { background:url(/images/place/focus_dian_current.png) no-repeat;}
 
 /*首页-左侧广告*/
 .guide_ad { margin-bottom:30px;}
@@ -79,7 +79,7 @@
 /*首页-锦囊列表*/
 .gui_jnlist_item { float:left; display:inline; width:138px;margin-bottom: 5px}
 .gui_jnlist_item_pic { position:relative; padding:3px; border:1px solid #ccc; box-shadow:0 0 2px #ccc; background-color:#fff;height: 90px}
-.gui_jnlist_item_pic .new { position:absolute; top:3px; left:3px; width:36px; height:36px; background:url(/static/images/place/jn_new2.png) no-repeat 0 0;}
+.gui_jnlist_item_pic .new { position:absolute; top:3px; left:3px; width:36px; height:36px; background:url(/images/place/jn_new2.png) no-repeat 0 0;}
 .gui_jnlist_item_pic .mask { display:none; position:absolute; top:2px; left:2px; width:100px; height:150px; background-color:#000; opacity:0.5; filter:alpha(opacity=50);}
 .gui_jnlist_item_tit { padding-top:10px;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; font-weight:bold;color:#006aad;}
 .gui_jnlist_item_text { color:#636363;}
@@ -115,7 +115,7 @@
 .gui_info_text .name { font-weight:bold;}
 .gui_info .number { font-size:24px; color:#087346; line-height:40px;}
 .gui_info_download { margin-top:10px;}
-.gui_info_download .down { float:left; display:inline; width:164px; height:44px; overflow:hidden; cursor:pointer; background:url(/static/images/place/jn_down.png) no-repeat 0 0; line-height:200px;}
+.gui_info_download .down { float:left; display:inline; width:164px; height:44px; overflow:hidden; cursor:pointer; background:url(/images/place/jn_down.png) no-repeat 0 0; line-height:200px;}
 .gui_info_download .down:hover { background-position:0 -50px;}
 .gui_info_download .down:active { background-position:0 -100px;}
 .gui_info_download .help { float:left; padding-left:10px; line-height:44px;}
@@ -138,7 +138,7 @@
 .gui_poilist_item { float:left; display:inline; width:212px; height:48px; padding-left:58px; margin-bottom:10px; background:#f5f4f0; position:relative;}
 .gui_poilist_item_img { float:left; margin-left:-58px; width:48px; height:48px;}
 .gui_poilist_item_title { margin-top:5px; width:200px; height:18px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-.gui_poitravel li { line-height:22px; padding-left:10px; background:url(/static/images/place/icon_ask_type.png) no-repeat 0 9px;}
+.gui_poitravel li { line-height:22px; padding-left:10px; background:url(/images/place/icon_ask_type.png) no-repeat 0 9px;}
 
 /*icon-想去,去过*/
 .icon_ind_want, .icon_ind_been, .icon_ind_want_selected, .icon_ind_been_selected { padding-left:11px; background:url(../../images/place/icon_ind_want.png) no-repeat 0 5px; cursor:pointer;}
@@ -148,7 +148,7 @@
 
 /*详细页-锦囊封面*/
 .jn_preview { position:relative; cursor:pointer;}
-.jn_preview_btn { position:absolute; top:15px; right:15px; width:124px; height:40px; line-height:40px; background:url(/static/images/place/jn_preview.png) no-repeat; color:#fff; font-size:16px; font-weight:bold; text-indent:40px;}
+.jn_preview_btn { position:absolute; top:15px; right:15px; width:124px; height:40px; line-height:40px; background:url(/images/place/jn_preview.png) no-repeat; color:#fff; font-size:16px; font-weight:bold; text-indent:40px;}
 
 .jn_cover_text { text-align:right; padding-top:7px; line-height:20px;}
 
@@ -169,7 +169,7 @@
 /*日志*/
 .jn_logs { padding:20px 0 17px; border-bottom:1px dotted #e2e2e2;}
 .jn_logs_cnt { max-height:90px; overflow:hidden;}
-.jn_logs_handle a { padding-left:18px; background:url(/static/images/place/arrow_updown.png) no-repeat;}
+.jn_logs_handle a { padding-left:18px; background:url(/images/place/arrow_updown.png) no-repeat;}
 .jn_logs_handle a.viewall { background-position:0 5px;}
 .jn_logs_handle a.shrink { background-position:0 -15px;}
 
@@ -198,7 +198,7 @@
 .ask_related .ui_tab_trigger_item_current a { color:#636363;}
 .ask_related .ui_tab_trigger_item_current a:hover { text-decoration:none;}
 .ask_related_list {}
-.ask_related_list li { position:relative; height:36px; padding:7px 10px 7px 10px; border-bottom:1px dotted #e2e2e2; background:url(/static/images/place/icon_ask_type.png) no-repeat 0 13px;}
+.ask_related_list li { position:relative; height:36px; padding:7px 10px 7px 10px; border-bottom:1px dotted #e2e2e2; background:url(/images/place/icon_ask_type.png) no-repeat 0 13px;}
 .ask_related_list li .number { position:absolute; right:0; bottom:7px; color:#636363;}
 .ask_related_more { padding:7px 0; text-align:right;}
 .ask_related_tag { padding:15px 0 10px; font-weight:bold; color:#636363;}
