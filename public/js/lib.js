@@ -64,7 +64,7 @@ function ajaxForm (form,opts) {
   var _this = this;
 
   //jquery表单对象
-  this.form = $('#'+form);
+  this.form =(typeof form=='string')?$('#'+form):form;
 
   //提交按钮
   this.btn = false;

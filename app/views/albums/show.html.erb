@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @album.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @album.user_id %>
+</p>
+
+<p>
+  <b>Place:</b>
+  <%= @album.place_id %>
+</p>
+
+<p>
+  <b>Event:</b>
+  <%= @album.event_id %>
+</p>
+
+<p>
+  <b>Club:</b>
+  <%= @album.club_id %>
+</p>
+
+<p>
+  <b>Pics num:</b>
+  <%= @album.pics_num %>
+</p>
+
+<p>
+  <b>Hits num:</b>
+  <%= @album.hits_num %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%= @album.tags %>
+</p>
+
+<p>
+  <b>Cover path:</b>
+  <%= @album.cover_path %>
+</p>
+
+<p>
+  <b>Order num:</b>
+  <%= @album.order_num %>
+</p>
+
+<p>
+  <b>Is close:</b>
+  <%= @album.is_close %>
+</p>
+
+<p>
+  <b>Is recommended:</b>
+  <%= @album.is_recommended %>
+</p>
+
+
+<%= link_to 'Edit', edit_album_path(@album) %> |
+<%= link_to 'Back', albums_path %>

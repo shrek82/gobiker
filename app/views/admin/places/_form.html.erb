@@ -87,7 +87,7 @@
     <div class="control-group">
       <%= f.label :user_id, :class => 'control-label' %>
       <div class="controls">
-        <%= @place.user.username unless @place.new_record? %>
+        <%= @place.user.username if @place.user %>
       </div>
     </div>
 

@@ -23,8 +23,10 @@ Gobiker::Application.routes.draw do
   match 'test' => 'users#mail'
 
   #公共路由
-  post "attacheds/upload" => "attacheds#upload"
+  resources :albums
   resources :attacheds, :only => [:new, :post, :show]
+  post "attacheds/upload" => "attacheds#upload"
+
 
   #用户相关路由
   match 'login' => 'users#login', :as => 'login', :via => [:get, :post]
@@ -55,7 +57,7 @@ Gobiker::Application.routes.draw do
     resources :recommends
     resources :managers
     resources :guides
-    resources :article
+    resources :articles
   end
 
   #我们可以利用:constraints设定一些参数限制，例如限制:id必须是整数。

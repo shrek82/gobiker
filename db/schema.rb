@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130801222741) do
+ActiveRecord::Schema.define(:version => 20130802081721) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,23 @@ ActiveRecord::Schema.define(:version => 20130801222741) do
     t.boolean  "is_close"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "albums", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "place_id"
+    t.integer  "event_id"
+    t.integer  "club_id"
+    t.integer  "pics_num"
+    t.integer  "hits_num"
+    t.string   "tags"
+    t.string   "cover_path"
+    t.integer  "order_num"
+    t.boolean  "is_close"
+    t.boolean  "is_recommended"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "areas", :force => true do |t|
@@ -375,7 +392,7 @@ ActiveRecord::Schema.define(:version => 20130801222741) do
   create_table "topics", :force => true do |t|
     t.string   "title",                  :limit => 150
     t.integer  "forum_id"
-    t.integer  "subject_id",             :limit => 2
+    t.integer  "subject_id"
     t.integer  "club_id"
     t.integer  "user_id"
     t.string   "title_color",            :limit => 10
@@ -390,6 +407,7 @@ ActiveRecord::Schema.define(:version => 20130801222741) do
     t.datetime "last_comment_time"
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
+    t.text     "content"
   end
 
   create_table "users", :force => true do |t|

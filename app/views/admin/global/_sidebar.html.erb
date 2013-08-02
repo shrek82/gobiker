@@ -1,27 +1,43 @@
 <ul class="nav nav-collapse collapse nav-collapse-primary">
-  <% curpath='/'+controller_path%>
+  <% curpath='/'+controller_path %>
 
   <br>
 
-  <li <%=raw((curpath==admin_main_index_path)?'class="active"':nil)%>>
+  <li <%= raw((curpath==admin_main_index_path) ? 'class="active"' : nil) %>>
     <span class="glow"></span>
-    <a href="<%=admin_main_index_path%>" target="frame">
+    <a href="<%= admin_main_index_path %>" target="frame">
       <i class="icon-dashboard icon-2x"></i>
       <span>仪表盘</span>
     </a>
   </li>
 
-  <li <%=raw((curpath==admin_places_path)?'class="active"':nil)%>>
+  <li <%= raw((curpath==admin_places_path) ? 'class="active"' : nil) %>>
     <span class="glow"></span>
-    <a href="<%=admin_places_path%>" target="frame">
+    <a href="<%= admin_places_path %>" target="frame">
       <i class="icon-flag icon-2x"></i>
       <span>目的地</span>
     </a>
   </li>
 
-  <li <%=raw((curpath==admin_recommends_path)?'class="active"':nil)%>>
+  <li <%= raw((curpath==admin_guides_path) ? 'class="active"' : nil) %>>
     <span class="glow"></span>
-    <a href="<%=admin_recommends_path%>" target="frame">
+    <a href="<%= admin_guides_path %>" target="frame">
+      <i class="icon-flag icon-2x"></i>
+      <span>攻略</span>
+    </a>
+  </li>
+
+    <li <%= raw((curpath==admin_articles_path) ? 'class="active"' : nil) %>>
+    <span class="glow"></span>
+    <a href="<%= admin_articles_path %>" target="frame">
+      <i class="icon-flag icon-2x"></i>
+      <span>文章</span>
+    </a>
+  </li>
+
+  <li <%= raw((curpath==admin_recommends_path) ? 'class="active"' : nil) %>>
+    <span class="glow"></span>
+    <a href="<%= admin_recommends_path %>" target="frame">
       <i class="icon-dashboard icon-2x"></i>
       <span>推荐管理</span>
     </a>

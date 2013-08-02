@@ -9,9 +9,6 @@ class Admin::PlacesController < AdminController
       conditions << "%#{params[:q]}%"
     end
     @places=Place.paginate(:page => params[:page], :per_page => 10, :conditions => conditions, :include => :user)
-    @places.each do |p|
-      p.user.username
-    end
   end
 
   #添加记录

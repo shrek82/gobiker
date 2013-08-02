@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="/static/artDialog5/skins/default.css" />
   <script type="text/javascript" src="/js/jQuery-1.9.1.js"></script>
   <script type="text/javascript" src="/js/jquery.form.js"></script>
-  <script type="text/javascript" src="/js/candy.js"></script>
+  <script type="text/javascript" src="/js/lib.js"></script>
   <script type="text/javascript" src="/static/artDialog5/source/jquery.artDialog.js"></script>
+  <script type="text/javascript" src="/js/global.js"></script>
   <%= yield :head %>
 </head>
 <body>
@@ -20,7 +21,9 @@
 <script type="text/javascript"  src="/js/bootstrap-dropdown.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        readyRun();
+        readyScript.auto_login = function () {
+        }
+        runReadyScript();
     });
 </script>
 
