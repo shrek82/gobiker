@@ -1072,3 +1072,7 @@ img {
     border-color: #063;
     text-decoration: none;
 }
+
+.qyer_head_logo img{
+    width: 85px;
+}

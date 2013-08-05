@@ -19,6 +19,10 @@
     width: 125px;
 }
 
+.qyer_head_logo img{
+    width: 116px;height: 48px;
+}
+
 .qyer_head_search {
     margin-top: 15px;
 }

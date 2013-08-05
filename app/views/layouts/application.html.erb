@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/css/common/base.css"/>
   <link rel="stylesheet" href="/css/common/headfoot.css"/>
   <%= yield :style %><%= javascript_include_tag "/js/jquery-1.7.1.min.js","/js/lib.js","/js/global.js"%>
+  <%= yield :head %>
 </head>
 <body>
 <%= render :template => 'global/header' %>

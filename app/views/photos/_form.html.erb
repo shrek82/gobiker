@@ -1,8 +1,14 @@
-<%= form_for(@photo,:html => { :multipart => true }) do |f| %>
+<% content_for:head do %>
+    <link rel="stylesheet" type="text/css" href="/static/uploadify/uploadify.css">
+    <script type="text/javascript" src="/static/uploadify/jquery.uploadify-3.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.all.js"></script>
+<% end %>
+
+<%= form_for(@photo,:html => { :id => "form1" }) do |f| %>
     <% if @photo.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this user from being saved:</h2>
-
           <ul>
             <% @photo.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -15,12 +21,40 @@
       <%= f.label :title %><br />
       <%= f.text_field :title %>
     </div>
+
     <div class="field">
       <%= f.label :img_path %><br />
-      <%= f.file_field :img_path %>
+      <%= f.text_field :img_path,:id=>'img_path' %>
+    </div>
+
+    <div class="field">
+      <div class="controls">
+        <%= f.hidden_field :img_path, :class => 'input-xxlarge', :id => "img_path" %>
+        img_ids: <br>
+        <input type="text" name='img_ids' id="img_ids"/>
+        <input type="file" name="file_upload" id="file_upload"/>
+      </div>
     </div>
 
     <div class="actions">
       <%= f.submit %>
     </div>
+
+
+
 <% end %>
+
+
+<script type="text/javascript">
+    readyScript.bind = function () {
+        $('#form1').bind("submit", function (e) {
+            e.preventDefault();
+            new ajaxForm($(this), {
+                dataType: 'json'
+            }).send();
+        });
+        var uploader = new go_uploader();
+        uploader.preview();
+        uploader.uploadify();
+    }
+</script>
