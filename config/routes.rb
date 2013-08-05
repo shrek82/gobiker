@@ -24,8 +24,18 @@ Gobiker::Application.routes.draw do
 
   #公共路由
   resources :albums
-  resources :attacheds, :only => [:new, :post, :show]
-  post "attacheds/upload" => "attacheds#upload"
+  resources :attacheds, :only => [:new, :post, :show] do
+    collection do
+      post :upload
+    end
+  end
+  resources :provinces
+  resources :comments
+  #resources :photos,:path_names => {:new => "upload"}
+  resources :photos
+  resources :places
+  resources :routes
+  resources :asks, :path => 'wenda'
 
 
   #用户相关路由
@@ -127,14 +137,6 @@ Gobiker::Application.routes.draw do
   #end
   #resources :cars, :except => [:new, :index, :delete]
   #resources :cars, :only => [:show, :edit]
-
-  #公共路径
-  resources :provinces
-  resources :comments
-  resources :photos,:path_names => {:new => "tianjia"}
-  resources :places
-  resources :routes
-  resources :asks, :path => 'wenda'
 
   #常见的
   match ':controller(/:action(/:id))(.:format)',:constraints => {:id => /[\d]+/},:via => [:get]

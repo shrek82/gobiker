@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130802081721) do
+ActiveRecord::Schema.define(:version => 20130802223419) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -260,6 +260,8 @@ ActiveRecord::Schema.define(:version => 20130802081721) do
     t.string   "img_path_content_type", :limit => 20
     t.string   "img_path_file_size",    :limit => 10
     t.datetime "img_path_updated_at"
+    t.integer  "album_id"
+    t.integer  "user_id"
   end
 
   create_table "places", :force => true do |t|
@@ -392,7 +394,7 @@ ActiveRecord::Schema.define(:version => 20130802081721) do
   create_table "topics", :force => true do |t|
     t.string   "title",                  :limit => 150
     t.integer  "forum_id"
-    t.integer  "subject_id"
+    t.integer  "subject_id",             :limit => 2
     t.integer  "club_id"
     t.integer  "user_id"
     t.string   "title_color",            :limit => 10
@@ -407,7 +409,6 @@ ActiveRecord::Schema.define(:version => 20130802081721) do
     t.datetime "last_comment_time"
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
-    t.text     "content"
   end
 
   create_table "users", :force => true do |t|

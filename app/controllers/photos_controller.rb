@@ -23,8 +23,8 @@ class PhotosController < ApplicationController
   # GET /photos/new
   # GET /photos/new.json
   def new
+    @place_id=
     @photo = Photo.new
-
 
     respond_to do |format|
       format.html # new.html.erb
