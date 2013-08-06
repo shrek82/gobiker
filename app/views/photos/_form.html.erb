@@ -4,43 +4,26 @@
     <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.all.js"></script>
 <% end %>
-
-<%= form_for(@photo,:html => { :id => "form1" }) do |f| %>
-    <% if @photo.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this user from being saved:</h2>
-          <ul>
-            <% @photo.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :title %><br />
-      <%= f.text_field :title %>
-    </div>
-
-    <div class="field">
-      <%= f.label :img_path %><br />
-      <%= f.text_field :img_path,:id=>'img_path' %>
-    </div>
+<% @title="上传照片" %>
+<%= form_for(@photo, :html => {:id => "form1"}) do |f| %>
 
     <div class="field">
       <div class="controls">
-        <%= f.hidden_field :img_path, :class => 'input-xxlarge', :id => "img_path" %>
-        img_ids: <br>
-        <input type="text" name='img_ids' id="img_ids"/>
+        <input type="hidden" name='img_ids' id="img_ids"/>
         <input type="file" name="file_upload" id="file_upload"/>
       </div>
     </div>
 
-    <div class="actions">
-      <%= f.submit %>
+    <div id="uploadify_preview">
+        <ul>
+          <li id="includBefore" style="display: none"></li>
+        </ul>
     </div>
 
-
+    <div class="actions" style="display: none">
+      <%= f.button :class => "btn btn-mint", :id => 'submit_button' %>
+      <button type="button" class="btn" id="cancel_button" onclick="history.back()">取消</button>
+    </div>
 
 <% end %>
 
@@ -53,7 +36,29 @@
                 dataType: 'json'
             }).send();
         });
-        var uploader = new go_uploader();
+        window.img_ids = $('#img_ids');
+        window.includBefore = $('#includBefore');
+        var uploader = new go_uploader({
+            'formData':{
+                "_uploader":"uploadify",
+                "_format":"json",
+                "<%= key = Rails.application.config.session_options[:key] %>":"<%= cookies[key] %>",
+                "<%= request_forgery_protection_token %>":"<%= form_authenticity_token %>"
+            },
+            'uploader':'/photos/upload',
+            onUploadSuccess: function (file, data, response) {
+                if (data) {
+                    var json = eval("(" + data + ")");
+                    if (json.state == "SUCCESS") {
+                        img_ids.val(img_ids.val().length > 0 ? img_ids.val() + ',' + json['file_id'] : json['file_id']);
+                        includBefore.before('<li><img src="' + json['url'] + '"></li>')
+                    }
+                    else {
+                        alert('很抱歉，照片上传失败，原因：\n\n' + json.error);
+                    }
+                }
+            }
+        });
         uploader.preview();
         uploader.uploadify();
     }

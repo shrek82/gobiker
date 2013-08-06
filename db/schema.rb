@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130802223419) do
+ActiveRecord::Schema.define(:version => 20130806223419) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -251,17 +251,18 @@ ActiveRecord::Schema.define(:version => 20130802223419) do
   add_index "permissions_users", ["user_id", "permission_id"], :name => "index_permissions_users_on_user_id_and_permission_id"
 
   create_table "photos", :force => true do |t|
-    t.string   "title",                 :limit => 50
-    t.string   "img_path",              :limit => 150
+    t.string   "title",            :limit => 50
+    t.string   "img_path",         :limit => 150
     t.boolean  "is_verify"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.string   "img_path_file_name",    :limit => 30
-    t.string   "img_path_content_type", :limit => 20
-    t.string   "img_path_file_size",    :limit => 10
-    t.datetime "img_path_updated_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.string   "img_file_name",    :limit => 30
+    t.string   "img_content_type", :limit => 20
+    t.string   "img_file_size",    :limit => 10
+    t.datetime "img_updated_at"
     t.integer  "album_id"
     t.integer  "user_id"
+    t.string   "img"
   end
 
   create_table "places", :force => true do |t|
@@ -394,7 +395,7 @@ ActiveRecord::Schema.define(:version => 20130802223419) do
   create_table "topics", :force => true do |t|
     t.string   "title",                  :limit => 150
     t.integer  "forum_id"
-    t.integer  "subject_id",             :limit => 2
+    t.integer  "subject_id"
     t.integer  "club_id"
     t.integer  "user_id"
     t.string   "title_color",            :limit => 10
@@ -409,6 +410,7 @@ ActiveRecord::Schema.define(:version => 20130802223419) do
     t.datetime "last_comment_time"
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
+    t.text     "content"
   end
 
   create_table "users", :force => true do |t|
