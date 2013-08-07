@@ -10,8 +10,15 @@ readyScript.site_nav = function () {
     $(this).find(".qyer_head_subnav_bg").hide();
   });
 }
+
 readyScript.auto_login = function () {
-  check_login();
+  request({
+    url: '/users/check_user',
+    dataType: 'html',
+    success: function (res) {
+      $('#asynclogininfo').html(res);
+    }
+  });
 }
 
 var runReadyScript = function () {
@@ -71,19 +78,51 @@ function closeFlashMsg() {
 }
 
 
-//弹出窗
-(function () {
+//载入评论
+var loadComments = function (param) {
+  $.ajax({
+    url: '/comments/list',
+    dataType: 'html',
+    type: 'get',
+    data: param+'&_format=html',
+    success: function (data) {
+       $('#cmt_loading').fadeOut(300,function(){
+         $("#cmt_form").before($(data).fadeIn(400));
+       });
+    }
+  });
+}
+
+//绑定评论表单
+var bindCmtForm = function () {
+  $('#comment_form').bind("submit", function (e) {
+    e.preventDefault();
+    new ajaxForm($(this), {
+      dataType: 'html',
+      callback:function(data){
+        $data=$(data);
+        $('#cmt_textarea').attr('value','');
+        $("#cmts_pager").before($data);
+        var height=$data.height();
+        $data.css({opacity :0,height :0}).animate({opacity:1,'height':height+'px'},400);
+        //$("#cmts_pager").before($(data).css('height','0').animate({height:"68px",opacity: 'toggle'},350));
+      }
+    }).send();
+  });
+}
+
+var pupclose=function(){
+  $(".ui_pupBox_bg").hide();
+  popupFirst = false;
+  return false;
+}
+
+var popup=function(){
+
   var popup = {};
   var popupFirst = true;
   var pup_code = "<div class='ui_pupBox_bg'><div class='ui_pupBox'><div class='ui_pupBox_close'></div><div class='ui_pupBox_main'></div></div></div>";
 
-  function pupclose() {
-    $(".ui_pupBox_bg").hide();
-    popupFirst = false;
-    return false;
-  }
-
-  window.pupclose = pupclose;
 
   function pupstart(width) {
     if (popupFirst) {
@@ -171,16 +210,4 @@ function closeFlashMsg() {
       $(".ui_pupBox_close").hide();
     }
   }
-  window.popup = popup;
-})();
-
-//当前用户登录信息
-var check_login = function () {
-  request({
-    url: '/users/check_user',
-    dataType: 'html',
-    success: function (res) {
-      $('#asynclogininfo').html(res);
-    }
-  })
 }

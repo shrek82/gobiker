@@ -15,9 +15,7 @@ class Agent::AddComment
 
   def run()
     return false if !allowed?
-
     #MixpanelWrapper.track("Agent: Add Comment To Prospect", {:distinct_id => @agent.email})
-
     @comment.save
   end
 

@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
                     :styles => {:square=>"80x80#",:mini => "100x100>",:thumb => "150x150>",:medium => "300x300>", :large => "600x600>",:original => "800x800>"},
                     :default_url => "/images/:style/missing.png",
                     :url => "/uploads/pics/:year/:month:day/:id_:style.:extension",
-                    :path => ":rails_root/public/uploads/pics/:year/:month:day/:id_:style.:extension"
+                    :path => ":rails_root/public/uploads/photos/:year/:month:day/:id_:style.:extension"
   validates_attachment_content_type :img, :content_type => ['image/gif', 'image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/jpg','application/octet-stream']
   belongs_to :album
   belongs_to :user
@@ -22,7 +22,7 @@ class Photo < ActiveRecord::Base
   #添加后修改图片路径
   def set_img_path
     file_extension=self.img_file_name[/\.[a-z]{3,4}$/]
-    img_path='/uploads/pics/'+self.img_updated_at.strftime('%Y')+'/'+self.img_updated_at.strftime('%m%d')+'/'+self.id.to_s+'_thumb'+file_extension
+    img_path='/uploads/photos/'+self.img_updated_at.strftime('%Y')+'/'+self.img_updated_at.strftime('%m%d')+'/'+self.id.to_s+'_thumb'+file_extension
     update_attr={:img_path=>img_path}
     update_attr.store('title',self.img_file_name.sub(/\.[a-z]{3,4}$/,'')) if self.title.nil?
     self.update_attributes(update_attr)

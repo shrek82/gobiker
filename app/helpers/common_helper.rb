@@ -28,6 +28,10 @@ module CommonHelper
       flash[:error]=data[:error] if data[:error]
       if params[:_format]
         format=params[:_format]
+      elsif data[:text]
+        format='text'
+      elsif data[:json]
+        format='json'
       elsif data[:_format]
         format=data[:_format]
       else

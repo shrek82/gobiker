@@ -36,8 +36,13 @@ Gobiker::Application.routes.draw do
     end
   end
 
+  resources :comments do
+    collection do
+      get :list
+    end
+  end
+
   resources :provinces
-  resources :comments
   #resources :photos,:path_names => {:new => "upload"}
   resources :places
   resources :routes

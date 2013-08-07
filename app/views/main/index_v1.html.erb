@@ -1,14 +1,18 @@
-<% Gobiker::Application.config.site_name %>
-
+<% @title=Gobiker::Application.config.site_name %>
 <% content_for:style do %>
-    <%= javascript_include_tag "/js/hotel/oper_hotel.js" %>
     <link rel="stylesheet" href="/css/index/style.css"/>
     <link rel="stylesheet" href="/css/jquery.ui.datepicker.css"/>
     <link rel="stylesheet" href="/css/index/left_v1.css"/>
+<% end %>
+<% content_for:script do %>
+    <script src="/js/slides.jquery.js" type="text/javascript"></script>
     <script type="text/javascript" src="/js/jquery.datetimeplus.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.core.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
+    <script type="text/javascript" src="/js/main/module.js"></script>
 <% end %>
+
+
 <%=render 'focus' %>
 <div class="ind_main">
 
@@ -332,7 +336,7 @@
 
     <p class="text">获得定期的内容更新，产品功能发布和独特的优惠信息，立刻订阅穷游邮件！</p>
 
-    <div class="btn clearfix">
+    <div class="clearfix">
       <form action='http://user.qyer.com/subscibe.php' method='get'>
         <input type="text" name="email" value="" placeholder="输入E-mail地址" class="ui_input"/><input type="submit" value="订阅" class="ui_buttonB" data-bn-ipg="leftnav-mailsubscribe"/>
       </form>

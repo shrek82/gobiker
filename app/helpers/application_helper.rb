@@ -1,6 +1,11 @@
 #coding: utf-8
 module ApplicationHelper
 
+  def comment_list(param={})
+    @cmt_param=(request.query_parameters.merge param).to_param
+    return render 'comments/listform'
+  end
+
   def server_ip
     location = request.env["SERVER_ADDR"]
     render :text => "This server hosted at #{location}"
@@ -82,6 +87,11 @@ module ApplicationHelper
 
   def go_pager(record)
     will_paginate record, :page_links => true, :class => 'ui_page'
+  end
+
+  def cmt_pager(record)
+    html=will_paginate record, :page_links => true, :class => 'ui_page'
+    raw html.gsub(/href/, 'href="javascript:;" req') if html
   end
 
   #信息提示

@@ -3,24 +3,28 @@ class CommentsController < ApplicationController
   # GET /comments.json
   def index
     @comments = Comment.all
+  end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @comments }
+  def list
+    #conditions=Array.new
+    #conditions << "name LIKE ?"
+    #conditions << "%#{params[:q]}%"
+    conditions=Hash.new
+    if params[:q]
+      conditions.store 'content',params[:q]
     end
+
+    if params[:place_id]
+      conditions.store 'place_id',params[:place_id]
+    end
+    @comments=Comment.paginate(:page => params[:page], :per_page =>10, :conditions => conditions, :include => :user)
+    respond :comments => @comments, :layout => false
   end
 
   # GET /comments/1
   # GET /comments/1.json
   def show
-
-    @comment = Comment.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @comment }
-    end
-
+    @params=params
   end
 
   # GET /comments/new
@@ -38,38 +42,27 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def create
+  def created2
     @comment = Comment.new(params[:comment])
-    action = Agent::AddComment.new(1,@comment)
+    action = Agent::AddComment.new(1, @comment)
     if action.run()
-      render :text => 'add success'
-      #flash_success_on_redirect "Comment was added."
-      #redirect_to prospect_path(action.comment.touch_log)
+      render :text => 'add success'+@comment.id
     else
       render :text => 'add error'
-      #flash_error_on_redirect "Please enter a comment."
-      #redirect_to prospect_path(action.comment.touch_log)
     end
   end
 
-  # POST /comments
-  # POST /comments.json
-  def create_bak
+  #发布评论
+  def create
     @comment = Comment.new(params[:comment])
-
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render json: @comment, status: :created, location: @comment }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      respond :action => 'list',:comment => @comment, :layout => false
+    else
+      respond :_format => 'json', :error => @comment.errors.full_messages
     end
   end
 
-  # PUT /comments/1
-  # PUT /comments/1.json
+  #修改评论
   def update
     @comment = Comment.find(params[:id])
 

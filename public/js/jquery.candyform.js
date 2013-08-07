@@ -36,9 +36,6 @@ $.fn.candyForm = function(options) {
     });
 
 
-
-    log(opt);
-
     //打印log
     function log(msg) {
         if (window.console && window.console.log) {
