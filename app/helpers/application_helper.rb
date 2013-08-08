@@ -86,12 +86,12 @@ module ApplicationHelper
   #All options not recognized by will_paginate will become HTML attributes on the container element for pagination links (the DIV). For example:
 
   def go_pager(record)
-    will_paginate record, :page_links => true, :class => 'ui_page'
+    will_paginate record, :page_links => true,:id=>'ui_page',:class => 'ui_page'
   end
 
   def cmt_pager(record)
-    html=will_paginate record, :page_links => true, :class => 'ui_page'
-    raw html.gsub(/href/, 'href="javascript:;" req') if html
+    html=will_paginate record, :page_links => true,:id=>'ui_page', :class => 'ui_page'
+    raw html.gsub(/href/, 'href="javascript:;" url') if html
   end
 
   #信息提示

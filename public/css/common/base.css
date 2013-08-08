@@ -2206,3 +2206,20 @@ a.btn {
     background-image: linear-gradient(top, #fafafa 0%, #eeeeee 100%)
 }
 
+.alert {
+    color: #A37F11;
+    padding: 8px 35px 8px 10px;
+    text-shadow: none;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #F9EDBE;
+    border: 1px solid #F0C36D;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.alert ul li{padding: 0;}

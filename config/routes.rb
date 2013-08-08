@@ -39,12 +39,19 @@ Gobiker::Application.routes.draw do
   resources :comments do
     collection do
       get :list
+      get :getone
+    end
+  end
+
+  resources :places do
+    collection do
+      get :city
+      get :view
     end
   end
 
   resources :provinces
   #resources :photos,:path_names => {:new => "upload"}
-  resources :places
   resources :routes
   resources :asks, :path => 'wenda'
 

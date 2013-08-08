@@ -1,7 +1,11 @@
 <div id="cms_list">
-  <ul class="cmt">
-    <li id="cmt_loading" style="color: #999"><img src="/images/loading.gif" alt="载入中..." style="vertical-align:middle;"/> 载入中...</li>
-    <li id="cmt_form" class="cmt_form">
+  <ul class="cmt" id="cmt_loading">
+    <li style="color: #999"><img src="/images/loading.gif" alt="载入中..." style="vertical-align:middle;"/> 载入中...</li>
+  </ul>
+  <ul class="cmt" id="ajax_list">
+  </ul>
+  <ul class="cmt" id="cmt_form">
+    <li class="cmt_form">
       <div class="avatar">
         <a target="_blank" href="http://weibo.com/chichiyao" title="zhaojiangang_"><img src="/avatar/up.jpeg" alt="zhaojiangang_"></a>
       </div>
@@ -10,7 +14,7 @@
           <input type="hidden" name="comment[place_id]" value="26">
           <input type="hidden" name="comment[user_id]" value="1">
           <div class="ds-textarea-wrapper ds-rounded-top">
-            <textarea name="comment[content]" placeholder="说点什么吧…" id="cmt_textarea">sdfsdfdsdf</textarea>
+            <textarea name="comment[content]" placeholder="" id="cmt_textarea"></textarea>
           </div>
           <div class="post-toolbar">
             <button class="btn btn-mint" type="submit" id="submit_button">发布</button>

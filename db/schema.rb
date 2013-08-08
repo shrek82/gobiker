@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806223419) do
+ActiveRecord::Schema.define(:version => 20130808093551) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20130806223419) do
     t.integer  "area_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "pinyin"
+    t.integer  "order_num"
   end
 
   create_table "article_categories", :force => true do |t|
@@ -120,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20130806223419) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "city_id"
+    t.string   "pinyin"
   end
 
   create_table "comments", :force => true do |t|
@@ -304,6 +307,8 @@ ActiveRecord::Schema.define(:version => 20130806223419) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "province_id"
+    t.integer  "group"
+    t.string   "pinyin"
   end
 
   create_table "recommends", :force => true do |t|

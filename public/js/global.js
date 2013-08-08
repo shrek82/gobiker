@@ -77,19 +77,42 @@ function closeFlashMsg() {
   }, 5000);
 }
 
-
-//载入评论
+//载入某条评论
 var loadComments = function (param) {
   $.ajax({
     url: '/comments/list',
     dataType: 'html',
     type: 'get',
-    data: param+'&_format=html',
+    data: param + '&_format=html',
     success: function (data) {
-       $('#cmt_loading').fadeOut(300,function(){
-         $("#cmt_form").before($(data).fadeIn(400));
-       });
+      $('#cmt_loading').fadeOut(300, function () {
+        $("#ajax_list").html($(data).fadeIn(400));
+      });
+      setTimeout(function(){
+        cmtpage();
+      },1200);
     }
+  });
+}
+
+//评论分页
+var cmtpage = function (url) {
+  $('#ui_page a').bind('click', function (e) {
+    e.preventDefault();
+    console.log($(this).attr('url'));
+    $.ajax({
+      url:$(this).attr('url'),
+      dataType: 'html',
+      type: 'get',
+      success: function (data) {
+        var ajax_list = $("#ajax_list").offset().top - 32;
+        $('html, body').animate({scrollTop: ajax_list});
+        $("#ajax_list").html($(data).fadeIn(400));
+        setTimeout(function(){
+          cmtpage();
+        },200);
+      }
+    });
   });
 }
 
@@ -98,26 +121,36 @@ var bindCmtForm = function () {
   $('#comment_form').bind("submit", function (e) {
     e.preventDefault();
     new ajaxForm($(this), {
-      dataType: 'html',
-      callback:function(data){
-        $data=$(data);
-        $('#cmt_textarea').attr('value','');
-        $("#cmts_pager").before($data);
-        var height=$data.height();
-        $data.css({opacity :0,height :0}).animate({opacity:1,'height':height+'px'},400);
-        //$("#cmts_pager").before($(data).css('height','0').animate({height:"68px",opacity: 'toggle'},350));
+      dataType: 'json',
+      successLabel:'发表成功',
+      callback: function (data) {
+        $('#cmt_textarea').attr('value', '');
+        $.ajax({
+          url: '/comments/getone',
+          dataType: 'html',
+          type: 'get',
+          data: '_format=html&id=' + data.comment.id,
+          success: function (html) {
+            $li = $(html);
+            $("#cmts_pager").before($li);
+            var height = $li.height() + 'px';
+            $li.css({opacity: 0,height:0}).animate({opacity: 1, height: height}, 300);
+            //$("#cmts_pager").before($(data).css('height','0').animate({height:"68px",opacity: 'toggle'},350));
+          }
+        });
       }
     }).send();
   });
 }
 
-var pupclose=function(){
+
+var pupclose = function () {
   $(".ui_pupBox_bg").hide();
   popupFirst = false;
   return false;
 }
 
-var popup=function(){
+var popup = function () {
 
   var popup = {};
   var popupFirst = true;

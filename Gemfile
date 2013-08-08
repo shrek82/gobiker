@@ -87,6 +87,9 @@ group :test do
   #加速测试
   gem 'spork'
   gem 'guard-spork', '0.3.2'
+  #h汉字转拼音
+  gem 'chinese_pinyin'
+
 
 end
 

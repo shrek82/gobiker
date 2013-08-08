@@ -1,3 +1,4 @@
+#coding: utf-8
 class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
@@ -5,6 +6,7 @@ class CommentsController < ApplicationController
     @comments = Comment.all
   end
 
+  #获取评论列表
   def list
     #conditions=Array.new
     #conditions << "name LIKE ?"
@@ -19,6 +21,12 @@ class CommentsController < ApplicationController
     end
     @comments=Comment.paginate(:page => params[:page], :per_page =>10, :conditions => conditions, :include => :user)
     respond :comments => @comments, :layout => false
+  end
+
+  #获取评论模板
+  def getone
+    @comment=Comment.find_by_id(params[:id])
+    respond :action=>'list',:comments => @comment, :layout => false
   end
 
   # GET /comments/1
@@ -42,23 +50,13 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def created2
-    @comment = Comment.new(params[:comment])
-    action = Agent::AddComment.new(1, @comment)
-    if action.run()
-      render :text => 'add success'+@comment.id
-    else
-      render :text => 'add error'
-    end
-  end
-
   #发布评论
   def create
     @comment = Comment.new(params[:comment])
     if @comment.save
-      respond :action => 'list',:comment => @comment, :layout => false
+      respond :success => '发表成功',:comment => @comment
     else
-      respond :_format => 'json', :error => @comment.errors.full_messages
+      respond :error => @comment.errors.full_messages
     end
   end
 

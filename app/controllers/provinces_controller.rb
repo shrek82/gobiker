@@ -1,9 +1,30 @@
 #coding: utf-8
+require 'chinese_pinyin'
 class ProvincesController < ApplicationController
   # GET /provinces
   # GET /provinces.json
   def index
-    @provinces = Province.all
+
+    #@provinces = Province.all
+    #
+    #@provinces.each do |p|
+    #  name=p.name.sub(/省/,'')
+    #  name=p.name.sub(/市/,'')
+    #  p.pinyin=Pinyin.t(name, splitter: '')
+    #  p.save
+    #end
+
+
+    @citys = City.all
+
+    @citys.each do |p|
+      name=p.name.sub(/省/,'')
+      name=name.sub(/市/,'')
+      name=name.sub(/县/,'')
+      name=name.sub(/自治州/,'')
+      p.pinyin=Pinyin.t(name, splitter: '')
+      p.save
+    end
 
     respond_to do |format|
       format.html # index.html.erb
