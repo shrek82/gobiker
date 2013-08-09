@@ -12,25 +12,7 @@
         	</div>
 </div>
 <script src="/js/place/crumbbox.js" type="text/javascript"></script>
-<script>
-(function($){
-	var topbox_en = $("#pl_topbox_en");
-	var topbox_en_len = topbox_en.text().length;
-	if(topbox_en_len>40){
-		topbox_en.css("font-size","22px");
-	}
-	else if(topbox_en_len>35){
-		topbox_en.css("font-size","26px");
-	}
-	else if(topbox_en_len>30){
-		topbox_en.css("font-size","30px");
-	}
-	else if(topbox_en_len>25){
-		topbox_en.css("font-size","34px");
-	}
 
-})(jQuery);
-</script>
 <div class="jsdownaction"></div>
 <div class="pl_topbox_wrap">
 	<div class="pl_topbox clearfix">
@@ -64,216 +46,8 @@
         	</ul>
 	<p class="pl_topbox_numbeen fontYaHei"><em id="doings_beento_counts_big">还没有</em>人去过这里</p>
 </div>
-<script type="text/javascript">
-var type="city";
-var pid="50";
-var uid="";
-var cityid = "";
-if(uid =="0"){
-	uid = "";
-}
-function doings_callback(){
-	window.reload();
-};
-var isaddimpress="";
-function showdoing(d){
-	var data = {"isdo":false,"counts":{"plantocounts":"8475","beentocounts":"36916","livedcounts":"1571"}};
-	//doing.getDoings(pid,type,d,function(data){
-		//console.log(data);
-        if(data.counts.plantocounts==0){
-            $("#doings_planto_counts").html("还没有");
-        }else{
-            $("#doings_planto_counts").html(data.counts.plantocounts);
-        }
-        if(data.isdo.planto==1){
-            $("#pl_topbox_want").removeClass().addClass("pl_topbox_want_ed");
-        }
-
-        if(data.counts.beentocounts==0){
-            $("#doings_beento_counts").html("还没有");
-            $("#doings_beento_counts_big").html("<font size='5px'>还没有</font>");
-        }else{
-            $("#doings_beento_counts").html(data.counts.beentocounts);
-            $("#doings_beento_counts_big").html(data.counts.beentocounts);
-        }
-
-        if(data.isdo.beento==1){
-            $("#pl_topbox_been").removeClass().addClass("pl_topbox_been_ed");
-        }
-		if(type!="poi"){
-			if(data.counts.livedcounts==0){
-                $("#doings_lived_counts").html("还没有");
-            }else{
-                $("#doings_lived_counts").html(data.counts.livedcounts);
-            }
-            if(data.isdo.lived==1){
-                $("#pl_topbox_lived").removeClass().addClass("pl_topbox_lived_ed");
-            }
-		}
-
-		$("#doings_planto_button").click(function(){
-			if(uid==""){
-				ajaxlogin(undefined, undefined, undefined, "doings_callback");
-			}else{
-
-				doing['planto'+type](parseInt(1-parseInt(data.isdo.planto)),pid,function(rs){
-					if(rs.result=="ok"){
-
-						data.isdo.planto = parseInt(1-parseInt(data.isdo.planto));
-						if(data.isdo.planto==1){
-							data.counts.plantocounts++;
-						}else{
-							data.counts.plantocounts--;
-						}
-						if(data.counts.plantocounts<0){data.counts.plantocounts=0;}
-						$("#doings_planto_counts").html(data.counts.plantocounts);
-
-                        if(data.isdo.planto=="1"){
-                      		$(".pl_topbox_want").removeClass().addClass("pl_topbox_want_ed");
-                            if(type=="poi" || cityid){
-                                //显示香港，巴黎，曼谷的city guide图层;
-                                var poiguidecookie = jQuery.cookie("city_poi_cookies") ? jQuery.cookie("city_poi_cookies") : "";
-
-                                if(jQuery.inArray('50',poiguidecookie.split(","))==-1){
-                                    var left = $("#pl_topbox_want").offset().left;
-		                            $("#app_puplayer").css("left",left-364).show();
-                                }
-
-                            }
-                        }else{
-                            $(".pl_topbox_want_ed").removeClass().addClass("pl_topbox_want");
-                        }
-					}else{
-						tips.show(rs.data.msg);
-					}
-
-
-				});
-			}
-		});
-
-
-		$("#doings_beento_button").click(function(){
-			if(QYER.uid==""){
-				ajaxlogin(undefined, undefined, undefined, "doings_callback");
-			}else{
-
-
-				//showdoing(1);
-
-
-				doing['beento'+type](parseInt(1-parseInt(data.isdo.beento)),pid,function(rs){
-					//$("#doings_beento_button").unbind("click");
-					//showdoing(1);
-
-					if(rs.result=="ok"){
-						data.isdo.beento = parseInt(1-parseInt(data.isdo.beento));
-						if(data.isdo.beento==1){
-							data.counts.beentocounts++;
-						}else{
-							data.counts.beentocounts--;
-						}
-						if(data.counts.beentocounts<0){data.counts.beentocounts=0;}
-						$("#doings_beento_counts").html(data.counts.beentocounts);
-                        if(data.counts.beentocounts==0){
-                            $("#doings_beento_counts").html("还没有");
-                            $("#doings_beento_counts_big").html("<font size='5px'>还没有</font>");
-                        }else{
-                            $("#doings_beento_counts").html(data.counts.beentocounts);
-                            $("#doings_beento_counts_big").html(data.counts.beentocounts);
-                        }
-
-
-                        if(data.isdo.beento=="1"){
-
-                            $(".pl_topbox_been").removeClass().addClass("pl_topbox_been_ed");
-
-                            if(type=="city"){
-                                if(parseInt(rs.data.poi_not_count) == 0){
-                                    qyerUI.popup.ajax({url:'/api.php?action=placeleadpoi&oper=showform&source_type=15&id='+pid, width:'720',isclose:'show'});
-                                }else{
-                                    //城市有未去过的poi
-                                    qyerUI.popup.ajax({url:'/api.php?action=placelead&oper=showform&id='+pid+'&showbatchdoings=1', width:'720',isclose:'hide'});
-                                }
-                            }
-                            if(!isaddimpress && type=="country"){
-                                popup.ajax('/api.php?action=impresscountry&oper=showform&id='+pid+'&showbatchdoings=1','440');
-                            }
-                                                        if(type=="poi"){
-                                qyerUI.popup.ajax({url:'/api.php?action=addpoicomment&from=poi&source_type=11&poiid='+pid, width:'690',isclose:'show'});
-                            }
-
-
-						}else{
-                            $(".pl_topbox_been_ed").removeClass().addClass("pl_topbox_been");
-						}
-
-					}else{
-						tips.show(rs.data.msg);
-					}
-
-
-				});
-			}
-		});
-
-		if(type!="poi"){
-			$("#doings_lived_button").click(function(){
-				if(uid==""){
-					ajaxlogin(undefined, undefined, undefined, "doings_callback");
-				}else{
-
-					doing['lived'+type](parseInt(1-parseInt(data.isdo.lived)),pid,function(rs){
-						//$("#doings_lived_button").unbind("click");
-						//showdoing(1);
-						if(rs.result=="ok"){
-							//alert(1);
-							data.isdo.lived = parseInt(1-parseInt(data.isdo.lived));
-							if(data.isdo.lived==1){
-								data.counts.livedcounts++;
-							}else{
-								data.counts.livedcounts--;
-							}
-							if(data.counts.livedcounts<0){data.counts.livedcounts=0;}
-							$("#doings_lived_counts").html(data.counts.livedcounts);
-							//showdoing(1);
-                            if(data.isdo.lived=="1"){
-								//alert("a");
-								$(".pl_topbox_lived").removeClass().addClass("pl_topbox_lived_ed");
-                                if(type!="continents"){
-                                    if(!isaddimpress && type=="city"){
-                                        popup.ajax('/api.php?action=impress&oper=showform&id='+pid,'440');
-                                    }
-
-                                    if(!isaddimpress && type=="country"){
-                                        popup.ajax('/api.php?action=impresscountry&oper=showform&id='+pid,'440');
-                                    }
-
-                                }
-
-							}else{
-                                $(".pl_topbox_lived_ed").removeClass().addClass("pl_topbox_lived");
-							}
-
-						}else{
-							tips.show(rs.data.msg);
-						}
-
-					});
-				}
-			});
-		}
-
-
-	//});
-}
-
-
-showdoing(0);
-//alert(pid);
-</script>	</div>
+	</div>
 </div>
-<script src="http://static.qyer.com/js/place/place_head.js" type="text/javascript"></script>
 <div class="pl_main">
 	<div class="pl_side">
 		<div class="pl_subnav">
@@ -460,29 +234,7 @@ showdoing(0);
 	<div class="pl_cont">
 
 
-<script>
-jQuery(function($){
 
-    var cityguidecookie = jQuery.cookie("city_banner_cookies") ? jQuery.cookie("city_banner_cookies") : "";
-
-    if(jQuery.inArray('50',cityguidecookie.split(","))==-1){
-        jQuery("#city_banner").show();
-    }else{
-        jQuery("#city_banner").hide();
-    }
-
-    if(cityguidecookie){
-        var newcityguidecookie = cityguidecookie+","+'50';
-    }else{
-        var newcityguidecookie = '50';
-    }
-
-	$(".pl_banner680 .close").click(function(){
-        jQuery.cookie("city_banner_cookies",newcityguidecookie,{expires:86400*365,domain:".qyer.com",path:"/"});
-		$(".pl_banner680").hide();
-	});
-});
-</script>
                                                         <div class="pl_banner680 mb30" id="city_banner" style="display: none;">
         			<p class="close"></p>
         			<p class="cnt"><a href="http://app.qyer.com/cityguide/hong-kong/
@@ -517,30 +269,7 @@ jQuery(function($){
 			</div>
 		</div>
 
-<script>
-jQuery(function($){
-	//sysphotorank 官方相册封面管理
-	$("#sysphotorank").click(function(){
-		popup.ajax('/api.php?action=ranksysphoto&oper=showform&pid=50&type=2','550');
-	});
 
-	$("._jsuploadphoto").click(function(){
-		var url = $(this).attr("url");
-		var flag = ajaxlogin();
-		if(QYER.uid > 0){
-			window.open(url);
-		}
-		return;
-	});
-
-	//小图hover
-	$(".pl_focuspic_list li").hover(function(){
-		$(this).find(".mask").hide();
-	},function(){
-		$(this).find(".mask").css("display","");
-	});
-});
-</script>
 
 
 		<ul class="pl_recommend_fix" id="pl_recommend_fix">
@@ -573,45 +302,9 @@ jQuery(function($){
 			</li>
 			 		</ul>
 
-                <script>
-(function(){
-	var fix = $("#pl_recommend_fix");
-	var limax = fix.find("li").length - 1;
-	var index = 0;
 
-	function recommendfn(){
-		fix.find("li").eq(index).fadeOut();
-		index++;
-		if(index > limax) index = 0;
-		fix.find("li").eq(index).fadeIn();
-	}
-
-	if(limax > 0){
-		var time = setInterval(recommendfn,5000);
-		fix.hover(function(){
-			clearInterval(time);
-		},function(){
-			time = setInterval(recommendfn,5000);
-		});
-	}
-})($);
-</script>
 		<div id="citycommenttop" class="mt30"></div>
-		<script language="javascript">
-			var comtop = [];
-			function showcommenttop(page){
-				if(comtop[page]==null){
-					_ajax.post("getcitycommentlist",{cityid:'50', _cnt:(+new Date())},function(text){
 
-                        comtop[page] = text;
-						$("#citycommenttop").html(text);
-					});
-				}else{
-					$("#citycommenttop").html(comtop[page]);
-				}
-			}
-			showcommenttop(1);
-		</script>
 				<div>
 			<div class="pl_title">
 				<h2 class="pl_title_name">住在香港</h2>
@@ -699,31 +392,6 @@ jQuery(function($){
 		</div>
         <div class="pl_sldline2"></div>
 
-<script>
-$(function(){
-	function chhoteltipsShow(that){
-		$(".pl_hotellist .cnhotel_layer").hide();
-		$(that).parents(".item").find(".cnhotel_layer").show();
-	}
-	function chhoteltipsHide(that){
-		$(that).parents(".item").find(".cnhotel_layer").hide();
-	}
-	var timer; //定时器
-	$(".pl_hotellist .cnhotel").hover(function(){
-		clearTimeout(timer);
-		chhoteltipsShow(this);
-	},function(){
-		var that = this;
-		timer = setTimeout(function(){chhoteltipsHide(that)},500);
-	});
-	$(".cnhotel_layer").hover(function(){
-		clearTimeout(timer);
-	},function(){
-		var that = this;
-		timer = setTimeout(function(){chhoteltipsHide(that)},500);
-	});
-});
-</script>
 
         		<div>
 			<div class="pl_title pr">
@@ -1623,17 +1291,3 @@ function poilistdoings(id,doingstype,doingsclass){
 
 </div>
 
-
-
-
-
-
-
-
-<script src="http://static.qyer.com/js/place/global.js" type="text/javascript"></script>
-<script src="http://static.qyer.com/js/common/upward.js" type="text/javascript"></script>
-<script language="javascript" src="http://static.qyer.com/min/b=js&amp;f=place/oper_comment.js,place/comment.js,place/global.js,common/upward.js"  /></script>
-
-<script language="javascript">
-spam_text_filter();
-</script>

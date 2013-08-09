@@ -1,44 +1,29 @@
 #coding: utf-8
 class PlacesController < ApplicationController
-  # GET /places
 
   def index
 
     @recommended=Rails.cache.fetch('place_home_recommended', :expires_in => 30.minutes) do
-      Rails.logger.info "从数据读取"
-      Place.get_recommended(5)
+      Place.get_recommended(6)
     end
 
     @places = Place.paginate(:page => params[:page], :per_page => 12, :order => "places.id DESC")
 
-
-    #=>SELECT "places".* FROM "places" INNER JOIN "users" ON "users"."id" = "places"."user_id" WHERE "places"."is_recommended" = 't' LIMIT 3
-    #@recommended=Place.select("places.*").joins(:user).recommended.limit(3)
-
-    #=>SELECT user.username FROM "places" LEFT JOIN user ON user.id=place.user_id LIMIT 4
-    #@test=Place.select("places.id,places.name").join_user.limit(4)
-
-    #=>SELECT "places".* FROM "places" WHERE "places"."is_fixed" = 't'
-    #@fixed=Place.where(:is_fixed => true)
-
-    #@address=Place.select("places.id,places.address").recommended.join_city.limit(6)
-
-    #枚举查询测试
-    #@search=Place.base_field.search('华家池', '茅').join_user.join_city.limit(2)
-    #=>SELECT places.id,places.name, users.username, provinces.name,cities.name FROM "places" LEFT JOIN users ON users.id=places.user_id LEFT JOIN provinces ON provinces.id=places.province_id LEFT JOIN cities ON cities.id=places.city_id WHERE (places.name like '%华家池%' OR places.name like '%茅%') LIMIT 2
     respond_to do |format|
       format.html
       format.json { render json: @places }
     end
   end
 
-
+  #按城市查看
   def city
-
+    @name=params[:name]
+    @city=not_found do
+      City.find_by_pinyin(@name)
+    end
   end
 
-  # GET /places/1
-  # GET /places/1.json
+  #显示目的地
   def show
     #@place = Rails.cache.fetch "place#{params[:id]}" do
     @place=Place.find(params[:id])

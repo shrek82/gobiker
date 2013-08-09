@@ -1027,31 +1027,6 @@ li.current {
     margin-top: 10px
 }
 
-.pl_focuspic_add
-.btn {
-    display: block;
-    width: 100%;
-    height: 38px;
-    line-height: 38px;
-    background-color: #6faf8e;
-    border-radius: 3px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff
-}
-
-.pl_focuspic_add .btn
-span {
-    padding: 2px 0 0 27px;
-    background: url(/images/place/focuspic_add.png) no-repeat 0 center
-}
-
-.pl_focuspic_add .btn:hover {
-    background-color: #5fa678;
-    text-decoration: none
-}
-
 .pl_focuspic_more {
     position: absolute;
     right: 0;

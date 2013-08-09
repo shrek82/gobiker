@@ -733,7 +733,6 @@ a {
 }
 
 .ui_page_item_prev,.ui_page_next {
-    background-image:url(/static/media/page_bg.png);
     background-repeat:no-repeat;
     font-family:\5b8b\4f53,sans-serif;
 }

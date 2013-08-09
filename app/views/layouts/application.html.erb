@@ -13,6 +13,7 @@
 </head>
 <body>
 <%= render :template => 'global/header' %>
+<%= yield :full_body %>
 <div id="main_body"><%= yield %></div>
 <%= render :template => 'global/footer' %>
 <%= yield :footer %>

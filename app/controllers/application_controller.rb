@@ -11,6 +11,15 @@ class ApplicationController < ActionController::Base
   #根据get参数自动设置多语言版
   before_filter :set_locale
 
+  def not_found(&block)
+    record=yield
+    if record.blank?
+      render :file => "#{Rails.root}/public/404.html", :status =>404
+    else
+      return yield
+    end
+  end
+
   #cancan认证方式三，认证整个项目
   #check_authorization
 
@@ -22,7 +31,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = session[:locale] || I18n.default_locale
   end
 
-  #捕获所有错误(并提示友好提示)
+  #自动捕获所有错误(并提示友好提示)
   #CanCan::AccessDenied异常需要使用Cancan gem
   #rescue_from Exception do |exception|
   #  Rails.logger.info '----------------------------------------------'

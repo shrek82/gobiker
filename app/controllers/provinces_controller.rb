@@ -1,5 +1,5 @@
 #coding: utf-8
-require 'chinese_pinyin'
+
 class ProvincesController < ApplicationController
   # GET /provinces
   # GET /provinces.json

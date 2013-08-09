@@ -3912,8 +3912,8 @@ img {
 }
 
 .pl_yelp {
-    padding-bottom: 30px;
-    margin-top: 30px;
+    padding-bottom: 10px;
+    margin-top: 20px;
     border-bottom: 1px solid #ececec
 }
 
@@ -3933,7 +3933,7 @@ img {
 .pl_yelp_face
 img {
     display: block;
-    border-radius: 50px
+    border-radius: 5px
 }
 
 .pl_yelp_cnt {
@@ -4375,39 +4375,3 @@ span {
     height: 240px
 }
 
-.app_puplayer
-.close {
-    position: absolute;
-    right: 19px;
-    top: 23px;
-    width: 28px;
-    height: 27px;
-    background: url(/images/place/app/pup_close.png) no-repeat;
-    cursor: pointer
-}
-
-.app_puplayer .close:hover {
-    background-position: 0 -27px
-}
-
-.app_puplayer
-.btns {
-    position: absolute;
-    bottom: 42px;
-    right: 90px
-}
-
-.app_puplayer .btns
-a {
-    display: block;
-    width: 155px;
-    height: 34px;
-    overflow: hidden;
-    margin: 0 auto;
-    background: url(/images/place/app/btn_down.png) no-repeat;
-    line-height: 200px
-}
-
-.app_puplayer .btns a:hover {
-    background-position: 0 -40px
-}

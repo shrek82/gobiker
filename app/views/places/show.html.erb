@@ -2,719 +2,513 @@
 <% content_for:style do %>
     <link rel="stylesheet" href="/css/place/style4.css"/>
 <% end %>
+<% content_for:script do %>
+    <script src="/js/place/crumbbox.js" type="text/javascript"></script>
+<% end %>
 
 
 <div class="qyer_head_crumbg">
   <div class="qyer_head_crumb">
-    <span class="text"><%= link_to '首页', main_path %></span>
+    <span class="text"><a href="http://www.qyer.com" data-bn-ipg="3-1">首页</a></span>
     <span class="space">&gt;</span>
     <span class="text drop"><a href="http://place.qyer.com" data-bn-ipg="3-2">目的地</a><em class="arrow" data="crumb_continents"></em></span>
-    <span class="space">&gt;</span><span class="text drop"><a href="http://place.qyer.com/asia/" data-bn-ipg="3-3">亚洲</a><em class="arrow" data="crumb_country"></em></span><span class="space">&gt;</span><span class="text drop"><a href="http://place.qyer.com/china/" data-bn-ipg="3-4">中国</a><em class="arrow" data="crumb_city"></em></span><span class="space">&gt;</span><span class="text drop">香港<em class="arrow" data="crumb_cate"></em></span>
+    <span class="space">&gt;</span><span class="text drop"><a href="http://place.qyer.com/asia/" data-bn-ipg="3-3">亚洲</a><em class="arrow" data="crumb_country"></em></span><span class="space">&gt;</span><span class="text drop"><a href="http://place.qyer.com/china/" data-bn-ipg="3-4">中国</a><em class="arrow" data="crumb_city"></em></span><span class="space">&gt;</span><span class="text drop"><a href="http://place.qyer.com/hong-kong/">香港</a><em class="arrow" data="crumb_cate"></em></span><span class="space">&gt;</span><span class="text"><a href="http://place.qyer.com/hong-kong/sight/">景点</a></span><span class="space">&gt;</span><h1 class="current">尖沙咀</h1>
   </div>
 </div>
 
 
-<script src="http://static.qyer.com/js/place/crumbbox.js" type="text/javascript"></script>
-<div class="jsdownaction"></div>
+
 <div class="pl_topbox_wrap">
-  <div class="pl_topbox clearfix">
-    <div class="pl_topbox_name">
-      <p class="pl_topbox_en" id="pl_topbox_en">
-        <a href="http://place.qyer.com/hong-kong/" data-bn-ipg="top-title">HONG KONG, CHINA</a></p>
-
-      <div class="clearfix">
-        <p class="pl_topbox_cn fontYaHei">
-          <a href="http://place.qyer.com/hong-kong/" data-bn-ipg="top-title"><%= @place.name %></a>
-        </p>
-
-        <div class="pi_prompt">
-          <span class="initial">重要提示</span>
-
-          <div class="pi_prompt_lay">
-            <div class="top"><span class="close">&nbsp;</span><span class="title">重要提示</span></div>
-            <div class="text">从3月1日开始，香港特区政府颁布的&ldquo;限制婴幼儿奶粉出境&rdquo;正式实施，离境人士每天只可携带不超过1.8公斤（约两罐）奶粉离境。若违反即属犯罪，可罚款50万元（港元）及监禁2年。</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pl_topbox_right">
-      <ul class="pl_topbox_btn">
-        <li class="pl_topbox_want" id="pl_topbox_want">
-          <p class="num"><span><strong id="doings_planto_counts">0</strong>人想去</span><em></em></p>
-          <a href="javascript:void(0);" class="click" id="doings_planto_button" data-bn-ipg="top-planto">想去</a>
-        </li>
-        <li class="pl_topbox_been" id="pl_topbox_been">
-          <p class="num"><span><strong id="doings_beento_counts">0</strong>人去过</span><em></em></p>
-          <a href="javascript:void(0);" class="click" id="doings_beento_button" data-bn-ipg="top-beento">去过</a>
-        </li>
-        <li class="pl_topbox_lived" id="pl_topbox_lived">
-          <p class="num"><span><strong id="doings_lived_counts">0</strong>人生活过</span><em></em></p>
-          <a href="javascript:void(0);" class="click" id="doings_lived_button" data-bn-ipg="top-lived">生活过</a>
-        </li>
-      </ul>
-      <p class="pl_topbox_numbeen fontYaHei"><em id="doings_beento_counts_big">还没有</em>人去过这里</p>
-    </div>
+<div class="pl_topbox clearfix">
+<div class="pl_topbox_name">
+  <p class="pl_topbox_en" id="pl_topbox_en"><a href="http://place.qyer.com/poi/59047/">TSIM SHA TSUI</a></p>
+  <div class="clearfix">
+    <p class="pl_topbox_cn fontYaHei"><a href="http://place.qyer.com/poi/59047/">尖沙咀</a></p>
   </div>
+</div>
+<div class="pl_topbox_right">
+  <ul class="pl_topbox_btn">
+    <li class="pl_topbox_want" id="pl_topbox_want">
+      <p class="num"><span><strong id="doings_planto_counts">591</strong>人想去</span><em></em></p>
+      <a href="javascript:void(0);" class="click" id="doings_planto_button" data-bn-ipg="top-planto">想去</a>
+    </li>
+    <li class="pl_topbox_been" id="pl_topbox_been">
+      <p class="num"><span><strong id="doings_beento_counts">2167</strong>人去过</span><em></em></p>
+      <a href="javascript:void(0);" class="click" id="doings_beento_button" data-bn-ipg="top-beento">去过</a>
+    </li>
+  </ul>
+  <p class="pl_topbox_numbeen fontYaHei"><em id="doings_beento_counts_big">2167</em>人去过这里</p>
+</div>
+	</div>
 </div>
 <div class="pl_main">
 <div class="pl_side">
-<div class="pl_subnav">
-  <!--左侧旅行指南-->
-  <div class="pl_title">
-    <h2 class="pl_title_name">香港旅行指南</h2>
-  </div>
-  <ul class="pl_infonav clearfix">
-    <li><a href="http://place.qyer.com/hong-kong/profile/" class="profile" data-bn-ipg="infonav-profile">城市概况</a></li>
-    <li><a href="http://place.qyer.com/hong-kong/when-to-go/" class="date" data-bn-ipg="infonav-date">旅行时间</a></li>
-    <li><a href="http://place.qyer.com/hong-kong/visa/" class="visa" data-bn-ipg="infonav-visa">签证与出入境</a></li>
-    <li><a href="http://place.qyer.com/hong-kong/cost/" class="money" data-bn-ipg="infonav-money">货币与花费</a></li>
-    <li><a href="http://place.qyer.com/hong-kong/information/" class="utility" data-bn-ipg="infonav-utility">实用信息</a>
-    </li>
-    <li><a href="http://place.qyer.com/hong-kong/advice/" class="counsel" data-bn-ipg="infonav-counsel">网友忠告</a></li>
-
-
-  </ul>
-  <!--左侧POI类别-->
-  <div class="pl_sldline1"></div>
-  <ul class="pl_sortnav clearfix">
-    <li><a href="http://place.qyer.com/hong-kong/sight/" class="spot" alt="景点" data-bn-ipg="infonav-spot">景点</a></li>
-    <li><a href="http://place.qyer.com/hong-kong/activity/" class="exp" alt="体验" data-bn-ipg="infonav-exp">体验</a></li>
-    <li>
-      <a href="http://place.qyer.com/hong-kong/transportation/" class="traffic" alt="交通" data-bn-ipg="infonav-traffic">交通</a>
-    </li>
-    <li><a href="http://place.qyer.com/hong-kong/hotel/" class="hotel" alt="住宿" data-bn-ipg="infonav-hotel">住宿</a>
-    </li>
-    <li><a href="http://place.qyer.com/hong-kong/shopping/" class="shop" alt="购物" data-bn-ipg="infonav-shop">购物</a>
-    </li>
-    <li><a href="http://place.qyer.com/hong-kong/food/" class="cate" alt="美食" data-bn-ipg="infonav-cate">美食</a></li>
-  </ul>
-  <div class="pl_sldline1"></div>
-  <ul class="pl_channav clearfix">
-    <li class="text">
-      <a target="_blank" href="http://ask.qyer.com/tag/%E9%A6%99%E6%B8%AF" class="ask" data-bn-ipg="infonav-ask" alt="香港">问答</a>
-    </li>
-    <li class="gap">&nbsp;</li>
-    <li class="text">
-      <a target="_blank" href="http://place.qyer.com/hong-kong/travel-notes/" class="travel" rel="nofollow" data-bn-ipg="infonav-travelnotes" alt="香港">游记</a>
-    </li>
-    <li class="gap">&nbsp;</li>
-    <li class="text">
-      <a target="_blank" href="http://place.qyer.com/hong-kong/plan/" class="route" data-bn-ipg="infonav-itinerary" alt="香港">行程</a>
-    </li>
-  </ul>
-</div>
-<div class="pl_sldline2"></div>
-<div>
-  <div class="pl_title">
-    <h2 class="pl_title_name">香港热心穷游er</h2>
-  </div>
-  <ul class="pl_hotqyer clearfix">
-    <li>
-      <a target="_blank" href="http://user.qyer.com/user_uid_1574778" data-bn-ipg="user-1" title="貓力molly"><img src="http://static.qyer.com/data/avatar/001/57/47/78_avatar_small.jpg" width="30" height="30" alt="貓力molly"/></a>
-    </li>
-    <li>
-      <a target="_blank" href="http://user.qyer.com/user_uid_1123728" data-bn-ipg="user-2" title="hufaye1990"><img src="http://static.qyer.com/data/avatar/001/12/37/28_avatar_small.jpg" width="30" height="30" alt="hufaye1990"/></a>
-    </li>
-    <li>
-      <a target="_blank" href="http://user.qyer.com/user_uid_1271802" data-bn-ipg="user-3" title="dsfhjdfshfA"><img src="http://static.qyer.com/data/avatar/001/27/18/02_avatar_small.jpg" width="30" height="30" alt="dsfhjdfshfA"/></a>
-    </li>
-    <li>
-      <a target="_blank" href="http://user.qyer.com/user_uid_1247571" data-bn-ipg="user-4" title="上上下下"><img src="http://static.qyer.com/data/avatar/001/24/75/71_avatar_small.jpg" width="30" height="30" alt="上上下下"/></a>
-    </li>
-    <li>
-      <a target="_blank" href="http://user.qyer.com/user_uid_1395331" data-bn-ipg="user-5" title="KyleShi"><img src="http://static.qyer.com/data/avatar/001/39/53/31_avatar_small.jpg" width="30" height="30" alt="KyleShi"/></a>
-    </li>
-    <li>
-      <a target="_blank" href="http://user.qyer.com/user_uid_240293" data-bn-ipg="user-6" title="小熊甜甜"><img src="http://static.qyer.com/data/avatar/000/24/02/93_avatar_small.jpg" width="30" height="30" alt="小熊甜甜"/></a>
-    </li>
-    <li>
-      <a target="_blank" href="http://user.qyer.com/user_uid_2214962" data-bn-ipg="user-7" title="在水中央的飛魚"><img src="http://static.qyer.com/data/avatar/002/21/49/62_avatar_small.jpg" width="30" height="30" alt="在水中央的飛魚"/></a>
-    </li>
-  </ul>
-</div>
-
-<div class="pl_sldline2"></div>
-<div>
-  <div class="pl_title">
-    <h2 class="pl_title_name">关于香港的问题</h2>
-    <a href="http://ask.qyer.com/tag/%E9%A6%99%E6%B8%AF" data-bn-ipg="ask-more" class="pl_title_more" target="_blank" title="更多香港问题">更多</a>
-  </div>
-  <div class="ui_tab pl_aboutask">
-    <div class="ui_tab_trigger">
-      <ul>
-        <li class="ui_tab_trigger_item ui_tab_trigger_item_current">
-          <a href="javascript:void(0);" data-bn-ipg="ask-new">最新问题</a></li>
-        <li class="gap">|</li>
-        <li class="ui_tab_trigger_item"><a href="javascript:void(0);" data-bn-ipg="ask-hot">热门问题</a></li>
-      </ul>
+  <div>
+    <div class="pl_title">
+      <h2 class="pl_title_name">照片</h2>
     </div>
-    <div class="ui_tab_cnt">
-      <ul class="ui_tab_cnt_item ui_tab_cnt_item_current">
-        <li>
-          <a href="http://user.qyer.com/user_uid_2288460" target="_blank" class="pic" data-bn-ipg="ask-new-1-1"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt="芬达的美年达" title="芬达的美年达"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/490992.html" data-bn-ipg="ask-new-1-2" title="关于香港签注">关于香港签注</a>
-          </p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_2404574" target="_blank" class="pic" data-bn-ipg="ask-new-2-1"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt="leo0710" title="leo0710"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/490970.html" data-bn-ipg="ask-new-2-2" title="各位穷游的游SER，我想请问一下两个人去香港，两夜三天，纯观光游玩为主。五千块够吗？">各位穷游的游SER，我想请问一下两个人去香港，两夜三天，纯观光游</a>
-          </p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_2448079" target="_blank" class="pic" data-bn-ipg="ask-new-3-1"><img src="http://static.qyer.com/data/avatar/002/44/80/79_avatar_small.jpg" width="30" height="30" alt="千鹤猫猫" title="千鹤猫猫"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/490878.html" data-bn-ipg="ask-new-3-2" title="深圳 --&amp;gt; 香港 --&amp;gt; 澳门 -- &amp;gt; 珠海 --&amp;gt; 广州 --&amp;gt; 深圳">深圳
-              --&amp;gt; 香港 --&amp;gt; 澳门 -- &amp;gt; 珠海 --&amp;g</a></p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_2447410" target="_blank" class="pic" data-bn-ipg="ask-new-4-1"><img src="http://static.qyer.com/data/avatar/002/44/74/10_avatar_small.jpg" width="30" height="30" alt="温柔的林姐姐" title="温柔的林姐姐"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/490847.html" data-bn-ipg="ask-new-4-2" title="请教：温州到香港、澳门过境问题">请教：温州到香港、澳门过境问题</a>
-          </p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_1411789" target="_blank" class="pic" data-bn-ipg="ask-new-5-1"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt="chunterg" title="chunterg"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/490805.html" data-bn-ipg="ask-new-5-2" title="关于香港市区预办登机">关于香港市区预办登机</a>
-          </p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_2403305" target="_blank" class="pic" data-bn-ipg="ask-new-6-1"><img src="http://static.qyer.com/data/avatar/002/40/33/05_avatar_small.jpg" width="30" height="30" alt="汏寳_rita" title="汏寳_rita"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/490777.html" data-bn-ipg="ask-new-6-2" title="香港签注问题">香港签注问题</a>
-          </p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_2125385" target="_blank" class="pic" data-bn-ipg="ask-new-7-1"><img src="http://static.qyer.com/data/avatar/002/12/53/85_avatar_small.jpg" width="30" height="30" alt="cyn姐" title="cyn姐"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/490617.html" data-bn-ipg="ask-new-7-2" title="從澳門經香港返內地 要香港簽證嗎?">從澳門經香港返內地
-              要香港簽證嗎?</a></p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_1546311" target="_blank" class="pic" data-bn-ipg="ask-new-8-1"><img src="http://static.qyer.com/data/avatar/001/54/63/11_avatar_small.jpg" width="30" height="30" alt="森缇门徒" title="森缇门徒"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/490614.html" data-bn-ipg="ask-new-8-2" title="请问香港尖沙咀街边的那种摄影器材店是否靠谱？">请问香港尖沙咀街边的那种摄影器材店是否靠谱？</a>
-          </p>
-        </li>
-
-      </ul>
-      <ul class="ui_tab_cnt_item">
-        <li>
-          <a href="http://user.qyer.com/user_uid_1284819" target="_blank" class="pic" data-bn-ipg="ask-hot-1-1"><img src="http://static.qyer.com/data/avatar/001/28/48/19_avatar_small.jpg" width="30" height="30" alt="胡尕峰" title="胡尕峰"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/206750.html" data-bn-ipg="ask-hot-1-2" title="拿护照过关去香港或澳门，有哪些需要注意的么？">拿护照过关去香港或澳门，有哪些需要注意的么？</a>
-          </p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_241546" target="_blank" class="pic" data-bn-ipg="ask-hot-2-1"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt="piaowait" title="piaowait"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/165107.html" data-bn-ipg="ask-hot-2-2" title="急！请问卡地亚手表香港和欧洲买哪里更便宜？">急！请问卡地亚手表香港和欧洲买哪里更便宜？</a>
-          </p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_1197596" target="_blank" class="pic" data-bn-ipg="ask-hot-3-1"><img src="http://static.qyer.com/data/avatar/001/19/75/96_avatar_small.jpg" width="30" height="30" alt="aprilapple0426" title="aprilapple0426"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/197302.html" data-bn-ipg="ask-hot-3-2" title="求助，有没有人在香港买过意大利彩金？可以退货吗？">求助，有没有人在香港买过意大利彩金？可以退货吗？</a>
-          </p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_193742" target="_blank" class="pic" data-bn-ipg="ask-hot-4-1"><img src="http://static.qyer.com/data/avatar/000/19/37/42_avatar_small.jpg" width="30" height="30" alt="华莲" title="华莲"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/177341.html" data-bn-ipg="ask-hot-4-2" title="请教达人: 香港机场免税店购物信用卡可以走银联路线吗?">请教达人:
-              香港机场免税店购物信用卡可以走银联路线吗?</a></p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_172720" target="_blank" class="pic" data-bn-ipg="ask-hot-5-1"><img src="http://static.qyer.com/data/avatar/000/17/27/20_avatar_small.jpg" width="30" height="30" alt="totol412" title="totol412"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/160904.html" data-bn-ipg="ask-hot-5-2" title="【一解决】紧急！自泰国回来从香港入境的TX们不要走这条路了！下次拒签机会很大！">【一解决】紧急！自泰国回来从香港入境的TX们不要走这条路了！下次</a>
-          </p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_51151" target="_blank" class="pic" data-bn-ipg="ask-hot-6-1"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt="septrain7" title="septrain7"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/1127.html" data-bn-ipg="ask-hot-6-2" title="请教一下，银联的借记卡在香港能刷卡消费吗？要手续费吗？谢谢~~">请教一下，银联的借记卡在香港能刷卡消费吗？要手续费吗？谢谢~~</a>
-          </p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_461916" target="_blank" class="pic" data-bn-ipg="ask-hot-7-1"><img src="http://static.qyer.com/data/avatar/000/46/19/16_avatar_small.jpg" width="30" height="30" alt="skychan123" title="skychan123"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/103435.html" data-bn-ipg="ask-hot-7-2" title="香港机场A21巴士时间">香港机场A21巴士时间</a>
-          </p>
-        </li>
-        <li>
-          <a href="http://user.qyer.com/user_uid_135243" target="_blank" class="pic" data-bn-ipg="ask-hot-8-1"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt="catherine2007" title="catherine2007"/></a>
-
-          <p class="text">
-            <a target="_blank" href="http://ask.qyer.com/question/12590.html" data-bn-ipg="ask-hot-8-2" title="请教内地居民在香港银行开户问题">请教内地居民在香港银行开户问题</a>
-          </p>
-        </li>
-      </ul>
+    <!--有图时start-->
+    <div class="pl_poiphoto _jsheight">
+      <p id="poiphoto"><a href="http://place.qyer.com/poi/59047/photo/" target="_blank"><img src="http://static.qyer.com/album/user/213/9/Q0hWQhMOZw/640" width="270" alt="尖沙咀"></a></p>
+      <p class="pl_poiphoto_writer" style="display: none;">来自：<a href="http://user.qyer.com/user_uid_284698">长牙的兔子</a></p>
     </div>
-    <div class="mt20 tc">
-      <a target="_blank" class="ui_buttonB" href="http://ask.qyer.com/addquestion" rel="nofollow" data-bn-ipg="ask-question">我要提问</a>
+    <div class="pl_poiphoto_more"><span class="fr"><a href="http://place.qyer.com/poi/59047/photo/" target="_blank" class="more">更多照片 244张</a></span><a href="#" class="pl_poiphoto_album">相册上传</a><a href="#" class="pl_poiphoto_native">本地上传</a></div>
+
+  </div>        		<div class="pl_sldline2"></div>
+  <div>
+    <div class="pl_title">
+      <h2 class="pl_title_name">谁最近去过</h2>
+    </div>
+    <ul class="pl_hotqyer clearfix">
+      <li><a href="http://user.qyer.com/user_uid_502693" title="vison001"><img src="http://static.qyer.com/data/avatar/000/50/26/93_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_1099382" title="KatherineD"><img src="http://static.qyer.com/data/avatar/001/09/93/82_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_1758220" title="Quellas_Lin晴霞"><img src="http://static.qyer.com/data/avatar/001/75/82/20_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_2061944" title="hammster"><img src="http://static.qyer.com/data/avatar/002/06/19/44_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_2523903" title="多多的肉肉球"><img src="http://static.qyer.com/data/avatar/002/52/39/03_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_2569217" title="懶惰的小野貓jj"><img src="http://static.qyer.com/data/avatar/002/56/92/17_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_2571360" title="伊二三"><img src="http://static.qyer.com/data/avatar/002/57/13/60_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_2572845" title="OlyCamui"><img src="http://static.qyer.com/data/avatar/002/57/28/45_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_2604691" title="林棲穀隱"><img src="http://static.qyer.com/data/avatar/002/60/46/91_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_2606946" title="humphrey1996"><img src="http://static.qyer.com/data/avatar/002/60/69/46_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_2607735" title="liusai"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_2607819" title="笑笑最好1"><img src="http://static.qyer.com/data/avatar/002/60/78/19_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_2609821" title="alvinq1210"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt=""></a></li>
+      <li><a href="http://user.qyer.com/user_uid_2610500" title="Cecile_安"><img src="http://static.qyer.com/data/avatar/002/61/05/00_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+    </ul>
+  </div>
+  <div class="pl_sldline2"></div>
+  <div>
+    <div class="pl_title">
+      <h2 class="pl_title_name">地图</h2>
+    </div>
+    <div class="pl_smallmap"><a href="http://place.qyer.com/poi/59047/map/" target="_blank"><img src="http://maps.google.com/maps/api/staticmap?size=270x180&amp;markers=icon:http://static.qyer.com/images/place/icon_coord_current.png|22.297604,114.172173&amp;sensor=false"></a></div>
+  </div>
+  <div class="pl_sldline2"></div>
+  <div>
+    <div class="pl_title">
+      <h2 class="pl_title_name">关于尖沙咀的问题</h2>
+      <a href="http://ask.qyer.com/tag/%E5%B0%96%E6%B2%99%E5%92%80" data-bn-ipg="ask-more" class="pl_title_more" target="_blank" title="更多尖沙咀问题">更多</a></div>
+    <div class="ui_tab pl_aboutask">
+      <div class="ui_tab_trigger">
+        <ul>
+          <li class="ui_tab_trigger_item ui_tab_trigger_item_current"><a href="javascript:void(0);" data-bn-ipg="ask-new">最新问题</a></li>
+          <li class="gap">|</li>
+          <li class="ui_tab_trigger_item"><a href="javascript:void(0);" data-bn-ipg="ask-hot">热门问题</a></li>
+        </ul>
+      </div>
+      <div class="ui_tab_cnt">
+        <ul class="ui_tab_cnt_item ui_tab_cnt_item_current">
+          <li><a href="http://user.qyer.com/user_uid_1400249" target="_blank" class="pic" data-bn-ipg="ask-new-1-1"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt="pc955" title="pc955"></a>
+            <p class="text"><a target="_blank" href="http://ask.qyer.com/question/486839.html" data-bn-ipg="ask-new-1-2" title="请问尖沙咀海港城附近有什么早餐店推荐吗？">请问尖沙咀海港城附近有什么早餐店推荐吗？</a></p>
+          </li>
+          <li><a href="http://user.qyer.com/user_uid_1273979" target="_blank" class="pic" data-bn-ipg="ask-new-2-1"><img src="http://static.qyer.com/data/avatar/001/27/39/79_avatar_small.jpg" width="30" height="30" alt="枕书蔷薇" title="枕书蔷薇"></a>
+            <p class="text"><a target="_blank" href="http://ask.qyer.com/question/466519.html" data-bn-ipg="ask-new-2-2" title="6月12日--15日香港尖沙咀住宿">6月12日--15日香港尖沙咀住宿</a></p>
+          </li>
+          <li><a href="http://user.qyer.com/user_uid_1221293" target="_blank" class="pic" data-bn-ipg="ask-new-3-1"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt="黄嚒嚒" title="黄嚒嚒"></a>
+            <p class="text"><a target="_blank" href="http://ask.qyer.com/question/137945.html" data-bn-ipg="ask-new-3-2" title="请问下尖沙咀到香港机场有何选择">请问下尖沙咀到香港机场有何选择</a></p>
+          </li>
+
+        </ul>
+        <ul class="ui_tab_cnt_item">
+          <li><a href="http://user.qyer.com/user_uid_1221293" target="_blank" class="pic" data-bn-ipg="ask-hot-1-1"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt="黄嚒嚒" title="黄嚒嚒"></a>
+            <p class="text"><a target="_blank" href="http://ask.qyer.com/question/137945.html" data-bn-ipg="ask-hot-1-2" title="请问下尖沙咀到香港机场有何选择">请问下尖沙咀到香港机场有何选择</a></p>
+          </li>
+        </ul>
+      </div>
+      <div class="mt20 tc"><a target="_blank" class="ui_buttonB" href="http://ask.qyer.com/addquestion" rel="nofollow" data-bn-ipg="ask-question">我要提问</a></div>
     </div>
   </div>
-</div>
-
-<div class="pl_sldline2"></div>
-<div>
-  <div class="pl_title">
-    <h2 class="pl_title_name">周边目的地</h2>
+  <div class="pl_sldline2"></div>
+  <div>
+    <div class="pl_title">
+      <h2 class="pl_title_name">周边景点</h2>
+    </div>
+    <ul class="pl_rimplace">
+      <li><a href="http://place.qyer.com/poi/99951/" class="pic"><img src="http://static.qyer.com/album/user/370/90/Qk5VSxoAZQ/80" onerror="this.src='http://static.qyer.com/images/place/no/poi_48_48.png'" width="48" height="48" alt="1881 1881 Heritage" title="1881 1881 Heritage"></a>
+        <p class="title"><a href="http://place.qyer.com/poi/99951/" title="1881 1881 Heritage">1881 1881 Heritage</a></p>
+        <p class="text"><span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">5</em></span></p>
+      </li>
+      <li><a href="http://place.qyer.com/poi/36563/" class="pic"><img src="http://static.qyer.com/album/user/214/54/Q0hRRx4CZQ/80" onerror="this.src='http://static.qyer.com/images/place/no/poi_48_48.png'" width="48" height="48" alt="香港文化中心 Hong Kong Cultural Centre" title="香港文化中心 Hong Kong Cultural Centre"></a>
+        <p class="title"><a href="http://place.qyer.com/poi/36563/" title="香港文化中心 Hong Kong Cultural Centre">香港文化中心 Hong Kong Cultural Centre</a></p>
+        <p class="text"><span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">12</em></span></p>
+      </li>
+      <li><a href="http://place.qyer.com/poi/94446/" class="pic"><img src="http://static.qyer.com/album/user/366/9/Qk9TQhMDYg/80" onerror="this.src='http://static.qyer.com/images/place/no/poi_48_48.png'" width="48" height="48" alt="香港太空馆 Hong Kong  Space Museum" title="香港太空馆 Hong Kong  Space Museum"></a>
+        <p class="title"><a href="http://place.qyer.com/poi/94446/" title="香港太空馆 Hong Kong  Space Museum">香港太空馆 Hong Kong  Space Museum</a></p>
+        <p class="text"><span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">7</em></span></p>
+      </li>
+    </ul>
   </div>
-  <ul class="pl_rimplace">
-    <li>
-      <a href="http://place.qyer.com/kinmen/" data-bn-ipg="place-1-1" class="pic"><img src="http://pic.qyer.com/album/user/422/95/RUtXSx8FYQ/index/80" width="48" height="48" alt="金门" title="金门"/></a>
-
-      <p class="title">
-        <a href="http://place.qyer.com/kinmen/" data-bn-ipg="place-1-2" title="金门 Kinmen ">金门 Kinmen </a></p>
-
-      <p class="text">
-        <span class="mr10">去过 <em class="fb">120</em></span><span class="mr10">景点 <em class="fb">0</em></span><span>问答 <em class="fb">10</em></span>
-      </p>
-    </li>
-    <li>
-      <a href="http://place.qyer.com/penghu/" data-bn-ipg="place-2-1" class="pic"><img src="http://static.qyer.com/images/place/no/poi_80_80.png" width="48" height="48" alt="澎湖" title="澎湖"/></a>
-
-      <p class="title"><a href="http://place.qyer.com/penghu/" data-bn-ipg="place-2-2" title="澎湖 Penghu">澎湖 Penghu</a>
-      </p>
-
-      <p class="text">
-        <span class="mr10">去过 <em class="fb">52</em></span><span class="mr10">景点 <em class="fb">0</em></span><span>问答 <em class="fb">3</em></span>
-      </p>
-    </li>
-    <li>
-      <a href="http://place.qyer.com/macau/" data-bn-ipg="place-3-1" class="pic"><img src="http://static.qyer.com/album/1b9/89/2002978/80" width="48" height="48" alt="澳门" title="澳门"/></a>
-
-      <p class="title"><a href="http://place.qyer.com/macau/" data-bn-ipg="place-3-2" title="澳门 Macau">澳门 Macau</a>
-      </p>
-
-      <p class="text">
-        <span class="mr10">去过 <em class="fb">22956</em></span><span class="mr10">景点 <em class="fb">175</em></span><span>问答 <em class="fb">2071</em></span>
-      </p>
-    </li>
-    <li>
-      <a href="http://place.qyer.com/tainan/" data-bn-ipg="place-4-1" class="pic"><img src="http://static.qyer.com/images/place/no/poi_80_80.png" width="48" height="48" alt="台南" title="台南"/></a>
-
-      <p class="title"><a href="http://place.qyer.com/tainan/" data-bn-ipg="place-4-2" title="台南 Tainan">台南 Tainan</a>
-      </p>
-
-      <p class="text">
-        <span class="mr10">去过 <em class="fb">1026</em></span><span class="mr10">景点 <em class="fb">55</em></span><span>问答 <em class="fb">30</em></span>
-      </p>
-    </li>
-    <li>
-      <a href="http://place.qyer.com/kaohsiung/" data-bn-ipg="place-5-1" class="pic"><img src="http://static.qyer.com/album/12a/96/1971622/80" width="48" height="48" alt="高雄" title="高雄"/></a>
-
-      <p class="title">
-        <a href="http://place.qyer.com/kaohsiung/" data-bn-ipg="place-5-2" title="高雄 Kaohsiung">高雄 Kaohsiung</a></p>
-
-      <p class="text">
-        <span class="mr10">去过 <em class="fb">1883</em></span><span class="mr10">景点 <em class="fb">109</em></span><span>问答 <em class="fb">56</em></span>
-      </p>
-    </li>
-
-  </ul>
-</div>
-
-<div class="pl_sldline2"></div>
-<div>
-  <iframe id='ace533dd' name='ace533dd' src='http://ad.qyer.com/www/delivery/afr.php?zoneid=19&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='270' height='170'>
-    <a href='http://ad.qyer.com/www/delivery/ck.php?n=a8dd2a20&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ad.qyer.com/www/delivery/avw.php?zoneid=19&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a8dd2a20' border='0' alt=''/></a>
-  </iframe>
-</div>
+  <div class="pl_sldline2"></div>
+  <div>
+    <div class="pl_title">
+      <h2 class="pl_title_name">周边餐饮</h2>
+    </div>
+    <ul class="pl_rimplace">
+      <li><a href="http://place.qyer.com/poi/62093/" class="pic"><img src="http://static.qyer.com/album/user/329/78/QktcRRIAaQ/80" onerror="this.src='http://static.qyer.com/images/place/no/poi_48_48.png'" width="48" height="48" alt="重庆大厦 Chungking Mansions" title="重庆大厦 Chungking Mansions"></a>
+        <p class="title"><a href="http://place.qyer.com/poi/62093/" title="重庆大厦 Chungking Mansions">重庆大厦 Chungking Mansions</a></p>
+        <p class="text"><span title="三星半"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_half.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">69</em></span></p>
+      </li>
+      <li><a href="http://place.qyer.com/poi/73985/" class="pic"><img src="http://static.qyer.com/album/user/330/23/QkpVQBkHaA/80" onerror="this.src='http://static.qyer.com/images/place/no/poi_48_48.png'" width="48" height="48" alt="Jenny自制糕饼尖沙咀店 Jenny Bakery Tsim Sha Tsui Store" title="Jenny自制糕饼尖沙咀店 Jenny Bakery Tsim Sha Tsui Store"></a>
+        <p class="title"><a href="http://place.qyer.com/poi/73985/" title="Jenny自制糕饼尖沙咀店 Jenny Bakery Tsim Sha Tsui Store">Jenny自制糕饼尖沙咀店 Jenny Bakery Tsim Sha Tsui Store</a></p>
+        <p class="text"><span title="三星半"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_half.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">4</em></span></p>
+      </li>
+      <li><a href="http://place.qyer.com/poi/86749/" class="pic"><img src="http://static.qyer.com/album/user/334/44/QkpRRh4HaA/80" onerror="this.src='http://static.qyer.com/images/place/no/poi_48_48.png'" width="48" height="48" alt="新德里餐厅 " title="新德里餐厅 "></a>
+        <p class="title"><a href="http://place.qyer.com/poi/86749/" title="新德里餐厅 ">新德里餐厅 </a></p>
+        <p class="text"><span title="二星半"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_half.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">5</em></span></p>
+      </li>
+    </ul>
+  </div>
+  <div class="pl_sldline2"></div>
+  <div>
+    <iframe id="afebbafa" name="afebbafa" src="http://ad.qyer.com/www/delivery/afr.php?zoneid=80&amp;cb=INSERT_RANDOM_NUMBER_HERE" frameborder="0" scrolling="no" width="270" height="170">&lt;a href='http://ad.qyer.com/www/delivery/ck.php?n=a7f7a2ef&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'&gt;&lt;img src='http://ad.qyer.com/www/delivery/avw.php?zoneid=80&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a7f7a2ef' border='0' alt='' /&gt;&lt;/a&gt;</iframe>
+  </div>
 
 </div>
 <div class="pl_cont">
+<div>
+  <div class="pl_title">
+    <h2 class="pl_title_name">概述</h2>
+  </div>
+  <div class="pl_wordcnt">尖沙咀可以说是香港的“地理中心”，所以去哪都方便，自然人气旺。随着98年旧启德机场搬走后，这一区的高楼大厦便不断重建，商场也越来越多。这里有全港最大的购物中心海港城，也有最“国际化”的重庆大厦；有名店街广东道，也有人气颇高的加连威老道；有连卡佛，也有Outlet。这两年还连开iSquare、K11、TheOne三家购物中心，可见是商家必争之地。尖沙咀可以说是适合一家大小首选的购物地。<br>
+  </div>
+</div>
+<div class="pl_sldline2"></div>
 
-  <div>
-    <div class="pl_title">
-      <div class="fr">
-        <a style="display:none;" href="javascript:void(0);" url="http://user.qyer.com/album_action_upload_city_50" class="_jsuploadphoto"><img src="http://static.qyer.com/images/place/temp/feixiang.png" width="56" height="20" alt=""/></a>
+<div id="poicommentlist">
+
+
+<div>
+  <a name="commentmod"></a>
+  <div class="pl_title">
+    <h2 class="pl_title_name">尖沙咀点评</h2>
+  </div>
+  <!--当前用户的点评-->
+  <div class="pl_yelpsift">
+    <p class="rank">排序：
+      <span class="current">按时间↓</span>
+      <span class="gap">｜</span>
+      <a href="javascript:void(0);" id="jspoicommentusefullist" alt="59047" order="1">按有用↓</a>
+    </p>
+
+    <p class="btn"><a href="#poicomment" class="ui_buttonB">我要点评</a></p>    </div>
+</div>
+<!--POI点评列表-->
+<div class="pl_sldline1"></div>
+<div>
+<div class="pl_yelp">
+  <div class="pl_yelp_main clearfix">
+    <div class="pl_yelp_face ui_headPort" alt="2600942"><a href="http://user.qyer.com/user_uid_2600942"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="48" height="48" alt=""></a></div>
+    <div class="pl_yelp_cnt">
+      <p class="grade"><span title="五星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""></span><span class="time">2013-08-07 21:52</span></p>
+
+      <p class="text"><a href="http://user.qyer.com/user_uid_2600942" class="fb">JJessicahaku</a>：每次去香港的必到之处~逛街太方便了，不管是海港城还是加连威老道，买东西都很爽</p>
+      <div class="info">
+        <p class="fr tool"><a style="display:none;" href="javascript:void(0);" class="jsjubaocomment" alt="56464" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum56464" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="56464">有用 0</a></p>
       </div>
-      <h2 class="pl_title_name pl_title_gap">图片</h2>
-
-      <h2 class="pl_title_name"><a href="http://place.qyer.com/hong-kong/map/" data-bn-ipg="map" target="_blank">地图</a>
-      </h2>
-    </div>
-    <div class="pl_focuspic">
-
-      <div class="pl_focuspic_big">
-        <p class="bigpic">
-          <a target="_blank" href="http://place.qyer.com/hong-kong/photo/" data-bn-ipg="photo-focus"><img src="http://static.qyer.com/album/1a3/d4/509555/500" alt="香港" title="香港" id="city-focus-img" width="500"/></a>
-        </p>
-
-        <p class="writer" id="focus_img_photoby">
-          <span>PHOTO BY <a href="http://user.qyer.com/user_uid_284698" data-bn-ipg="photo-author" target="_blank">长牙的兔子</a></span>
-        </p>
-
-      </div>
-
-      <div class="pl_focuspic_right">
-        <ul class="pl_focuspic_list">
-          <li class="current" uid="284698" pid="5595">
-            <a href="javascript:void(0);" class="js_placesmallpic" data-bn-ipg="photo-list-1"><img src="http://static.qyer.com/album/user/213/10/Q0hWQxoGYg/80" data-src="http://static.qyer.com/album/user/213/10/Q0hWQxoGYg/500" username="长牙的兔子" userurl="http://user.qyer.com/user_uid_284698" alt="香港" title="香港" width="80" height="80"/></a><span class="mask"></span>
-          </li>
-          <li uid="1331543" pid="972">
-            <a href="javascript:void(0);" class="js_placesmallpic" data-bn-ipg="photo-list-2"><img src="http://static.qyer.com/album/169/e3/1857082/80" data-src="http://static.qyer.com/album/169/e3/1857082/500" username="Akkkkkkkkkki" userurl="http://user.qyer.com/user_uid_1331543" alt="香港" title="香港" width="80" height="80"/></a><span class="mask"></span>
-          </li>
-          <li uid="284698" pid="6489">
-            <a href="javascript:void(0);" class="js_placesmallpic" data-bn-ipg="photo-list-3"><img src="http://static.qyer.com/album/user/213/10/Q0hWQxoFYw/80" data-src="http://static.qyer.com/album/user/213/10/Q0hWQxoFYw/500" username="长牙的兔子" userurl="http://user.qyer.com/user_uid_284698" alt="香港" title="香港" width="80" height="80"/></a><span class="mask"></span>
-          </li>
-          <li uid="1396638" pid="6488">
-            <a href="javascript:void(0);" class="js_placesmallpic" data-bn-ipg="photo-list-4"><img src="http://static.qyer.com/album/user/357/14/QkxSQx4BaQ/80" data-src="http://static.qyer.com/album/user/357/14/QkxSQx4BaQ/500" username="shenhah" userurl="http://user.qyer.com/user_uid_1396638" alt="香港" title="香港" width="80" height="80"/></a><span class="mask"></span>
-          </li>
-        </ul>
-        <div class="pl_focuspic_add">
-          <a href="javascript:void(0);" url="http://user.qyer.com/album_action_upload_city_50" class="_jsuploadphoto" data-bn-ipg="photo-add"><span>添加这里的照片</span></a>
-        </div>
-        <div class="pl_focuspic_more">
-          <a target="_blank" href="http://place.qyer.com/hong-kong/photo/" data-bn-ipg="photo-more">更多照片
-            （<em class="fb">21855</em>张）</a></div>
-      </div>
-      <div class="cb"></div>
     </div>
   </div>
-
-  <div class="pl_sldline2"></div>
-  <div>
-    <div class="pl_title">
-      <h2 class="pl_title_name"><%= @place.name %>概况</h2>
-      <a target="_blank" href="http://place.qyer.com/milan/travel-notes/" data-bn-ipg="travelnotes-more" class="pl_title_more">更多</a>
-    </div>
-  </div>
-  <div class="pl_sldline2"></div>
-
-  <div id="poicommentlist">
-
-  <div>
-    <a name="commentmod"></a>
-    <div class="pl_title">
-      <h2 class="pl_title_name">尖沙咀点评</h2>
-    </div>
-    <!--当前用户的点评-->
-    <div class="pl_yelpsift">
-      <p class="rank">排序：
-        <span class="current">按时间↓</span>
-        <span class="gap">｜</span>
-        <a href="javascript:void(0);" id="jspoicommentusefullist" alt="59047" order="1">按有用↓</a>
+  <ul class="pl_yelp_reply">
+    <li class="enter">
+      <p class="face">
+        <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1376034501" width="30" height="30" alt="">
       </p>
+      <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
+      <input type="hidden" class="poicommentid" value="56464">
+      <div class="btns">
+        <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
+        <p class="words"></p>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="pl_yelp">
+  <div class="pl_yelp_main clearfix">
+    <div class="pl_yelp_face ui_headPort" alt="365930"><a href="http://user.qyer.com/user_uid_365930"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="48" height="48" alt=""></a></div>
+    <div class="pl_yelp_cnt">
+      <p class="text"><a href="http://user.qyer.com/user_uid_365930" class="fb">ivalia</a>：要是乘坐轮船来尖沙咀还是很方便的，一下船就能逛街。
+        <br>但是满街的名牌店就不是那么亲民了，看看排长队的顾客和门童“阿差”也是另一种风景啦。
+        <br>钻到小巷子里也还是有地道的吃食，可以亲身感受一下**悬殊</p>
+      <div class="info">
+        <p class="fr tool"><a style="display:none;" href="javascript:void(0);" class="jsjubaocomment" alt="56426" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum56426" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="56426">有用 0</a></p>
+        <p class="grade"><span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="time">2013-08-07 18:09</span></p>
+      </div>
+    </div>
+  </div>
+  <ul class="pl_yelp_reply">
+    <li class="enter">
+      <p class="face">
+        <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1376034501" width="30" height="30" alt="">
+      </p>
+      <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
+      <input type="hidden" class="poicommentid" value="56426">
+      <div class="btns">
+        <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
+        <p class="words"></p>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="pl_yelp">
+  <div class="pl_yelp_main clearfix">
+    <div class="pl_yelp_face ui_headPort" alt="2579471"><a href="http://user.qyer.com/user_uid_2579471"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="48" height="48" alt=""></a></div>
+    <div class="pl_yelp_cnt">
+      <p class="text"><a href="http://user.qyer.com/user_uid_2579471" class="fb">靡礼颉</a>：绝对占据地理优势，对岸的中环净收眼底。在尖沙咀的许留山吃了好多甜品，边上的屈臣氏买了好多东西。这里也可以搭乘天星小轮到对岸的中环码头。广东道北京道也都在这里，奢侈品店门口都可以看到大批大陆客排队</p>
+      <div class="info">
+        <p class="fr tool"><a style="display:none;" href="javascript:void(0);" class="jsjubaocomment" alt="56135" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum56135" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="56135">有用 0</a></p>
+        <p class="grade"><span title="五星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""></span><span class="time">2013-08-06 11:48</span></p>
+      </div>
+    </div>
+  </div>
+  <ul class="pl_yelp_reply">
+    <li class="enter">
+      <p class="face">
+        <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1376034501" width="30" height="30" alt="">
+      </p>
+      <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
+      <input type="hidden" class="poicommentid" value="56135">
+      <div class="btns">
+        <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
+        <p class="words"></p>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="pl_yelp">
+  <div class="pl_yelp_main clearfix">
+    <div class="pl_yelp_face ui_headPort" alt="2591288"><a href="http://user.qyer.com/user_uid_2591288"><img src="http://static.qyer.com/data/avatar/002/59/12/88_avatar_small.jpg" width="48" height="48" alt=""></a></div>
+    <div class="pl_yelp_cnt">
+      <p class="text"><a href="http://user.qyer.com/user_uid_2591288" class="fb">壹魸悾白</a>：没啥太的感觉，就是商业中心，酒店就在此地，还不错吧。。。。。</p>
+      <div class="info">
+        <p class="fr tool"><a style="display:none;" href="javascript:void(0);" class="jsjubaocomment" alt="55932" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum55932" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="55932">有用 0</a></p>
+        <p class="grade"><span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="time">2013-08-05 10:21</span></p>
+      </div>
+    </div>
+  </div>
+  <ul class="pl_yelp_reply">
+    <li class="enter">
+      <p class="face">
+        <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1376034501" width="30" height="30" alt="">
+      </p>
+      <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
+      <input type="hidden" class="poicommentid" value="55932">
+      <div class="btns">
+        <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
+        <p class="words"></p>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="pl_yelp">
+  <div class="pl_yelp_main clearfix">
+    <div class="pl_yelp_face ui_headPort" alt="2578141"><a href="http://user.qyer.com/user_uid_2578141"><img src="http://static.qyer.com/data/avatar/002/57/81/41_avatar_small.jpg" width="48" height="48" alt=""></a></div>
+    <div class="pl_yelp_cnt">
+      <p class="text"><a href="http://user.qyer.com/user_uid_2578141" class="fb">释留城</a>：可以买到免税的化妆品</p>
+      <div class="info">
+        <p class="fr tool"><a style="display:none;" href="javascript:void(0);" class="jsjubaocomment" alt="55238" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum55238" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="55238">有用 0</a></p>
+        <p class="grade"><span title="一星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="time">2013-08-02 08:23</span></p>
+      </div>
+    </div>
+  </div>
+  <ul class="pl_yelp_reply">
+    <li class="enter">
+      <p class="face">
+        <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1376034501" width="30" height="30" alt="">
+      </p>
+      <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
+      <input type="hidden" class="poicommentid" value="55238">
+      <div class="btns">
+        <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
+        <p class="words"></p>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="pl_yelp">
+  <div class="pl_yelp_main clearfix">
+    <div class="pl_yelp_face ui_headPort" alt="2009329"><a href="http://user.qyer.com/user_uid_2009329"><img src="http://static.qyer.com/data/avatar/002/00/93/29_avatar_small.jpg" width="48" height="48" alt=""></a></div>
+    <div class="pl_yelp_cnt">
+      <p class="text"><a href="http://user.qyer.com/user_uid_2009329" class="fb">Zhuqy</a>：去尖沙咀应该就是去买东西的吧。那么多的商店，什么品牌都有了。还有好多好吃的也在等着你。</p>
+      <div class="info">
+        <p class="fr tool"><a style="display: none;" href="javascript:void(0);" class="jsjubaocomment" alt="55050" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum55050" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="55050">有用 0</a></p>
+        <p class="grade"><span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="time">2013-08-01 13:27</span></p>
+      </div>
+    </div>
+  </div>
+  <ul class="pl_yelp_reply">
+    <li class="enter">
+      <p class="face">
+        <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1376034501" width="30" height="30" alt="">
+      </p>
+      <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
+      <input type="hidden" class="poicommentid" value="55050">
+      <div class="btns">
+        <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
+        <p class="words"></p>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="pl_yelp">
+  <div class="pl_yelp_main clearfix">
+    <div class="pl_yelp_face ui_headPort" alt="2524569"><a href="http://user.qyer.com/user_uid_2524569"><img src="http://static.qyer.com/data/avatar/002/52/45/69_avatar_small.jpg" width="48" height="48" alt=""></a></div>
+    <div class="pl_yelp_cnt">
+      <p class="text"><a href="http://user.qyer.com/user_uid_2524569" class="fb">夏日普雅花</a>：在这里订的房间，到处都是印度人，奢侈品的聚集地，跟我没多大关系，不过离维港很近吗，非常方便。</p>
+      <div class="info">
+        <p class="fr tool"><a style="display: none;" href="javascript:void(0);" class="jsjubaocomment" alt="54896" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum54896" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="54896">有用 0</a></p>
+        <p class="grade"><span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="time">2013-07-31 22:07</span></p>
+      </div>
+    </div>
+  </div>
+  <ul class="pl_yelp_reply">
+    <li class="enter">
+      <p class="face">
+        <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1376034501" width="30" height="30" alt="">
+      </p>
+      <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
+      <input type="hidden" class="poicommentid" value="54896">
+      <div class="btns">
+        <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
+        <p class="words"></p>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="pl_yelp">
+  <div class="pl_yelp_main clearfix">
+    <div class="pl_yelp_face ui_headPort" alt="2566695"><a href="http://user.qyer.com/user_uid_2566695"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="48" height="48" alt=""></a></div>
+    <div class="pl_yelp_cnt">
+      <p class="text"><a href="http://user.qyer.com/user_uid_2566695" class="fb">T1NAbear</a>：对尖沙咀的情感完全源自于对广I东道一家鲜榨果汁店的热爱，但是现在好像不在了</p>
+      <div class="info">
+        <p class="fr tool"><a style="display: none;" href="javascript:void(0);" class="jsjubaocomment" alt="54673" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum54673" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="54673">有用 0</a></p>
+        <p class="grade"><span title="五星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""></span><span class="time">2013-07-31 01:32</span></p>
+      </div>
+    </div>
+  </div>
+  <ul class="pl_yelp_reply">
+    <li class="enter">
+      <p class="face">
+        <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1376034501" width="30" height="30" alt="">
+      </p>
+      <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
+      <input type="hidden" class="poicommentid" value="54673">
+      <div class="btns">
+        <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
+        <p class="words"></p>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="pl_yelp">
+  <div class="pl_yelp_main clearfix">
+    <div class="pl_yelp_face ui_headPort" alt="1359936"><a href="http://user.qyer.com/user_uid_1359936"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="48" height="48" alt=""></a></div>
+    <div class="pl_yelp_cnt">
+      <p class="text"><a href="http://user.qyer.com/user_uid_1359936" class="fb">任性e小孩</a>：就是一些街吧，旁边都是各种小店。因为要去海港城，每次都在尖沙咀下车，顺便逛了逛附近，还不错。外面的大路上都是大商场，走到后面，其实隐藏着各种小店和吃饭的地方，我们也是到最后才发现在。第一天来这边的时候，还只是去了那边的SOGO下面吃东西，结果什么好吃的都没有，结果第二天无意逛到了高楼大厦的后面，发现原来都隐藏在背后。</p>
+      <div class="info">
+        <p class="fr tool"><a style="display:none;" href="javascript:void(0);" class="jsjubaocomment" alt="54473" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum54473" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="54473">有用 0</a></p>
+        <p class="grade"><span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="time">2013-07-30 15:40</span></p>
+      </div>
+    </div>
+  </div>
+  <ul class="pl_yelp_reply">
+    <li class="enter">
+      <p class="face">
+        <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1376034501" width="30" height="30" alt="">
+      </p>
+      <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
+      <input type="hidden" class="poicommentid" value="54473">
+      <div class="btns">
+        <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
+        <p class="words"></p>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="pl_yelp">
+  <div class="pl_yelp_main clearfix">
+    <div class="pl_yelp_face ui_headPort" alt="162656"><a href="http://user.qyer.com/user_uid_162656"><img src="http://static.qyer.com/data/avatar/000/16/26/56_avatar_small.jpg" width="48" height="48" alt=""></a></div>
+    <div class="pl_yelp_cnt">
+      <p class="text"><a href="http://user.qyer.com/user_uid_162656" class="fb">yy3096</a>：从这可以坐天星小轮，旁边是海港城，还有星光大道，和维港夜景。</p>
+      <div class="info">
+        <p class="fr tool"><a style="display:none;" href="javascript:void(0);" class="jsjubaocomment" alt="54295" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum54295" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="54295">有用 0</a></p>
+        <p class="grade"><span title="五星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""></span><span class="time">2013-07-29 19:42</span></p>
+      </div>
+    </div>
+  </div>
+  <ul class="pl_yelp_reply">
+    <li class="enter">
+      <p class="face">
+        <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1376034501" width="30" height="30" alt="">
+      </p>
+      <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
+      <input type="hidden" class="poicommentid" value="54295">
+      <div class="btns">
+        <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
+        <p class="words"></p>
+      </div>
+    </li>
+  </ul>
+</div>
+</div>
+<p class="tr mt30"><a href="http://place.qyer.com/poi/59047/review/" target="_blank" class="icon_more14">查看全部尖沙咀点评</a></p>
 
-      <p class="btn"><a href="#poicomment" class="ui_buttonB">我要点评</a></p>    </div>
+<a name="poicomment"></a>
+<div class="mt30">
+  <div class="pl_title">
+    <h2 class="pl_title_name">为尖沙咀点评</h2>
   </div>
-  <!--POI点评列表-->
-  <div class="pl_sldline1"></div>
-  <div>
-  <div class="pl_yelp">
-    <div class="pl_yelp_main clearfix">
-      <div class="pl_yelp_face ui_headPort" alt="1638624"><a href="http://user.qyer.com/user_uid_1638624"><img src="http://static.qyer.com/data/avatar/001/63/86/24_avatar_small.jpg" width="48" height="48" alt=""></a></div>
-      <div class="pl_yelp_cnt">
-        <p class="text"><a href="http://user.qyer.com/user_uid_1638624" class="fb">eling720</a>：第一次去香港必须要去的地方啊！</p>
-        <div class="info">
-          <p class="fr tool"><a style="display: none;" href="javascript:void(0);" class="jsjubaocomment" alt="48255" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum48255" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="48255">有用 0</a></p>
-          <p class="grade"><span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="time">2013-07-08 11:24</span></p>
-        </div>
-      </div>
-    </div>
-    <ul class="pl_yelp_reply">
-      <li class="enter">
-        <p class="face">
-          <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1373297605" width="30" height="30" alt="">
-        </p>
-        <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
-        <input type="hidden" class="poicommentid" value="48255">
-        <div class="btns">
-          <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
-          <p class="words"></p>
-        </div>
-      </li>
-    </ul>
+  <div class="pl_poitips" style="margin:20px 0;">
+    <p>▪&nbsp;请在点评中写明评价理由。单纯的好或者不好很难帮到大家。客观的点评在这里最受欢迎。</p>
+    <p>▪&nbsp;请注意不要毁谤和人身攻击。</p>
   </div>
-  <div class="pl_yelp">
-    <div class="pl_yelp_main clearfix">
-      <div class="pl_yelp_face ui_headPort" alt="1031490"><a href="http://user.qyer.com/user_uid_1031490"><img src="http://static.qyer.com/data/avatar/001/03/14/90_avatar_small.jpg" width="48" height="48" alt=""></a></div>
-      <div class="pl_yelp_cnt">
-        <p class="text"><a href="http://user.qyer.com/user_uid_1031490" class="fb">牛牛安</a>：非常棒的一个地方！！！</p>
-        <div class="info">
-          <p class="fr tool"><a style="display: none;" href="javascript:void(0);" class="jsjubaocomment" alt="46833" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum46833" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="46833">有用 0</a></p>
-          <p class="grade"><span title="五星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""></span><span class="time">2013-07-04 15:06</span></p>
-        </div>
-      </div>
-    </div>
-    <ul class="pl_yelp_reply">
-      <li class="enter">
-        <p class="face">
-          <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1373297605" width="30" height="30" alt="">
-        </p>
-        <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
-        <input type="hidden" class="poicommentid" value="46833">
-        <div class="btns">
-          <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
-          <p class="words"></p>
-        </div>
-      </li>
-    </ul>
+  <div class="pl_addyelp clearfix">
+    <div class="pl_addyelp_face"><img src="http://qycenter.qyer.com/avatar.php?uid=&amp;size=small&amp;random=1&amp;_1376034501" width="48" height="48" alt=""></div>
+    <form id="addcomment" action="/poi.php?action=addcomment" method="post">
+      <input type="hidden" id="uid" name="uid" value="">
+      <input type="hidden" id="poiid" name="poiid" value="59047">
+      <input type="hidden" id="star" name="star" value="0">
+      <input type="hidden" id="source_type" name="source_type" value="12">
+      <ul class="pl_addyelp_cnt">
+        <li class="clearfix">
+          <style>
+              .pl_ie_mr img { margin-right: 0!important;padding-right: 5px;}
+              .pl_ie_mr img:last-child { padding-right:0;}
+          </style>
+          <p class="title"><span>*</span> 评价：</p>
+          <p class="grade editable pl_ie_mr"><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></p>
+        </li>
+        <li class="mt10 clearfix">
+          <p class="title"><span>*</span> 点评：</p>
+          <p><textarea id="comment" name="comment" placeholder="一个瞬间，一个贴士，大家期待你的分享" class="ipttxt auto_text"></textarea></p>
+          <div class="btns"><input id="addcommentsubmit" type="submit" value="发布" class="ui_buttonB fr" style="*width: 56px;*text-align:center;"><p id="checkcomment" class="words"></p></div>
+        </li>
+      </ul>
+    </form>
   </div>
-  <div class="pl_yelp">
-    <div class="pl_yelp_main clearfix">
-      <div class="pl_yelp_face ui_headPort" alt="1887161"><a href="http://user.qyer.com/user_uid_1887161"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="48" height="48" alt=""></a></div>
-      <div class="pl_yelp_cnt">
-        <p class="text"><a href="http://user.qyer.com/user_uid_1887161" class="fb">睡不着的猪</a>：购物的地方，人超级多，不过价格确实比内地便宜好多，购物达人不可错过的地方</p>
-        <div class="info">
-          <p class="fr tool"><a style="display: none;" href="javascript:void(0);" class="jsjubaocomment" alt="46158" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum46158" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="46158">有用 2</a></p>
-          <p class="grade"><span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="time">2013-06-28 18:47</span></p>
-        </div>
-      </div>
-    </div>
-    <ul class="pl_yelp_reply">
-      <li class="enter">
-        <p class="face">
-          <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1373297605" width="30" height="30" alt="">
-        </p>
-        <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
-        <input type="hidden" class="poicommentid" value="46158">
-        <div class="btns">
-          <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
-          <p class="words"></p>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="pl_yelp">
-    <div class="pl_yelp_main clearfix">
-      <div class="pl_yelp_face ui_headPort" alt="1153802"><a href="http://user.qyer.com/user_uid_1153802"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="48" height="48" alt=""></a></div>
-      <div class="pl_yelp_cnt">
-        <p class="text"><a href="http://user.qyer.com/user_uid_1153802" class="fb">cxmklkl</a>：是香港比较时尚的地方，很多商场，靠近海港，风景也不错，有许多名牌店，适合购物闲逛，购物环境比铜锣湾要高档些~</p>
-        <div class="info">
-          <p class="fr tool"><a style="display: none;" href="javascript:void(0);" class="jsjubaocomment" alt="45726" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum45726" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="45726">有用 0</a></p>
-          <p class="grade"><span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="time">2013-06-26 16:34</span></p>
-        </div>
-      </div>
-    </div>
-    <ul class="pl_yelp_reply">
-      <li class="enter">
-        <p class="face">
-          <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1373297605" width="30" height="30" alt="">
-        </p>
-        <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
-        <input type="hidden" class="poicommentid" value="45726">
-        <div class="btns">
-          <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
-          <p class="words"></p>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="pl_yelp">
-    <div class="pl_yelp_main clearfix">
-      <div class="pl_yelp_face ui_headPort" alt="2394988"><a href="http://user.qyer.com/user_uid_2394988"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="48" height="48" alt=""></a></div>
-      <div class="pl_yelp_cnt">
-        <p class="text"><a href="http://user.qyer.com/user_uid_2394988" class="fb">vinneyone</a>：很多好吃的地方，购物超级便利，还碰到了好多热心的本地人，太棒了</p>
-        <div class="info">
-          <p class="fr tool"><a style="display: none;" href="javascript:void(0);" class="jsjubaocomment" alt="45604" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum45604" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="45604">有用 0</a></p>
-          <p class="grade"><span title="五星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""></span><span class="time">2013-06-26 13:05</span></p>
-        </div>
-      </div>
-    </div>
-    <ul class="pl_yelp_reply">
-      <li class="enter">
-        <p class="face">
-          <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1373297605" width="30" height="30" alt="">
-        </p>
-        <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
-        <input type="hidden" class="poicommentid" value="45604">
-        <div class="btns">
-          <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
-          <p class="words"></p>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="pl_yelp">
-    <div class="pl_yelp_main clearfix">
-      <div class="pl_yelp_face ui_headPort" alt="2172987"><a href="http://user.qyer.com/user_uid_2172987"><img src="http://static.qyer.com/data/avatar/002/17/29/87_avatar_small.jpg" width="48" height="48" alt=""></a></div>
-      <div class="pl_yelp_cnt">
-        <p class="text"><a href="http://user.qyer.com/user_uid_2172987" class="fb">轻鸟</a>：一到香港的第一站就是尖沙咀，因为住在这附近，黄金一里地，周边美食、购物、娱乐集一地。</p>
-        <div class="info">
-          <p class="fr tool"><a style="display: none;" href="javascript:void(0);" class="jsjubaocomment" alt="45598" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum45598" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="45598">有用 0</a></p>
-          <p class="grade"><span title="五星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""></span><span class="time">2013-06-26 12:29</span></p>
-        </div>
-      </div>
-    </div>
-    <ul class="pl_yelp_reply">
-      <li class="enter">
-        <p class="face">
-          <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1373297605" width="30" height="30" alt="">
-        </p>
-        <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
-        <input type="hidden" class="poicommentid" value="45598">
-        <div class="btns">
-          <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
-          <p class="words"></p>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="pl_yelp">
-    <div class="pl_yelp_main clearfix">
-      <div class="pl_yelp_face ui_headPort" alt="1475122"><a href="http://user.qyer.com/user_uid_1475122"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="48" height="48" alt=""></a></div>
-      <div class="pl_yelp_cnt">
-        <p class="text"><a href="http://user.qyer.com/user_uid_1475122" class="fb">onepiece</a>：废了我老大的劲，终于点评上了。good</p>
-        <div class="info">
-          <p class="fr tool"><a style="display: none;" href="javascript:void(0);" class="jsjubaocomment" alt="45216" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum45216" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="45216">有用 0</a></p>
-          <p class="grade"><span title="五星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""></span><span class="time">2013-06-24 16:40</span></p>
-        </div>
-      </div>
-    </div>
-    <ul class="pl_yelp_reply">
-      <li class="enter">
-        <p class="face">
-          <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1373297605" width="30" height="30" alt="">
-        </p>
-        <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
-        <input type="hidden" class="poicommentid" value="45216">
-        <div class="btns">
-          <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
-          <p class="words"></p>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="pl_yelp">
-    <div class="pl_yelp_main clearfix">
-      <div class="pl_yelp_face ui_headPort" alt="2239571"><a href="http://user.qyer.com/user_uid_2239571"><img src="http://static.qyer.com/data/avatar/002/23/95/71_avatar_small.jpg" width="48" height="48" alt=""></a></div>
-      <div class="pl_yelp_cnt">
-        <p class="text"><a href="http://user.qyer.com/user_uid_2239571" class="fb">熹雪奈</a>：很喜欢逛这里，要买的什么东西都有，这里有香港特色的街道，也有街边小吃。</p>
-        <div class="info">
-          <p class="fr tool"><a style="display: none;" href="javascript:void(0);" class="jsjubaocomment" alt="44912" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum44912" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="44912">有用 0</a></p>
-          <p class="grade"><span title="五星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""></span><span class="time">2013-06-21 22:49</span></p>
-        </div>
-      </div>
-    </div>
-    <ul class="pl_yelp_reply">
-      <li class="enter">
-        <p class="face">
-          <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1373297605" width="30" height="30" alt="">
-        </p>
-        <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
-        <input type="hidden" class="poicommentid" value="44912">
-        <div class="btns">
-          <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
-          <p class="words"></p>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="pl_yelp">
-    <div class="pl_yelp_main clearfix">
-      <div class="pl_yelp_face ui_headPort" alt="1228169"><a href="http://user.qyer.com/user_uid_1228169"><img src="http://static.qyer.com/data/avatar/001/22/81/69_avatar_small.jpg" width="48" height="48" alt=""></a></div>
-      <div class="pl_yelp_cnt">
-        <p class="text"><a href="http://user.qyer.com/user_uid_1228169" class="fb">myshowgfy</a>：油尖旺，三个地区挨着的，所以我是顺着弥敦道从旺角到油麻地到佐敦一直快走到尖沙咀的。有两次是专门去的，一次是星光大道，一次是幻彩咏香江。临近圣诞的海港城装扮得也很漂亮。</p>
-        <div class="info">
-          <p class="fr tool"><a style="display: none;" href="javascript:void(0);" class="jsjubaocomment" alt="44624" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum44624" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="44624">有用 1</a></p>
-          <p class="grade"><span title="五星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""></span><span class="time">2013-06-19 20:49</span></p>
-        </div>
-      </div>
-    </div>
-    <ul class="pl_yelp_reply">
-      <li class="enter">
-        <p class="face">
-          <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1373297605" width="30" height="30" alt="">
-        </p>
-        <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
-        <input type="hidden" class="poicommentid" value="44624">
-        <div class="btns">
-          <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
-          <p class="words"></p>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="pl_yelp">
-    <div class="pl_yelp_main clearfix">
-      <div class="pl_yelp_face ui_headPort" alt="2125403"><a href="http://user.qyer.com/user_uid_2125403"><img src="http://static.qyer.com/data/avatar/002/12/54/03_avatar_small.jpg" width="48" height="48" alt=""></a></div>
-      <div class="pl_yelp_cnt">
-        <p class="text"><a href="http://user.qyer.com/user_uid_2125403" class="fb">blissfei</a>：各个景色毕有各个景色毕有各个景色毕有各个景色毕有各个景色毕有各个景色毕有</p>
-        <div class="info">
-          <p class="fr tool"><a style="display:none;" href="javascript:void(0);" class="jsjubaocomment" alt="44613" ttype="2">举报</a><a href="javascript:void(0);" id="replyNum44613" class="icon_reply">回复</a><a href="javascript:void(0);" class="icon_useful jspoicommentuseful" alt="44613">有用 0</a></p>
-          <p class="grade"><span title="三星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="time">2013-06-19 18:12</span></p>
-        </div>
-      </div>
-    </div>
-    <ul class="pl_yelp_reply">
-      <li class="enter">
-        <p class="face">
-          <img src="http://qycenter.qyer.com/avatar.php?uid=0&amp;size=small&amp;random=1&amp;_1373297605" width="30" height="30" alt="">
-        </p>
-        <p><textarea placeholder="添加回复" class="ipttxt poicommentaddreply auto_text"></textarea></p>
-        <input type="hidden" class="poicommentid" value="44613">
-        <div class="btns">
-          <input type="submit" value="发布" class="ui_btn_small_disabled fr poicommentsubmit" style="*width: 48px;*text-align:center;">
-          <p class="words"></p>
-        </div>
-      </li>
-    </ul>
-  </div>
-  </div>
-  <p class="tr mt30"><a href="http://place.qyer.com/poi/59047/review/" target="_blank" class="icon_more14">查看全部尖沙咀点评</a></p>
-
-  <a name="poicomment"></a>
-  <div class="mt30">
-    <div class="pl_title">
-      <h2 class="pl_title_name">为尖沙咀点评</h2>
-    </div>
-    <div class="pl_poitips" style="margin:20px 0;">
-      <p>▪&nbsp;一条客观的评价，往往会作为很多人的出行参考。</p>
-    </div>
-    <div class="pl_addyelp clearfix">
-      <div class="pl_addyelp_face"><img src="http://qycenter.qyer.com/avatar.php?uid=&amp;size=small&amp;random=1&amp;_1373297605" width="48" height="48" alt=""></div>
-      <form id="addcomment" action="/poi.php?action=addcomment" method="post">
-        <input type="hidden" id="uid" name="uid" value="">
-        <input type="hidden" id="poiid" name="poiid" value="59047">
-        <input type="hidden" id="star" name="star" value="0">
-        <input type="hidden" id="source_type" name="source_type" value="12">
-        <ul class="pl_addyelp_cnt">
-          <li class="clearfix">
-            <style>
-                .pl_ie_mr img { margin-right: 0!important;padding-right: 5px;}
-                .pl_ie_mr img:last-child { padding-right:0;}
-            </style>
-            <p class="title"><span>*</span> 评价：</p>
-            <p class="grade editable pl_ie_mr"><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></p>
-          </li>
-          <li class="mt10 clearfix">
-            <p class="title"><span>*</span> 点评：</p>
-            <p><textarea id="comment" name="comment" placeholder="一个瞬间，一个贴士，大家期待你的分享" class="ipttxt auto_text"></textarea></p>
-            <div class="btns"><input id="addcommentsubmit" type="submit" value="发布" class="ui_buttonB fr" style="*width: 56px;*text-align:center;"><p id="checkcomment" class="words"></p></div>
-          </li>
-        </ul>
-      </form>
-    </div>
-  </div>
-  </div>
-
+</div>
+</div>
 </div>
 <div class="cb"></div>
 </div>
+<div class="app_puplayer" id="app_puplayer" style="display: none;">
+  <p class="imgs"><img src="http://pic.qyer.com/album/user/388/30/QkFdQRoAYw/index" width="480" height="240" alt=""></p>
+  <p class="close"></p>
+  <p class="btns"><a href="http://app.qyer.com/cityguide/hong-kong/
+" target="_blank">前往下载</a></p>
+</div>
 
 
-<div class="qyer_head_crumb_pulldown crumb_continents" style="width: 160px;">
+
+<div class="ui_feedback"><div class="ui_feedback_icon" title="意见反馈"></div><div class="ui_feedback_cnt"><form id="feedbackfrm" method="post"><textarea cols="50" rows="10" name="m" id="_fdm_" placeholder="有任何意见或建议请告诉我们"></textarea><p class="ui_feedback_help">使用遇到问题？请先进入<a href="http://bbs.qyer.com/faq.php" target="_blank">帮助中心</a></p><input name="" type="submit" value="提交" class="ui_button"></form></div></div>
+
+
+
+<div class="cb"></div>
+
+
+
+
+<div class="qyer_head_crumb_pulldown crumb_continents" style="width: 160px; display: none;">
+
 
 
   <ul>
@@ -722,19 +516,31 @@
     <li><a href="http://place.qyer.com/asia/" data-bn-ipg="3-2-1">亚洲 Asia</a></li>
 
 
+
+
     <li><a href="http://place.qyer.com/europe/" data-bn-ipg="3-2-2">欧洲 Europe</a></li>
+
+
 
 
     <li><a href="http://place.qyer.com/africa/" data-bn-ipg="3-2-3">非洲 Africa</a></li>
 
 
+
+
     <li><a href="http://place.qyer.com/north-america/" data-bn-ipg="3-2-4">北美 North America</a></li>
+
+
 
 
     <li><a href="http://place.qyer.com/south-america/" data-bn-ipg="3-2-5">南美 South America</a></li>
 
 
+
+
     <li><a href="http://place.qyer.com/oceania/" data-bn-ipg="3-2-6">大洋洲 Oceania</a></li>
+
+
 
 
     <li><a href="http://place.qyer.com/antarctica/" data-bn-ipg="3-2-7">南极洲 Antarctica</a></li>
@@ -744,7 +550,8 @@
 </div>
 
 
-<div class="qyer_head_crumb_pulldown crumb_country">
+<div class="qyer_head_crumb_pulldown crumb_country" style="display: none;">
+
 
 
   <ul>
@@ -752,28 +559,55 @@
     <li><a href="http://place.qyer.com/china/" data-bn-ipg="3-3-2">中国 China</a></li>
 
 
+
+
+
     <li><a href="http://place.qyer.com/thailand/" data-bn-ipg="3-3-2">泰国 Thailand</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/malaysia/" data-bn-ipg="3-3-2">马来西亚 Malaysia</a></li>
 
 
+
+
+
     <li><a href="http://place.qyer.com/singapore/" data-bn-ipg="3-3-2">新加坡 Singapore</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/japan/" data-bn-ipg="3-3-2">日本 Japan</a></li>
 
 
-    <li><a href="http://place.qyer.com/cambodia/" data-bn-ipg="3-3-2">柬埔寨 Cambodia</a></li>
+
 
 
     <li><a href="http://place.qyer.com/south-korea/" data-bn-ipg="3-3-2">韩国 South Korea</a></li>
 
 
+
+
+
+    <li><a href="http://place.qyer.com/cambodia/" data-bn-ipg="3-3-2">柬埔寨 Cambodia</a></li>
+
+
+
+
+
     <li><a href="http://place.qyer.com/vietnam/" data-bn-ipg="3-3-2">越南 Vietnam</a></li>
 
 
+
+
+
     <li><a href="http://place.qyer.com/indonesia/" data-bn-ipg="3-3-2">印度尼西亚 Indonesia</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/philippines/" data-bn-ipg="3-3-2">菲律宾 Philippines</a></li>
@@ -782,32 +616,60 @@
   <ul>
 
 
+
+
     <li><a href="http://place.qyer.com/nepal/" data-bn-ipg="3-3-2">尼泊尔 Nepal</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/india/" data-bn-ipg="3-3-2">印度 India</a></li>
 
 
+
+
+
     <li><a href="http://place.qyer.com/maldives/" data-bn-ipg="3-3-2">马尔代夫 Maldives</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/united-arab-emirates/" data-bn-ipg="3-3-2">阿联酋 United Arab Emirates</a></li>
 
 
+
+
+
     <li><a href="http://place.qyer.com/laos/" data-bn-ipg="3-3-2">老挝 Laos</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/sri-lanka/" data-bn-ipg="3-3-2">斯里兰卡 Sri Lanka</a></li>
 
 
+
+
+
     <li><a href="http://place.qyer.com/myanmar/" data-bn-ipg="3-3-2">缅甸 Myanmar</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/jordan/" data-bn-ipg="3-3-2">约旦 Jordan</a></li>
 
 
-    <li><a href="http://place.qyer.com/israel-and-the-palestinian/" data-bn-ipg="3-3-2">以色列与巴勒斯坦领土 Israel & The
-      Palestinian</a></li>
+
+
+
+    <li><a href="http://place.qyer.com/israel-and-the-palestinian-territories/" data-bn-ipg="3-3-2">以色列与巴勒斯坦领土 Israel &amp; The Palestinian Territories</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/north-korea/" data-bn-ipg="3-3-2">朝鲜 North Korea</a></li>
@@ -821,7 +683,8 @@
 
 
 
-<div class="qyer_head_crumb_pulldown crumb_city">
+<div class="qyer_head_crumb_pulldown crumb_city" style="display: none;">
+
 
 
   <ul>
@@ -829,64 +692,120 @@
     <li><a href="http://place.qyer.com/hong-kong/" data-bn-ipg="3-4-2">香港 Hong Kong</a></li>
 
 
+
+
+
     <li><a href="http://place.qyer.com/macau/" data-bn-ipg="3-4-2">澳门 Macau</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/taipei/" data-bn-ipg="3-4-2">台北 Taipei</a></li>
 
 
-    <li><a href="http://place.qyer.com/kaohsiung/" data-bn-ipg="3-4-2">高雄 Kaohsiung</a></li>
+
+
+
+    <li><a href="http://place.qyer.com/kaohsiung-city/" data-bn-ipg="3-4-2">高雄市 Kaohsiung City</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/kenting-national-park/" data-bn-ipg="3-4-2">垦丁国家公园 Kenting national park</a></li>
 
 
-    <li><a href="http://place.qyer.com/hualien/" data-bn-ipg="3-4-2">花莲 Hualien</a></li>
 
 
-    <li><a href="http://place.qyer.com/tainan/" data-bn-ipg="3-4-2">台南 Tainan</a></li>
+
+    <li><a href="http://place.qyer.com/hualien-county/" data-bn-ipg="3-4-2">花莲县 Hualien County</a></li>
 
 
-    <li><a href="http://place.qyer.com/taichung/" data-bn-ipg="3-4-2">台中 Taichung</a></li>
 
 
-    <li><a href="http://place.qyer.com/new-taipei/" data-bn-ipg="3-4-2">新北 New Taipei</a></li>
+
+    <li><a href="http://place.qyer.com/tainan-city/" data-bn-ipg="3-4-2">台南市 Tainan City</a></li>
 
 
-    <li><a href="http://place.qyer.com/keelung/" data-bn-ipg="3-4-2">基隆 Keelung</a></li>
+
+
+
+    <li><a href="http://place.qyer.com/taichung-city/" data-bn-ipg="3-4-2">台中市 Taichung City</a></li>
+
+
+
+
+
+    <li><a href="http://place.qyer.com/new-taipei-city/" data-bn-ipg="3-4-2">新北市 New Taipei City</a></li>
+
+
+
+
+
+    <li><a href="http://place.qyer.com/keelung-city/" data-bn-ipg="3-4-2">基隆市 Keelung City</a></li>
   </ul>
 
   <ul>
 
 
-    <li><a href="http://place.qyer.com/taitung/" data-bn-ipg="3-4-2">台东 Taitung</a></li>
 
 
-    <li><a href="http://place.qyer.com/yilan/" data-bn-ipg="3-4-2">宜兰 Yilan</a></li>
+    <li><a href="http://place.qyer.com/taitung-county/" data-bn-ipg="3-4-2">台东县 Taitung County</a></li>
 
 
-    <li><a href="http://place.qyer.com/taoyuan/" data-bn-ipg="3-4-2">桃园 Taoyuan</a></li>
+
+
+
+    <li><a href="http://place.qyer.com/taoyuan-county/" data-bn-ipg="3-4-2">桃园县 Taoyuan County</a></li>
+
+
+
+
+
+    <li><a href="http://place.qyer.com/yilan-county/" data-bn-ipg="3-4-2">宜兰县 Yilan County</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/chiayi/" data-bn-ipg="3-4-2">嘉义 Chiayi</a></li>
 
 
-    <li><a href="http://place.qyer.com/nantou/" data-bn-ipg="3-4-2">南投 Nantou</a></li>
 
 
-    <li><a href="http://place.qyer.com/pingtung/" data-bn-ipg="3-4-2">屏东 Pingtung</a></li>
+
+    <li><a href="http://place.qyer.com/nantou-county/" data-bn-ipg="3-4-2">南投县 Nantou County</a></li>
 
 
-    <li><a href="http://place.qyer.com/suao/" data-bn-ipg="3-4-2">苏澳 Su'ao</a></li>
+
+
+
+    <li><a href="http://place.qyer.com/pingtung-county/" data-bn-ipg="3-4-2">屏东县 Pingtung County</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/hsinchu/" data-bn-ipg="3-4-2">新竹 Hsinchu</a></li>
 
 
-    <li><a href="http://place.qyer.com/changhua/" data-bn-ipg="3-4-2">彰化 Changhua</a></li>
 
 
-    <li><a href="http://place.qyer.com/kinmen/" data-bn-ipg="3-4-2">金门 Kinmen </a></li>
+
+    <li><a href="http://place.qyer.com/changhua-county/" data-bn-ipg="3-4-2">彰化县 Changhua County</a></li>
+
+
+
+
+
+    <li><a href="http://place.qyer.com/kinmen-county/" data-bn-ipg="3-4-2">金门县 Kinmen County</a></li>
+
+
+
+
+
+    <li><a href="http://place.qyer.com/miaoli-county/" data-bn-ipg="3-4-2">苗栗县 Miaoli County</a></li>
   </ul>
 
 
@@ -897,7 +816,8 @@
 
 
 
-<div class="qyer_head_crumb_pulldown crumb_cate" style="width: 160px;">
+<div class="qyer_head_crumb_pulldown crumb_cate" style="width: 160px; display: none;">
+
 
 
   <ul>
@@ -905,16 +825,31 @@
     <li><a href="http://place.qyer.com/hong-kong/sight/">景点</a></li>
 
 
+
+
+
     <li><a href="http://place.qyer.com/hong-kong/activity/">体验</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/hong-kong/transportation/">交通</a></li>
 
 
+
+
+
     <li><a href="http://place.qyer.com/hong-kong/hotel/">住宿</a></li>
 
 
+
+
+
     <li><a href="http://place.qyer.com/hong-kong/shopping/">购物</a></li>
+
+
+
 
 
     <li><a href="http://place.qyer.com/hong-kong/food/">美食</a></li>

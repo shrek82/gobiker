@@ -11,10 +11,13 @@
     <script type="text/javascript" src="/js/main/module.js"></script>
 <% end %>
 
-<%= render 'focus' %>
+<% content_for:full_body do %>
+    <%= render 'focus' %>
+<% end %>
+
 <div class="ind_main">
 <div class="ind_content">
-  <%=render 'left_content' %>
+  <%= render 'left_content' %>
 </div>
 
 <div class="ind_sidebar">
