@@ -191,4 +191,9 @@ module ApplicationHelper
   def img_path(p={}, size='thumb')
     return '/uploads/pics/'+p[:created_at].strftime('%Y')+'/'+p[:created_at].strftime('%m%d')+'/'+p[:id].to_s+'_'+size+'.jpg'
   end
+
+  def photo_path(p={}, size='thumb')
+    return '/uploads/photos/'+p[:created_at].strftime('%Y')+'/'+p[:created_at].strftime('%m%d')+'/'+p[:id].to_s+'_'+size+'.jpg'
+  end
+
 end

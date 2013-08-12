@@ -67,7 +67,7 @@
         <ul>
           <% if @pics %>
               <% @pics.each do |p| %>
-                  <li><img src="<%= img_path p %>" alt=""/></li>
+                  <li><img src="<%= p.img_path %>" alt=""/></li>
               <% end %>
           <% end %>
           <li id="includBefore" style="display: none"></li>

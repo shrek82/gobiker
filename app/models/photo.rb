@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
   has_attached_file :img,
                     :styles => {:square=>"80x80#",:mini => "100x100>",:thumb => "150x150>",:medium => "300x300>", :large => "600x600>",:original => "800x800>"},
                     :default_url => "/images/:style/missing.png",
-                    :url => "/uploads/pics/:year/:month:day/:id_:style.:extension",
+                    :url => "/uploads/photos/:year/:month:day/:id_:style.:extension",
                     :path => ":rails_root/public/uploads/photos/:year/:month:day/:id_:style.:extension"
   validates_attachment_content_type :img, :content_type => ['image/gif', 'image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/jpg','application/octet-stream']
   belongs_to :album

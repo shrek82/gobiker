@@ -352,8 +352,8 @@ function go_uploader(options) {
     'successTimeout': 30,
     'buttonText': '添加照片...',
     'swf': '/static/uploadify/uploadify.swf',
-    'uploader': '/attacheds/upload',
-    'fileObjName': 'attached[img]',
+    'uploader': '/photos/upload',
+    'fileObjName': 'photo[img]',
     'formData': {
       "_uploader": "uploadify",
       "_format": "json",

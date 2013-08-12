@@ -38,7 +38,7 @@ var qyerUI = {
 function get_cities(pid) {
   $.ajax({
     url: '/common/cities_select',
-    type: 'post',
+    type: 'get',
     dataType: 'html',
     data: {province_id: pid},
     success: function (data) {
@@ -52,7 +52,7 @@ function get_cities(pid) {
 function get_areas(cid) {
   $.ajax({
     url: '/common/areas_select',
-    type: 'post',
+    type: 'get',
     dataType: 'html',
     data: {city_id: cid},
     success: function (data) {

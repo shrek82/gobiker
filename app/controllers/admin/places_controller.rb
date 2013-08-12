@@ -19,7 +19,8 @@ class Admin::PlacesController < AdminController
   #编辑记录
   def edit
     @place = Place.find(params[:id])
-    @pics=(@place.img_ids.blank?) ? [] : Attached.where(:id => @place.img_ids.split(','))
+    @album=Album.find_or_create_by_place_id(@place.id, :place_id => @place.id,:name=>@place.name+'相册',:order_num=>1)
+    @pics=Photo.where(:album_id => @album.id)
   end
 
   #提交新建
@@ -27,6 +28,10 @@ class Admin::PlacesController < AdminController
   def create
 
     @place = Place.new(params[:place])
+    @place.province_id=params[:province_id]
+    @place.city_id=params[:city_id]
+    @place.area_id=params[:area_id]
+
     if @place.save
       respond :redirect_to => admin_places_path, :success => '目的地添加成功'
     else
@@ -44,6 +49,9 @@ class Admin::PlacesController < AdminController
     @place = Place.find(params[:id])
     @place.is_fixed=params[:is_fixed]
     @place.is_recommended=params[:is_recommended]
+    @place.province_id=params[:province_id]
+    @place.city_id=params[:city_id]
+    @place.area_id=params[:area_id]
     if @place.update_attributes(params[:place])
       respond :redirect_to => admin_places_path, :success => '资料修改成功'
     else
