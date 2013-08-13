@@ -1,0 +1,934 @@
+<% content_for:style do %>
+    <link rel="stylesheet" href="/css/place/style.css"/>
+    <link rel="stylesheet" href="/css/place/style4.css"/>
+<% end %>
+
+<div class="qyer_head_crumbg">
+  <div class="qyer_head_crumb">
+    <span class="text"><a href="<%= main_path %>" data-bn-ipg="3-1">首页</a></span>
+    <span class="space">&gt;</span>
+    <span class="text drop"><a href="<%= places_path %>" data-bn-ipg="3-2">目的地</a><em class="arrow" data="crumb_continents"></em></span>
+    <% if @place.province && @place.city %>
+        <span class="space">&gt;</span><span class="text drop"><a href="http://place.qyer.com/asia/" data-bn-ipg="3-3"><%= @place.province.name %></a><em class="arrow" data="crumb_country"></em></span><span class="space">&gt;</span><span class="text drop"><a href="<%= city_places_path @place.city.pinyin %>" data-bn-ipg="3-4"><%= @place.city.name %></a><em class="arrow" data="crumb_city"></em></span>
+    <% end %>
+    <span class="space">&gt;</span>
+    <span class="text"><a href="<%= place_path @place %>"><%= @place.name %></a></span>
+    <span class="space">&gt;</span>
+    <h1 class="current">照片</h1>
+
+  </div>
+</div>
+
+<div class="pl_topbox_wrap">
+  <div class="pl_topbox clearfix">
+    <div class="pl_topbox_name">
+      <p class="pl_topbox_en" id="pl_topbox_en"><a href="http://place.qyer.com/paris/" data-bn-ipg="53">PARIS, FRANCE</a></p>
+
+      <div class="clearfix">
+        <p class="pl_topbox_cn fontYaHei"><a href="http://place.qyer.com/paris/" data-bn-ipg="53"><%= @place.city.name %>, <%= @place.name %></a></p>
+      </div>
+    </div>
+    <div class="pl_topbox_right">
+      <ul class="pl_topbox_btn">
+        <li class="pl_topbox_want" id="pl_topbox_want">
+          <p class="num"><span><strong id="doings_planto_counts">11027</strong>人想去</span><em></em></p>
+          <a href="javascript:void(0);" class="click" id="doings_planto_button" data-bn-ipg="top-planto">想去</a>
+        </li>
+        <li class="pl_topbox_been" id="pl_topbox_been">
+          <p class="num"><span><strong id="doings_beento_counts">15986</strong>人去过</span><em></em></p>
+          <a href="javascript:void(0);" class="click" id="doings_beento_button" data-bn-ipg="top-beento">去过</a>
+        </li>
+        <li class="pl_topbox_lived" id="pl_topbox_lived">
+          <p class="num"><span><strong id="doings_lived_counts">932</strong>人生活过</span><em></em></p>
+          <a href="javascript:void(0);" class="click" id="doings_lived_button" data-bn-ipg="top-lived">生活过</a>
+        </li>
+      </ul>
+      <p class="pl_topbox_numbeen fontYaHei"><em id="doings_beento_counts_big">15986</em>人去过这里</p>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+<div class="clearfix">
+  <h3 class="ui_title fr"><a href="http://place.qyer.com/paris/" class="fontSong cRed">返回城市首页 &lt;&lt;</a></h3>
+
+</div>
+<div class="place_album_sharebox clearfix">
+  <div class="place_album_sharebox_text fl">欢迎在这里和旅行者分享你的精彩照片，优秀作品将可能会被选入这个城市的官方相册，快来分享吧！</div>
+  <div class="place_album_sharebox_button fr">
+    <a class="ui_button14 _jsurl" rel="nofollow" href="http://user.qyer.com/album_action_upload_city_20">我要添加照片</a></div>
+</div>
+<div class="ui_seqencing mt20">排序:&nbsp;&nbsp;
+  <a href="http://place.qyer.com/paris/photo/" class="ui_seqencing_item ui_seqencing_item_current">最热门的<span></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://place.qyer.com/paris/photo/new/" class="ui_seqencing_item">最新添加<span></span></a>
+</div>
+<ul class="place_album_list clearfix mt10" id="photo_list_item">
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_28380_photo_1990520"><img src="http://static.qyer.com/album/1b5/c0/1990520/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">3876</span>
+
+      <span class="icon_album_comment">3</span>
+      <span class="icon_album_like">2</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1862499"><img src="http://static.qyer.com/album/180/b9/1862499/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">3346</span>
+
+      <span class="icon_album_comment">10</span>
+      <span class="icon_album_like">7</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1862498"><img src="http://static.qyer.com/album/129/57/1862498/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">2315</span>
+
+      <span class="icon_album_comment">6</span>
+      <span class="icon_album_like">5</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1862496"><img src="http://static.qyer.com/album/1a4/69/1862496/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">1930</span>
+
+      <span class="icon_album_comment">3</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1867012"><img src="http://static.qyer.com/album/15c/e4/1867012/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">1546</span>
+
+      <span class="icon_album_comment">4</span>
+      <span class="icon_album_like">2</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_22545_photo_1829408"><img src="http://static.qyer.com/album/1a9/3c/1829408/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1386</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：fay</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1862507"><img src="http://static.qyer.com/album/1a0/60/1862507/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">1316</span>
+
+      <span class="icon_album_comment">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1862510"><img src="http://static.qyer.com/album/135/fb/1862510/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1306</span>
+
+      <span class="icon_album_comment">5</span>
+      <span class="icon_album_like">4</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1863512"><img src="http://static.qyer.com/album/132/d6/1863512/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1115</span>
+
+      <span class="icon_album_comment">5</span>
+      <span class="icon_album_like">4</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1863504"><img src="http://static.qyer.com/album/127/ce/1863504/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">943</span>
+
+      <span class="icon_album_comment">5</span>
+      <span class="icon_album_like">5</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1862521"><img src="http://static.qyer.com/album/1c8/1f/1862521/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">939</span>
+
+      <span class="icon_album_comment">9</span>
+      <span class="icon_album_like">7</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1863499"><img src="http://static.qyer.com/album/1a7/38/1863499/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">939</span>
+
+      <span class="icon_album_comment">3</span>
+      <span class="icon_album_like">2</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_28592_photo_1993450"><img src="http://static.qyer.com/album/12a/20/1993450/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">902</span>
+
+      <span class="icon_album_comment">5</span>
+      <span class="icon_album_like">2</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：claire0327</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_28380_photo_1990514"><img src="http://static.qyer.com/album/10d/48/1990514/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">898</span>
+
+      <span class="icon_album_comment">16</span>
+      <span class="icon_album_like">12</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1863500"><img src="http://static.qyer.com/album/1df/a5/1863500/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">878</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1867005"><img src="http://static.qyer.com/album/17d/4e/1867005/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">763</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_12890_photo_1105515"><img src="http://static.qyer.com/album/134/44/1105515/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">482</span>
+
+      <span class="icon_album_comment">6</span>
+      <span class="icon_album_like">5</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：purpleeyes4444</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_28592_photo_1993442"><img src="http://static.qyer.com/album/16a/25/1993442/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">344</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：claire0327</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_28773_photo_1996532"><img src="http://static.qyer.com/album/1b4/9d/1996532/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">301</span>
+
+      <span class="icon_album_comment">1</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：liangjiangxunfu</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_30366_photo_2034300"><img src="http://static.qyer.com/album/1bd/ee/2034300/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">229</span>
+
+      <span class="icon_album_comment">2</span>
+      <span class="icon_album_like">2</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：牛牛0401</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_31718_photo_2071973"><img src="http://static.qyer.com/album/18b/22/2071973/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">174</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：笨蛋白羊</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_24230_photo_1883332"><img src="http://static.qyer.com/album/1d3/d4/1883332/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">157</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：KarenHYW</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_31307_photo_2074744"><img src="http://static.qyer.com/album/1b7/ff/2074744/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">140</span>
+
+      <span class="icon_album_comment">1</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：kikiswings</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_28853_photo_1998690"><img src="http://static.qyer.com/album/166/b5/1998690/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">79</span>
+
+      <span class="icon_album_comment">1</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：liangjiangxunfu</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_25705_photo_1922034"><img src="http://static.qyer.com/album/147/5a/1922034/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">62</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：sue0410</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_10952_photo_963603"><img src="http://static.qyer.com/album/15e/8a/963603/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">17086</span>
+
+      <span class="icon_album_comment">1</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：晨曦寒萧</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_36016_photo_2383223"><img src="http://static.qyer.com/album/user/238/32/Q0pdQRgFYw/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">15909</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：伊游yiyo</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_22599_photo_1839313"><img src="http://static.qyer.com/album/1db/00/1839313/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">13898</span>
+
+      <span class="icon_album_comment">1</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：TINTINANDSNOWY</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_33982_photo_2131983"><img src="http://static.qyer.com/album/user/213/19/Q0hWQxMPYw/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">13748</span>
+
+      <span class="icon_album_comment">1</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：伊游yiyo</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_34054_photo_2141537"><img src="http://static.qyer.com/album/user/214/15/Q0hRQx8EZw/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">3858</span>
+
+      <span class="icon_album_comment">1</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：grace19119</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_31646_photo_2070162"><img src="http://static.qyer.com/album/1c3/49/2070162/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">3250</span>
+
+      <span class="icon_album_comment">2</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：小树枝</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_31646_photo_2070134"><img src="http://static.qyer.com/album/17a/e8/2070134/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">2409</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：小树枝</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_36237_photo_2200728"><img src="http://static.qyer.com/album/user/220/7/Q0tVQh0FaA/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">2402</span>
+
+      <span class="icon_album_comment">1</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：蝎之传说</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_24177_photo_1882945"><img src="http://static.qyer.com/album/103/93/1882945/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">2192</span>
+
+      <span class="icon_album_comment">4</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：GabriKel</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23386_photo_1861449"><img src="http://static.qyer.com/album/19f/50/1861449/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">2158</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：jamyang</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1862500"><img src="http://static.qyer.com/album/158/36/1862500/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1991</span>
+
+      <span class="icon_album_comment">2</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_36016_photo_2406281"><img src="http://static.qyer.com/album/user/240/62/Q01VRBgPYQ/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">1883</span>
+
+      <span class="icon_album_comment">1</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：伊游yiyo</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1862497"><img src="http://static.qyer.com/album/161/7b/1862497/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1863</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_10952_photo_963597"><img src="http://static.qyer.com/album/1a5/43/963597/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1824</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：晨曦寒萧</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_36016_photo_2396354"><img src="http://static.qyer.com/album/user/239/63/Q0pcRBkCZA/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1807</span>
+
+      <span class="icon_album_comment">1</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：伊游yiyo</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_36016_photo_2383222"><img src="http://static.qyer.com/album/user/238/32/Q0pdQRgFYg/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1794</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：伊游yiyo</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_36016_photo_2383221"><img src="http://static.qyer.com/album/user/238/32/Q0pdQRgFYQ/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">1779</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：伊游yiyo</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_31646_photo_2070145"><img src="http://static.qyer.com/album/161/47/2070145/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1699</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：小树枝</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_27555_photo_1970718"><img src="http://static.qyer.com/album/137/fd/1970718/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1689</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：wall_e的主人</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_31307_photo_2086372"><img src="http://static.qyer.com/album/19a/5c/2086372/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1655</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：kikiswings</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1862519"><img src="http://static.qyer.com/album/150/6f/1862519/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1614</span>
+
+      <span class="icon_album_comment">5</span>
+      <span class="icon_album_like">3</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_35789_photo_2146467"><img src="http://static.qyer.com/album/user/214/64/Q0hRRB4BZw/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">1613</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：Safario</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23420_photo_1862495"><img src="http://static.qyer.com/album/179/33/1862495/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1605</span>
+
+      <span class="icon_album_comment">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：罗老汉</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_22599_photo_1841504"><img src="http://static.qyer.com/album/197/8f/1841504/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1588</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：TINTINANDSNOWY</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_22599_photo_1840227"><img src="http://static.qyer.com/album/1e3/c8/1840227/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1573</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：TINTINANDSNOWY</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_23634_photo_1873011"><img src="http://static.qyer.com/album/194/eb/1873011/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1550</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：raiy</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_28857_photo_1998757"><img src="http://static.qyer.com/album/1df/c0/1998757/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1525</span>
+
+      <span class="icon_album_comment">1</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：liangjiangxunfu</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_29919_photo_2026758"><img src="http://static.qyer.com/album/1e5/60/2026758/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1514</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：h_wolf_h</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_25791_photo_1925091"><img src="http://static.qyer.com/album/1a3/fc/1925091/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1504</span>
+
+      <span class="icon_album_comment">1</span>
+      <span class="icon_album_like">1</span>
+    </div>
+    <div>巴黎</div>
+    <div>来自：芥末jam</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_22545_photo_1829413"><img src="http://static.qyer.com/album/1ab/8c/1829413/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1494</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：fay</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_22599_photo_1840138"><img src="http://static.qyer.com/album/1ec/15/1840138/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1443</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：TINTINANDSNOWY</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_30737_photo_2043466"><img src="http://static.qyer.com/album/1b1/1c/2043466/180180"></a></div>
+  <div class="place_album_list_item_mask" style="display: none;"></div>
+  <div class="place_album_list_item_tips" style="display: none;">
+    <div>
+
+      <span class="icon_album_look">1441</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：牛牛0401</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_29919_photo_2029668"><img src="http://static.qyer.com/album/1eb/bf/2029668/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1431</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：h_wolf_h</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_22545_photo_1829412"><img src="http://static.qyer.com/album/14d/9f/1829412/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1427</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：fay</div>
+  </div>
+</li>
+<li class="place_album_list_item">
+  <div><a href="http://user.qyer.com/album_action_view_albumid_36016_photo_2383219"><img src="http://static.qyer.com/album/user/238/32/Q0pdQRgGaQ/180180"></a></div>
+  <div class="place_album_list_item_mask"></div>
+  <div class="place_album_list_item_tips">
+    <div>
+
+      <span class="icon_album_look">1421</span>
+
+    </div>
+    <div>巴黎</div>
+    <div>来自：伊游yiyo</div>
+  </div>
+</li>
+
+</ul>
+<div class="place_album_page">
+  <div class="place_album_page_position">
+    <ul class="pagination">
+      <div class="ui_page"><a data-bn-ipg="pages-3" href="/paris/photo/page1/" class="ui_page_item ui_page_item_current">1</a>
+        <a data-bn-ipg="pages-3" href="/paris/photo/page2/" class="ui_page_item">2</a>
+        <a data-bn-ipg="pages-3" href="/paris/photo/page3/" class="ui_page_item">3</a>
+        <a data-bn-ipg="pages-3" href="/paris/photo/page4/" class="ui_page_item">4</a>
+        <a data-bn-ipg="pages-3" href="/paris/photo/page5/" class="ui_page_item">5</a>
+        <a data-bn-ipg="pages-4" href="/paris/photo/page261/" class="ui_page_item" title="...261">...261</a>
+        <a data-bn-ipg="pages-5" href="/paris/photo/page2/" class="ui_page_item ui_page_next" title="下一页">下一页</a>
+      </div>
+    </ul>
+  </div>
+</div>
+<div class="cb"></div>
+</div>
+
+<script type="text/javascript">
+    readyScript.photoTips = function () {
+        var $photos_list_items = $("#photo_list_item li.place_album_list_item");
+        $photos_list_items.mouseover(function () {
+            $(this).find('.place_album_list_item_mask').css('display', 'block');
+            $(this).find('.place_album_list_item_tips').css('display', 'block');
+        }).mouseout(function () {
+                    $(this).find('.place_album_list_item_mask').css('display', 'none');
+                    $(this).find('.place_album_list_item_tips').css('display', 'none');
+                });
+    }
+</script>

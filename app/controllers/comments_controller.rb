@@ -11,6 +11,9 @@ class CommentsController < ApplicationController
     #conditions=Array.new
     #conditions << "name LIKE ?"
     #conditions << "%#{params[:q]}%"
+
+    template=params[:review]=='true'?"comments/list_review":"comments/list"
+
     conditions=Hash.new
     if params[:q]
       conditions.store 'content',params[:q]
@@ -20,7 +23,9 @@ class CommentsController < ApplicationController
       conditions.store 'place_id',params[:place_id]
     end
     @comments=Comment.paginate(:page => params[:page], :per_page =>10, :conditions => conditions, :include => :user)
-    respond :comments => @comments, :layout => false
+
+    respond :template=>template,:comments => @comments, :layout => false
+
   end
 
   #获取评论模板

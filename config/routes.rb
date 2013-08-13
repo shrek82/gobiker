@@ -44,6 +44,9 @@ Gobiker::Application.routes.draw do
   end
 
   resources :places do
+    member do
+      get 'photos'
+    end
     collection do
       match 'city/:name' => 'places#city',:constraints => {:name => /[a-zA-z1-9]+/},:as=>'city'
       get :city

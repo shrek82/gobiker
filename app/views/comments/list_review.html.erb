@@ -5,10 +5,14 @@
         <a target="_blank" href="<%= u_path c.user.id %>" title="<%= c.user.username %>"><img src="/avatar/up.jpeg" alt="<%= c.user.username %>"></a>
       </div>
       <div class="cmt-body">
-        <div class="cmt-header"><a href="<%= u_path c.user.id %>" target="_blank" ><%= c.user.username %></a>
-          <span class="time" title="<%= c.created_at.to_s :db %>"><%= to_pretty c.created_at %></span>
+
+        <div class="cmt-body-content">
+          <a href="<%= u_path c.user.id %>" target="_blank" ><%= c.user.username %></a>:
+          <%= c.content %>
         </div>
-        <div class="cmt-body-content"><%= c.content %></div>
+        <div class="star_bar">
+          <span title="五星"><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""></span><span class="time" title="<%= c.created_at.to_s :db %>"><%= to_pretty c.created_at %></span>
+        </div>
         <div class="cmt-footer">
           <a class="post-reply" href="javascript:void(0);"><span class="icon icon-reply"></span> 回复</a>&nbsp;&nbsp;<a class="post-likes" href="javascript:void(0);"><span class="icon icon-like"></span>顶</a>
         </div>

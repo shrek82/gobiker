@@ -101,6 +101,13 @@ class PlacesController < ApplicationController
               :body => 'This is the body'})
 
   end
+
+  #相册
+  def photos
+    @place=Place.find(params[:id])
+    @album=Album.find_or_create_by_place_id(params[:id],:place_id=>@place.id,:name=>@place.name+'相册')
+    @photos=Photo.paginate(:page => params[:page], :per_page => 12, :order => "photos.id DESC")
+  end
 end
 
 #test

@@ -1,9 +1,11 @@
 <% @title=@place.name %>
 <% content_for:style do %>
+    <link rel="stylesheet" href="/css/common/comments.css"/>
     <link rel="stylesheet" href="/css/place/style4.css"/>
 <% end %>
 <% content_for:script do %>
     <script src="/js/place/crumbbox.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery.form.js"></script>
     <script type="text/javascript" src="/plugins/raty-2.5.2/lib/jquery.raty.min.js"></script>
 <% end %>
 
@@ -26,8 +28,9 @@
 <div class="pl_topbox_wrap">
   <div class="pl_topbox clearfix">
     <div class="pl_topbox_name">
-      <p class="pl_topbox_en" id="pl_topbox_en"><a href="<%= place_path @place %>"><%= @place.name %></a></p>
-
+      <div class="clearfix">
+        <p class="pl_topbox_cn fontYaHei"><a href="<%= place_path @place %>"><%= @place.province.name %>,<%= @place.city.name %></a></p>
+      </div>
       <div class="clearfix">
         <p class="pl_topbox_cn fontYaHei"><a href="<%= place_path @place %>"><%= @place.name %></a></p>
       </div>
@@ -83,47 +86,7 @@
       <a href="http://place.qyer.com/poi/59047/map/" target="_blank"><img src="http://maps.google.com/maps/api/staticmap?size=270x180&amp;markers=icon:http://static.qyer.com/images/place/icon_coord_current.png|22.297604,114.172173&amp;sensor=false"></a>
     </div>
   </div>
-  <div class="pl_sldline2"></div>
-  <div>
-    <div class="pl_title">
-      <h2 class="pl_title_name">关于<%= @place.name %>的问题</h2>
-      <a href="http://ask.qyer.com/tag/%E5%B0%96%E6%B2%99%E5%92%80" data-bn-ipg="ask-more" class="pl_title_more" target="_blank" title="更多尖沙咀问题">更多</a></div>
-    <div class="ui_tab pl_aboutask">
-      <div class="ui_tab_trigger">
-        <ul>
-          <li class="ui_tab_trigger_item ui_tab_trigger_item_current"><a href="javascript:void(0);" data-bn-ipg="ask-new">最新问题</a></li>
-          <li class="gap">|</li>
-          <li class="ui_tab_trigger_item"><a href="javascript:void(0);" data-bn-ipg="ask-hot">热门问题</a></li>
-        </ul>
-      </div>
-      <div class="ui_tab_cnt">
-        <ul class="ui_tab_cnt_item ui_tab_cnt_item_current">
-          <li>
-            <a href="http://user.qyer.com/user_uid_1400249" target="_blank" class="pic" data-bn-ipg="ask-new-1-1"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt="pc955" title="pc955"></a>
 
-            <p class="text"><a target="_blank" href="http://ask.qyer.com/question/486839.html" data-bn-ipg="ask-new-1-2" title="请问尖沙咀海港城附近有什么早餐店推荐吗？">请问尖沙咀海港城附近有什么早餐店推荐吗？</a></p>
-          </li>
-          <li>
-            <a href="http://user.qyer.com/user_uid_1273979" target="_blank" class="pic" data-bn-ipg="ask-new-2-1"><img src="http://static.qyer.com/data/avatar/001/27/39/79_avatar_small.jpg" width="30" height="30" alt="枕书蔷薇" title="枕书蔷薇"></a>
-
-            <p class="text"><a target="_blank" href="http://ask.qyer.com/question/466519.html" data-bn-ipg="ask-new-2-2" title="6月12日--15日香港尖沙咀住宿">6月12日--15日香港尖沙咀住宿</a></p>
-          </li>
-          <li><a href="http://user.qyer.com/user_uid_1221293" target="_blank" class="pic" data-bn-ipg="ask-new-3-1"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt="黄嚒嚒" title="黄嚒嚒"></a>
-
-            <p class="text"><a target="_blank" href="http://ask.qyer.com/question/137945.html" data-bn-ipg="ask-new-3-2" title="请问下尖沙咀到香港机场有何选择">请问下尖沙咀到香港机场有何选择</a></p>
-          </li>
-
-        </ul>
-        <ul class="ui_tab_cnt_item">
-          <li><a href="http://user.qyer.com/user_uid_1221293" target="_blank" class="pic" data-bn-ipg="ask-hot-1-1"><img src="http://static.qyer.com/data/images/noavatar_small.gif" width="30" height="30" alt="黄嚒嚒" title="黄嚒嚒"></a>
-
-            <p class="text"><a target="_blank" href="http://ask.qyer.com/question/137945.html" data-bn-ipg="ask-hot-1-2" title="请问下尖沙咀到香港机场有何选择">请问下尖沙咀到香港机场有何选择</a></p>
-          </li>
-        </ul>
-      </div>
-      <div class="mt20 tc"><a target="_blank" class="ui_buttonB" href="http://ask.qyer.com/addquestion" rel="nofollow" data-bn-ipg="ask-question">我要提问</a></div>
-    </div>
-  </div>
   <div class="pl_sldline2"></div>
   <div>
     <div class="pl_title">
@@ -159,45 +122,8 @@
       </li>
     </ul>
   </div>
-  <div class="pl_sldline2"></div>
-  <div>
-    <div class="pl_title">
-      <h2 class="pl_title_name">周边餐饮</h2>
-    </div>
-    <ul class="pl_rimplace">
-      <li>
-        <a href="http://place.qyer.com/poi/62093/" class="pic"><img src="http://static.qyer.com/album/user/329/78/QktcRRIAaQ/80" onerror="this.src='http://static.qyer.com/images/place/no/poi_48_48.png'" width="48" height="48" alt="重庆大厦 Chungking Mansions" title="重庆大厦 Chungking Mansions"></a>
 
-        <p class="title"><a href="http://place.qyer.com/poi/62093/" title="重庆大厦 Chungking Mansions">重庆大厦 Chungking Mansions</a></p>
 
-        <p class="text">
-          <span title="三星半"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_half.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">69</em></span>
-        </p>
-      </li>
-      <li>
-        <a href="http://place.qyer.com/poi/73985/" class="pic"><img src="http://static.qyer.com/album/user/330/23/QkpVQBkHaA/80" onerror="this.src='http://static.qyer.com/images/place/no/poi_48_48.png'" width="48" height="48" alt="Jenny自制糕饼尖沙咀店 Jenny Bakery Tsim Sha Tsui Store" title="Jenny自制糕饼尖沙咀店 Jenny Bakery Tsim Sha Tsui Store"></a>
-
-        <p class="title"><a href="http://place.qyer.com/poi/73985/" title="Jenny自制糕饼尖沙咀店 Jenny Bakery Tsim Sha Tsui Store">Jenny自制糕饼尖沙咀店 Jenny Bakery Tsim Sha Tsui Store</a></p>
-
-        <p class="text">
-          <span title="三星半"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_half.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">4</em></span>
-        </p>
-      </li>
-      <li>
-        <a href="http://place.qyer.com/poi/86749/" class="pic"><img src="http://static.qyer.com/album/user/334/44/QkpRRh4HaA/80" onerror="this.src='http://static.qyer.com/images/place/no/poi_48_48.png'" width="48" height="48" alt="新德里餐厅 " title="新德里餐厅 "></a>
-
-        <p class="title"><a href="http://place.qyer.com/poi/86749/" title="新德里餐厅 ">新德里餐厅 </a></p>
-
-        <p class="text">
-          <span title="二星半"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_half.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">5</em></span>
-        </p>
-      </li>
-    </ul>
-  </div>
-  <div class="pl_sldline2"></div>
-  <div>
-    <iframe id="afebbafa" name="afebbafa" src="http://ad.qyer.com/www/delivery/afr.php?zoneid=80&amp;cb=INSERT_RANDOM_NUMBER_HERE" frameborder="0" scrolling="no" width="270" height="170">&lt;a href='http://ad.qyer.com/www/delivery/ck.php?n=a7f7a2ef&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'&gt;&lt;img src='http://ad.qyer.com/www/delivery/avw.php?zoneid=80&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a7f7a2ef' border='0' alt='' /&gt;&lt;/a&gt;</iframe>
-  </div>
 
 </div>
 <div class="pl_cont">
@@ -205,11 +131,13 @@
   <div class="pl_title">
     <h2 class="pl_title_name">概述</h2>
   </div>
-  <div class="pl_wordcnt">尖沙咀可以说是香港的“地理中心”，所以去哪都方便，自然人气旺。随着98年旧启德机场搬走后，这一区的高楼大厦便不断重建，商场也越来越多。这里有全港最大的购物中心海港城，也有最“国际化”的重庆大厦；有名店街广东道，也有人气颇高的加连威老道；有连卡佛，也有Outlet。这两年还连开iSquare、K11、TheOne三家购物中心，可见是商家必争之地。尖沙咀可以说是适合一家大小首选的购物地。<br>
+  <div class="pl_wordcnt">
+    <%=raw @place.content %>
   </div>
 </div>
 <div class="pl_sldline2"></div>
-<%= render 'comments/dianping' %>
+
+  <%= comment_list :review=>true %>
 
 </div>
 <div class="cb"></div>
