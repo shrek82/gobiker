@@ -1,24 +1,34 @@
-<% @title=@place.name %>
+<% @title=@place.name+' - 目的地' %>
 <% content_for:style do %>
-    <link rel="stylesheet" href="/css/common/comments.css"/>
-    <link rel="stylesheet" href="/css/place/style4.css"/>
+<link rel="stylesheet" href="/css/common/comments.css"/>
+<link rel="stylesheet" href="/css/place/style4.css"/>
 <% end %>
 <% content_for:script do %>
-    <script src="/js/place/crumbbox.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/js/jquery.form.js"></script>
-    <script type="text/javascript" src="/plugins/raty-2.5.2/lib/jquery.raty.min.js"></script>
+<script src="/js/place/crumbbox.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/jquery.form.js"></script>
+<script type="text/javascript" src="/plugins/raty-2.5.2/lib/jquery.raty.min.js"></script>
+<script type="text/javascript">
+        readyScript.wantgo = function () {
+            $("#pl_topbox_want a").click(function () {
+                $(this).parent().find('span').show().animate({'opacity': 0, 'top': '-50px'}, 400,'linear', function () {
+                    $(this).hide().css({'opacity': 1, 'top': '-18px'});
+                });
+            })
+        }
+</script>
 <% end %>
 
 
 <div class="qyer_head_crumbg">
   <div class="qyer_head_crumb">
-    <span class="text"><a href="<%= main_path %>" data-bn-ipg="3-1">首页</a></span>
+    <span class="text"><a href="<%= main_path %>">首页</a></span>
     <span class="space">&gt;</span>
-    <span class="text drop"><a href="<%= places_path %>" data-bn-ipg="3-2">目的地</a><em class="arrow" data="crumb_continents"></em></span>
+    <span class="text drop"><a href="<%= places_path %>">目的地</a><em class="arrow" data="crumb_continents"></em></span>
     <% if @place.province && @place.city %>
-    <span class="space">&gt;</span><span class="text drop"><a href="http://place.qyer.com/asia/" data-bn-ipg="3-3"><%= @place.province.name %></a><em class="arrow" data="crumb_country"></em></span><span class="space">&gt;</span><span class="text drop"><a href="<%= city_places_path @place.city.pinyin %>" data-bn-ipg="3-4"><%= @place.city.name %></a><em class="arrow" data="crumb_city"></em></span>
+        <span class="space">&gt;</span><span class="text drop"><a href="http://place.qyer.com/asia/" data-bn-ipg="3-3"><%= @place.province.name %></a><em class="arrow" data="crumb_country"></em></span><span class="space">&gt;</span><span class="text drop"><a href="<%= city_places_path @place.city.pinyin %>" data-bn-ipg="3-4"><%= @place.city.name %></a><em class="arrow" data="crumb_city"></em></span>
     <% end %>
     <span class="space">&gt;</span>
+
     <h1 class="current"><%= @place.name %></h1>
   </div>
 </div>
@@ -38,12 +48,11 @@
     <div class="pl_topbox_right">
       <ul class="pl_topbox_btn">
         <li class="pl_topbox_want" id="pl_topbox_want">
-          <p class="num"><span><strong id="doings_planto_counts">591</strong>人想去</span><em></em></p>
-          <a href="javascript:void(0);" class="click" id="doings_planto_button" data-bn-ipg="top-planto">想去</a>
+          <span style="display:none;alpha(opacity=100); opacity:1;width:15px;height:15px;color:#f60;position:absolute;font-family:verdana;font-size:16px;font-weight:bold;top:-18px;left:20px">+1</span>
+          <a href="javascript:void(0);" class="click" id="doings_planto_button" title="12323人">想去</a>
         </li>
         <li class="pl_topbox_been" id="pl_topbox_been">
-          <p class="num"><span><strong id="doings_beento_counts">2167</strong>人去过</span><em></em></p>
-          <a href="javascript:void(0);" class="click" id="doings_beento_button" data-bn-ipg="top-beento">去过</a>
+          <a href="javascript:void(0);" class="click" id="doings_beento_button" title="12323人">去过</a>
         </li>
       </ul>
       <p class="pl_topbox_numbeen fontYaHei"><em id="doings_beento_counts_big">2167</em>人去过这里</p>
@@ -51,96 +60,95 @@
   </div>
 </div>
 <div class="pl_main">
-<div class="pl_side">
-  <div>
-    <div class="pl_title">
-      <h2 class="pl_title_name">照片</h2>
-    </div>
-    <!--有图时start-->
-    <div class="pl_poiphoto _jsheight">
-      <p id="poiphoto"><a href="http://place.qyer.com/poi/59047/photo/" target="_blank"><img src="<%=img_style @place.img_path,"medium" %>" width="270" alt="尖沙咀"></a></p>
+  <div class="pl_side">
+    <div>
+      <div class="pl_title">
+        <h2 class="pl_title_name">照片</h2>
+      </div>
+      <!--有图时start-->
+      <div class="pl_poiphoto _jsheight">
+        <p id="poiphoto"><a href="http://place.qyer.com/poi/59047/photo/" target="_blank"><img src="<%= img_style @place.img_path, "medium" %>" width="270" alt="尖沙咀"></a></p>
 
-      <p class="pl_poiphoto_writer" style="display: none;">来自：<a href="http://user.qyer.com/user_uid_284698">长牙的兔子</a></p>
+        <p class="pl_poiphoto_writer" style="display: none;">来自：<a href="http://user.qyer.com/user_uid_284698">长牙的兔子</a></p>
+      </div>
+      <div class="pl_poiphoto_more">
+        <span class="fr"><a href="http://place.qyer.com/poi/59047/photo/" target="_blank" class="more">更多照片 244张</a></span><a href="#" class="pl_poiphoto_album">相册上传</a><a href="#" class="pl_poiphoto_native">本地上传</a></div>
+
     </div>
-    <div class="pl_poiphoto_more">
-      <span class="fr"><a href="http://place.qyer.com/poi/59047/photo/" target="_blank" class="more">更多照片 244张</a></span><a href="#" class="pl_poiphoto_album">相册上传</a><a href="#" class="pl_poiphoto_native">本地上传</a></div>
+    <div class="pl_sldline2"></div>
+    <div>
+      <div class="pl_title">
+        <h2 class="pl_title_name">谁最近去过</h2>
+      </div>
+      <ul class="pl_hotqyer clearfix">
+        <% @place.been_to_places.each do |b| %>
+            <li><a href="http://user.qyer.com/user_uid_502693" title="<%= b.user.username %>"><img src="/data/avatar/000/50/26/93_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="pl_sldline2"></div>
+    <div>
+      <div class="pl_title">
+        <h2 class="pl_title_name">地图</h2>
+      </div>
+      <div class="pl_smallmap">
+        <a href="http://place.qyer.com/poi/59047/map/" target="_blank"><img src="http://maps.google.com/maps/api/staticmap?size=270x180&amp;markers=icon:/images/place/icon_coord_current.png|22.297604,114.172173&amp;sensor=false"></a>
+      </div>
+    </div>
+
+    <div class="pl_sldline2"></div>
+    <div>
+      <div class="pl_title">
+        <h2 class="pl_title_name">周边景点</h2>
+      </div>
+      <ul class="pl_rimplace">
+        <li>
+          <a href="http://place.qyer.com/poi/99951/" class="pic"><img src="/album/user/370/90/Qk5VSxoAZQ/80" onerror="this.src='/images/place/no/poi_48_48.png'" width="48" height="48" alt="1881 1881 Heritage" title="1881 1881 Heritage"></a>
+
+          <p class="title"><a href="http://place.qyer.com/poi/99951/" title="1881 1881 Heritage">1881 1881 Heritage</a></p>
+
+          <p class="text">
+            <span title="四星"><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""><img src="/images/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">5</em></span>
+          </p>
+        </li>
+        <li>
+          <a href="http://place.qyer.com/poi/36563/" class="pic"><img src="/album/user/214/54/Q0hRRx4CZQ/80" onerror="this.src='/images/place/no/poi_48_48.png'" width="48" height="48" alt="香港文化中心 Hong Kong Cultural Centre" title="香港文化中心 Hong Kong Cultural Centre"></a>
+
+          <p class="title"><a href="http://place.qyer.com/poi/36563/" title="香港文化中心 Hong Kong Cultural Centre">香港文化中心 Hong Kong Cultural Centre</a></p>
+
+          <p class="text">
+            <span title="四星"><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""><img src="/images/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">12</em></span>
+          </p>
+        </li>
+        <li>
+          <a href="http://place.qyer.com/poi/94446/" class="pic"><img src="/album/user/366/9/Qk9TQhMDYg/80" onerror="this.src='/images/place/no/poi_48_48.png'" width="48" height="48" alt="香港太空馆 Hong Kong  Space Museum" title="香港太空馆 Hong Kong  Space Museum"></a>
+
+          <p class="title"><a href="http://place.qyer.com/poi/94446/" title="香港太空馆 Hong Kong  Space Museum">香港太空馆 Hong Kong Space Museum</a></p>
+
+          <p class="text">
+            <span title="四星"><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""><img src="/images/poi_star.png" alt=""><img src="/images/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">7</em></span>
+          </p>
+        </li>
+      </ul>
+    </div>
+
 
   </div>
-  <div class="pl_sldline2"></div>
-  <div>
-    <div class="pl_title">
-      <h2 class="pl_title_name">谁最近去过</h2>
+  <div class="pl_cont">
+    <div>
+      <div class="pl_title">
+        <h2 class="pl_title_name">概述</h2>
+      </div>
+      <div class="pl_wordcnt">
+        <%= raw @place.content %>
+      </div>
     </div>
-    <ul class="pl_hotqyer clearfix">
-      <% @place.been_to_places.each do |b| %>
-      <li><a href="http://user.qyer.com/user_uid_502693" title="<%= b.user.username %>"><img src="http://static.qyer.com/data/avatar/000/50/26/93_avatar_small.jpg" width="30" height="30" alt=""></a></li>
-      <% end %>
-    </ul>
+    <div class="pl_sldline2"></div>
+
+    <%= comment_list :review => true %>
+
   </div>
-  <div class="pl_sldline2"></div>
-  <div>
-    <div class="pl_title">
-      <h2 class="pl_title_name">地图</h2>
-    </div>
-    <div class="pl_smallmap">
-      <a href="http://place.qyer.com/poi/59047/map/" target="_blank"><img src="http://maps.google.com/maps/api/staticmap?size=270x180&amp;markers=icon:http://static.qyer.com/images/place/icon_coord_current.png|22.297604,114.172173&amp;sensor=false"></a>
-    </div>
-  </div>
-
-  <div class="pl_sldline2"></div>
-  <div>
-    <div class="pl_title">
-      <h2 class="pl_title_name">周边景点</h2>
-    </div>
-    <ul class="pl_rimplace">
-      <li>
-        <a href="http://place.qyer.com/poi/99951/" class="pic"><img src="http://static.qyer.com/album/user/370/90/Qk5VSxoAZQ/80" onerror="this.src='http://static.qyer.com/images/place/no/poi_48_48.png'" width="48" height="48" alt="1881 1881 Heritage" title="1881 1881 Heritage"></a>
-
-        <p class="title"><a href="http://place.qyer.com/poi/99951/" title="1881 1881 Heritage">1881 1881 Heritage</a></p>
-
-        <p class="text">
-          <span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">5</em></span>
-        </p>
-      </li>
-      <li>
-        <a href="http://place.qyer.com/poi/36563/" class="pic"><img src="http://static.qyer.com/album/user/214/54/Q0hRRx4CZQ/80" onerror="this.src='http://static.qyer.com/images/place/no/poi_48_48.png'" width="48" height="48" alt="香港文化中心 Hong Kong Cultural Centre" title="香港文化中心 Hong Kong Cultural Centre"></a>
-
-        <p class="title"><a href="http://place.qyer.com/poi/36563/" title="香港文化中心 Hong Kong Cultural Centre">香港文化中心 Hong Kong Cultural Centre</a></p>
-
-        <p class="text">
-          <span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">12</em></span>
-        </p>
-      </li>
-      <li>
-        <a href="http://place.qyer.com/poi/94446/" class="pic"><img src="http://static.qyer.com/album/user/366/9/Qk9TQhMDYg/80" onerror="this.src='http://static.qyer.com/images/place/no/poi_48_48.png'" width="48" height="48" alt="香港太空馆 Hong Kong  Space Museum" title="香港太空馆 Hong Kong  Space Museum"></a>
-
-        <p class="title"><a href="http://place.qyer.com/poi/94446/" title="香港太空馆 Hong Kong  Space Museum">香港太空馆 Hong Kong Space Museum</a></p>
-
-        <p class="text">
-          <span title="四星"><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star.png" alt=""><img src="http://static.qyer.com/images/place/four/poi_star_null.png" alt=""></span><span class="ml10">点评 <em class="fb">7</em></span>
-        </p>
-      </li>
-    </ul>
-  </div>
-
-
-
-</div>
-<div class="pl_cont">
-<div>
-  <div class="pl_title">
-    <h2 class="pl_title_name">概述</h2>
-  </div>
-  <div class="pl_wordcnt">
-    <%=raw @place.content %>
-  </div>
-</div>
-<div class="pl_sldline2"></div>
-
-  <%= comment_list :review=>true %>
-
-</div>
-<div class="cb"></div>
+  <div class="cb"></div>
 </div>
 <div class="app_puplayer" id="app_puplayer" style="display: none;">
   <p class="imgs"><img src="http://pic.qyer.com/album/user/388/30/QkFdQRoAYw/index" width="480" height="240" alt=""></p>
@@ -151,14 +159,7 @@
 " target="_blank">前往下载</a></p>
 </div>
 
-<div class="ui_feedback">
-  <div class="ui_feedback_icon" title="意见反馈"></div>
-  <div class="ui_feedback_cnt">
-    <form id="feedbackfrm" method="post"><textarea cols="50" rows="10" name="m" id="_fdm_" placeholder="有任何意见或建议请告诉我们"></textarea>
 
-      <p class="ui_feedback_help">使用遇到问题？请先进入<a href="http://bbs.qyer.com/faq.php" target="_blank">帮助中心</a></p><input name="" type="submit" value="提交" class="ui_button"></form>
-  </div>
-</div>
 <div class="cb"></div>
 
 <div class="qyer_head_crumb_pulldown crumb_continents" style="width: 160px; display: none;">

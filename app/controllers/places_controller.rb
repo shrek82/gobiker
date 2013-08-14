@@ -25,15 +25,12 @@ class PlacesController < ApplicationController
 
   #显示目的地
   def show
-    #@place = Rails.cache.fetch "place#{params[:id]}" do
     @place=Place.find(params[:id])
-    #end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @place }
       format.xml { render xml: @place }
     end
-    #fresh_when(:etag => [@place,@placeddd])
   end
 
   # GET /places/new

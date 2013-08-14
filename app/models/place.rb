@@ -53,6 +53,7 @@ class Place < ActiveRecord::Base
   belongs_to :city
   has_many :comments
   has_many :been_to_places
+  has_many :want_to_places
   has_many :albums
 
   #获取记录

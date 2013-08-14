@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812071114) do
+ActiveRecord::Schema.define(:version => 20130814084746) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -438,6 +438,13 @@ ActiveRecord::Schema.define(:version => 20130812071114) do
     t.string   "memo"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "want_to_places", :force => true do |t|
+    t.integer  "place_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

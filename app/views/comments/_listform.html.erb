@@ -1,6 +1,6 @@
 <div id="write_review">
   <span class="pl_title_name" style="float:left">点评：</span>
-  <a href="javascript:;" class="btn2 btn2-mint" style="float:right">我要点评</a>
+  <a href="javascript:;" onclick="scroll_to_cmtform()" class="btn2 btn2-mint" style="float:right"><span class="icon-plus"></span> 我要点评</a>
   <div class="clear"></div>
 </div>
 <div id="cms_list">
@@ -19,6 +19,7 @@
           <input type="hidden" name="comment[place_id]" value="26">
           <input type="hidden" name="comment[user_id]" value="1">
           <div class="ds-textarea-wrapper ds-rounded-top">
+            <% if @add_param[:review] %><div id="starbox" style="color:#999;">评分:</div><% end %>
             <textarea name="comment[content]" placeholder="" id="cmt_textarea"></textarea>
           </div>
           <div class="post-toolbar">
@@ -30,9 +31,15 @@
   </ul>
 </div>
 
-<script type="text/javascript">
-    readyScript.cmt=function(){
-      loadComments('<%=@cmt_param %>');
-      bindCmtForm();
-  }
-</script>
+<% content_for:script do %>
+    <script type="text/javascript">
+        readyScript.cmt=function(){
+            loadComments('<%=@all_param.to_param %>');
+            bindCmtForm('<%=@add_param.to_param %>');
+            <% if @add_param[:review] %>
+            $.fn.raty.defaults.path = '/plugins/raty-2.5.2/lib/img/';
+            $('#starbox').raty({ score:3,scoreName:'comment[userful_num]',hints: ['很差', '差', '一般', '很好', '非常好']});
+            <% end %>
+        }
+    </script>
+<% end %>

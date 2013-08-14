@@ -8,12 +8,14 @@ function ajaxIndexTravelsCB(data) {
 function ajaxIndexTravels(thiz) {
   //旅游攻略
   var bbsT = $("#indbbs").offset().top - 32;
+
   function scrollbbs() {
     $("#indbbslist").fadeOut(500, function () {
       $("#indbbslist").show();
       $('html, body').animate({scrollTop: bbsT});
     });
   }
+
   scrollbbs();
   var page = $(thiz).attr('page');
   $.ajax({
@@ -25,7 +27,7 @@ function ajaxIndexTravels(thiz) {
 
 //模块加载完执行的方法
 
-readyScript.this_module = function() {
+readyScript.this_module = function () {
   //日期选择
   var dates = $("#from, #to").datepicker({
     changeYear: true,
@@ -57,24 +59,25 @@ readyScript.this_module = function() {
   });
 
 
-  //浮动登录条
-  var objTop = $(".ind_slogan2_fix").offset().top;
-  $(window).scroll(function () {
-    var winTop = $(document).scrollTop();
-    //console.log(winTop);
-    if (winTop > objTop) {
-      if ((typeof ActiveXObject != "undefined") && (typeof XMLHttpRequest == "undefined")) {
-        $(".ind_slogan2").css({"position": "absolute", "top": winTop});
+  //浮动登录条，存在说明没有登录
+  var objTop = $("#_jslogintips");
+  if (objTop.length > 0) {
+    objTop.offset().top;
+    $(window).scroll(function () {
+      var winTop = $(document).scrollTop();
+      //console.log(winTop);
+      if (winTop > objTop) {
+        if ((typeof ActiveXObject != "undefined") && (typeof XMLHttpRequest == "undefined")) {
+          $(".ind_slogan2").css({"position": "absolute", "top": winTop});
+        }
+        else {
+          $(".ind_slogan2").css({"position": "fixed", "top": "0"});
+        }
+
       }
       else {
-        $(".ind_slogan2").css({"position": "fixed", "top": "0"});
+        $(".ind_slogan2").css({"position": "", "top": ""});
       }
-
-    }
-    else {
-      $(".ind_slogan2").css({"position": "", "top": ""});
-    }
-  });
-
-
+    });
+  }
 }

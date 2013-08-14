@@ -494,7 +494,7 @@ a {
 }
 
 .fontYaHei {
-    font-family:"hiragino sans gb","Microsoft YaHei",\9ED1\4F53,\5b8b\4f53,sans-serif;
+    font-family:'YaHei Consolas Hybrid','Microsoft YaHei','黑体';
 }
 
 .cBlack {
@@ -2127,7 +2127,7 @@ a.btn {
     background-image: linear-gradient(top, #fafafa 0%, #eeeeee 100%)
 }
 
-.btn2,a.btn2:link,a.btn2:visited,input[type=button],input[type=submit]{
+.btn2,a.btn2:link,a.btn2:visited,input[type=button].btn2,input[type=submit].btn2{
     text-decoration: none;
     display: inline-block;
     height: 28px;
@@ -2152,6 +2152,18 @@ a.btn {
 }
 
 .alert {
+    color: #A37F11;
+    padding: 8px 35px 8px 10px;
+    background-color: #FAF7C1;
+    border: 1px solid #E8E598;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.alert_shadow {
     color: #A37F11;
     padding: 8px 35px 8px 10px;
     text-shadow: none;

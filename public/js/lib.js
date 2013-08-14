@@ -405,3 +405,109 @@ function go_uploader(options) {
   }
 
 }
+
+
+var popup = function () {
+  this.popup = {};
+  this.popupFirst = true;
+  this.pup_code = "<div id='ui_pupBox_bg' class='ui_pupBox_bg'><div class='ui_pupBox'><div class='ui_pupBox_close'></div><div class='ui_pupBox_main'></div></div></div>";
+  this.box=null;
+}
+
+//初始化弹出窗口
+popup.prototype.start =function(width) {
+  var _this=this;
+  if (_this.popupFirst) {
+    _this.box=$(_this.pup_code);
+    _this.box.appendTo("body");
+  }
+  _this.popupFirst = false;
+  width = parseInt(width, 10);
+  _this.box.css({
+    "display": "block",
+    "height": $(document).height()
+  });
+  _this.box.find(".ui_pupBox").css({
+    "width": width + 2,
+    "top": $(document).scrollTop()
+  });
+  _this.box.find(".ui_pupBox_main").text("");
+  _this.box.find(".ui_pupBox_close").show();
+};
+
+popup.prototype.close = function () {
+  this.box.hide();
+  this.popupFirst = false;
+  return false;
+}
+
+popup.prototype.ajax = function (obj, width, cb) {
+  var _this=this;
+  var closebtn = "show";
+  var type = typeof obj;
+  if ('object' == type) {
+    url = obj.url;
+    width = obj.width;
+    closebtn = obj.closebtn;
+    cb = obj.cb;
+  } else {
+    url = obj;
+  }
+  _this.start(width);
+  $.get(url, function (html) {
+    _this.box.find(".ui_pupBox_main").html(html);
+    if (typeof cb == 'function') {
+      try {
+        cb();
+      } catch (ex) {
+      }
+    }
+  });
+  _this.box.find(".ui_pupBox_close").bind("click", function () {
+    _this.close();
+  });
+  if (closebtn == "hide") {
+    _this.box.find(".ui_pupBox_close").hide();
+  }
+};
+popup.prototype.show = function (obj, width) {
+  var _this=this;
+  var closebtn = "show";
+  var type = typeof obj;
+  if ('object' == type) {
+    id = obj.id;
+    width = obj.width;
+    closebtn = obj.closebtn;
+  } else {
+    id = obj;
+  }
+  this.start(width);
+  var idText = $("#" + id).html();
+  _this.box.find(".ui_pupBox_main").html(idText);
+  _this.box.find(".ui_pupBox_close").bind("click", function () {
+    _this.close();
+  });
+  if (closebtn == "hide") {
+    _this.box.find(".ui_pupBox_close").hide();
+  }
+}
+popup.prototype.showHtml = function (obj, width) {
+  var _this=this;
+  var closebtn = "show";
+  var type = typeof obj;
+  if ('object' == type) {
+    html = obj.html;
+    width = obj.width;
+    closebtn = obj.closebtn;
+  } else {
+    html = obj;
+  }
+  _this.start(width);
+  _this.box.find(".ui_pupBox_main").html(html);
+  _this.box.find(".ui_pupBox_close").bind("click", function () {
+    _this.close();
+  });
+  if (closebtn == "hide") {
+    _this.box.find(".ui_pupBox_close").hide();
+  }
+}

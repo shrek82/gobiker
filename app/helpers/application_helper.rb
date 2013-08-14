@@ -1,9 +1,25 @@
 #coding: utf-8
 module ApplicationHelper
 
-  def comment_list(param={})
-    @cmt_param=(request.query_parameters.merge param).to_param
+  def comment_list(add_param={})
+    @add_param=add_param
+    @request_param=request.query_parameters||{}
+    @all_param=@request_param.merge add_param
     return render 'comments/listform'
+  end
+
+  def star_span(num=1,limit=5,default=4)
+    num=default if num.nil?
+    html='<span>'
+    for i in 1..num
+      html+='<img src="/images/poi_star.png">'
+    end
+
+    for i in 1..(limit-num)
+      html+='<img src="/images/poi_star_null.png">'
+    end
+
+    raw html+'</span>'
   end
 
   def server_ip
@@ -19,13 +35,13 @@ module ApplicationHelper
 
   def metadesc(_metadesc)
     content_for :metadesc do
-      _metadesc.gsub(/\r\n/,' ').gsub(/['"]/," ")
+      _metadesc.gsub(/\r\n/, ' ').gsub(/['"]/, " ")
     end
   end
 
   def summary(_summary)
     content_for :summary do
-      _summary.gsub(/\r\n/,' ').gsub(/['"]/," ")
+      _summary.gsub(/\r\n/, ' ').gsub(/['"]/, " ")
     end
   end
 
@@ -86,11 +102,11 @@ module ApplicationHelper
   #All options not recognized by will_paginate will become HTML attributes on the container element for pagination links (the DIV). For example:
 
   def go_pager(record)
-    will_paginate record, :page_links => true,:id=>'ui_page',:class => 'ui_page'
+    will_paginate record, :page_links => true, :id => 'ui_page', :class => 'ui_page'
   end
 
   def cmt_pager(record)
-    html=will_paginate record, :page_links => true,:id=>'ui_page', :class => 'ui_page'
+    html=will_paginate record, :page_links => true, :id => 'ui_page', :class => 'ui_page'
     raw html.gsub(/href/, 'href="javascript:;" url') if html
   end
 
@@ -179,9 +195,9 @@ module ApplicationHelper
   end
 
 
-  def img_style(path=nil,style='large')
+  def img_style(path=nil, style='large')
     if path
-      path.gsub(/_[\w]+\./,'_'+style+'.')
+      path.gsub(/_[\w]+\./, '_'+style+'.')
     else
       '/images/default_img_'+style+'.png'
     end

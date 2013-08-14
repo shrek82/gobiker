@@ -30,8 +30,9 @@ class CommentsController < ApplicationController
 
   #获取评论模板
   def getone
+    template=params[:review]=='true'?"comments/list_review":"comments/list"
     @comment=Comment.find_by_id(params[:id])
-    respond :action=>'list',:comments => @comment, :layout => false
+    respond :template=>template,:comments => @comment, :layout => false
   end
 
   # GET /comments/1

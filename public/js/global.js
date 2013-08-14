@@ -78,12 +78,12 @@ function closeFlashMsg() {
 }
 
 //载入某条评论
-var loadComments = function (param) {
+var loadComments = function (add_param) {
   $.ajax({
     url: '/comments/list',
     dataType: 'html',
     type: 'get',
-    data: param + '&_format=html',
+    data: add_param + '&_format=html',
     success: function (data) {
       $('#cmt_loading').fadeOut(300, function () {
         $("#ajax_list").html($(data).fadeIn(400));
@@ -93,6 +93,14 @@ var loadComments = function (param) {
       },1200);
     }
   });
+}
+
+//滚动到评论表单位置
+var scroll_to_cmtform=function(){
+  var $comment_form=$("#comment_form");
+  var scroll_top = $comment_form.offset().top - 32;
+  $('html, body').animate({scrollTop: scroll_top});
+  $comment_form.find('textarea').focus();
 }
 
 //评论分页
@@ -105,7 +113,7 @@ var cmtpage = function (url) {
       dataType: 'html',
       type: 'get',
       success: function (data) {
-        var ajax_list = $("#ajax_list").offset().top - 32;
+        var ajax_list = $("#write_review").offset().top - 32;
         $('html, body').animate({scrollTop: ajax_list});
         $("#ajax_list").html($(data).fadeIn(400));
         setTimeout(function(){
@@ -117,7 +125,8 @@ var cmtpage = function (url) {
 }
 
 //绑定评论表单
-var bindCmtForm = function () {
+var bindCmtForm = function (add_param) {
+  var add_param=add_param?add_param+'&':'';
   $('#comment_form').bind("submit", function (e) {
     e.preventDefault();
     new ajaxForm($(this), {
@@ -129,7 +138,7 @@ var bindCmtForm = function () {
           url: '/comments/getone',
           dataType: 'html',
           type: 'get',
-          data: '_format=html&id=' + data.comment.id,
+          data: add_param+'_format=html&id=' + data.comment.id,
           success: function (html) {
             $li = $(html);
             $("#cmts_pager").before($li);
@@ -141,106 +150,4 @@ var bindCmtForm = function () {
       }
     }).send();
   });
-}
-
-
-var pupclose = function () {
-  $(".ui_pupBox_bg").hide();
-  popupFirst = false;
-  return false;
-}
-
-var popup = function () {
-
-  var popup = {};
-  var popupFirst = true;
-  var pup_code = "<div class='ui_pupBox_bg'><div class='ui_pupBox'><div class='ui_pupBox_close'></div><div class='ui_pupBox_main'></div></div></div>";
-
-
-  function pupstart(width) {
-    if (popupFirst) {
-      $("body").append(pup_code);
-    }
-    popupFirst = false;
-    width = parseInt(width, 10);
-    $(".ui_pupBox_bg").css({
-      "display": "block",
-      "height": $(document).height()
-    });
-    $(".ui_pupBox").css({
-      "width": width + 2,
-      "top": $(document).scrollTop()
-    });
-    $(".ui_pupBox_main").text("");
-    $(".ui_pupBox_close").show();
-  }
-
-  popup.start = pupstart;
-  popup.ajax = function (obj, width, cb) {
-    var closebtn = "show";
-    var type = typeof obj;
-    if ('object' == type) {
-      url = obj.url;
-      width = obj.width;
-      closebtn = obj.closebtn;
-      cb = obj.cb;
-    } else {
-      url = obj;
-    }
-    pupstart(width);
-    $.get(url, function (html) {
-      $(".ui_pupBox_main").html(html);
-      if (typeof cb == 'function') {
-        try {
-          cb();
-        } catch (ex) {
-        }
-      }
-    });
-    $(".ui_pupBox_close").bind("click", function () {
-      pupclose();
-    });
-    if (closebtn == "hide") {
-      $(".ui_pupBox_close").hide();
-    }
-  };
-  popup.show = function (obj, width) {
-    var closebtn = "show";
-    var type = typeof obj;
-    if ('object' == type) {
-      id = obj.id;
-      width = obj.width;
-      closebtn = obj.closebtn;
-    } else {
-      id = obj;
-    }
-    pupstart(width);
-    var idText = $("#" + id).html();
-    $(".ui_pupBox_main").html(idText);
-    $(".ui_pupBox_close").bind("click", function () {
-      pupclose();
-    });
-    if (closebtn == "hide") {
-      $(".ui_pupBox_close").hide();
-    }
-  }
-  popup.showHtml = function (obj, width) {
-    var closebtn = "show";
-    var type = typeof obj;
-    if ('object' == type) {
-      html = obj.html;
-      width = obj.width;
-      closebtn = obj.closebtn;
-    } else {
-      html = obj;
-    }
-    pupstart(width);
-    $(".ui_pupBox_main").html(html);
-    $(".ui_pupBox_close").bind("click", function () {
-      pupclose();
-    });
-    if (closebtn == "hide") {
-      $(".ui_pupBox_close").hide();
-    }
-  }
 }
