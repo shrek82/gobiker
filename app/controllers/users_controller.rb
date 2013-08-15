@@ -39,6 +39,11 @@ class UsersController < ApplicationController
   def check_user
     if cookies[:uid] && cookies[:email] && cookies[:username]
       @user=User.find_by_id(cookies[:uid])
+      if @user.blank?
+        cookies[:uid]=nil
+        cookies[:email]=nil
+        cookies[:username]=nil
+      end
     else
       @user=nil
     end
@@ -47,6 +52,7 @@ class UsersController < ApplicationController
 
   #登录
   def login
+
     if request.method=='POST'
       u=User.login params[:login]
       if u[:error]
@@ -61,11 +67,10 @@ class UsersController < ApplicationController
   end
 
   def logout
-    session[:uid] = nil
     cookies[:uid]=nil
     cookies[:email]=nil
     cookies[:username]=nil
-    respond :redirect_to=>'/'
+    respond :redirect_to => '/'
   end
 
   #注册验证
@@ -139,7 +144,6 @@ class UsersController < ApplicationController
 
   def authenticate
   end
-
 
 
 end

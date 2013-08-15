@@ -17,6 +17,10 @@
 <% end %>
 
 
+<% if @comments.blank? %>
+    <li style="color:#999">暂时还没有评论</li>
+<% end %>
+
 <% if @comment.nil? %>
     <li style="border-top-width: none" id="cmts_pager">
       <%= cmt_pager @comments %>

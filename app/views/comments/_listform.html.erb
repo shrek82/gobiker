@@ -16,14 +16,15 @@
       </div>
       <div class="cmt-body">
         <form method="post" id="comment_form" action="<%= comments_path %>">
-          <input type="hidden" name="comment[place_id]" value="26">
-          <input type="hidden" name="comment[user_id]" value="1">
+          <% @hidden_field.each do |key,value| %>
+              <input type="hidden" name="comment[<%= key %>]" value="<%= value %>"/>
+          <% end %>
           <div class="ds-textarea-wrapper ds-rounded-top">
-            <% if @add_param[:review] %><div id="starbox" style="color:#999;">评分:</div><% end %>
+            <% if @query_param[:review] %><div id="starbox" style="color:#999;">评分:</div><% end %>
             <textarea name="comment[content]" placeholder="" id="cmt_textarea"></textarea>
           </div>
           <div class="post-toolbar">
-            <button class="btn btn-mint" type="submit" id="submit_button">发布</button>
+            <button class="btn btn-mint" type="submit" id="cmt_submit_button">发布评论</button>
           </div>
         </form>
       </div>
@@ -33,10 +34,10 @@
 
 <% content_for:script do %>
     <script type="text/javascript">
-        readyScript.cmt=function(){
-            loadComments('<%=@all_param.to_param %>');
-            bindCmtForm('<%=@add_param.to_param %>');
-            <% if @add_param[:review] %>
+        readyScript.loadcmt_and_form=function(){
+            loadComments('<%=@query_param.to_param %>');
+            bindCmtForm('<%=@query_param.to_param %>');
+            <% if @query_param[:review] %>
             $.fn.raty.defaults.path = '/plugins/raty-2.5.2/lib/img/';
             $('#starbox').raty({ score:3,scoreName:'comment[userful_num]',hints: ['很差', '差', '一般', '很好', '非常好']});
             <% end %>

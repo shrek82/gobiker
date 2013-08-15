@@ -5,7 +5,6 @@
 <% end %>
 <% content_for:script do %>
 <script src="/js/place/crumbbox.js" type="text/javascript"></script>
-<script type="text/javascript" src="/js/jquery.form.js"></script>
 <script type="text/javascript" src="/plugins/raty-2.5.2/lib/jquery.raty.min.js"></script>
 <script type="text/javascript">
         readyScript.wantgo = function () {
@@ -17,7 +16,6 @@
         }
 </script>
 <% end %>
-
 
 <div class="qyer_head_crumbg">
   <div class="qyer_head_crumb">
@@ -32,8 +30,6 @@
     <h1 class="current"><%= @place.name %></h1>
   </div>
 </div>
-
-
 
 <div class="pl_topbox_wrap">
   <div class="pl_topbox clearfix">
@@ -103,7 +99,7 @@
       </div>
       <ul class="pl_rimplace">
         <li>
-          <a href="http://place.qyer.com/poi/99951/" class="pic"><img src="/album/user/370/90/Qk5VSxoAZQ/80" onerror="this.src='/images/place/no/poi_48_48.png'" width="48" height="48" alt="1881 1881 Heritage" title="1881 1881 Heritage"></a>
+          <a href="http://place.qyer.com/poi/99951/" class="pic"><img src="/images/80.jpg" width="48" height="48" title="1881 1881 Heritage"></a>
 
           <p class="title"><a href="http://place.qyer.com/poi/99951/" title="1881 1881 Heritage">1881 1881 Heritage</a></p>
 
@@ -112,7 +108,7 @@
           </p>
         </li>
         <li>
-          <a href="http://place.qyer.com/poi/36563/" class="pic"><img src="/album/user/214/54/Q0hRRx4CZQ/80" onerror="this.src='/images/place/no/poi_48_48.png'" width="48" height="48" alt="香港文化中心 Hong Kong Cultural Centre" title="香港文化中心 Hong Kong Cultural Centre"></a>
+          <a href="http://place.qyer.com/poi/36563/" class="pic"><img src="/images/80.jpg" onerror="this.src='/images/place/no/poi_48_48.png'" width="48" height="48" alt="香港文化中心 Hong Kong Cultural Centre" title="香港文化中心 Hong Kong Cultural Centre"></a>
 
           <p class="title"><a href="http://place.qyer.com/poi/36563/" title="香港文化中心 Hong Kong Cultural Centre">香港文化中心 Hong Kong Cultural Centre</a></p>
 
@@ -121,7 +117,7 @@
           </p>
         </li>
         <li>
-          <a href="http://place.qyer.com/poi/94446/" class="pic"><img src="/album/user/366/9/Qk9TQhMDYg/80" onerror="this.src='/images/place/no/poi_48_48.png'" width="48" height="48" alt="香港太空馆 Hong Kong  Space Museum" title="香港太空馆 Hong Kong  Space Museum"></a>
+          <a href="http://place.qyer.com/poi/94446/" class="pic"><img src="/images/80.jpg" onerror="this.src='/images/place/no/poi_48_48.png'" width="48" height="48" alt="香港太空馆 Hong Kong  Space Museum" title="香港太空馆 Hong Kong  Space Museum"></a>
 
           <p class="title"><a href="http://place.qyer.com/poi/94446/" title="香港太空馆 Hong Kong  Space Museum">香港太空馆 Hong Kong Space Museum</a></p>
 
@@ -144,9 +140,7 @@
       </div>
     </div>
     <div class="pl_sldline2"></div>
-
-    <%= comment_list :review => true %>
-
+    <%= comment_list :hidden_field=>{:place_id=>@place.id},:query_param=>{:place_id=>@place.id,:review => true} %>
   </div>
   <div class="cb"></div>
 </div>

@@ -1,14 +1,18 @@
 #coding: utf-8
 module ApplicationHelper
 
-  def comment_list(add_param={})
-    @add_param=add_param
-    @request_param=request.query_parameters||{}
-    @all_param=@request_param.merge add_param
+  #hidden_field表单隐藏字段
+  #options评论功能选项
+  #query_param载入查询选项
+  def comment_list(data={})
+    @hidden_field=data[:hidden_field]
+    @options=data[:options]||{}
+    @query_param=data[:query_param]||{}
+    #@request_param=request.query_parameters||{}
     return render 'comments/listform'
   end
 
-  def star_span(num=1,limit=5,default=4)
+  def star_span(num=1, limit=5, default=4)
     num=default if num.nil?
     html='<span>'
     for i in 1..num

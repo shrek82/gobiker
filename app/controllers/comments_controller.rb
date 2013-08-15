@@ -1,7 +1,8 @@
 #coding: utf-8
 class CommentsController < ApplicationController
-  # GET /comments
-  # GET /comments.json
+
+  before_filter :logged_in?, :only => [:new,:create,:update,:edit]
+
   def index
     @comments = Comment.all
   end
@@ -59,6 +60,7 @@ class CommentsController < ApplicationController
   #发布评论
   def create
     @comment = Comment.new(params[:comment])
+    @comment[:user_id]=cookies[:uid] if cookies[:uid]
     if @comment.save
       respond :success => '发表成功',:comment => @comment
     else
@@ -81,15 +83,4 @@ class CommentsController < ApplicationController
     end
   end
 
-  # DELETE /comments/1
-  # DELETE /comments/1.json
-  def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to comments_url }
-      format.json { head :no_content }
-    end
-  end
 end

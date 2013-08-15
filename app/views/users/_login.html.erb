@@ -1,5 +1,5 @@
 <div class="reg_main">
-      <form id="login_form" class="reg_form" method="post">
+      <form id="login_form" action="<%= login_path %>" class="reg_form" method="post" >
         <div class="clearfix"><strong class="fl f16 fontYaHei fb cGray">使用以下帐号直接登录</strong></div>
         <div class="tc mt15">
           <a href="javascript:void(0);" onfocus="this.blur();" class="weibo_btn _jsweibologin" url="http%3A%2F%2Fwww.qyer.com%2F">微博登录</a>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="list mt10 clearfix">
-          <button type="submit" id="submit_button" class="btn btn-mint big_btn fontYaHei" >立即登陆</button>
+          <button type="submit" id="submit_button" class="btn btn-mint big_btn" style="padding:8px 0;font-size:16px" >立即登陆</button>
         </div>
 
       </form>

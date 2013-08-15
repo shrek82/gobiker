@@ -1,5 +1,7 @@
 //预处理项
 var readyScript = {};
+var user={};
+
 //网站二级导航菜单
 readyScript.site_nav = function () {
   $("#qyer_head_nav_item_yd").hover(function () {
@@ -10,7 +12,7 @@ readyScript.site_nav = function () {
     $(this).find(".qyer_head_subnav_bg").hide();
   });
 }
-
+//检测登录状态
 readyScript.auto_login = function () {
   request({
     url: '/users/check_user',
@@ -33,6 +35,26 @@ var runReadyScript = function () {
 var qyerUI = {
   version: "0.1"
 };
+
+//弹出登录窗口
+
+function plogin(){
+  new popup({title:'登录'}).ajax('/users/minilogin','440',function(){
+    $('#login_form').bind("submit", function (e) {
+      e.preventDefault();
+      new ajaxForm('login_form', {
+        dataType: 'json',
+        submitButton:'login_submit_button',
+        successLabel:'登录成功',
+        sendingLabel:'验证中..',
+        errorLabel:'重试登录',
+        callback:function(){
+          window.location.href=location.href;
+        }
+      }).send();
+    });
+  });
+}
 
 //获取城市下拉菜单
 function get_cities(pid) {
@@ -78,12 +100,12 @@ function closeFlashMsg() {
 }
 
 //载入某条评论
-var loadComments = function (add_param) {
+var loadComments = function (query_param) {
   $.ajax({
     url: '/comments/list',
     dataType: 'html',
     type: 'get',
-    data: add_param + '&_format=html',
+    data: query_param + '&_format=html',
     success: function (data) {
       $('#cmt_loading').fadeOut(300, function () {
         $("#ajax_list").html($(data).fadeIn(400));
@@ -127,13 +149,22 @@ var cmtpage = function (url) {
 //绑定评论表单
 var bindCmtForm = function (add_param) {
   var add_param=add_param?add_param+'&':'';
+  var cmt_textarea=$('#cmt_textarea');
+
+  if(!user.uid){
+    $('#cmt_submit_button').prop('type','button').click(function(){plogin();});
+    cmt_textarea.focus(function(){plogin();});
+    return false;
+  }
+
   $('#comment_form').bind("submit", function (e) {
     e.preventDefault();
     new ajaxForm($(this), {
       dataType: 'json',
+      submitButton: 'cmt_submit_button',
       successLabel:'发表成功',
       callback: function (data) {
-        $('#cmt_textarea').attr('value', '');
+        cmt_textarea.attr('value', '');
         $.ajax({
           url: '/comments/getone',
           dataType: 'html',

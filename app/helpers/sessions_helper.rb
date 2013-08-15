@@ -1,4 +1,4 @@
-#encoding:utf-8
+#coding:utf-8
 module SessionsHelper
 
   def sign_in(user)
@@ -11,8 +11,7 @@ module SessionsHelper
   end
 
   def current_user
-    #@current_user ||= User.find_by_remember_token(cookies[:remember_token])
-    @current_user ||= User.find_by_id(4)
+    @current_user ||= User.find_by_id(cookies[:uid])
   end
 
   def current_user?(user)

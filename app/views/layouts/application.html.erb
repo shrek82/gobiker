@@ -8,15 +8,22 @@
   <%= favicon_link_tag 'http://www.qyer.com/favicon.ico' %>
   <link rel="stylesheet" href="/css/common/base.css"/>
   <link rel="stylesheet" href="/css/common/headfoot.css"/>
-  <%= yield :style %><%= javascript_include_tag "/js/jquery-1.7.1.min.js","/js/lib.js","/js/global.js"%>
+  <%= yield :style %><%= javascript_include_tag "/js/jquery-1.7.1.min.js","/js/jquery.form.js","/js/lib.js","/js/global.js"%>
   <%= yield :head %>
 </head>
 <body>
 <%= render :template => 'global/header' %>
 <%= yield :full_body %>
 <div id="main_body"><%= yield %></div>
+
+<% unless controller_name=='users' %>
 <%= render :template => 'global/footer' %>
+<% end %>
+
 <%= yield :footer %>
+<% if cookies[:uid] && cookies[:email] && cookies[:username] %>
+<script type="text/javascript">user={'uid':<%=cookies[:uid]%>,'username':'<%=cookies[:username]%>'};</script>
+<% end %>
 <%= yield :script %>
 <script type="text/javascript">
     $(function(){

@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def not_found(&block)
     record=yield
     if record.blank?
-      render :file => "#{Rails.root}/public/404.html", :status =>404
+      render :file => "#{Rails.root}/public/404.html", :status => 404
     else
       return yield
     end
@@ -48,6 +48,13 @@ class ApplicationController < ActionController::Base
   #      render :file => "#{Rails.root}/public/500.html", :status => 500, :layout => false
   #  end
   #end
+
+  #判断是否登录，并自动跳转登录页面或提示
+  def logged_in?
+    unless current_user
+      respond :redirect_to=>'/login',:error=>'很抱歉，您还没有登录！'
+    end
+  end
 
 
 end

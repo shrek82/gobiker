@@ -148,6 +148,9 @@ cn:
         order_num: "排序"
         redirect: "跳转地址"
         intro: "简介"
+      comment:
+        user_id: "作者"
+        content: "评论内容"
       place:
         name:  "名称"
         address: "地址"

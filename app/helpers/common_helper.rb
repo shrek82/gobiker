@@ -22,29 +22,28 @@ module CommonHelper
     #约定：
     #非ajax请求除非指定，否则均返回html格式
     #ajax格式除非指定，否则均返回json格式
-    #本controller中一般省略_format
+
+    #自定获取请求方式
     if !is_ajax?
       flash[:success]=data[:success] if data[:success]
       flash[:error]=data[:error] if data[:error]
-      if params[:_format]
-        format=params[:_format]
-      elsif data[:text]
-        format='text'
-      elsif data[:json]
-        format='json'
-      elsif data[:_format]
-        format=data[:_format]
-      else
-        format='html'
-      end
-      #ajax请求无特别注明都返回json
-    elsif data[:_format]
+    end
+
+    #指定其他格式
+    if data[:_format]
       format=data[:_format]
     elsif params[:_format]
       format=params[:_format]
-    else
+    elsif data[:text]
+      format='text'
+    elsif data[:json]
       format='json'
+    elsif is_ajax?
+      format='json'
+    else
+      format='html'
     end
+
 
     #普通方式请求且指定运行结束后跳转，优先进行跳转
     if format=='html'

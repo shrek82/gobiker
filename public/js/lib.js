@@ -407,18 +407,20 @@ function go_uploader(options) {
 }
 
 
-var popup = function () {
+var popup = function (opt) {
+  var opt = opt || {};
+  var title = opt.title ? opt.title : '提示';
   this.popup = {};
   this.popupFirst = true;
-  this.pup_code = "<div id='ui_pupBox_bg' class='ui_pupBox_bg'><div class='ui_pupBox'><div class='ui_pupBox_close'></div><div class='ui_pupBox_main'></div></div></div>";
-  this.box=null;
+  this.pup_code = "<div id='ui_pupBox_bg' class='ui_pupBox_bg'><div class='ui_pupBox'><div class='ui_pupBox_close'></div><div class='ui_pupBox_main'><div class='ui_pupBox_head'> <ul class='ui_pupBox_headtag'> <li id='tab_login' class='current'><span>" + title + "</span></li> </ul> </div> <div class='ui_pupBox_tag_cnt' id='pop_html_box'> </div></div></div></div>";
+  this.box = null;
 }
 
 //初始化弹出窗口
-popup.prototype.start =function(width) {
-  var _this=this;
+popup.prototype.start = function (width) {
+  var _this = this;
   if (_this.popupFirst) {
-    _this.box=$(_this.pup_code);
+    _this.box = $(_this.pup_code);
     _this.box.appendTo("body");
   }
   _this.popupFirst = false;
@@ -431,7 +433,7 @@ popup.prototype.start =function(width) {
     "width": width + 2,
     "top": $(document).scrollTop()
   });
-  _this.box.find(".ui_pupBox_main").text("");
+  _this.box.find(".ui_pupBox_tag_cnt").text("");
   _this.box.find(".ui_pupBox_close").show();
 };
 
@@ -441,24 +443,15 @@ popup.prototype.close = function () {
   return false;
 }
 
-popup.prototype.ajax = function (obj, width, cb) {
-  var _this=this;
+popup.prototype.ajax = function (url, width, callback) {
+  var _this = this;
   var closebtn = "show";
-  var type = typeof obj;
-  if ('object' == type) {
-    url = obj.url;
-    width = obj.width;
-    closebtn = obj.closebtn;
-    cb = obj.cb;
-  } else {
-    url = obj;
-  }
   _this.start(width);
   $.get(url, function (html) {
-    _this.box.find(".ui_pupBox_main").html(html);
-    if (typeof cb == 'function') {
+    _this.box.find(".ui_pupBox_tag_cnt").html(html);
+    if (typeof callback == 'function') {
       try {
-        cb();
+        callback();
       } catch (ex) {
       }
     }
@@ -471,7 +464,7 @@ popup.prototype.ajax = function (obj, width, cb) {
   }
 };
 popup.prototype.show = function (obj, width) {
-  var _this=this;
+  var _this = this;
   var closebtn = "show";
   var type = typeof obj;
   if ('object' == type) {
@@ -483,7 +476,7 @@ popup.prototype.show = function (obj, width) {
   }
   this.start(width);
   var idText = $("#" + id).html();
-  _this.box.find(".ui_pupBox_main").html(idText);
+  _this.box.find(".ui_pupBox_tag_cnt").html(idText);
   _this.box.find(".ui_pupBox_close").bind("click", function () {
     _this.close();
   });
@@ -492,7 +485,7 @@ popup.prototype.show = function (obj, width) {
   }
 }
 popup.prototype.showHtml = function (obj, width) {
-  var _this=this;
+  var _this = this;
   var closebtn = "show";
   var type = typeof obj;
   if ('object' == type) {
@@ -503,7 +496,7 @@ popup.prototype.showHtml = function (obj, width) {
     html = obj;
   }
   _this.start(width);
-  _this.box.find(".ui_pupBox_main").html(html);
+  _this.box.find(".ui_pupBox_tag_cnt").html(html);
   _this.box.find(".ui_pupBox_close").bind("click", function () {
     _this.close();
   });

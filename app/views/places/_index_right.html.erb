@@ -8,7 +8,8 @@
   <% @places.each do |p| %>
       <li class="gui_jnlist_item">
         <div class="gui_jnlist_item_pic">
-          <a href="/places/<%=p.id%>" target="_blank" ><%=image_tag(p.img_path,{:width=>'130px',:height=>'90px',:alt=>p.name})%></a>
+          <% img_path=(p.img_path.nil?)?'/images/default_img_thumb.png':p.img_path %>
+          <a href="/places/<%=p.id%>" target="_blank" ><%=image_tag(img_path,{:width=>'130px',:height=>'90px',:alt=>p.name})%></a>
         </div>
         <p class="gui_jnlist_item_tit"><%=link_to p.name,p,{:target => '_blank'}%></p>
         <p class="gui_jnlist_item_text">中国<br> <%= localize p.created_at,:format => :default %>更新</p>
