@@ -38,6 +38,7 @@ class PhotosController < ApplicationController
   #上传图片
   def upload
     @photo = Photo.new(params[:photo])
+    @photo.user_id=1
     if @photo.save
       file_extension=@photo.img_file_name[/\.[a-z]{3,4}$/]
       file_path="/uploads/photos/"+@photo[:created_at].strftime('%Y').to_s+'/'+@photo[:created_at].strftime('%m%d').to_s+'/'+@photo[:id].to_s+"_thumb.jpg"

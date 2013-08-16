@@ -1,4 +1,4 @@
-<select name="area_id" id="areas">
+<select name="<%=@object?@object+'[area_id]':'area_id'%>" id="areas">
   <% if @areas.blank? %>
       <option>选择区</option>
   <% else %>

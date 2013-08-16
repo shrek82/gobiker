@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130814084746) do
+ActiveRecord::Schema.define(:version => 20130816031540) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -304,6 +304,8 @@ ActiveRecord::Schema.define(:version => 20130814084746) do
     t.integer  "comments_num",   :default => 0
     t.string   "img_ids"
     t.integer  "rating"
+    t.integer  "wantgoto_num"
+    t.integer  "beengo_num"
   end
 
   create_table "places_tags", :id => false, :force => true do |t|

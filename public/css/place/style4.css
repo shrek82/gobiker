@@ -40,44 +40,24 @@
 
 .pl_tittag{ font-size:14px; line-height:16px; color:#636363 }
 
-.pl_tittag
-.current{ }
+.pl_tittag .current{ }
 
-.pl_tittag
-.gap{ padding:0 15px; color:#e1e1e1 }
+.pl_tittag .gap{ padding:0 15px; color:#e1e1e1 }
 
 .pl_tittag3{ margin:-4px 0; font-size:14px; line-height:24px; color:#636363 }
 
-.pl_tittag3
-.current{ }
+.pl_tittag3 .current{ }
 
-.pl_tittag3
-.gap{ padding:0 15px; color:#e1e1e1 }
-
+.pl_tittag3 .gap{ padding:0 15px; color:#e1e1e1 }
 .pl_tittag2{ width:100%; overflow:hidden; font-size:14px; line-height:24px }
-
-.pl_tittag2
-li{ float:left; padding-right:22px; margin-right:21px; background:url(/images/place/four/bar_h14a.png) no-repeat right center }
-
-.pl_tittag2
-li.last{ padding-right:0; margin-right:0; background:none }
-
-.pl_tittag2
-.current{ color:#636363 }
-
+.pl_tittag2 li{ float:left; padding-right:22px; margin-right:21px; background:url(/images/place/four/bar_h14a.png) no-repeat right center }
+.pl_tittag2 li.last{ padding-right:0; margin-right:0; background:none }
+.pl_tittag2 .current{ color:#636363 }
 .pl_tittag4{ font-size:12px; line-height:14px; color:#636363 }
-
-.pl_tittag4
-.current{ }
-
-.pl_tittag4
-.gap{ padding:0 10px; color:#e1e1e1 }
-
+.pl_tittag4 .current{ }
+.pl_tittag4 .gap{ padding:0 10px; color:#e1e1e1 }
 .pl_titmore{ width:100%; height:16px; font-size:14px; line-height:16px }
-
-.pl_titmore
-a{ padding-left:20px; background:url(/images/place/four/title_morebg.png) no-repeat 0 center }
-
+.pl_titmore a{ padding-left:20px; background:url(/images/place/four/title_morebg.png) no-repeat 0 center }
 .ui_seqencing{ }
 
 .ui_seqencing_item{ }
@@ -148,22 +128,15 @@ em{ font-size:36px; line-height:1.2 }
 
 .pl_topbox_btn{ width:100%; height:32px }
 
-.pl_topbox_btn
-li{ position:relative; float:left; height:32px; margin-left:30px }
+.pl_topbox_btn li{ position:relative; float:left; height:32px; margin-left:30px }
 
-.pl_topbox_btn
-.click{ display:block; height:32px; font-size:14px; line-height:32px; padding-left:33px; background:url(/images/place/four/want_been_lived.png) no-repeat 0 0; color:#636363 }
+.pl_topbox_btn .click{ display:block; height:32px; font-size:14px; line-height:32px; padding-left:33px; background:url(/images/place/four/want_been_lived.png) no-repeat 0 0; color:#636363 }
 
 .pl_topbox_btn .click:hover{ text-decoration:none }
 
-.pl_topbox_btn
-.num{ display:none; position:absolute; top:-29px; left:0; min-width:100px; color:#959595 }
+.pl_topbox_btn span.tips{display:none;alpha(opacity=100); opacity:1;width:15px;height:15px;color:#f60;position:absolute;font-family:verdana;font-size:16px;font-weight:bold;top:-18px;left:20px}
+.pl_topbox_btn span.num{width:15px;height:15px;color:#f60;position:absolute;font-family:verdana;font-size:16px;font-weight:bold;top:-18px;left:20px}
 
-.pl_topbox_btn .num
-span{ float:left; height:22px; padding:0 5px; line-height:22px; border:1px solid #d7d7d7; background-color:#ffffd0 }
-
-.pl_topbox_btn .num
-em{ position:absolute; z-index:2; left:10px; bottom:-4px; width:9px; height:5px; overflow:hidden; background:url(/images/place/four/topbtn_numarrow.png) no-repeat }
 
 .pl_topbox_want .click{ background-position:0 0 }
 .pl_topbox_want .click:hover{ background-position:0 -105px}
@@ -181,53 +154,25 @@ em{ position:absolute; z-index:2; left:10px; bottom:-4px; width:9px; height:5px;
 
 .pl_topbox_want_ed .click, .pl_topbox_been_ed .click, .pl_topbox_lived_ed
 .click{ background-position:0 -210px }
-
 .pl_topbox_want_cls .click, .pl_topbox_been_cls .click, .pl_topbox_lived_cls .click{ background-position:0 -245px }
-
 .pl_topbox_want_hav .num, .pl_topbox_been_hav .num, .pl_topbox_lived_hav .num{ display:block }
-
 .pl_topbox_want_cls .num, .pl_topbox_been_cls .num, .pl_topbox_lived_cls .num{ display:block }
-
 .pl_infonav{ margin:-12px 0 0 -20px }
-
-.pl_infonav
-li{ float:left; width:125px; margin:12px 0 0 20px }
-
-.pl_infonav
-a{ display:block; padding-left:25px; background:url(/images/place/four/infonav.png) no-repeat; font-size:14px; line-height:22px; color:#636363 }
-
-.pl_infonav
-a.profile{ background-position:0 0 }
-
-.pl_infonav
-a.utility{ background-position:0 -25px }
-
-.pl_infonav
-a.visa{ background-position:0 -50px }
-
-.pl_infonav
-a.money{ background-position:0 -75px }
-
-.pl_infonav
-a.date{ background-position:0 -100px }
-
-.pl_infonav
-a.counsel{ background-position:0 -125px }
-
+.pl_infonav li{ float:left; width:125px; margin:12px 0 0 20px }
+.pl_infonav a{ display:block; padding-left:25px; background:url(/images/place/four/infonav.png) no-repeat; font-size:14px; line-height:22px; color:#636363 }
+.pl_infonav a.profile{ background-position:0 0 }
+.pl_infonav a.utility{ background-position:0 -25px }
+.pl_infonav a.visa{ background-position:0 -50px }
+.pl_infonav a.money{ background-position:0 -75px }
+.pl_infonav a.date{ background-position:0 -100px }
+.pl_infonav a.counsel{ background-position:0 -125px }
 .pl_infonav .current a, .pl_infonav a:hover{ text-decoration:none; color:#fff; background-color:#6faf8e }
-
 .pl_infonav .current a.profile, .pl_infonav a.profile:hover{ background-position:0 -150px }
-
 .pl_infonav .current a.utility, .pl_infonav a.utility:hover{ background-position:0 -175px }
-
 .pl_infonav .current a.visa, .pl_infonav a.visa:hover{ background-position:0 -200px }
-
 .pl_infonav .current a.money, .pl_infonav a.money:hover{ background-position:0 -225px }
-
 .pl_infonav .current a.date, .pl_infonav a.date:hover{ background-position:0 -250px }
-
 .pl_infonav .current a.counsel, .pl_infonav a.counsel:hover{ background-position:0 -275px }
-
 .pl_sortnav{ margin:-18px 0 0 -22px }
 
 .pl_sortnav

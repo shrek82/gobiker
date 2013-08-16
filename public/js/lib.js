@@ -411,7 +411,6 @@ var popup = function (opt) {
   var opt = opt || {};
   var title = opt.title ? opt.title : '提示';
   this.popup = {};
-  this.popupFirst = true;
   this.pup_code = "<div id='ui_pupBox_bg' class='ui_pupBox_bg'><div class='ui_pupBox'><div class='ui_pupBox_close'></div><div class='ui_pupBox_main'><div class='ui_pupBox_head'> <ul class='ui_pupBox_headtag'> <li id='tab_login' class='current'><span>" + title + "</span></li> </ul> </div> <div class='ui_pupBox_tag_cnt' id='pop_html_box'> </div></div></div></div>";
   this.box = null;
 }
@@ -419,11 +418,9 @@ var popup = function (opt) {
 //初始化弹出窗口
 popup.prototype.start = function (width) {
   var _this = this;
-  if (_this.popupFirst) {
-    _this.box = $(_this.pup_code);
-    _this.box.appendTo("body");
-  }
-  _this.popupFirst = false;
+  _this.box = $(_this.pup_code);
+  _this.box.appendTo("body");
+
   width = parseInt(width, 10);
   _this.box.css({
     "display": "block",
@@ -438,9 +435,7 @@ popup.prototype.start = function (width) {
 };
 
 popup.prototype.close = function () {
-  this.box.hide();
-  this.popupFirst = false;
-  return false;
+  $('#ui_pupBox_bg').remove();
 }
 
 popup.prototype.ajax = function (url, width, callback) {

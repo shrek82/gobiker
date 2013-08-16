@@ -1,20 +1,42 @@
 <% @title=@place.name+' - 目的地' %>
 <% content_for:style do %>
-<link rel="stylesheet" href="/css/common/comments.css"/>
-<link rel="stylesheet" href="/css/place/style4.css"/>
+    <link rel="stylesheet" href="/css/common/comments.css"/>
+    <link rel="stylesheet" href="/css/place/style4.css"/>
 <% end %>
 <% content_for:script do %>
-<script src="/js/place/crumbbox.js" type="text/javascript"></script>
-<script type="text/javascript" src="/plugins/raty-2.5.2/lib/jquery.raty.min.js"></script>
-<script type="text/javascript">
+    <script src="/js/place/crumbbox.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/plugins/raty-2.5.2/lib/jquery.raty.min.js"></script>
+    <script type="text/javascript">
         readyScript.wantgo = function () {
             $("#pl_topbox_want a").click(function () {
-                $(this).parent().find('span').show().animate({'opacity': 0, 'top': '-50px'}, 400,'linear', function () {
+                var $wanta=$(this);
+                $(this).parent().find('span.tips').show().animate({'opacity': 0, 'top': '-50px'}, 400, 'linear', function () {
                     $(this).hide().css({'opacity': 1, 'top': '-18px'});
+                    $.ajax({
+                        url:'<%= wantgoto_place_path %>',
+                        type:'post',
+                        success:function(res){
+                            $wanta.attr('title',res.wantgoto_num+'人想去这里');
+                        }
+                    });
+                });
+            });
+            $("#pl_topbox_been a").click(function () {
+                var $beena=$(this);
+                $(this).parent().find('span.tips').show().animate({'opacity': 0, 'top': '-50px'}, 400, 'linear', function () {
+                    $(this).hide().css({'opacity': 1, 'top': '-18px'});
+                });
+                $.ajax({
+                    url:'<%= beento_place_path %>',
+                    type:'post',
+                    success:function(res){
+                        $beena.attr('title',res.beengo_num+'人去过这里');
+                        $("#doings_beento_counts_big").html(res.beengo_num);
+                    }
                 });
             })
         }
-</script>
+    </script>
 <% end %>
 
 <div class="qyer_head_crumbg">
@@ -23,7 +45,7 @@
     <span class="space">&gt;</span>
     <span class="text drop"><a href="<%= places_path %>">目的地</a><em class="arrow" data="crumb_continents"></em></span>
     <% if @place.province && @place.city %>
-        <span class="space">&gt;</span><span class="text drop"><a href="http://place.qyer.com/asia/" data-bn-ipg="3-3"><%= @place.province.name %></a><em class="arrow" data="crumb_country"></em></span><span class="space">&gt;</span><span class="text drop"><a href="<%= city_places_path @place.city.pinyin %>" data-bn-ipg="3-4"><%= @place.city.name %></a><em class="arrow" data="crumb_city"></em></span>
+        <span class="space">&gt;</span><span class="text drop"><a href="<%= city_places_path @place.city.pinyin %>" data-bn-ipg="3-3"><%= @place.province.name %></a><em class="arrow" data="crumb_country"></em></span><span class="space">&gt;</span><span class="text drop"><a href="<%= city_places_path @place.city.pinyin %>" data-bn-ipg="3-4"><%= @place.city.name %></a><em class="arrow" data="crumb_city"></em></span>
     <% end %>
     <span class="space">&gt;</span>
 
@@ -44,14 +66,15 @@
     <div class="pl_topbox_right">
       <ul class="pl_topbox_btn">
         <li class="pl_topbox_want" id="pl_topbox_want">
-          <span style="display:none;alpha(opacity=100); opacity:1;width:15px;height:15px;color:#f60;position:absolute;font-family:verdana;font-size:16px;font-weight:bold;top:-18px;left:20px">+1</span>
-          <a href="javascript:void(0);" class="click" id="doings_planto_button" title="12323人">想去</a>
+          <span class="tips">+1</span>
+          <a href="javascript:void(0);" class="click" id="doings_planto_button" title="<%=@place.wantgoto_num.to_i.to_s %>人想去这里">想去</a>
         </li>
         <li class="pl_topbox_been" id="pl_topbox_been">
-          <a href="javascript:void(0);" class="click" id="doings_beento_button" title="12323人">去过</a>
+          <span class="tips">+1</span>
+          <a href="javascript:void(0);" class="click" id="doings_beento_button" title="<%=@place.beengo_num.to_i.to_s %>人去过这里">去过</a>
         </li>
       </ul>
-      <p class="pl_topbox_numbeen fontYaHei"><em id="doings_beento_counts_big">2167</em>人去过这里</p>
+      <p class="pl_topbox_numbeen fontYaHei"><em id="doings_beento_counts_big"><%=@place.beengo_num.to_i.to_s %></em>人去过这里</p>
     </div>
   </div>
 </div>
@@ -59,17 +82,15 @@
   <div class="pl_side">
     <div>
       <div class="pl_title">
-        <h2 class="pl_title_name">照片</h2>
+        <h2 class="pl_title_name">相册</h2>
       </div>
       <!--有图时start-->
       <div class="pl_poiphoto _jsheight">
-        <p id="poiphoto"><a href="http://place.qyer.com/poi/59047/photo/" target="_blank"><img src="<%= img_style @place.img_path, "medium" %>" width="270" alt="尖沙咀"></a></p>
-
-        <p class="pl_poiphoto_writer" style="display: none;">来自：<a href="http://user.qyer.com/user_uid_284698">长牙的兔子</a></p>
+        <p id="poiphoto"><a href="<%= photos_place_path %>" target="_blank"><img src="<%= img_style @place.img_path, "medium" %>" width="270" alt="<%= @place.name %>"></a></p>
       </div>
       <div class="pl_poiphoto_more">
-        <span class="fr"><a href="http://place.qyer.com/poi/59047/photo/" target="_blank" class="more">更多照片 244张</a></span><a href="#" class="pl_poiphoto_album">相册上传</a><a href="#" class="pl_poiphoto_native">本地上传</a></div>
-
+        <span class="fr"><a href="<%=photos_place_path %>" target="_blank" class="more">更多照片 <%= @place.albums.first.photos.count %>张</a></span><a href="#" class="pl_poiphoto_album">相册上传</a><a href="#" class="pl_poiphoto_native">本地上传</a>
+      </div>
     </div>
     <div class="pl_sldline2"></div>
     <div>
@@ -78,7 +99,7 @@
       </div>
       <ul class="pl_hotqyer clearfix">
         <% @place.been_to_places.each do |b| %>
-            <li><a href="http://user.qyer.com/user_uid_502693" title="<%= b.user.username %>"><img src="/data/avatar/000/50/26/93_avatar_small.jpg" width="30" height="30" alt=""></a></li>
+            <li><a href="<%=u_path b.user  %>" title="<%= b.user.username %>"><img src="<%= b.user.avatar_path %>" width="30" height="30" ></a></li>
         <% end %>
       </ul>
     </div>
@@ -127,23 +148,34 @@
         </li>
       </ul>
     </div>
-
-
   </div>
   <div class="pl_cont">
-    <div>
-      <div class="pl_title">
-        <h2 class="pl_title_name">概述</h2>
-      </div>
-      <div class="pl_wordcnt">
-        <%= raw @place.content %>
-      </div>
+    <div class="pl_title">
+      <h2 class="pl_title_name">概述</h2>
     </div>
+
+    <div class="pl_wordcnt">
+      <%= raw @place.content %>
+    </div>
+
     <div class="pl_sldline2"></div>
-    <%= comment_list :hidden_field=>{:place_id=>@place.id},:query_param=>{:place_id=>@place.id,:review => true} %>
+
+    <div class="pl_title">
+      <h2 class="pl_title_name">相关话题</h2>
+    </div>
+
+    <div class="pl_wordcnt">
+      <%= raw @place.intro %>
+    </div>
+
+
+    <div class="pl_sldline2"></div>
+    <%= comment_list :hidden_field => {:place_id => @place.id}, :query_param => {:place_id => @place.id, :review => true} %>
   </div>
   <div class="cb"></div>
 </div>
+
+
 <div class="app_puplayer" id="app_puplayer" style="display: none;">
   <p class="imgs"><img src="http://pic.qyer.com/album/user/388/30/QkFdQRoAYw/index" width="480" height="240" alt=""></p>
 
@@ -171,8 +203,6 @@
 
 
 <div class="qyer_head_crumb_pulldown crumb_country" style="display: none;">
-
-
   <ul>
     <li><a href="http://place.qyer.com/china/" data-bn-ipg="3-3-2">中国 China</a></li>
     <li><a href="http://place.qyer.com/thailand/" data-bn-ipg="3-3-2">泰国 Thailand</a></li>
@@ -186,7 +216,6 @@
     <li><a href="http://place.qyer.com/philippines/" data-bn-ipg="3-3-2">菲律宾 Philippines</a></li>
   </ul>
   <ul>
-
     <li><a href="http://place.qyer.com/nepal/" data-bn-ipg="3-3-2">尼泊尔 Nepal</a></li>
     <li><a href="http://place.qyer.com/india/" data-bn-ipg="3-3-2">印度 India</a></li>
     <li><a href="http://place.qyer.com/maldives/" data-bn-ipg="3-3-2">马尔代夫 Maldives</a></li>

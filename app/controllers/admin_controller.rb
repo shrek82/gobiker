@@ -1,9 +1,10 @@
 #coding: utf-8
 class AdminController < ApplicationController
 
-  before_filter :logged_in?, :except => [:login]
+  before_filter :check_manager, :except => [:login]
+
   #helper_method定义的方法可以在试图中使用
-  helper_method :current_user, :logged_in?
+  #helper_method :current_user, :logged_in?
 
   #登陆
   def login
@@ -34,22 +35,14 @@ class AdminController < ApplicationController
   def dashboard
   end
 
-  #当前用户
-  def current_user
-    @current_user ||= Manager.find_by_id(session[:manager_id])
-  end
-
-  #是否登陆
-  def logged_in?
-    redirect_to :action => 'login' unless current_user
-  end
-
-  before_filter :manager_check
   private
-  def manager_check
+  def check_manager
     @benladeng='erqiu'
     @request_media_type=request.media_type
     @request_method=request.method
+    unless session[:manager_id]
+      respond :redirect_to => '/admin/login',:error=>'未登录后台管理'
+    end
   end
 
   def server_ip

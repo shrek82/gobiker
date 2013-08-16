@@ -24,7 +24,6 @@
       </div>
     </div>
 
-
     <div class="control-group">
       <%= f.label :province_id, :class => 'control-label' %>
       <div class="controls">
@@ -39,6 +38,12 @@
       </div>
     </div>
 
+    <div class="control-group">
+      <%= f.label :user_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :user_id, :class => 'input-xxlarge' %>
+      </div>
+    </div>
 
     <div class="control-group">
       <%= f.label :tags, :class => 'control-label' %>
@@ -62,6 +67,8 @@
       </div>
     </div>
 
+
+
     <div class="control-group" id="uploadify_preview" style="display:<%= (@pics.blank?) ? 'none' : 'block' %>">
       <div class="controls">
         <ul>
@@ -80,13 +87,6 @@
         <%= f.hidden_field :img_ids, :class => 'input-xxlarge', :id => "img_ids" %>
         <%= f.hidden_field :img_path, :class => 'input-xxlarge', :id => "img_path" %>
         <input type="file" name="file_upload" id="file_upload"/>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :user_id, :class => 'control-label' %>
-      <div class="controls">
-        <%= @place.user.username if @place.user %>
       </div>
     </div>
 

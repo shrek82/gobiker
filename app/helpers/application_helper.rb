@@ -141,21 +141,21 @@ module ApplicationHelper
   #自动显示省市区下拉菜单并选择
   def province_city_area_select(object, pid=nil, cid=nil, aid=nil)
     provinces=Province.all
-    html='<select name="'+object.to_s+'[province_id]" id="provinces" onchange="get_cities(this.value)" class="span2">'
+    object_name="'"+object.to_s+"'"
+    html='<select name="'+object.to_s+'[province_id]" id="provinces" onchange="get_cities(this.value,'+object_name+')" class="span2">'
     html+='<option>选择省份</option>'
     provinces.each do |p|
       selected=''
       selected='selected' if p.id==pid
       html+='<option value="'+p.id.to_s+'"'+selected+'>'+p.name+'</option>'
     end
-
     html+='</select>'
 
     #显示市
     html+='&nbsp;<span id="city_select">'
     if pid
       cities=City.where(:province_id => pid)
-      html+='<select name="'+object.to_s+'[city_id]" id="cities" onchange="get_areas(this.value)" class="span2">'
+      html+='<select name="'+object.to_s+'[city_id]" id="cities" onchange="get_areas(this.value,'+object_name+')" class="span2">'
       html+='<option>选择县市</option>'
       cities.each do |c|
         selected=''

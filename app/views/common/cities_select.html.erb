@@ -1,4 +1,4 @@
-<select name="city_id" id="cities" onchange="get_areas(this.value)">
+<select name="<%=@object?@object+'[city_id]':'city_id'%>" id="cities" onchange="get_areas(this.value,'<%=@object%>')">
   <% if @cities.blank? %>
       <option>选择县市</option>
   <% else %>

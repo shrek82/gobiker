@@ -6,14 +6,27 @@ module SessionsHelper
     self.current_user = user
   end
 
+  #是否登录
+  def logged_in?
+    cookies[:uid] && cookies[:username]
+  end
+
+  #当前用户id
+  def current_uid
+    cookies[:uid]
+  end
+
+  #设置当前用户
   def current_user=(user)
     @current_user = user
   end
 
+  #获取当前用户
   def current_user
     @current_user ||= User.find_by_id(cookies[:uid])
   end
 
+  #是否为当前用户
   def current_user?(user)
     user == current_user
   end

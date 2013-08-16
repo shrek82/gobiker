@@ -57,6 +57,7 @@
             <td class="record-checkbox">审核</td>
             <td class="record-title">标题</td>
             <td class="record-cmthit">评论/点击</td>
+            <td class="record-cmthit">想去/去过</td>
             <td class="record-author">作者</td>
             <td class="record-date">发布日期</td>
             <td class="record-operate">操作</td>
@@ -69,7 +70,8 @@
               <tr id="record_<%= r.id %>">
                 <td class="record-checkbox"><input type="checkbox" name="cid[]" value="1"></td>
                 <td class="record-title"><a href="<%= edit_admin_place_path(r, :format => 'html') %>"><%= r.name %></a></td>
-                <td class="record-cmthit"><span><%= r.comments_num %></span>/<%= r.hits_num %></td>
+                <td class="record-cmthit"><span><%= r.comments_num %></span>/<%= r.hits_num %>/<%= r.wantgoto_num.to_i %>/<%= r.beengo_num.to_i %></td>
+                <td class="record-cmthit"><%= r.wantgoto_num.to_i %>/<%= r.beengo_num.to_i %></td>
                 <td class="record-author"><%= r.user.username if r.user %></td>
                 <td class="record-date"><%= to_pretty(r.created_at) %>
                   <% r.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>

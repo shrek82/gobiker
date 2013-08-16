@@ -156,7 +156,7 @@ cn:
         address: "地址"
         intro: "简介"
         province_id: "所属省份"
-        city_id: "所在显示"
+        city_id: "所在地区"
         area_id: "所在区域"
         tags: "标签"
         content: "详细说明"

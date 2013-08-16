@@ -5,20 +5,20 @@ class Place < ActiveRecord::Base
   #default_scope :order => 'id'
   #字段白名单，可以通过parrt[:place]
   #会影响rake db:seed数据导入
-  attr_accessible :name, :content, :tags, :category_id, :img_path, :img_ids, :province_id, :city_id, :area_id, :address, :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num, :intro, :content, :user_id
+  attr_accessible :name, :content, :tags, :category_id, :img_path, :img_ids, :province_id, :city_id, :area_id, :address, :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num, :intro, :content, :user_id,:wantgoto_num,:beengo_num
 
   #黑名单
   #attr_protected :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num
 
   #不允许为空
-  validates_presence_of :name, :message => '不能为空', :text => '标题'
+  validates_presence_of :name, :text => '标题'
   validates_presence_of :content, :message => '不能为空'
-  validates_presence_of :address, :message => '不能为空', :text => '地址'
-  validates_presence_of :intro, :message => '不能为空', :text => '地址'
-  validates_length_of :name, :in => (2..30), :message => '不能少于2个字符'
-  validates_length_of :intro, :maximum => 250
-  validates_presence_of :province_id, :message => '不能为空', :text => '所属省份'
-  validates_presence_of :city_id, :message => '不能为空', :text => '所在地区'
+  validates_presence_of :address,:text => '地址'
+  validates_presence_of :intro,:text => '地址'
+  validates_length_of :name,:in => (2..30), :message => '不能少于2个字符'
+  validates_length_of :intro,:maximum => 250
+  validates_presence_of :province_id,:text => '省份'
+  validates_presence_of :city_id,:text => '所在地区'
 
 
   #validates_format_of :name, :with => /^[\w\.]+$/,
@@ -38,6 +38,8 @@ class Place < ActiveRecord::Base
   #自动创建一个相册
   after_create :create_album
   after_update :update_album
+
+  default_scope :order => '`places`.id DESC'
 
   #还可以这样追加model的方法
   def self.fixed

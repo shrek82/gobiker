@@ -11,7 +11,8 @@ class Recommend < ActiveRecord::Base
   ALL_CATEGORY={:home=>'首页',:place=>'目的地',:route=>'路线'}
 
   #幻灯片
-  scope :focus,select("id,name,img_path,redirect,category").where("is_close=?",false).order('is_fixed DESC,order_num ASC,id DESC')
+  scope :focus,select("id,name,img_path,redirect,category").order('is_fixed DESC,order_num ASC,id DESC')
+  #scope :focus,select("id,name,img_path,redirect,category").where("is_close=?",false).order('is_fixed DESC,order_num ASC,id DESC')
   scope :cat,lambda { |category| where("category=?",category)}
 
   before_save :set_boolean

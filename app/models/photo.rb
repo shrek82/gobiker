@@ -4,7 +4,7 @@ class Photo < ActiveRecord::Base
                   :img, :img_content_type, :img_file_name, :img_file_size, :img_updated_at
 
   has_attached_file :img,
-                    :styles => {:square=>"80x80#",:mini => "100x100>",:thumb => "150x150>",:medium => "300x300>", :large => "600x600>",:original => "800x800>"},
+                    :styles => {:square=>"80x80#",:mini => "100x100>",:thumb => "150x150>",:sqr_thumb=>"180x180#",:medium => "300x300>", :large => "600x600>",:original => "800x800>"},
                     :default_url => "/images/:style/missing.png",
                     :url => "/uploads/photos/:year/:month:day/:id_:style.:extension",
                     :path => ":rails_root/public/uploads/photos/:year/:month:day/:id_:style.:extension"

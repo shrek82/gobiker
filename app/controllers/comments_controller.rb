@@ -1,7 +1,7 @@
 #coding: utf-8
 class CommentsController < ApplicationController
 
-  before_filter :logged_in?, :only => [:new,:create,:update,:edit]
+  before_filter :check_logged,:only => [:new,:create,:update,:edit]
 
   def index
     @comments = Comment.all

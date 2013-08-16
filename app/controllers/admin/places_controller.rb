@@ -14,6 +14,7 @@ class Admin::PlacesController < AdminController
   #添加记录
   def new
     @place = Place.new
+    @place[:user_id]=1
   end
 
   #编辑记录
@@ -28,10 +29,6 @@ class Admin::PlacesController < AdminController
   def create
 
     @place = Place.new(params[:place])
-    @place.province_id=params[:province_id]
-    @place.city_id=params[:city_id]
-    @place.area_id=params[:area_id]
-
     if @place.save
       respond :redirect_to => admin_places_path, :success => '目的地添加成功'
     else

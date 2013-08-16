@@ -33,11 +33,17 @@ class PlacesController < ApplicationController
     end
   end
 
-  # GET /places/new
-  # GET /places/new.json
+
+  #相册
+  def photos
+    @place=Place.find(params[:id])
+    @album=Album.find_or_create_by_place_id(params[:id], :place_id => @place.id, :name => @place.name+'相册')
+    @photos=Photo.where(:album_id=>@album.id).paginate(:page => params[:page], :per_page =>20, :order => "photos.id DESC",:include => :user)
+  end
+
+  #添加记录
   def new
     @place = Place.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @place }
@@ -99,12 +105,35 @@ class PlacesController < ApplicationController
 
   end
 
-  #相册
-  def photos
-    @place=Place.find(params[:id])
-    @album=Album.find_or_create_by_place_id(params[:id],:place_id=>@place.id,:name=>@place.name+'相册')
-    @photos=Photo.paginate(:page => params[:page], :per_page => 12, :order => "photos.id DESC")
-  end
-end
+  #增加去过人数
+  def wantgoto
 
-#test
+    if logged_in?
+      @want=WantToPlace.where(:place_id => params[:id], :user_id => current_uid)
+      if @want.blank?
+        WantToPlace.create(:place_id => params[:id], :user_id => current_uid)
+      end
+    end
+
+    @place = Place.find(params[:id])
+    if @place.update_attributes(:wantgoto_num => @place.wantgoto_num.to_i+1)
+      respond :_format => 'json', :wantgoto_num => @place.wantgoto_num, :beengo_num => @place.beengo_num
+    end
+  end
+
+  #增加去过人数
+  def beento
+
+    if logged_in?
+      @been=BeenToPlace.where(:place_id => params[:id], :user_id => current_uid)
+      if @been.blank?
+        BeenToPlace.create(:place_id => params[:id], :user_id => current_uid)
+      end
+    end
+    @place = Place.find(params[:id])
+    if @place.update_attributes(:beengo_num => @place[:beengo_num].to_i+1)
+      respond :_format => 'json', :wantgoto_num => @place.wantgoto_num, :beengo_num => @place.beengo_num
+    end
+  end
+
+end
