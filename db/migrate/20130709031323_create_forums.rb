@@ -1,7 +1,7 @@
 class CreateForums < ActiveRecord::Migration
   def change
     create_table :forums do |t|
-      t.string :name, :limit => 20
+      t.string :name, :limit => 100
       t.string :intro
       t.integer :province_id
       t.integer :city_id

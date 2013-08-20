@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816031540) do
+ActiveRecord::Schema.define(:version => 20130820085218) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -199,7 +199,10 @@ ActiveRecord::Schema.define(:version => 20130816031540) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.string   "ico_path",    :limit => 250
+    t.integer  "category_id"
   end
+
+  add_index "forums", ["category_id"], :name => "index_forums_on_category_id"
 
   create_table "guide_categories", :force => true do |t|
     t.string   "name"
