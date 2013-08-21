@@ -1,13 +1,15 @@
 #coding:utf-8
 class Topic < ActiveRecord::Base
   attr_accessible :club_id, :comments_num, :forum_id, :hits_num, :is_comment, :is_fixed, :is_good, :is_recommend, :last_comment_time, :last_comment_user_id, :last_comment_user_name, :subject_id, :title, :title_color, :user_id,:content
-  belongs_to :forum,:foreign_key => "id"
+  belongs_to :forum,:foreign_key => "forum_id"
   belongs_to :user
+  belongs_to :reply_user, :class_name => "User", :foreign_key => "last_comment_user_id"
 
   validates_presence_of :forum_id
+  validates_length_of :title,:in => 2..60
   validates_presence_of :user_id
-  validates_presence_of :content
-  validates_length_of :content,:in => 2..8000
+  validates_length_of :content,:in => 2..38000
+
 
   #可以使用validates组合，组合是可以，但不明了
   #validates :terms, acceptance: true
@@ -21,18 +23,20 @@ class Topic < ActiveRecord::Base
   #validates :username, uniqueness: true
 
   #例如下面
-  validates :title,:presence => true,:length => {:in => 3..45,:maximum => 30,:allow_nil => true}, :uniqueness => true
+  #validates :title,:presence => true,:length => {:in => 3..60,:allow_nil => true}
 
   #自定义验证方法
-  validate :cannot_be_robot
+  #validate :cannot_be_robot
 
   #或随着块一起验证当前记录
-  validate do |cur|
-    cur.event_topic
-  end
+  #validate do |cur|
+  #  cur.event_topic
+  #end
 
   #当touch=>true时,forum改变时，更改topic update_at
   #belongs_to :forum,:touch=>true
+
+  scope :base_field, select("topics.id,topics.title,topics.forum_id,topics.subject_id,topics.user_id,topics.title_color,topics.last_comment_user_id,topics.hits_num,topics.comments_num,topics.is_fixed,topics.is_good")
 
 
   def event_topic

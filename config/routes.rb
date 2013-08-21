@@ -2,8 +2,6 @@
 
 Gobiker::Application.routes.draw do
 
-  get "mytest/index"
-
   #show、new、edit、update、destroy是单数，对单一元素操作
   #index、create是复数，对群集操作
   #place_path(@place)需要参数，根据HTTP动词决定show、update、destroy
@@ -30,12 +28,14 @@ Gobiker::Application.routes.draw do
     end
   end
 
+  #照片
   resources :photos do
     collection do
       post :upload
     end
   end
 
+  #评论
   resources :comments do
     collection do
       get :list
@@ -43,6 +43,7 @@ Gobiker::Application.routes.draw do
     end
   end
 
+  #目的地
   resources :places do
     member do
       get 'photos'
@@ -50,9 +51,34 @@ Gobiker::Application.routes.draw do
       post 'beento'
     end
     collection do
-      match 'city/:name' => 'places#city',:constraints => {:name => /[a-zA-z1-9]+/},:as=>'city'
+      match 'city/:name' => 'places#city', :constraints => {:name => /[a-zA-z1-9]+/}, :as => 'city'
       get :city
       get :view
+    end
+  end
+
+  #论坛
+  resources :forums,:except => [:show] do
+    collection do
+      get :select_forums
+      get ':id', :to => "forums#list",:constraints => {:id => /[\d]+/},:as => 'list'
+      #话题
+      resources :topics,:except => [:show] do
+        collection do
+          get 'post', :to => "topics#new",:as => 'post'
+          get ':id', :to => "topics#show",:constraints => {:id => /[\d]+/},:as => 'show'
+        end
+      end
+      #resources :topics, :except => [:new], :path_names => {:new => "post"}
+    end
+  end
+
+  #活动
+  resources :events do
+    collection do
+      post :sign_up
+      post :sign_out
+      get :tags
     end
   end
 
@@ -65,12 +91,12 @@ Gobiker::Application.routes.draw do
   #用户相关路由
   match 'login' => 'users#login', :as => 'login', :via => [:get, :post]
   match 'register' => 'users#register', :as => 'register'
-  post 'users/create'=>'users#create'
-  post 'users/ajax'=>'users#ajax'
+  post 'users/create' => 'users#create'
+  post 'users/ajax' => 'users#ajax'
 
   #会员个人主页
-  resources :u,:only => [:show] do |u|
-    resources :places,:only => [:index,:show]
+  resources :u, :only => [:show] do |u|
+    resources :places, :only => [:index, :show]
   end
 
   #核心功能
@@ -125,24 +151,6 @@ Gobiker::Application.routes.draw do
   #                    DELETE /projects/:id(.:format)                         projects#destroy
 
 
-  #自定群集路由Collection
-  #除了 ​​惯例中的七个Actions外，如果你需要自定群集的Action，可以这样设定：
-  #若你需要定义多个 member/collection 路由时，使用替代的区块语法(block syntax)。
-  resources :forums do
-    collection do
-      get :list
-      get :select_forums
-    end
-  end
-
-  resources :events do
-    collection do
-      post :sign_up
-      post :sign_out
-      get :tags
-    end
-  end
-
   #当需要加入一个或多个动作至一个 RESTful(create,post,update...) 资源
   #/products/:id/sold(.:format)                   products#sold
   resources :products do
@@ -163,7 +171,7 @@ Gobiker::Application.routes.draw do
   #resources :cars, :only => [:show, :edit]
 
   #常见的
-  match ':controller(/:action(/:id))(.:format)',:constraints => {:id => /[\d]+/},:via => [:get]
+  match ':controller(/:action(/:id))(.:format)', :constraints => {:id => /[\d]+/}, :via => [:get]
   #上述這一行設定就包括六種路徑方式：
 
   #match '/:controller'

@@ -141,7 +141,21 @@ cn:
       manager: "管理员"
       guide: "攻略"
       article: "文章"
+      topic: "话题"
+
     attributes:
+      forum:
+        name: "版面名称"
+        order_num: "排序"
+        category_id: "分类"
+      topic:
+        title: "标题"
+        user_id: "作者"
+        content: "内容"
+        subject_id: "主题分类"
+        club_id: "俱乐部"
+        forum_id: "所属版块"
+        title_color: "标题颜色"
       recommend:
         name: "名称"
         category: "类型"

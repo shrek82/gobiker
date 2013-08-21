@@ -1829,7 +1829,7 @@ a{
 }
 
 /*candy*/
-#main_body{ width:960px; min-height:460px; margin:0 auto }
+#main_body{ width:960px; min-height:460px; margin:0 auto 30px auto}
 
 .btn{
     -webkit-border-radius:3px;
