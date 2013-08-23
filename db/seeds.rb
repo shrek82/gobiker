@@ -9,6 +9,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #   rake db:seed
 
+#db:seed
+
 manager=Manager.all
 if manager.blank?
   Manager.create(email:'seeyoup@qq.com',name:'admin',password:'1234567',role:'admin')

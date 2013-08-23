@@ -779,11 +779,17 @@ a{
 
 .ui_pupBox{
     position:relative;
-    widows:200px;
+    width:500px;
     border:5px solid #aeadad;
     border-radius:8px;
     border-color:rgba(0, 0, 0, 0.3);
-    margin:110px auto 0;
+    top:80px;
+    display:none;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -khtml-opacity: 0;
+    opacity: 0;
+    margin:0px auto;
 }
 
 .ui_pupBox_main{
@@ -796,7 +802,7 @@ a{
     position:relative;
     height:36px;
     border-bottom:1px solid #ddd;
-    background:#f7f7f7 url(/images/common/pup_headbg.png) repeat-x;
+    background:#f7f7f7;
     font-size:14px;
     line-height:36px;
     font-weight:700;

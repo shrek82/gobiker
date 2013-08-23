@@ -36,8 +36,17 @@ class Topic < ActiveRecord::Base
   #当touch=>true时,forum改变时，更改topic update_at
   #belongs_to :forum,:touch=>true
 
-  scope :base_field, select("topics.id,topics.title,topics.forum_id,topics.subject_id,topics.user_id,topics.title_color,topics.last_comment_user_id,topics.hits_num,topics.comments_num,topics.is_fixed,topics.is_good")
+  scope :base_field, select("topics.id,topics.title,topics.forum_id,topics.subject_id,topics.user_id,topics.title_color,topics.last_comment_user_id,topics.last_comment_time,topics.hits_num,topics.comments_num,topics.is_fixed,topics.is_good,topics.created_at")
 
+  after_create do
+    self.subject_id=1 unless self.subject_id
+    self.is_fixed=false unless self.is_fixed
+    self.is_comment=true unless self.is_comment
+    self.is_good=false unless self.is_good
+    self.is_recommend=true unless self.is_recommend
+    self.hits_num=1 unless self.hits_num
+    self.comments_num=0 unless self.comments_num
+  end
 
   def event_topic
     errors.add(:base, 'Must be friends to leave a comment') unless title.nil?

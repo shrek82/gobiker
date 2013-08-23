@@ -23,6 +23,11 @@ class CommentsController < ApplicationController
     if params[:place_id]
       conditions.store 'place_id',params[:place_id]
     end
+
+    if params[:topic_id]
+      conditions.store 'topic_id',params[:topic_id]
+    end
+
     @comments=Comment.paginate(:page => params[:page], :per_page =>10, :conditions => conditions, :include => :user)
 
     respond :template=>template,:comments => @comments, :layout => false

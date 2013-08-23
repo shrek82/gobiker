@@ -83,7 +83,6 @@ var qyerUI = {
 };
 
 //弹出登录窗口
-
 function plogin() {
   new popup({title: '登录'}).ajax('/users/minilogin', '440', function () {
     setTimeout(function () {

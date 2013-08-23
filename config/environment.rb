@@ -11,5 +11,3 @@ Gobiker::Application.initialize!
 WeiboOAuth2::Config.api_key = ''
 WeiboOAuth2::Config.api_secret = ''
 WeiboOAuth2::Config.redirect_uri = '/syncs/callback/'
-
-

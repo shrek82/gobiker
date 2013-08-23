@@ -51,6 +51,7 @@ class ApplicationController < ActionController::Base
 
   #判断是否登录，并自动跳转登录页面或提示
   def check_logged
+
     unless logged_in?
       respond :redirect_to=>'/login',:error=>'很抱歉，您还没有登录！'
     end

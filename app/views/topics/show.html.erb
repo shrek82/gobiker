@@ -1,2 +1,23 @@
-<h1>Topics#show</h1>
-<p>Find me in app/views/topics/show.html.erb</p>
+<% content_for:style do %>
+    <link rel="stylesheet" href="/css/common/comments.css"/>
+<% end %>
+
+<% @title=@topic.title %>
+<div class="qyer_head_crumbg">
+  <div class="qyer_head_crumb">
+    <a href="<%= main_path %>">首页</a>&nbsp;&gt;&nbsp;<a href="<%= forums_path %>">论坛</a>&gt; <a href="<%= list_forums_path @topic.forum_id %>"><%= @topic.forum.name %></a> &nbsp;&gt;&nbsp;<%= @topic.title %>    </div>
+</div>
+
+<div class="avatar">
+  <a target="_blank" href="/u/1" title="seeyoup"><img src="/avatar/up.jpeg" alt="seeyoup"></a>
+</div>
+<h1 style="font-size:22px;font-weight:bold"><%=@topic.title %></h1>
+<div class="bbs_sldline2"></div>
+
+<div>
+  <%=raw @topic.content %>
+</div>
+
+<div class="pl_sldline2"></div>
+
+<%= comment_list :hidden_field => {:topic_id => @topic.id}, :query_param => {:topic_id => @topic.id} %>

@@ -5,6 +5,11 @@ module CommonHelper
   def find_record(&block)
   end
 
+  #上一页地址
+  def previous_url
+    link=(request.env["HTTP_REFERER"].blank?)?"/":request.env["HTTP_REFERER"]
+  end
+
 #是否为ajax请求
   def is_ajax?
     request.xhr?

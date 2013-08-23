@@ -411,7 +411,7 @@ var popup = function (opt) {
   var opt = opt || {};
   var title = opt.title ? opt.title : '提示';
   this.popup = {};
-  this.pup_code = "<div id='ui_pupBox_bg' class='ui_pupBox_bg'><div class='ui_pupBox'><div class='ui_pupBox_close'></div><div class='ui_pupBox_main'><div class='ui_pupBox_head'> <ul class='ui_pupBox_headtag'> <li id='tab_login' class='current'><span>" + title + "</span></li> </ul> </div> <div class='ui_pupBox_tag_cnt' id='pop_html_box'> </div></div></div></div>";
+  this.pup_code = "<div id='ui_pupBox_bg' class='ui_pupBox_bg' ><div class='ui_pupBox'><div class='ui_pupBox_close'></div><div class='ui_pupBox_main'><div class='ui_pupBox_head'> <ul class='ui_pupBox_headtag'> <li id='tab_login' class='current'><span>" + title + "</span></li> </ul> </div> <div class='ui_pupBox_tag_cnt' id='pop_html_box'> </div></div></div></div>";
   this.box = null;
 }
 
@@ -422,20 +422,25 @@ popup.prototype.start = function (width) {
   _this.box.appendTo("body");
 
   width = parseInt(width, 10);
+
   _this.box.css({
     "display": "block",
     "height": $(document).height()
   });
-  _this.box.find(".ui_pupBox").css({
-    "width": width + 2,
-    "top": $(document).scrollTop()
-  });
-  _this.box.find(".ui_pupBox_tag_cnt").text("");
-  _this.box.find(".ui_pupBox_close").show();
+
+  _this.box.find("div.ui_pupBox").css({'display':'block','width':width+30}).animate({'opacity':1,'top':'150px'},250);
+  _this.box.find("div.ui_pupBox_tag_cnt").text("");
+  _this.box.find("div.ui_pupBox_close").show();
 };
 
 popup.prototype.close = function () {
-  $('#ui_pupBox_bg').remove();
+  var _this = this;
+  _this.box.find("div.ui_pupBox").animate({'opacity':0,'top':'80px'},200,function(){
+    _this.box.fadeOut(150,function(){
+      $(this).remove();
+    });
+  });
+
 }
 
 popup.prototype.ajax = function (url, width, callback) {

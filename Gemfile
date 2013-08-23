@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+gem 'mysql2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -29,6 +29,8 @@ gem 'weibo_2'
 #i18n国际化分页插件
 gem 'will_paginate', '~> 3.0'
 gem 'will-paginate-i18n'
+#更好的分页插件
+gem 'kaminari', '~> 0.13.0'
 
 #基于角色控制的插件
 gem "cancan",'~>1.6.7'
@@ -120,8 +122,7 @@ end
 # To use debugger
 # gem 'debugger'
 
-#genghao de fenye
-#gem 'kaminari', '~> 0.13.0'
+
 
 #在rails console中Hirb.enable
 #richrc: Github / Article – 在rails3中不用修改Gamfile，实现irb格式化和高亮语法

@@ -967,16 +967,14 @@ a {
     width: 590px
 }
 
-.bbs_listtop
-.title {
-    font-size: 24px;
-    line-height: 36px;
+.bbs_listtop .title {
+    font-size: 20px;
+    line-height: 24px;
     color: #1e774b
 }
 
-.bbs_listtop
-.text {
-    font-size: 14px;
+.bbs_listtop .text {
+    font-size: 12px;
     color: #636363
 }
 
@@ -1284,36 +1282,31 @@ a {
 }
 
 .bbs_listinfos {
-    margin-bottom: 15px
+    margin-bottom: 15px;line-height: 24px;height:30px;
 }
 
-.bbs_listinfos
-.sums {
+.bbs_listinfos .sums {
     font-size: 14px;
     line-height: 24px;
     color: #636363
 }
 
-.bbs_listinfos
-.types {
+.bbs_listinfos .types {
     float: right;
     line-height: 24px;
     color: #636363
 }
 
-.bbs_listinfos .types
-.tit {
+.bbs_listinfos .types .tit {
     float: left;
     margin-right: 10px
 }
 
-.bbs_listinfos .types
-.icons {
+.bbs_listinfos .types .icons {
     float: left
 }
 
-.bbs_listinfos .types .icons
-span {
+.bbs_listinfos .types .icons span {
     display: inline-block;
     height: 24px;
     padding: 0 6px 0 26px;
@@ -1354,15 +1347,13 @@ span {
     z-index: 5
 }
 
-.bbs_listinfos .orders
-.tit {
+.bbs_listinfos .orders .tit {
     float: left;
     margin-right: 10px;
     line-height: 24px
 }
 
-.bbs_listinfos .orders
-.input {
+.bbs_listinfos .orders .input {
     float: left;
     width: 100px;
     height: 22px;
@@ -1373,8 +1364,7 @@ span {
     background: url(http://static.qyer.com/images/bbs/two/drop.png) no-repeat 110px center
 }
 
-.bbs_listinfos
-.orders_lay {
+.bbs_listinfos .orders_lay {
     position: absolute;
     top: 23px;
     right: 0;
@@ -1402,30 +1392,38 @@ a {
     margin-bottom: 30px
 }
 
-.bbs_threadlist
-.item {
+.bbs_threadlist .item {
     border-top: 1px dotted #d7d7d7;
-    padding: 15px 10px
+    padding: 15px 10px 15px 60px;
+    position:relative;
+}
+
+.bbs_threadlist .item .avatar{
+    position:absolute;
+    top:10px;
+    left:0;
+}
+
+.bbs_threadlist .item .avatar img{
+    display: block; width: 50px; height: 50px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.22); -webkit-border-radius: 3px; border-radius: 3px;
 }
 
 .bbs_threadlist .item:hover {
     background-color: #fcfcfc
 }
 
-.bbs_threadlist
-.titles {
+.bbs_threadlist .titles {
     line-height: 18px;
+    margin-bottom:5px;
     word-wrap: break-word;
-    word-break: break-all
+    word-break: break-all;
 }
 
-.bbs_threadlist .titles
-input {
+.bbs_threadlist .titles input {
     margin-right: 5px
 }
 
-.bbs_threadlist .titles
-.tit {
+.bbs_threadlist .titles .tit {
     font-size: 16px
 }
 
@@ -1433,32 +1431,27 @@ input {
     color: #0073b6
 }
 
-.bbs_threadlist .titles
-.titjh {
+.bbs_threadlist .titles .titjh {
     color: #f26622
 }
 
-.bbs_threadlist .titles
-.showprompt {
+.bbs_threadlist .titles .showprompt {
     display: inline-block
 }
 
-.bbs_threadlist .titles
-.icon {
+.bbs_threadlist .titles .icon {
     vertical-align: middle;
     margin-top: -5px;
     margin-left: 4px
 }
 
-.bbs_threadlist
-.infos {
+.bbs_threadlist .infos {
     position: relative;
     color: #a4a4a4;
     padding-top: 6px
 }
 
-.bbs_threadlist
-.tag {
+.bbs_threadlist .tag {
     display: inline-block;
     padding: 0 3px;
     background: #6faf8e;
@@ -1686,3 +1679,21 @@ img {
     padding-left: 23px;
     background: url(http://static.qyer.com/images/bbs/two/sidetit.png) no-repeat 0 -148px
 }
+
+.ui_page{float:left}
+
+
+.bbspup_box { padding:20px;}
+.bbspup_box .forumnav { float:left; width:138px;}
+.bbspup_box .forumnav li { padding:5px 0; border:1px solid #fff; font-size:14px; line-height:24px; font-weight:700;}
+.bbspup_box .forumnav a { display:block; width:120px; height:24px; padding-left:10px; border-radius:5px; background:url(http://static.qyer.com/images/bbs/two/arrow_r.png) no-repeat 115px center; color:#636363;}
+.bbspup_box .forumnav a:hover { background-color:#e6f5e5; text-decoration:none;}
+.bbspup_box .forumnav .current { position:relative; left:1px; border-color:#ccc; border-right-color:#fff;}
+.bbspup_box .forumnav .current a:hover { background-color:#fff; cursor:default;}
+.bbspup_box .subcnt { float:left; width:390px; min-height:300px; border:1px solid #ccc;}
+.bbspup_box .subcnt .list { padding:5px 10px;}
+.bbspup_box .subcnt li { font-size:14px; line-height:24px;}
+.bbspup_box .subcnt a { display:block; padding-left:10px; color:#636363;}
+.bbspup_box .subcnt a:hover { background-color:#e6f5e5; text-decoration:none;}
+.bbspup_box .subcnt .current { background-color:#e6f5e5; text-decoration:none;}
+.bbspup_boxbtm { padding:0 20px 20px;}

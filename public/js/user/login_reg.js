@@ -424,7 +424,7 @@ var loginReg = function () {
         sendingLabel:'验证中..',
         errorLabel:'重试登录',
         callback:function(){
-          window.location.href='/';
+          window.location.href=$('#previous_url').val();
         }
       }).send();
     });

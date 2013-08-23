@@ -8,7 +8,7 @@ module SessionsHelper
 
   #是否登录
   def logged_in?
-    cookies[:uid] && cookies[:username]
+    cookies[:uid] && !cookies[:uid].blank? && cookies[:username]
   end
 
   #当前用户id

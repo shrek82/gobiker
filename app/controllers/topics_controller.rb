@@ -1,5 +1,6 @@
 #coding:utf-8
 class TopicsController < ApplicationController
+
   before_filter :check_logged,:only => [:new,:edit,:update]
 
   layout 'forums'
@@ -28,6 +29,7 @@ class TopicsController < ApplicationController
   end
 
   def show
+    @topic=Topic.find(params[:id])
   end
 
   def update
