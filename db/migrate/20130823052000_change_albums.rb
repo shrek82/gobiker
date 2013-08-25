@@ -12,10 +12,10 @@ class ChangeAlbums < ActiveRecord::Migration
       t.change_default(:is_close,false)
       t.change_default(:is_recommended,false)
 
-      t.index(:user_id,:name => 'user_idx')
-      t.index(:event_id,:name=>'event_idx')
-      t.index(:place_id,:name=>'place_idx')
-      t.index(:club_id,:name=>'club_idx')
+      t.index(:user_id)
+      t.index(:event_id)
+      t.index(:place_id)
+      t.index(:club_id)
     end
   end
 

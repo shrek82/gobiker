@@ -13,11 +13,16 @@ brew install mysql
 #==================================
 
 #ubuntu12.04下 rails 安装 rmagick
+sudo apt-get install ImageMagick
 
-#sudo apt-get install ImageMagick
+
+#===================================
 #gem install RMagick 报错
 #需要
 sudo apt-get install libmagickwand-dev
 
 #还有一个就是rake的时候忽然提示脚本什么错误，需要再有这个才行
 gem 'therubyracer'
+
+#=========mac install mysql2，需要lib引入
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
