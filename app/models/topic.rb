@@ -1,9 +1,11 @@
 #coding:utf-8
 class Topic < ActiveRecord::Base
-  attr_accessible :club_id, :comments_num, :forum_id, :hits_num, :is_comment, :is_fixed, :is_good, :is_recommend, :last_comment_time, :last_comment_user_id, :last_comment_user_name, :subject_id, :title, :title_color, :user_id,:content
+  attr_accessible :club_id, :comments_num,:activity_id,:forum_id, :hits_num, :is_comment, :is_fixed, :is_good, :is_recommend, :last_comment_time, :last_comment_user_id, :last_comment_user_name, :subject_id, :title, :title_color, :user_id,:content
   belongs_to :forum,:foreign_key => "forum_id"
   belongs_to :user
+  belongs_to :subject_category
   belongs_to :reply_user, :class_name => "User", :foreign_key => "last_comment_user_id"
+  has_one :activity
 
   validates_presence_of :forum_id
   validates_length_of :title,:in => 2..60

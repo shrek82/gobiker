@@ -43,13 +43,9 @@
 </div>
 <ul class="bbs_subnav fontYaHei">
   <li><a href="javascript:void(0);" >公共版块</a></li>
-  <li><a href="javascript:void(0);" >欧洲</a></li>
-  <li><a href="javascript:void(0);" >亚洲</a></li>
-  <li><a href="javascript:void(0);" >美洲和南极</a></li>
-  <li><a href="javascript:void(0);" >大洋洲</a></li>
-  <li><a href="javascript:void(0);" >非洲</a></li>
-  <li><a href="javascript:void(0);" >兴趣小组</a></li>
-  <li><a href="javascript:void(0);" >后院</a></li>
+  <li><a href="javascript:void(0);" >热门城市</a></li>
+  <li><a href="javascript:void(0);" >俱乐部</a></li>
+  <li><a href="javascript:void(0);" >后花院</a></li>
 </ul>
 
 
@@ -323,10 +319,10 @@
 </div>
 <div class="lay_side">
   <div class="bbs_sidetool2">
-    <p><a href="javascript:void(0);" class="btn_newbbs2" data-bn-ipg="bbs-writepost">写新帖</a></p>
+    <p><a href="javascript:void(0);" class="btn_newbbs2" id="forums_post_button">写新帖</a></p>
   </div>
   <div id="bbs_lastread" class="bbs_lastread" style="">
-    <p class="bbs_lastread_tit"><span id="bbs_lastread_tit" data-bn-ipg="bbs-readpost">上次读到</span></p>
+    <p class="bbs_lastread_tit"><span id="bbs_lastread_tit" >上次读到</span></p>
 
     <div style="display: none;" id="bbs_lastread_lay" class="bbs_lastread_lay">
       <p class="bbs_lastread_lay_arrow"></p>
@@ -456,148 +452,7 @@
 </div>
 
 <script type="text/javascript">
-
-
-    //搜索下拉框
-    jQuery(function ($) {
-        var ipt = jQuery("#bbs_tabsearch_ipt"); //input文本框
-        var lay = jQuery("#bbs_tabsearch_lay"); //layer下拉菜单
-        var handle = true; //焦点开关
-        var defval = ""; //input默认值
-        var licur = -1; //li默认开始值
-        var sc_query_result_arr = [];//查询缓存数组
-        var sc_TID = 0;//查询时间定义
-
-        ipt.on("focus", function () {
-            var val = jQuery(this).val();
-            if (val != "" && typeof sc_query_result_arr[val] != "undefined") {
-                lay.html(sc_query_result_arr[val]).show();
-                licur = -1;
-            }
-        });
-        ipt.on("blur", function () {
-            if (handle) {
-                lay.hide();
-            }
-        });
-        ipt.keydown(function (event) {
-            if (event.keyCode == "38" || event.keyCode == "40") {
-                event.preventDefault();
-            }
-        });
-        ipt.keyup(function (event) {
-            var key = event.keyCode;
-            var val = jQuery(this).val();
-            if (val != "") {
-                if (val != defval) {
-                    clearTimeout(sc_TID);
-                    sc_TID = setTimeout(function () {
-                        if (typeof sc_query_result_arr[val] == "undefined") {
-                            jQuery.get("http://bbs.qyer.com/qyerapi.php", {action: "forumsearch", wd: val}, function (data) {
-                                sc_query_result_arr[val] = data;
-                                lay.html(data).show();
-                                licur = -1;
-                            });
-                        } else {
-                            lay.html(sc_query_result_arr[val]).show();
-                            licur = -1;
-                        }
-
-                    }, 200);
-
-                }
-                else if (key == 38) {
-                    licur--;
-                    if (licur < 0) {
-                        licur = 0;
-                    }
-
-                    lay.find("a").removeClass("current").eq(licur).addClass("current");
-                }
-                else if (key == 40) {
-                    licur++;
-                    if (licur >= 4) {
-                        licur = 3;
-                    }
-
-                    lay.find("a").removeClass("current").eq(licur).addClass("current");
-                }
-                else if (key == 13) {
-
-                    if (licur >= 0) {
-                        var rul = lay.find("a").eq(licur).attr("href");
-                        window.location.href = rul;
-                        return false;
-                    }
-                    else {
-//window.location.href = "#";
-                        return false;
-                    }
-                }
-            }
-            else {
-                lay.hide();
-            }
-            defval = val; //把默认值改为当前值
-        });
-        lay.hover(function () {
-            handle = false;
-        }, function () {
-            handle = true;
-        });
-    });
-
-    jQuery(function ($) {
-
-        jQuery(".bbs_subnav a").live("click", function () {
-            jQuery("html,body").animate({scrollTop: jQuery("#category" + jQuery(this).attr("data-gid")).offset().top - 45}, 200);
-        });
-
-        //发新贴
-        jQuery(".btn_newbbs2").live("click", function () {
-            if (!QYER.uid) {
-                ajaxlogin(0, '', 'bbsajax.php', 'pagereload');
-                return;
-            }
-            popup.ajax("/qyerapi.php?action=getpostnewforumlistpop", 510);
-        });
-
-//焦点图
-        jQuery(".bbs_focuspic_list").children("li").show();
-
-        if (typeof jQuery.fn.slides == "function") {
-            jQuery("#ind_focus").slides({
-                play: 5000,
-                pause: 2500,
-                hoverPause: true
-            });
-        } else {
-            jQuery.getScript("http://static.qyer.com/js/common/slides.jquery.js", function () {
-                jQuery("#ind_focus").slides({
-                    play: 5000,
-                    pause: 2500,
-                    hoverPause: true
-                });
-            });
-        }
-
-
-        //论坛版块列表
-
-        jQuery(".bbs_indlist dd").hover(function () {
-//$(this).find(".nums").hide();
-//$(this).find(".text").show();
-            jQuery(this).find(".tips").show();
-        }, function () {
-//$(this).find(".nums").show();
-//$(this).find(".text").hide();
-            jQuery(this).find(".tips").hide();
-        });
-
-    });
-
     //最近读到js脚本
-
     function clear_history_read_thread(thiz, tid) {
         if (typeof tid == "undefined") {
             return false;
@@ -691,3 +546,11 @@
 
     });
 </script>
+
+<% content_for:script do %>
+    <script type="text/javascript">
+        readyScript.postButton = function () {
+            forums.post_button();
+        };
+    </script>
+<% end %>

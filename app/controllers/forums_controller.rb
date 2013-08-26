@@ -20,7 +20,7 @@ class ForumsController < ApplicationController
 
   def list
     @forum= Forum.find(params[:id])
-    @topics = Topic.base_field.where(:forum_id => params[:id]).paginate(:page => params[:page], :per_page =>2,:include => [:user,:reply_user],:order=>'topics.is_fixed DESC,case when topics.last_comment_time IS NOT NULL then topics.last_comment_time when topics.last_comment_time IS NULL then topics.created_at end DESC')
+    @topics = Topic.base_field.where(:forum_id => params[:id]).paginate(:page => params[:page], :per_page =>15,:include => [:user,:reply_user],:order=>'topics.is_fixed DESC,case when topics.last_comment_time IS NOT NULL then topics.last_comment_time when topics.last_comment_time IS NULL then topics.created_at end DESC')
     #@topics = Topic.base_field.where(:forum_id => params[:id]).includes(:user,:reply_user).kpage(params[:page]).per(1)
 
   end
@@ -41,6 +41,10 @@ class ForumsController < ApplicationController
 
   #选择论坛发布板块
   def select_forums
+    @last=Topic.select(:forum_id).group(:forum_id).includes(:forum).where(:user_id=>1).order("topics.id DESC")
+    @public_forums=Forum.where(:category_id => 1).order("forums.order_num ASC,id ASC")
+    @hot_cities=Forum.select('forums.*,(select count(topics.id) from topics where topics.forum_id=forums.id) as topics_count').where(:category_id => 2).order('topics_count DESC').limit(12)
+
     render :template => 'forums/select_forums', :layout => false
   end
 

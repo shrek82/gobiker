@@ -8,7 +8,7 @@
     <h2 class="title fontYaHei" id="ask_list_action"><a href="javascript:void(0);" data-bn-ipg="board-type-ask">问答<em>（5323条）</em></a></h2>
 
     <div class="bbs_tabsearch">
-      <a href="javascript:;" class="btn2 btn2-mint" id="forums_post_button"><i class="icon-plus"></i> 新帖</a>
+      <a href="/forums/topics/post?fid=<%= @forum.id %>" class="btn2 btn2-mint" ><i class="icon-plus"></i> 新帖</a>
     </div>
   </div>
 
@@ -17,12 +17,12 @@
 
     <!--列表nav分类-->
     <ul class="bbs_tabnav">
-      <li class="first  current"><a href="forum-54-1.html" data-bn-ipg="board-thread-all">全部</a></li>
-      <li><a href="forumdisplay.php?fid=54&amp;filter=digest" rel="nofollow" data-bn-ipg="board-thread-digest">精华</a></li>
-      <li><a href="forum-54-8-1.html" data-bn-ipg="board-thread-8">结伴同游</a></li>
-      <li><a href="forum-54-5-1.html" data-bn-ipg="board-thread-5">游记攻略</a></li>
-      <li><a href="forum-54-9-1.html" data-bn-ipg="board-thread-9">其他</a></li>
-      <li><a href="forum-54-39-1.html" data-bn-ipg="board-thread-39">建议和提醒</a></li>
+      <li class="first  current"><a href="forum-54-1.html" >全部</a></li>
+      <li><a href="forumdisplay.php?fid=54&amp;filter=digest" >精华</a></li>
+      <li><a href="forum-54-8-1.html" >结伴同游</a></li>
+      <li><a href="forum-54-5-1.html" >游记攻略</a></li>
+      <li><a href="forum-54-9-1.html" >其他</a></li>
+      <li><a href="forum-54-39-1.html" >建议和提醒</a></li>
     </ul>
 
 
@@ -77,7 +77,7 @@
               </h3>
 
               <div class="infos">
-                <p class="info"><span class="views"><%= t.hits_num %></span><span class="sum">2</span></p>
+                <p class="info"><span class="views" title="浏览"><%= t.hits_num %></span><span class="sum" title="评论"><%= t.comments_num %></span></p>
 
                 <p><a href="forum-3-61-1.html" class="tag">亚洲国家签证</a><span class="reply"><a href="<%= u_path t.user_id %>"><%= t.user.username %></a>&nbsp;发表于<%= to_pretty t.created_at %>&nbsp;&nbsp;&nbsp;<%= t.reply_user.username+to_pretty(t.last_comment_time)+"回复" if t.last_comment_time&&t.last_comment_user_id %></span>
                 </p>

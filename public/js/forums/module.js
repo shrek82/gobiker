@@ -49,18 +49,19 @@ forums.post_button = function () {
 
   $("#forums_post_button").click(function () {
 
-    if(!user.uid){
+    if (!user.uid) {
       plogin();
       return false;
     }
 
-    var forum_pop=new popup({title: '选择要发布到版块：'});
+    var forum_pop = new popup({title: '选择要发布到版块：'});
     forum_pop.ajax('/forums/select_forums', '600', function () {
       setTimeout(function () {
         //绑定tab切换
         $pop_html_box = $("#pop_html_box");
         $pop_html_box_navli = $pop_html_box.find("ul.forumnav li");
         $pop_html_box_list = $pop_html_box.find("div.subcnt ul.list");
+        $post_link = $("#post_link");
         var cur_tab;
         $pop_html_box_navli.mouseover(function () {
           cur_tab = $(this);
@@ -70,12 +71,16 @@ forums.post_button = function () {
         });
         //绑定点击
         $pop_html_box_list.find("a").click(function () {
-          $(this).addClass('current').siblings().removeClass('current');
+          $(this).addClass('current').parent().siblings().find("a").removeClass('current');
+          $post_link.attr('defid', $(this).attr('fid'));
+        });
+        //绑定确定按钮
+        $post_link.click(function () {
           forum_pop.close();
-          setTimeout(function(){
-            window.location.href = "/forums/topics/post?fid=" + $(this).attr('fid');
-          },600);
-        })
+          setTimeout(function () {
+            window.location.href = "/forums/topics/post?fid=" + $post_link.attr('defid');
+          }, 600);
+        });
       }, 150);
     });
   });

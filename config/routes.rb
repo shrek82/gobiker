@@ -82,7 +82,7 @@ Gobiker::Application.routes.draw do
   end
 
   #活动
-  resources :events do
+  resources :activities do
     collection do
       post :sign_up
       post :sign_out

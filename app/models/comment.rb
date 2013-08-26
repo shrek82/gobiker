@@ -6,6 +6,16 @@ class Comment < ActiveRecord::Base
   validates_presence_of :user_id
   belongs_to :place
   belongs_to :user
+
+  after_create :setForumLastcid
   private
+
+  #设置话题最后回复人
+  def setForumLastcid
+    if self.topic_id
+      count=Comment.where(:topic_id => self.topic_id).count
+      Topic.find(self.topic_id).update_attributes(:comments_num=>count,:last_comment_user_id=>self.user_id,:last_comment_time=>self.created_at)
+    end
+  end
 
 end

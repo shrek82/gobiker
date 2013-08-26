@@ -30,6 +30,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic=Topic.find(params[:id])
+    @topic.hits_num+=1
+    @topic.save
   end
 
   def update

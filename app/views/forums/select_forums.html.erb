@@ -1,36 +1,25 @@
 <div class="bbspup_box clearfix">
   <ul class="forumnav">
-    <li class="current"><a href="javascript:void(0);" >公共论坛</a></li>
+    <li class="current"><a href="javascript:void(0);" >近期选择</a></li>
+    <li ><a href="javascript:void(0);" >公共论坛</a></li>
     <li ><a href="javascript:void(0);" >热门城市</a></li>
-    <li ><a href="javascript:void(0);" >俱乐部</a></li>
-    <li ><a href="javascript:void(0);" >后院园</a></li>
+    <li ><a href="javascript:void(0);" >俱乐部后院园</a></li>
   </ul>
   <div class="subcnt">
     <ul class="list" style="display: block;">
-      <li><a href="javascript:void(0);" fid="1">签证</a></li>
-      <li><a href="javascript:void(0);" fid="2">申根签证</a></li>
-      <li><a href="javascript:void(0);" fid="3">廉价航空</a></li>
-      <li><a href="javascript:void(0);" fid="4">亚洲廉航</a></li>
-      <li><a href="javascript:void(0);" fid="5">境外银联</a></li>
+      <%@last.each do |t| %>
+          <li><a href="javascript:void(0);" fid="<%= t.forum_id %>"><%= t.forum.name %></a></li>
+      <%end %>
     </ul>
     <ul class="list" style="display: none;">
-      <li><a href="javascript:void(0);" >欧洲交通</a></li>
-      <li><a href="javascript:void(0);" >欧洲多国</a></li>
-      <li><a href="javascript:void(0);" >德国</a></li>
-      <li><a href="javascript:void(0);" >法国/摩纳哥</a></li>
-      <li><a href="javascript:void(0);" >意大利/梵蒂冈/圣马力诺</a></li>
-      <li><a href="javascript:void(0);" >荷兰/比利时/卢森堡</a></li>
-      <li><a href="javascript:void(0);" >西班牙/葡萄牙/安道尔</a></li>
-      <li><a href="javascript:void(0);" >奥地利</a></li>
+      <%@public_forums.each do |f| %>
+          <li><a href="javascript:void(0);" fid="<%= f.id %>"><%= f.name %></a></li>
+      <%end %>
     </ul>
     <ul class="list" style="display: none;">
-      <li ><a href="javascript:void(0);" >亚洲多国</a></li>
-      <li><a href="javascript:void(0);" >日本/韩国/朝鲜</a></li>
-      <li><a href="javascript:void(0);" >泰国</a></li>
-      <li><a href="javascript:void(0);" >新加坡/马来西亚/文莱</a></li>
-      <li><a href="javascript:void(0);" >越南/柬埔寨/老挝/缅甸</a></li>
-      <li><a href="javascript:void(0);" >菲律宾/关岛/塞班/天宁</a></li>
-      <li><a href="javascript:void(0);" >印度/巴基斯坦/孟加拉</a></li>
+      <%@hot_cities.each do |f| %>
+          <li><a href="javascript:void(0);" fid="<%= f.id %>"><%= f.name %></a></li>
+      <%end %>
     </ul>
     <ul class="list" style="display: none;">
       <li class="current"><a href="javascript:void(0);" >美国</a></li>
@@ -39,4 +28,4 @@
     </ul>
   </div>
 </div>
-<div class="bbspup_boxbtm clearfix" style="text-align:right"><a href="javascript:void(0);" class="btn2 btn2-mint" >确 定</a></div>
+<div class="bbspup_boxbtm clearfix" style="text-align:right"><a href="javascript:void(0);" class="btn2 btn2-mint" id="post_link" defid="1">下一步</a></div>

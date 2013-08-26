@@ -11,7 +11,66 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130823052935) do
+ActiveRecord::Schema.define(:version => 20130826072457) do
+
+  create_table "_forums_old_20130820", :force => true do |t|
+    t.string   "name",        :limit => 20
+    t.string   "intro"
+    t.integer  "province_id"
+    t.integer  "city_id"
+    t.integer  "club_id"
+    t.integer  "topics_num"
+    t.integer  "order_num"
+    t.boolean  "is_systemic"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.string   "ico_path",    :limit => 250
+    t.integer  "category_id"
+  end
+
+  create_table "activities", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "title",             :limit => 200
+    t.integer  "subject_id",        :limit => 2
+    t.string   "tags",              :limit => 100
+    t.string   "intro"
+    t.string   "address"
+    t.text     "content"
+    t.integer  "club_id"
+    t.integer  "user_id"
+    t.string   "title_color",       :limit => 10
+    t.datetime "sign_start_at"
+    t.datetime "sign_finish_at"
+    t.datetime "start_at"
+    t.datetime "finish_at"
+    t.integer  "sign_limit"
+    t.string   "icon_path",         :limit => 200
+    t.string   "img_path",          :limit => 200
+    t.boolean  "is_fixed"
+    t.boolean  "is_comment"
+    t.boolean  "is_recommend"
+    t.boolean  "is_closed"
+    t.boolean  "is_suspend"
+    t.boolean  "is_stop_sign"
+    t.boolean  "is_allow_everyone"
+    t.integer  "signed_num"
+    t.integer  "hits_num"
+    t.integer  "comments_num"
+    t.integer  "interested_num"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "topic_id"
+  end
+
+  create_table "activity_signs", :force => true do |t|
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.integer  "num_people"
+    t.string   "intro"
+    t.boolean  "is_anonymous"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "ads", :force => true do |t|
     t.string   "name"
@@ -30,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20130823052935) do
     t.string   "name",           :limit => 100
     t.integer  "user_id"
     t.integer  "place_id"
-    t.integer  "event_id"
+    t.integer  "activity_id"
     t.integer  "club_id"
     t.integer  "pics_num",                      :default => 0
     t.integer  "hits_num",                      :default => 0
@@ -43,17 +102,17 @@ ActiveRecord::Schema.define(:version => 20130823052935) do
     t.datetime "updated_at",                                                          :null => false
   end
 
-  add_index "albums", ["club_id"], :name => "index_albums_on_club_id"
-  add_index "albums", ["event_id"], :name => "index_albums_on_event_id"
-  add_index "albums", ["place_id"], :name => "index_albums_on_place_id"
-  add_index "albums", ["user_id"], :name => "index_albums_on_user_id"
+  add_index "albums", ["activity_id"], :name => "event_idx"
+  add_index "albums", ["club_id"], :name => "club_idx"
+  add_index "albums", ["place_id"], :name => "place_idx"
+  add_index "albums", ["user_id"], :name => "user_idx"
 
   create_table "areas", :force => true do |t|
     t.string   "name"
     t.integer  "city_id"
     t.integer  "area_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "pinyin"
     t.integer  "order_num"
   end
@@ -132,8 +191,8 @@ ActiveRecord::Schema.define(:version => 20130823052935) do
     t.string   "name"
     t.integer  "province_id"
     t.integer  "order_num"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "city_id"
     t.string   "pinyin"
   end
@@ -147,61 +206,18 @@ ActiveRecord::Schema.define(:version => 20130823052935) do
     t.integer  "route_id"
     t.integer  "topic_id"
     t.integer  "userful_num"
-    t.integer  "event_id"
+    t.integer  "activity_id"
     t.integer  "article_id"
     t.integer  "album_id"
   end
 
-  add_index "comments", ["album_id"], :name => "index_comments_on_album_id"
-  add_index "comments", ["article_id"], :name => "index_comments_on_article_id"
-  add_index "comments", ["event_id"], :name => "index_comments_on_event_id"
-  add_index "comments", ["place_id"], :name => "index_comments_on_place_id"
-  add_index "comments", ["route_id"], :name => "index_comments_on_route_id"
-  add_index "comments", ["topic_id"], :name => "index_comments_on_topic_id"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
-
-  create_table "event_signs", :force => true do |t|
-    t.integer  "event_id"
-    t.integer  "user_id"
-    t.integer  "num_people"
-    t.string   "intro"
-    t.boolean  "is_anonymous"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "events", :force => true do |t|
-    t.integer  "category_id"
-    t.string   "title",             :limit => 200
-    t.integer  "subject_id",        :limit => 2
-    t.string   "tags",              :limit => 100
-    t.string   "intro"
-    t.string   "address"
-    t.text     "content"
-    t.integer  "club_id"
-    t.integer  "user_id"
-    t.string   "title_color",       :limit => 10
-    t.datetime "sign_start_at"
-    t.datetime "sign_finish_at"
-    t.datetime "start_at"
-    t.datetime "finish_at"
-    t.integer  "sign_limit"
-    t.string   "icon_path",         :limit => 200
-    t.string   "img_path",          :limit => 200
-    t.boolean  "is_fixed"
-    t.boolean  "is_comment"
-    t.boolean  "is_recommend"
-    t.boolean  "is_closed"
-    t.boolean  "is_suspend"
-    t.boolean  "is_stop_sign"
-    t.boolean  "is_allow_everyone"
-    t.integer  "signed_num"
-    t.integer  "hits_num"
-    t.integer  "comments_num"
-    t.integer  "interested_num"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-  end
+  add_index "comments", ["activity_id"], :name => "event_idx"
+  add_index "comments", ["album_id"], :name => "album_idx"
+  add_index "comments", ["article_id"], :name => "article_idx"
+  add_index "comments", ["place_id"], :name => "place_idx"
+  add_index "comments", ["route_id"], :name => "route_idx"
+  add_index "comments", ["topic_id"], :name => "topic_idx"
+  add_index "comments", ["user_id"], :name => "user_idx"
 
   create_table "forums", :force => true do |t|
     t.string   "name",        :limit => 100
@@ -285,21 +301,21 @@ ActiveRecord::Schema.define(:version => 20130823052935) do
 
   create_table "photos", :force => true do |t|
     t.string   "title",            :limit => 50
-    t.string   "img_path",         :limit => 250
+    t.string   "img_path",         :limit => 150
     t.boolean  "is_verify",                       :default => true
     t.datetime "created_at",                                        :null => false
     t.datetime "updated_at",                                        :null => false
-    t.string   "img_file_name",    :limit => 50
-    t.string   "img_content_type", :limit => 50
-    t.string   "img_file_size",    :limit => 50
+    t.string   "img_file_name",    :limit => 30
+    t.string   "img_content_type", :limit => 20
+    t.string   "img_file_size",    :limit => 10
     t.datetime "img_updated_at"
     t.integer  "album_id"
     t.integer  "user_id"
     t.string   "img"
   end
 
-  add_index "photos", ["album_id"], :name => "index_photos_on_album_id"
-  add_index "photos", ["user_id"], :name => "index_photos_on_user_id"
+  add_index "photos", ["album_id"], :name => "album_idx"
+  add_index "photos", ["user_id"], :name => "user_idx"
 
   create_table "places", :force => true do |t|
     t.string   "name"
@@ -308,12 +324,14 @@ ActiveRecord::Schema.define(:version => 20130823052935) do
     t.integer  "user_id"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
-    t.string   "tags"
     t.integer  "category_id"
     t.string   "img_path"
     t.string   "banner_path"
     t.integer  "province_id"
     t.integer  "city_id"
+    t.integer  "area_id"
+    t.string   "tags"
+    t.string   "map"
     t.string   "source"
     t.integer  "been_num",       :default => 0
     t.integer  "interested_num", :default => 0
@@ -322,10 +340,8 @@ ActiveRecord::Schema.define(:version => 20130823052935) do
     t.integer  "good_num",       :default => 0
     t.boolean  "is_recommended", :default => false
     t.boolean  "is_fixed",       :default => false
-    t.string   "map"
-    t.integer  "area_id"
     t.string   "address"
-    t.integer  "comments_num"
+    t.integer  "comments_num",   :default => 0
     t.string   "img_ids"
     t.integer  "rating"
     t.integer  "wantgoto_num",   :default => 0
@@ -344,8 +360,8 @@ ActiveRecord::Schema.define(:version => 20130823052935) do
 
   create_table "provinces", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "province_id"
     t.integer  "group"
     t.string   "pinyin"
@@ -423,6 +439,14 @@ ActiveRecord::Schema.define(:version => 20130823052935) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "subject_categories", :force => true do |t|
+    t.string   "name",       :limit => 20
+    t.integer  "order_num"
+    t.string   "icon_path",  :limit => 200
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
   create_table "tags", :force => true do |t|
     t.string   "name"
     t.integer  "num"
@@ -430,10 +454,17 @@ ActiveRecord::Schema.define(:version => 20130823052935) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "thread_moderators", :force => true do |t|
+    t.integer  "thread_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "topics", :force => true do |t|
     t.string   "title",                  :limit => 150
     t.integer  "forum_id"
-    t.integer  "subject_id",             :limit => 2
+    t.integer  "subject_id"
     t.integer  "club_id"
     t.integer  "user_id"
     t.string   "title_color",            :limit => 10
@@ -441,13 +472,15 @@ ActiveRecord::Schema.define(:version => 20130823052935) do
     t.boolean  "is_comment",                            :default => false
     t.boolean  "is_good",                               :default => false
     t.boolean  "is_recommend",                          :default => false
-    t.integer  "hits_num",                              :default => 3
-    t.integer  "comments_num",                          :default => 3
+    t.integer  "hits_num",                              :default => 1
+    t.integer  "comments_num",                          :default => 0
     t.integer  "last_comment_user_id"
     t.string   "last_comment_user_name", :limit => 50
     t.datetime "last_comment_time"
     t.datetime "created_at",                                               :null => false
     t.datetime "updated_at",                                               :null => false
+    t.text     "content"
+    t.integer  "activity_id"
   end
 
   add_index "topics", ["forum_id"], :name => "forum_idx"
