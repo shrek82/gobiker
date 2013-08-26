@@ -43,3 +43,4 @@ app/.DS_Store
 
 app/.DS_Store
 /config/database.yml
+/Gemfile
