@@ -19,8 +19,27 @@ class ForumsController < ApplicationController
   end
 
   def list
+
     @forum= Forum.find(params[:id])
-    @topics = Topic.base_field.where(:forum_id => params[:id]).paginate(:page => params[:page], :per_page =>15,:include => [:user,:reply_user],:order=>'topics.is_fixed DESC,case when topics.last_comment_time IS NOT NULL then topics.last_comment_time when topics.last_comment_time IS NULL then topics.created_at end DESC')
+
+    @subject_categories=Rails.cache.fetch('topic_categories', :expires_in => 1.hours) do
+      SubjectCategory.order('order_num ASC')
+    end
+
+    conditions=Array.new
+    conditions << 'forum_id=?'
+    conditions << params[:id]
+
+    if params[:cid]
+      conditions[0]+=' AND subject_id=?'
+      conditions << params[:cid]
+    end
+
+    if params[:is_good]
+      conditions[0]+=' AND is_good=?'
+      conditions << true
+    end
+    @topics = Topic.base_field.where(conditions).paginate(:page => params[:page], :per_page =>12,:include => [:user,:reply_user],:order=>'topics.is_fixed DESC,case when topics.last_comment_time IS NOT NULL then topics.last_comment_time when topics.last_comment_time IS NULL then topics.created_at end DESC')
     #@topics = Topic.base_field.where(:forum_id => params[:id]).includes(:user,:reply_user).kpage(params[:page]).per(1)
 
   end

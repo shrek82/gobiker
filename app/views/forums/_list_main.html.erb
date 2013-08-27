@@ -17,12 +17,11 @@
 
     <!--列表nav分类-->
     <ul class="bbs_tabnav">
-      <li class="first  current"><a href="forum-54-1.html" >全部</a></li>
-      <li><a href="forumdisplay.php?fid=54&amp;filter=digest" >精华</a></li>
-      <li><a href="forum-54-8-1.html" >结伴同游</a></li>
-      <li><a href="forum-54-5-1.html" >游记攻略</a></li>
-      <li><a href="forum-54-9-1.html" >其他</a></li>
-      <li><a href="forum-54-39-1.html" >建议和提醒</a></li>
+      <li class="first  current"><a href="<%= list_forums_path @forum.id%>" >全部</a></li>
+      <li><a href="<%= list_forums_path @forum.id%>" >精华</a></li>
+      <% @subject_categories.each do |c| %>
+          <li><a href="<%= list_forums_path @forum.id%>?cid=<%= c.id %>" ><%= c.name %></a></li>
+      <% end %>
     </ul>
 
 

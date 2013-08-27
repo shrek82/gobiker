@@ -3,7 +3,7 @@ class Album < ActiveRecord::Base
   belongs_to :place
   belongs_to :user
   belongs_to :club
-  belongs_to :event
+  belongs_to :activity
 
   has_many :photos
 

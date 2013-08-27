@@ -74,3 +74,40 @@
 
     }
 </script>
+
+<script type="text/javascript">
+    function Something(){
+
+        if ( !(this instanceof arguments.callee) ){
+
+            var F = arguments.callee;
+            return new F(arguments);
+        }
+
+        this.getName=function(){
+            console.log('my name is zhaojiangang');
+        }
+
+
+
+        // create your object
+        // Example
+        //this.prop = 'value';
+    }
+
+    var foo = new Something();
+    console.log('-----------------------');
+    var bar = Something();
+
+    //console.log(foo);
+    //console.log(bar);
+
+    function testArg(a,b,c,d) {
+       // console.log('实参个数:' + arguments.length);
+       // console.log('期望参数个数:' + testArg.length);
+       // console.log('期望参数个数:' + testArg.arguments.length);
+    }
+
+   // testArg('keakon', 'loli');
+
+</script>

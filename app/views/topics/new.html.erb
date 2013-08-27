@@ -9,11 +9,32 @@
 </div>
 
 <%= block_alert @topic %>
-
+<%@topic.forum_id=params[:fid] %>
 <form action="<%= topics_path %>" id="forum_form" style="margin:10px 0" method="post">
+
   版块：<%= select("topic", "forum_id", Forum.all.collect {|f| [ f.name, f.id ] }, {:include_blank => '选择版块'}) %>
   <br>
+  分类：
+  <select name="topic[subject_id]" id="topic_subject">
+    <option value="1">话题</option>
+    <option value="2">约伴</option>
+    <option value="3">活动</option>
+    <option value="4">旅行</option>
+  </select>
+  <br>
   标题：<input name="topic[title]" type="text" class="ui_input" style="width:80%"/>
+  <br>
+  地址：<input name="topic[activity_data][address]" type="text" class="ui_input" style="width:80%"/>
+  <br>
+  约伴<br>
+  地址：<input name="topic[together_data][address]" type="text" class="ui_input" style="width:80%"/>
+  <br>报名开始日期：<input name="topic[together_data][sign_start_at]" type="text" class="ui_input" style="width:80%"/>
+  <br>报名结束日期：<input name="topic[together_data][sign_finish_at]" type="text" class="ui_input" style="width:80%"/>
+  <br>约伴开始日期：<input name="topic[together_data][start_at]" type="text" class="ui_input" style="width:80%"/>
+  <br>报名结束日期：<input name="topic[together_data][finish_at]" type="text" class="ui_input" style="width:80%"/>
+  <br>人数：<input name="topic[together_data][sign_limit]" type="text" class="ui_input" style="width:80%"/>
+
+
   <div style="height:420px">
   <textarea name="topic[content]" id="content" cols="30" rows="10" style="width:100%;height:350px"></textarea>
   <%= render 'global/ueditor', :id => 'content', :options => {:initialFrameHeight => '350'} %>

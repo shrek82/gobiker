@@ -86,8 +86,11 @@ var qyerUI = {
 function plogin() {
   new popup({title: '登录'}).ajax('/users/minilogin', '440', function () {
     setTimeout(function () {
-      $('#login_submit_button').click(function () {
-        new ajaxForm('login_form', {
+      var $submit_button=$('#login_submit_button');
+      $submit_button.prop('type', 'submit');
+      $('#login_form').submit(function (e) {
+        e.preventDefault();
+        new ajaxForm($(this), {
           dataType: 'json',
           submitButton: 'login_submit_button',
           successLabel: '登录成功',
@@ -98,7 +101,7 @@ function plogin() {
           }
         }).send();
       });
-    }, 800);
+    }, 500);
   });
 }
 
