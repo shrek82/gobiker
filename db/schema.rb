@@ -479,8 +479,8 @@ ActiveRecord::Schema.define(:version => 20130827083036) do
     t.boolean  "is_comment",                            :default => false
     t.boolean  "is_good",                               :default => false
     t.boolean  "is_recommend",                          :default => false
-    t.integer  "hits_num",                              :default => 3
-    t.integer  "comments_num",                          :default => 3
+    t.integer  "hits_num",                              :default => 0
+    t.integer  "comments_num",                          :default => 0
     t.integer  "last_comment_user_id"
     t.string   "last_comment_user_name", :limit => 50
     t.datetime "last_comment_time"
