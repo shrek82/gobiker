@@ -171,8 +171,10 @@ var loadComments = function (query_param) {
 var scroll_to_cmtform = function () {
   var $comment_form = $("#comment_form");
   var scroll_top = $comment_form.offset().top - 32;
-  $('html, body').animate({scrollTop: scroll_top});
-  $comment_form.find('textarea').focus();
+  $('html, body').animate({scrollTop: scroll_top},function(){
+    //$comment_form.find('textarea').focus();
+  });
+
 }
 
 //评论分页

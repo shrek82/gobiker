@@ -86,3 +86,20 @@ forums.post_button = function () {
   });
 
 }
+
+//详细页浮动收藏条
+forums.floatTool = function () {
+  var $elm = $('#bbs_tools');
+  var startPos = $elm.offset().top;
+  $(window).on('scroll', function () {
+    var p = $(window).scrollTop();
+    if ((p + 35) > startPos) {
+      $elm.css('position', 'fixed');
+      $elm.css('top', '35px');
+    }
+    else {
+      $elm.css('position', 'static');
+      $elm.css('top', '');
+    }
+  })
+}

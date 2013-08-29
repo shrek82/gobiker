@@ -5,7 +5,7 @@
 
 <div class="qyer_head_crumbg">
   <div class="qyer_head_crumb">
-    <a href="<%= main_path %>">首页</a>&nbsp;&gt;&nbsp;<a href="<%= forums_path %>">论坛</a>&gt; <a href="forum-3-1.html">签证</a> &nbsp;&gt;&nbsp;发新话题    </div>
+    <a href="<%= main_path %>">首页</a>&nbsp;&gt;&nbsp;<a href="<%= forums_path %>">论坛</a>&nbsp;&gt; &nbsp;发新话题</div>
 </div>
 
 <%= block_alert @topic %>
@@ -16,10 +16,9 @@
   <br>
   分类：
   <select name="topic[subject_id]" id="topic_subject">
-    <option value="1">话题</option>
-    <option value="2">约伴</option>
-    <option value="3">活动</option>
-    <option value="4">旅行</option>
+    <% @subject_categories.each do |c| %>
+        <option value="<%= c.id %>"><%= c.name %></option>
+    <% end %>
   </select>
   <br>
   标题：<input name="topic[title]" type="text" class="ui_input" style="width:80%"/>

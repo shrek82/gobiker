@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130827083036) do
+ActiveRecord::Schema.define(:version => 20130829051847) do
 
   create_table "activities", :force => true do |t|
     t.integer  "category_id"
@@ -464,6 +464,7 @@ ActiveRecord::Schema.define(:version => 20130827083036) do
     t.text     "content"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "address"
   end
 
   add_index "togethers", ["topic_id"], :name => "index_togethers_on_topic_id"
@@ -479,7 +480,7 @@ ActiveRecord::Schema.define(:version => 20130827083036) do
     t.boolean  "is_comment",                            :default => false
     t.boolean  "is_good",                               :default => false
     t.boolean  "is_recommend",                          :default => false
-    t.integer  "hits_num",                              :default => 0
+    t.integer  "hits_num",                              :default => 3
     t.integer  "comments_num",                          :default => 0
     t.integer  "last_comment_user_id"
     t.string   "last_comment_user_name", :limit => 50

@@ -16,17 +16,24 @@
         <h1 class="bbs_titbox_title fontYaHei qyer_spam_text_filter">经验分享：美国B1/B2签2个月的行政审理结束拿到签证有感</h1>
 
         <div class="bbs_titbox_info">
-          <p class="fr modact">
-          </p>
+
 
           <div class="infos">
-            <a href="forum-3-62-1.html" class="category" data-bn-ipg="4-1">美洲国家签证</a> <a href="http://user.qyer.com/user_uid_58763" class="ml10" data-bn-ipg="4-2">gongdt</a>
-            <span class="ml15 mr15">|</span>
+            <img src="/avatar/up.jpeg" alt="zhaojiangang_" style="position:absolute;left:0;top:0">
+            作者：<a href="<%= u_path @topic.user_id %>" class="ml10" ><%= @topic.user.username %></a>
+            <br>
             发表于 <%= @topic.created_at.to_s(:db) %> <span class="ml15 mr15">|</span>
             <span class="views"><%= @topic.hits_num %></span>
             <span class="sum"><%= @topic.comments_num %></span>
             <span class="like">0</span>
-            <span class="ml15 mr15">|</span>
+          </div>
+
+          <div class="fr">
+                <div id="bbs_tools" class="bbs_tools" style="position: relative;top: 0px;background:#fff">
+                  <a href="javascript:;" id="share" class="share" rel="nofollow" data-bn-ipg="22">分享</a>
+                  <a href="javascript:;" class="collect" rel="nofollow" data-bn-ipg="21">收藏</a>
+                  <a id="recommend_add" style="" data-tid="837722" href="misc.php?action=recommend&amp;do=add&amp;tid=837722" onclick="if(QYER.uid&gt;0){ajaxmenu(this, 3000, 1, 0, '43', 'recommendupdate(1)');}else{ajaxlogin(0,'','bbsajax.php','pagereload');};doane(event);" class="like" rel="nofollow" data-bn-ipg="20">喜欢</a>
+                </div>
           </div>
 
         </div>
@@ -44,26 +51,16 @@
         <%=raw @topic.post.content %>
         <% end %>
       </div>
-
+<div>
+  分类：<a href="forum-3-62-1.html" class="category" >美洲国家签证</a>
+</div>
   <%= comment_list :hidden_field => {:topic_id => @topic.id}, :query_param => {:topic_id => @topic.id} %>
 
 
 </div>
 <div class="bbs_sidebar">
-  <div class="bbs_toolbox">
 
-    <div id="bbs_tools_wrap" style="height:52px;">
-      <div class="bbs_tools" style="position: relative; left: 0px; top: 0px;">
-        <a href="javascript:;" id="share" class="share" rel="nofollow" data-bn-ipg="22">分享</a>
-        <a href="javascript:;" class="collect" rel="nofollow" data-bn-ipg="21">收藏</a>
-        <a id="recommend_add" style="" data-tid="837722" href="misc.php?action=recommend&amp;do=add&amp;tid=837722" onclick="if(QYER.uid&gt;0){ajaxmenu(this, 3000, 1, 0, '43', 'recommendupdate(1)');}else{ajaxlogin(0,'','bbsajax.php','pagereload');};doane(event);" class="like" rel="nofollow" data-bn-ipg="20">喜欢</a>
 
-        <div class="bbs_tools_sharelay">
-          <div class="sharelay_top"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
   <!--右侧目的地-->
@@ -115,20 +112,10 @@
 </div>
 
 
-<script>
-    $(function() {
-        var $elm = $('#bbs_tools_wrap');
-        var startPos = $elm.offset().top;
-        $(window).on('scroll', function () {
-            var p = $(window).scrollTop();
-            if((p+35)>startPos){
-                $elm.css('position','fixed');
-                $elm.css('top','35px');
-            }
-            else{
-                $elm.css('position','static');
-                $elm.css('top','');
-            }
-        })
-    });
-</script>
+<% content_for:script do %>
+    <script type="text/javascript">
+      readyScript.show=function(){
+          forums.floatTool();
+      }
+    </script>
+<%end %>

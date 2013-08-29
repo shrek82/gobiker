@@ -10,9 +10,7 @@ class TopicsController < ApplicationController
 
   def new
     @topic=Topic.new
-    @subject_categories=Rails.cache.fetch('subject_categories', :expires_in => 24.hours) do
-      SubjectCategory.order('subject_categories.order_num ASC')
-    end
+    @subject_categories=SubjectCategory.order('order_num ASC')
   end
 
   def edit
@@ -35,6 +33,7 @@ class TopicsController < ApplicationController
     @topic=Topic.find(params[:id])
     @topic.hits_num+=1
     @topic.save
+    render 'show2'
   end
 
   def update

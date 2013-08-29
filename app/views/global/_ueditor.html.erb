@@ -1,18 +1,16 @@
-<script type="text/javascript" charset="utf-8">
-    var ueditor_options = {};
-    <%
-    unless options.class=="nilClass"
-       options.each do |key,value|
-    %>
-    <%= "ueditor_options.#{key}=#{value};" %>
-    <%
-       end
-    end
-    %>
-</script>
-
 <script type="text/javascript">
-    //实例化编辑器
-    var ue = UE.getEditor('<%=id %>',ueditor_options);
-
+    readyScript.ueditor = function () {
+        var ueditor_options = {};
+        <%
+        unless options.class=="nilClass"
+           options.each do |key,value|
+        %>
+        ueditor_options.<%= key %> =<%=raw value %>;
+        <%
+           end
+        end
+        %>
+        //实例化编辑器
+        var ue = UE.getEditor('<%=id %>', ueditor_options);
+    }
 </script>

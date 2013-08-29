@@ -783,7 +783,6 @@ a{
     border:5px solid #aeadad;
     border-radius:8px;
     border-color:rgba(0, 0, 0, 0.3);
-    top:80px;
     display:none;
     filter:alpha(opacity=0);
     -moz-opacity:0;

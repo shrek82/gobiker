@@ -199,9 +199,9 @@ function ajaxForm(form, opts) {
       if (_this.opts.errorDisplayType == 'formError') {
 
         _this.flash_msg.addClass('alert alert-block');
-        _this.flash_msg.html(html_errors).fadeIn(300);
+        _this.flash_msg.html(html_errors).fadeIn();
         setTimeout(function () {
-          _this.flash_msg.fadeOut(300);
+          _this.flash_msg.fadeOut();
         }, 5000);
 
       }
@@ -413,6 +413,7 @@ var popup = function (opt) {
   this.popup = {};
   this.pup_code = "<div id='ui_pupBox_bg' class='ui_pupBox_bg' ><div class='ui_pupBox'><div class='ui_pupBox_close'></div><div class='ui_pupBox_main'><div class='ui_pupBox_head'> <ul class='ui_pupBox_headtag'> <li id='tab_login' class='current'><span>" + title + "</span></li> </ul> </div> <div class='ui_pupBox_tag_cnt' id='pop_html_box'> </div></div></div></div>";
   this.box = null;
+  this.wintop=$(window).scrollTop();
 }
 
 //初始化弹出窗口
@@ -428,14 +429,14 @@ popup.prototype.start = function (width) {
     "height": $(document).height()
   });
 
-  _this.box.find("div.ui_pupBox").css({'display':'block','width':width+30}).animate({'opacity':1,'top':'150px'},250);
+  _this.box.find("div.ui_pupBox").css({'display':'block','top':(_this.wintop+80)+'px','width':width+30}).animate({'opacity':1,'top':(_this.wintop+160)+'px'},250);
   _this.box.find("div.ui_pupBox_tag_cnt").text("");
   _this.box.find("div.ui_pupBox_close").show();
 };
 
 popup.prototype.close = function () {
   var _this = this;
-  _this.box.find("div.ui_pupBox").animate({'opacity':0,'top':'80px'},200,function(){
+  _this.box.find("div.ui_pupBox").animate({'opacity':0,'top':(_this.wintop+80)+'px'},200,function(){
     _this.box.fadeOut(150,function(){
       $(this).remove();
     });

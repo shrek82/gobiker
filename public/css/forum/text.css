@@ -38,30 +38,26 @@ dd{ padding-left:1em }
 
 .bbs_titbox_title{ padding-bottom:2px; font-size:24px; line-height:36px; color:#147850 }
 
-.bbs_titbox_info{ line-height:20px; color:#999 }
+.bbs_titbox_info{line-height:20px; height:40px;color:#999;padding-left:62px;position:relative;}
 
-.bbs_titbox_info
+.bbs_titbox_info .infos{width:500px;float:left}
+
 .category{ display:inline-block; padding:0 4px; background-color:#6faf8e; color:#fff; text-decoration:none; border-radius:3px }
 
-.bbs_titbox_info .category:hover{ background-color:#5fa678 }
+.category:hover{ background-color:#5fa678 }
 
 .bbs_titbox_info .infos .views, .bbs_titbox_info .infos .sum, .bbs_titbox_info .infos
 .like{ background:url(/images/forum/listinfo.png) no-repeat }
 
-.bbs_titbox_info .infos
-.views{ padding-left:21px; background-position:0 1px }
+.bbs_titbox_info .infos .views{ padding-left:21px; background-position:0 1px }
 
-.bbs_titbox_info .infos
-.sum{ padding-left:17px; background-position:0 -28px; margin-left:20px }
+.bbs_titbox_info .infos .sum{ padding-left:17px; background-position:0 -28px; margin-left:20px }
 
-.bbs_titbox_info .infos
-.like{ padding-left:21px; background-position:0 -89px; margin-left:20px }
+.bbs_titbox_info .infos .like{ padding-left:21px; background-position:0 -89px; margin-left:20px }
 
-.bbs_titbox_info
-.icons{ }
+.bbs_titbox_info .icons{ }
 
-.bbs_titbox_info .icons
-img{ vertical-align:text-bottom; margin-right:4px }
+.bbs_titbox_info .icons img{ vertical-align:text-bottom; margin-right:4px }
 
 .bbs_main{ float:left; width:680px }
 

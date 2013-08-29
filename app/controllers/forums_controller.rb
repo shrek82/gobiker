@@ -22,6 +22,7 @@ class ForumsController < ApplicationController
 
     @forum= Forum.find(params[:id])
 
+    SubjectCategory
     @subject_categories=Rails.cache.fetch('topic_categories', :expires_in => 1.hours) do
       SubjectCategory.order('order_num ASC')
     end
@@ -41,6 +42,12 @@ class ForumsController < ApplicationController
     end
     @topics = Topic.base_field.where(conditions).paginate(:page => params[:page], :per_page =>12,:include => [:user,:reply_user],:order=>'topics.is_fixed DESC,case when topics.last_comment_time IS NOT NULL then topics.last_comment_time when topics.last_comment_time IS NULL then topics.created_at end DESC')
     #@topics = Topic.base_field.where(:forum_id => params[:id]).includes(:user,:reply_user).kpage(params[:page]).per(1)
+
+    #一周热帖
+    @week_hots=Rails.cache.fetch('week_hots_forums'+params['id'].to_s, :expires_in => 3.hours) do
+      Topic.base_field.where(:created_at =>Time.now-7.days..Time.now,:forum_id=>params[:id]).order('hits_num DESC').limit(5)
+    end
+
 
   end
 
