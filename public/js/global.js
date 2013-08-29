@@ -202,7 +202,6 @@ var cmtpage = function (url) {
 var bindCmtForm = function (add_param) {
   var add_param = add_param ? add_param + '&' : '';
   var cmt_textarea = $('#cmt_textarea');
-
   if (!user.uid) {
     $('#cmt_submit_button').prop('type', 'button').click(function () {
       plogin();

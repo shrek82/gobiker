@@ -9,7 +9,14 @@ module ApplicationHelper
     @options=data[:options]||{}
     @query_param=data[:query_param]||{}
     #@request_param=request.query_parameters||{}
-    return render 'comments/listform'
+    if @query_param[:topic]
+      template_path="comments/topics/listform"
+    elsif @query_param[:review]
+      template_path="comments/review/listform"
+    else
+      template_path="comments/listform"
+    end
+    return render template_path
   end
 
   def star_span(num=1, limit=5, default=4)

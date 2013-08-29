@@ -13,7 +13,13 @@ class CommentsController < ApplicationController
     #conditions << "name LIKE ?"
     #conditions << "%#{params[:q]}%"
 
-    template=params[:review]=='true'?"comments/list_review":"comments/list"
+    if params[:review]=='true'
+      template="comments/review/list"
+    elsif params[:topic]=='true'
+      template="comments/topics/list"
+    else
+      template="comments/list"
+    end
 
     conditions=Hash.new
     if params[:q]
@@ -36,7 +42,13 @@ class CommentsController < ApplicationController
 
   #获取评论模板
   def getone
-    template=params[:review]=='true'?"comments/list_review":"comments/list"
+    if params[:review]=='true'
+      template="comments/review/list"
+    elsif params[:topic]=='true'
+      template="comments/topics/list"
+    else
+      template="comments/list"
+    end
     @comment=Comment.find_by_id(params[:id])
     respond :template=>template,:comments => @comment, :layout => false
   end
