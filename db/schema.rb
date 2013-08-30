@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130829051847) do
+ActiveRecord::Schema.define(:version => 20130830075344) do
 
   create_table "activities", :force => true do |t|
     t.integer  "category_id"
@@ -161,6 +161,20 @@ ActiveRecord::Schema.define(:version => 20130829051847) do
     t.datetime "img_updated_at"
     t.string   "img_path"
   end
+
+  create_table "avatars", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "img",              :limit => 150
+    t.string   "img_path",         :limit => 150
+    t.string   "img_file_name",    :limit => 100
+    t.string   "img_content_type", :limit => 50
+    t.string   "img_file_size",    :limit => 20
+    t.datetime "img_updated_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "avatars", ["user_id"], :name => "index_avatars_on_user_id"
 
   create_table "been_to_places", :force => true do |t|
     t.integer  "place_id"
@@ -480,7 +494,7 @@ ActiveRecord::Schema.define(:version => 20130829051847) do
     t.boolean  "is_comment",                            :default => false
     t.boolean  "is_good",                               :default => false
     t.boolean  "is_recommend",                          :default => false
-    t.integer  "hits_num",                              :default => 0
+    t.integer  "hits_num",                              :default => 3
     t.integer  "comments_num",                          :default => 0
     t.integer  "last_comment_user_id"
     t.string   "last_comment_user_name", :limit => 50
@@ -494,6 +508,15 @@ ActiveRecord::Schema.define(:version => 20130829051847) do
   add_index "topics", ["subject_id"], :name => "subject_idx"
   add_index "topics", ["user_id"], :name => "user_idx"
 
+  create_table "tweets", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tweets", ["user_id"], :name => "index_tweets_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "password"
@@ -505,6 +528,7 @@ ActiveRecord::Schema.define(:version => 20130829051847) do
     t.string   "memo"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "signatures"
   end
 
   create_table "want_to_places", :force => true do |t|

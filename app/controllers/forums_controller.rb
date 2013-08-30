@@ -40,7 +40,7 @@ class ForumsController < ApplicationController
       conditions[0]+=' AND is_good=?'
       conditions << true
     end
-    @topics = Topic.base_field.where(conditions).paginate(:page => params[:page], :per_page =>12,:include => [:user,:reply_user],:order=>'topics.is_fixed DESC,case when topics.last_comment_time IS NOT NULL then topics.last_comment_time when topics.last_comment_time IS NULL then topics.created_at end DESC')
+    @topics = Topic.base_field.where(conditions).paginate(:page => params[:page], :per_page =>12,:include => [:user,:reply_user,:subject_category],:order=>'topics.is_fixed DESC,case when topics.last_comment_time IS NOT NULL then topics.last_comment_time when topics.last_comment_time IS NULL then topics.created_at end DESC')
     #@topics = Topic.base_field.where(:forum_id => params[:id]).includes(:user,:reply_user).kpage(params[:page]).per(1)
 
     #一周热帖

@@ -4,7 +4,7 @@ class Topic < ActiveRecord::Base
   attr_accessible :content,:activity_data,:post_data,:together_data
   belongs_to :forum, :foreign_key => "forum_id"
   belongs_to :user
-  belongs_to :subject_category
+  belongs_to :subject_category, :foreign_key => "subject_id"
   belongs_to :reply_user, :class_name => "User", :foreign_key => "last_comment_user_id"
 
   has_one :activity

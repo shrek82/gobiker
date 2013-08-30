@@ -1,8 +1,7 @@
 #coding: utf-8
 class Comment < ActiveRecord::Base
   attr_accessible :content,:place_id,:route_id,:topic_id,:event_id,:album_id,:article_id,:userful_num
-  validates_presence_of :content, :message => '不能为空', :text => '内容'
-  validates_length_of :content, :minimum => 2
+  validates_length_of :content, :minimum => 2,:message=>'过短，最少不少于2个字符'
   validates_presence_of :user_id
   belongs_to :place
   belongs_to :user

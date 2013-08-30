@@ -1,7 +1,7 @@
 #coding: utf-8
 
 class User < ActiveRecord::Base
-  attr_accessible :avatar_path, :email, :login_date, :memo, :password, :pass, :point, :reg_date, :username, :code, :password_confirmation
+  attr_accessible :avatar_path, :email, :login_date, :memo, :password, :pass, :point, :reg_date, :username, :code, :password_confirmation,:signatures
   has_many :comments, :dependent => :destroy
   has_many :places
   has_many :topics
@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :photos
   has_many :eventses
   has_many :been_to_places
+  has_one :avatar
 
   #权限控制
   has_and_belongs_to_many :permissions

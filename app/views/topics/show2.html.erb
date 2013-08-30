@@ -1,50 +1,64 @@
 <% @title=@topic.title %>
 
+<% content_for:style do %>
+    <style type="text/css">
+        #mains_body {width: 95%;min-height:300px;margin:0 auto;}
+        .qyesr_head_crumb{width:99%}
+    </style>
+<% end %>
+
 <% content_for:head do %>
     <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.all.js"></script>
 <% end %>
 
-<% content_for:style do %>
-    <link rel="stylesheet" href="/css/forum/text.css"/>
-<% end %>
 
 
-<div class="qyer_head_crumbg">
-  <div class="qyer_head_crumb">
-    <a href="<%= main_path %>">首页</a>&nbsp;&gt;&nbsp;<a href="<%= forums_path %>">论坛</a>&gt; <a href="<%= list_forums_path @topic.forum_id %>"><%= @topic.forum.name %></a> &nbsp;&gt;&nbsp;<%= @topic.title %>    </div>
-</div>
-
+    <div class="qyer_head_crumbg">
+      <div class="qyer_head_crumb">
+        <a href="<%= main_path %>">首页</a>&nbsp;&gt;&nbsp;<a href="<%= forums_path %>">论坛</a>&gt; <a href="<%= list_forums_path @topic.forum_id %>"><%= @topic.forum.name %></a> &nbsp;&gt;&nbsp;<%= @topic.title %>    </div>
+    </div>
 
 <div style="text-align:right;margin-bottom:10px">
-  <button class="btn2 btn2-mint">发布回复</button>
-  <button class="btn2 btn2-mint">发布新帖</button>
+  <button class="btn btn-orange"><span class="icon-pencil"></span> 发布回复</button>
+  <button class="btn btn-blue"><span class="icon-plus"></span> 发布新帖</button>
 </div>
 
-<h1 style="color:#0D6F50;font-size:18px;font-weight:bold;margin:10px 0">主题：经验分享：美国B1/B2签2个月的行政审理结束拿到签证有感</h1>
 
-<table style="border:1px solid #eee">
+<table class="view_table">
+
+  <tr class="topic_info">
+    <td class="hit_num" >查看：<%= @topic.hits_num %> 回复：<%= @topic.comments_num %></td>
+    <td class="title"><h1>主题：经验分享：美国B1/B2签2个月的行政审理结束拿到签证有感</h1>
+    </td>
+  </tr>
 
   <tr>
-    <td style="vertical-align:top;width:100px;background:#f9f9f9;padding:0 10px;border-right:1px solid #eee">
-      <div class="infos" style="color:#999;font-size:12px;border-bottom:1px dashed #eee;padding:7px 0">
-        <a href="<%= u_path @topic.user_id %>"><%= @topic.user.username %></a>
-      </div>
-      <br>
-      <img src="/avatar/up.jpeg" alt="zhaojiangang_">
-
+    <td class="user_info">
+      <a href="sdf">seeyoup</a>
+      <img src="/avatar/1_o.jpg" width="80" height="80" alt="zhaojiangang_">
     </td>
-    <td style="vertical-align:top;padding:0 10px;">
+    <td class="view_content">
       <div class="infos" style="color:#999;font-size:12px;border-bottom:1px dashed #eee;padding:7px 0">
         <span style="color:#f60;font-weight:bold">楼主</span> 发表于 <%= @topic.created_at.to_s(:db) %>
       </div>
       <div style="line-height:1.7em;font-size:14px;padding:15px 0 100px 0;">
-        <%= raw @topic.post.content %>
+        <% if @topic.post %>
+            <%= raw @topic.post.content %>
+        <% elsif @topic.together %>
+            <%= raw @topic.together.content %>
+        <% end %>
       </div>
+
+      <div class="view_tools" >ffffffff</div>
+      <div class="signatures" ><span class="icon-pencil"></span>&nbsp;<%= @topic.user.signatures %></div>
+
     </td>
   </tr>
 </table>
 
 <%= comment_list :hidden_field => {:topic_id => @topic.id}, :query_param => {:topic_id => @topic.id,:topic=>true} %>
+
+
 
 

@@ -78,7 +78,7 @@
               <div class="infos">
                 <p class="info"><span class="views" title="浏览"><%= t.hits_num %></span><span class="sum" title="评论"><%= t.comments_num %></span></p>
 
-                <p><a href="forum-3-61-1.html" class="tag">亚洲国家签证</a><span class="reply"><a href="<%= u_path t.user_id %>"><%= t.user.username %></a>&nbsp;发表于<%= to_pretty t.created_at %>&nbsp;&nbsp;&nbsp;<%= t.reply_user.username+to_pretty(t.last_comment_time)+"回复" if t.last_comment_time&&t.last_comment_user_id %></span>
+                <p><a href="<%= list_forums_path @forum.id%>?cid=<%= t.subject_id %>" class="tag"><%= t.subject_category.name %></a><span class="reply"><a href="<%= u_path t.user_id %>"><%= t.user.username %></a>&nbsp;发表于<%= to_pretty t.created_at %>&nbsp;&nbsp;&nbsp;<%= t.reply_user.username+to_pretty(t.last_comment_time)+"回复" if t.last_comment_time&&t.last_comment_user_id %></span>
                 </p>
 
               </div>

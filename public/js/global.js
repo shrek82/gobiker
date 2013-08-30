@@ -179,7 +179,7 @@ var scroll_to_cmtform = function () {
 
 //评论分页
 var cmtpage = function (url) {
-  $('#ui_page a').bind('click', function (e) {
+  $('div.ui_page a').bind('click', function (e) {
     e.preventDefault();
     console.log($(this).attr('url'));
     $.ajax({
@@ -187,7 +187,7 @@ var cmtpage = function (url) {
       dataType: 'html',
       type: 'get',
       success: function (data) {
-        var ajax_list = $("#write_review").offset().top - 32;
+        var ajax_list = $("#ajax_list").offset().top - 42;
         $('html, body').animate({scrollTop: ajax_list});
         $("#ajax_list").html($(data).fadeIn(400));
         setTimeout(function () {
@@ -201,14 +201,11 @@ var cmtpage = function (url) {
 //绑定评论表单
 var bindCmtForm = function (add_param) {
   var add_param = add_param ? add_param + '&' : '';
-  var cmt_textarea = $('#cmt_textarea');
   if (!user.uid) {
     $('#cmt_submit_button').prop('type', 'button').click(function () {
       plogin();
     });
-    cmt_textarea.focus(function () {
-      plogin();
-    });
+    ueditor.disable();
     return false;
   }
 
@@ -219,7 +216,7 @@ var bindCmtForm = function (add_param) {
       submitButton: 'cmt_submit_button',
       successLabel: '发表成功',
       callback: function (data) {
-        cmt_textarea.attr('value', '');
+        ueditor.setContent('<p></p>');
         $.ajax({
           url: '/comments/getone',
           dataType: 'html',
@@ -229,7 +226,7 @@ var bindCmtForm = function (add_param) {
             $li = $(html);
             $("#cmts_pager").before($li);
             var height = $li.height() + 'px';
-            $li.css({opacity: 0, height: 0}).animate({opacity: 1, height: height}, 300);
+            $li.css({opacity: 0, height: 0}).animate({opacity: 1, height: height},600);
             //$("#cmts_pager").before($(data).css('height','0').animate({height:"68px",opacity: 'toggle'},350));
           }
         });
