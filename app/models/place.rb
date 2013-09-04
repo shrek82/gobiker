@@ -11,10 +11,9 @@ class Place < ActiveRecord::Base
   #attr_protected :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num
 
   #不允许为空
-  validates_presence_of :name, :text => '标题'
   validates_presence_of :content, :message => '不能为空'
   validates_presence_of :address,:text => '地址'
-  validates_presence_of :intro,:text => '地址'
+  validates_presence_of :intro,:text => '简介'
   validates_length_of :name,:in => (2..30), :message => '不能少于2个字符'
   validates_length_of :intro,:maximum => 250
   validates_presence_of :province_id,:text => '省份'

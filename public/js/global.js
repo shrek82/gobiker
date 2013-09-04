@@ -205,7 +205,15 @@ var bindCmtForm = function (add_param) {
     $('#cmt_submit_button').prop('type', 'button').click(function () {
       plogin();
     });
-    ueditor.disable();
+    if(typeof ueditor=='object'){
+      ueditor.disable();
+    }
+    else{
+      $('#cmt_textarea').click(function(){
+        plogin();
+      })
+    }
+
     return false;
   }
 

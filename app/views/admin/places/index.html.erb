@@ -86,10 +86,14 @@
           </tbody>
         </table>
 
+        <% unless @places.blank? %>
         <div class="table-footer">
-          <div class="dataTables_info" id="DataTables_Table_0_info"><%= page_entries_info @places, :html => false %></div>
+          <div class="dataTables_info" id="DataTables_Table_0_info"></div>
           <%= go_pager @places %>
         </div>
+        <% else %>
+        <div>暂时还没有记录。</div>
+        <% end %>
 
       </div>
     </div>
