@@ -1,3 +1,4 @@
+<% content_for:script do %>
 <script type="text/javascript">
     readyScript.ueditor = function () {
         var ueditor_options = {};
@@ -14,3 +15,4 @@
         window.ueditor = UE.getEditor('<%=id %>', ueditor_options);
     }
 </script>
+<% end %>

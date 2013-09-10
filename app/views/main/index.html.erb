@@ -5,7 +5,6 @@
 <% end %>
 <% content_for:script do %>
     <script src="/js/slides.jquery.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/js/jquery.datetimeplus.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.core.js"></script>
     <script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
     <script type="text/javascript" src="/js/main/module.js"></script>
@@ -43,8 +42,10 @@
     #searchboxInc .ui_input {
         float: right;
         width: 176px;
+        font-size: 12px;
+        padding: 0 0 0 10px;
+        height:24px;
         background: #fff url(/static/media/booking_input_bg.png) no-repeat right top;
-        padding-right: 20px;
     }
 
     #searchboxInc #inout .ui_input {

@@ -26,7 +26,7 @@ readyScript.auto_login = function () {
 //返回顶部
 readyScript.scrollTop = function () {
 
-  var icon =$("<div class='ui_upward_wrapper' id='ui_gotop'><a class='arrow_icon'>回顶部</a></div>");
+  var icon = $("<div class='ui_upward_wrapper' id='ui_gotop'><a class='arrow_icon'>回顶部</a></div>");
   icon.appendTo("body");
   var icon_h = icon.innerHeight(); //获取icon高度
 
@@ -40,32 +40,32 @@ readyScript.scrollTop = function () {
   var left = (doc_w - 980) / 2 + 1040; //距离左侧距离
   var right = 10; //距离右侧距离
 
-  var doc_h,win_h,top,max_h,scroll_top;
+  var doc_h, win_h, top, max_h, scroll_top;
 
-  icon.css({"left":left,"right":right});
+  icon.css({"left": left, "right": right});
 
-  win.on("scroll",function(){
+  win.on("scroll", function () {
     doc_h = doc.height();
     win_h = win.height();
     top = win_h - icon_h - 30;
-    scroll_top=doc.scrollTop();
-    if(isfoot){
+    scroll_top = doc.scrollTop();
+    if (isfoot) {
       max_h = doc_h - foot_h - scroll_top;
-      top=win_h > max_h? max_h - icon_h - 30:top;
+      top = win_h > max_h ? max_h - icon_h - 30 : top;
     }
-    if(scroll_top<200) {
+    if (scroll_top < 200) {
       icon.fadeOut(250);
     }
-    else if(doc_w > 1200) {
-      icon.css({"right":"auto","top":top}).fadeIn(200);
+    else if (doc_w > 1200) {
+      icon.css({"right": "auto", "top": top}).fadeIn(200);
     }
-    else {
-      icon.css({"left":"auto","top":top}).fadeIn(200);
+    else{
+      icon.css({"left": "auto", "top": top}).fadeIn(200);
     }
   });
 
-  icon.click(function(){
-    $("body,html").animate({scrollTop:0});
+  icon.click(function () {
+    $("body,html").animate({scrollTop: 0});
   });
 }
 
@@ -86,7 +86,7 @@ var qyerUI = {
 function plogin() {
   new popup({title: '登录'}).ajax('/users/minilogin', '440', function () {
     setTimeout(function () {
-      var $submit_button=$('#login_submit_button');
+      var $submit_button = $('#login_submit_button');
       $submit_button.prop('type', 'submit');
       $('#login_form').submit(function (e) {
         e.preventDefault();
@@ -106,12 +106,12 @@ function plogin() {
 }
 
 //获取城市下拉菜单
-function get_cities(pid,object) {
+function get_cities(pid, object) {
   $.ajax({
     url: '/common/cities_select',
     type: 'get',
     dataType: 'html',
-    data: {province_id: pid,'object':object},
+    data: {province_id: pid, 'object': object},
     success: function (data) {
       console.log(data);
       $('#city_select').html(data);
@@ -121,12 +121,12 @@ function get_cities(pid,object) {
 }
 
 //获取城市下拉菜单
-function get_areas(cid,object) {
+function get_areas(cid, object) {
   $.ajax({
     url: '/common/areas_select',
     type: 'get',
     dataType: 'html',
-    data: {city_id: cid,'object':object},
+    data: {city_id: cid, 'object': object},
     success: function (data) {
       console.log(data);
       $('#area_select').html(data);
@@ -171,7 +171,7 @@ var loadComments = function (query_param) {
 var scroll_to_cmtform = function () {
   var $comment_form = $("#comment_form");
   var scroll_top = $comment_form.offset().top - 32;
-  $('html, body').animate({scrollTop: scroll_top},function(){
+  $('html, body').animate({scrollTop: scroll_top}, function () {
     //$comment_form.find('textarea').focus();
   });
 
@@ -205,11 +205,11 @@ var bindCmtForm = function (add_param) {
     $('#cmt_submit_button').prop('type', 'button').click(function () {
       plogin();
     });
-    if(typeof ueditor=='object'){
+    if (typeof ueditor == 'object') {
       ueditor.disable();
     }
     else{
-      $('#cmt_textarea').click(function(){
+      $('#cmt_textarea').click(function () {
         plogin();
       })
     }
@@ -231,10 +231,11 @@ var bindCmtForm = function (add_param) {
           type: 'get',
           data: add_param + '_format=html&id=' + data.comment.id,
           success: function (html) {
+            $("#nodata_topic").remove();
             $li = $(html);
             $("#cmts_pager").before($li);
             var height = $li.height() + 'px';
-            $li.css({opacity: 0, height: 0}).animate({opacity: 1, height: height},600);
+            $li.css({opacity: 0, height: 0}).animate({opacity: 1, height: height}, 600);
             //$("#cmts_pager").before($(data).css('height','0').animate({height:"68px",opacity: 'toggle'},350));
           }
         });

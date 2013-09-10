@@ -29,9 +29,7 @@
 
 
 <% if @comments.blank? %>
-    <tr>
-      <td colspan="2" style="color:#999;padding:15px 0;border-width:0">暂时还没有评论</td>
-    </tr>
+ <div id="nodata_topic">暂时还没有任何评论</div>
 <% end %>
 
 <% if @comment.nil? %>

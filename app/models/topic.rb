@@ -26,6 +26,11 @@ class Topic < ActiveRecord::Base
   #创建topic
   after_create :subject_create
 
+  #初始化值
+  after_initialize do
+    self.subject_id=1
+  end
+
   #自定义详情字段
   def content
     @content

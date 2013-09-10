@@ -1,6 +1,5 @@
 #coding: utf-8
-class GuidesController < AdminController
+class GuidesController < ApplicationController
   def index
-
   end
 end

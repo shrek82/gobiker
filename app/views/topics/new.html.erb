@@ -1,54 +1,76 @@
 <% content_for:head do %>
+    <script type="text/javascript" charset="utf-8" src="/static/My97DatePicker/WdatePicker.js"></script>
     <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.all.js"></script>
 <% end %>
 
 <div class="qyer_head_crumbg">
   <div class="qyer_head_crumb">
-    <a href="<%= main_path %>">首页</a>&nbsp;&gt;&nbsp;<a href="<%= forums_path %>">论坛</a>&nbsp;&gt; &nbsp;发新话题</div>
+    <a href="<%= main_path %>">首页</a>&nbsp;&gt;&nbsp;<a href="<%= forums_path %>">论坛</a>&nbsp;&gt; &nbsp;发新话题
+  </div>
 </div>
 
 <%= block_alert @topic %>
-<%@topic.forum_id=params[:fid] %>
+<% @topic.forum_id=params[:fid] %>
 <form action="<%= topics_path %>" id="forum_form" style="margin:10px 0" method="post">
 
-  版块：<%= select("topic", "forum_id", Forum.all.collect {|f| [ f.name, f.id ] }, {:include_blank => '选择版块'}) %>
-  <br>
-  分类：
-  <select name="topic[subject_id]" id="topic_subject">
-    <% @subject_categories.each do |c| %>
-        <option value="<%= c.id %>"><%= c.name %></option>
-    <% end %>
-  </select>
-  <br>
-  标题：<input name="topic[title]" type="text" class="ui_input" style="width:80%"/>
-  <br>
-  地址：<input name="topic[activity_data][address]" type="text" class="ui_input" style="width:80%"/>
-  <br>
-  约伴<br>
-  地址：<input name="topic[together_data][address]" type="text" class="ui_input" style="width:80%"/>
-  <br>报名开始日期：<input name="topic[together_data][sign_start_at]" type="text" class="ui_input" style="width:80%"/>
-  <br>报名结束日期：<input name="topic[together_data][sign_finish_at]" type="text" class="ui_input" style="width:80%"/>
-  <br>约伴开始日期：<input name="topic[together_data][start_at]" type="text" class="ui_input" style="width:80%"/>
-  <br>报名结束日期：<input name="topic[together_data][finish_at]" type="text" class="ui_input" style="width:80%"/>
-  <br>人数：<input name="topic[together_data][sign_limit]" type="text" class="ui_input" style="width:80%"/>
+  <ul class="base_tab" style="margin:10px 0">
+    <li><a href="javascript:;" class="cur" sid="1">话题</a></li>
+    <li><a href="javascript:;" sid="2">约伴</a></li>
+    <li><a href="javascript:;" sid="3">活动</a></li>
+    <li><a href="javascript:;" sid="4">游击</a></li>
+    <li><a href="javascript:;" sid="5">比赛</a></li>
+  </ul>
 
+  <input type="hidden" name="topic[subject_id]" id="subject_id" value="<%= @topic.subject_id %>"/>
 
-  <div style="height:420px">
-  <textarea name="topic[content]" id="content" cols="30" rows="10" style="width:100%;height:350px"></textarea>
-  <%= render 'global/ueditor', :id => 'content', :options => {:initialFrameHeight => '350'} %>
+  <ul id="subject1">
+    <li><label>标题：</label><input name="topic[title]" type="text" class="ui_input" style="width:700px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00',skin:'twoer'})"/></li>
+  </ul>
+
+  <ul id="subject2" subject="activity" style="display:none">
+
+    <li>
+      <label >日期：</label><input name="topic[activity_data][sign_start_at]" type="text" class="ui_input" style="width:340px;margin-right: 10px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00',skin:'twoer'})"/><input name="topic[activity_data][sign_start_at]" type="text" class="ui_input" style="width:340px;margin-right: 10px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00',skin:'twoer'})"/>
+    </li>
+    <li>
+      <label >地点：</label><input name="topic[activity_data][address]" type="text" class="ui_input" style="width:700px"/>
+    </li>
+  </ul>
+
+  <ul id="subject3" subject="together" style="display:none">
+    <li>
+      <label >目的地：</label><input name="topic[together_data][address]" type="text" class="ui_input" style="width:80%"/>
+    </li>
+    <li>
+      <label >开始日期：</label><input name="topic[together_data][sign_start_at]" type="text" class="ui_input" style="width:80%"/>
+    </li>
+    <li>
+      <label >结束日期：</label><input name="topic[together_data][finish_at]" type="text" class="ui_input" style="width:80%"/>
+    </li>
+    <li>
+      <label >参与名额：</label><input name="topic[together_data][sign_limit]" type="text" class="ui_input" style="width:80%"/>
+    </li>
+  </ul>
+
+  <div style="height:370px">
+    <textarea name="topic[content]" id="content" cols="30" rows="10" style="width:100%;height:300px"></textarea>
+    <%= render 'global/ueditor', :id => 'content', :options => {:initialFrameHeight => '300'} %>
   </div>
-  <button id="topic_submit_button" type="submit" class="btn btn-mint">发布</button>
+  <button id="topic_submit_button" type="submit" class="btn btn-mint">立即发布</button>
 </form>
 
-<script type="text/javascript">
-    readyScript.bind = function () {
-        $('#forum_form').bind("submit", function (e) {
-            e.preventDefault();
-            new ajaxForm($(this), {
-                submitButton:'topic_submit_button',
-                dataType: 'json'
-            }).send();
-        });
-    }
-</script>
+<% content_for:script do %>
+    <script type="text/javascript">
+        readyScript.bindForm = function () {
+            forums.changeSubject();
+            $('#forum_form').bind("submit", function (e) {
+                e.preventDefault();
+                new ajaxForm($(this), {
+                    submitButton: 'topic_submit_button',
+                    dataType: 'json'
+                }).send();
+            });
+        }
+    </script>
+<% end ; %>

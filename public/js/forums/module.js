@@ -97,9 +97,22 @@ forums.floatTool = function () {
       $elm.css('position', 'fixed');
       $elm.css('top', '35px');
     }
-    else {
+    else{
       $elm.css('position', 'static');
       $elm.css('top', '');
     }
   })
+}
+
+//发布新话题自动扩充文本框
+forums.changeSubject = function () {
+  var $form = $("#forum_form");
+  $form.find('.base_tab li').click(function () {
+    var curlink = $(this).find("a");
+    var subject_id = curlink.addClass("cur").attr("sid");
+    $form.find("#subject_id").val(subject_id);
+    $(this).siblings("li").find("a").removeClass("cur");
+    $form.find("ul[subject]").hide();
+    $form.find("#subject" + subject_id).show();
+  });
 }
