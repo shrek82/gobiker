@@ -1,0 +1,1 @@
+define("zhaojiangang/venus/1.0.0/venus",["./vango"],function(a,b){var c=a("./vango");b.Vango=c}),define("zhaojiangang/venus/1.0.0/vango",[],function(a,b,c){!function(a,d){"object"==typeof b?c.exports=d():"function"==typeof define&&define.amd?define(d):a.Vango=d()}(this,function(){})});
