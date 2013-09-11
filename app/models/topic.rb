@@ -11,24 +11,34 @@ class Topic < ActiveRecord::Base
   has_one :together
   has_one :post
 
+  #基本验证
   validates_presence_of :forum_id
   validates_presence_of :subject_id
   validates_presence_of :user_id
-  validates_length_of :title, :in => 2..60
+  #validates_length_of :title, :in => 2..60
 
   #自定义验证方法
-  validate :subject_check
+  validate  do
+    if self.subject_id==2
+      self.errors.add(:base, '目的地不能为空') if self.together_data['address'].blank?
+      self.errors.add(:base, '日期不能为空') if self.together_data['start_at'].blank?
+      self.errors.add(:base, '详细说明不能为空') if self.content.blank?
+    end
+  end
+
+  #保存验证
+  #before_save :topic_before_save
+
+  #创建topic
+  after_create :topic_after_create
 
   #belongs_to :forum,:touch=>true
 
   scope :base_field, select("topics.id,topics.title,topics.forum_id,topics.subject_id,topics.user_id,topics.title_color,topics.last_comment_user_id,topics.last_comment_time,topics.hits_num,topics.comments_num,topics.is_fixed,topics.is_good,topics.created_at")
 
-  #创建topic
-  after_create :subject_create
-
   #初始化值
   after_initialize do
-    self.subject_id=1
+    self.subject_id=1 if self.subject_id.blank?
   end
 
   #自定义详情字段
@@ -65,17 +75,8 @@ class Topic < ActiveRecord::Base
 
   private
 
-  #主题验证
-  def subject_check
-    if self.subject_id==1
-      #errors.add(:base, '主题类型为话题') if self.subject_id==1
-    elsif self.subject_id==2
-    elsif self.subject_id==3
-    elsif self.subject_id==4
-    end
-  end
-
-  def subject_create
+  #后续添加
+  def topic_after_create
     if self.subject_id==1
       post=Post.new()
       post.topic_id=self.id
@@ -84,7 +85,9 @@ class Topic < ActiveRecord::Base
     end
 
     if self.subject_id==2
-      together=Together.new(@together_data)
+      together=Together.new
+      together.start_at=self.together_data['start_at']
+      together.finish_at=self.together_data['finish_at']
       together.topic_id=self.id
       together.content=@content
       together.save

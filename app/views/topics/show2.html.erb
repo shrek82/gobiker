@@ -2,7 +2,7 @@
 
 <% content_for:style do %>
     <style type="text/css">
-        #mains_body {width: 95%;min-height:300px;margin:0 auto;}
+        #mainss_body {width: 95%;min-height:300px;margin:0 auto;}
         .qyesr_head_crumb{width:99%}
     </style>
 <% end %>
@@ -20,8 +20,8 @@
     </div>
 
 <div style="text-align:right;margin-bottom:10px">
-  <button class="btn btn-orange"><span class="icon-pencil"></span> 发布回复</button>
-  <button class="btn btn-blue"><span class="icon-plus"></span> 发布新帖</button>
+  <a class="btn btn-orange" href="/forums/topics/post?fid=<%=@topic.forum_id %>"><span class="icon-pencil"></span> 发布回复</a>
+  <a class="btn btn-blue" href="/forums/topics/post?fid=<%=@topic.forum_id %>"><span class="icon-plus"></span> 发布新帖</a>
 </div>
 
 
@@ -29,7 +29,7 @@
 
   <tr class="topic_info">
     <td class="hit_num" >查看：<%= @topic.hits_num %> 回复：<%= @topic.comments_num %></td>
-    <td class="title"><h1>主题：经验分享：美国B1/B2签2个月的行政审理结束拿到签证有感</h1>
+    <td class="title"><h1>主题：<%= @topic.title %></h1>
     </td>
   </tr>
 
@@ -42,7 +42,7 @@
       <div class="infos" style="color:#999;font-size:12px;border-bottom:1px dashed #eee;padding:7px 0">
         <span style="color:#f60;font-weight:bold">楼主</span> 发表于 <%= @topic.created_at.to_s(:db) %>
       </div>
-      <div style="line-height:1.7em;font-size:14px;padding:15px 0 100px 0;">
+      <div style="line-height:1.7em;font-size:14px;padding:10px 15px 100px 15px;font-family: verdana">
         <% if @topic.post %>
             <%= raw @topic.post.content %>
         <% elsif @topic.together %>
