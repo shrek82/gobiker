@@ -544,6 +544,8 @@ a{
     color:#555;
 }
 
+
+
 .ui_input:focus, .ui_input:hover{
     background-color:#FFF;
     border:1px solid #b5b5b5;
@@ -563,8 +565,9 @@ a{
     border-color:#096;
 }
 
-.ui_input_error{
-    border-color:#c00;
+.ui_input_error,.ui_input_error:focus,.ui_input_error:hover{
+    background-color:#FAF0F0 ;
+    border:1px solid #FFBBBB;
 }
 
 .ui_select{

@@ -1,7 +1,7 @@
 #coding:utf-8
 class Topic < ActiveRecord::Base
   attr_accessible :subject_id, :title, :title_color, :user_id, :club_id, :comments_num, :activity_id, :forum_id, :hits_num, :is_comment, :is_fixed, :is_good, :is_recommend, :last_comment_time, :last_comment_user_id, :last_comment_user_name
-  attr_accessible :from_form,:content,:activity_data,:post_data,:together_data
+  attr_accessible :from_form, :content, :activity_data, :post_data, :together_data
   belongs_to :forum, :foreign_key => "forum_id"
   belongs_to :user
   belongs_to :subject_category, :foreign_key => "subject_id"
@@ -17,12 +17,19 @@ class Topic < ActiveRecord::Base
   validates_presence_of :user_id
   #validates_length_of :title, :in => 2..60
 
-  #自定义验证方法
-  validate  do
-    if self.subject_id==2 && self[:from_form]
-      self.errors.add(:base, '目的地不能为空') if self.together_data['address'].blank?
-      self.errors.add(:base, '日期不能为空') if self.together_data['start_at'].blank?
-      self.errors.add(:base, '详细说明不能为空') if self.content.blank?
+  #保存验证
+  validate do
+    if self[:from_form]
+      if self.subject_id==1
+        self.errors.add(:user_id, '作者不能为空') if self.title.size<4
+        self.errors.add(:title, '标题最短要有2个字符') if self.title.size<4
+        self.errors.add(:together_data_title, '标题最短要有4个字符') if self.title.size<4
+        self.errors.add(:title, '标题最短要有4个字符') if self.title.size<4
+      elsif self.subject_id==2
+        self.errors.add(:base, '目的地不能为空') if self.together_data['address'].blank?
+        self.errors.add(:base, '日期不能为空') if self.together_data['start_at'].blank?
+        self.errors.add(:base, '详细说明不能为空') if self.content.blank?
+      end
     end
   end
 
@@ -45,6 +52,7 @@ class Topic < ActiveRecord::Base
   def content
     @content
   end
+
   def content=(str)
     @content=str
   end
@@ -53,6 +61,7 @@ class Topic < ActiveRecord::Base
   def post_data
     @post_data
   end
+
   def post_data=(arr)
     @post_data=arr
   end
@@ -61,6 +70,7 @@ class Topic < ActiveRecord::Base
   def from_form
     @from_form
   end
+
   def from_form(boolean=false)
     @from_form=boolean
   end
@@ -68,6 +78,7 @@ class Topic < ActiveRecord::Base
   def together_data
     @together_data
   end
+
   def together_data=(arr)
     @together_data=arr
   end
@@ -75,6 +86,7 @@ class Topic < ActiveRecord::Base
   def activity_data
     @activity_data
   end
+
   def activity_data=(arr)
     @activity_data=arr
   end

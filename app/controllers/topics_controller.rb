@@ -24,7 +24,7 @@ class TopicsController < ApplicationController
       if @topic.save
         respond :redirect_to => show_topics_path(@topic.id), :success => '话题发表成功'
       else
-        respond :action => 'new',:error => @topic.errors.full_messages
+        respond :action => 'new',:error => @topic.errors
       end
 
     end

@@ -25,7 +25,7 @@
 
 
   <ul id="subject1" subject="topic" >
-    <li><label>标题：</label><input name="topic[title]" type="text" class="ui_input" style="width:700px"/></li>
+    <li><label>标题：</label><input name="topic[title]" id="form_title" type="text" class="ui_input" style="width:700px"/></li>
   </ul>
 
   <ul id="subject2" subject="together" style="display:none">
@@ -58,14 +58,16 @@
     <textarea name="topic[content]" id="content" cols="30" rows="10" style="width:100%;height:300px"></textarea>
     <%= render 'global/ueditor', :id => 'content', :options => {:initialFrameHeight => '300'} %>
   </div>
-  <input type="text" name="topic[subject_id]" id="subject_id" value="<%= @topic.subject_id %>"/>
+  <input type="hidden" name="topic[subject_id]" id="subject_id" value="<%= @topic.subject_id %>"/>
 
   <button id="topic_submit_button" type="submit" class="btn btn-mint">立即发布</button>
 </form>
 
 <% content_for:script do %>
     <script type="text/javascript">
+
         readyScript.bindForm = function () {
+
             forums.changeSubject();
             $('#forum_form').bind("submit", function (e) {
                 e.preventDefault();
