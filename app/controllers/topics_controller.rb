@@ -20,6 +20,7 @@ class TopicsController < ApplicationController
     if request.post?
       @topic=Topic.new(params[:topic])
       @topic[:user_id]=current_uid
+      @topic[:from_form]=true
       if @topic.save
         respond :redirect_to => show_topics_path(@topic.id), :success => '话题发表成功'
       else

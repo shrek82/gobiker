@@ -1,7 +1,7 @@
 #coding:utf-8
 class Topic < ActiveRecord::Base
   attr_accessible :subject_id, :title, :title_color, :user_id, :club_id, :comments_num, :activity_id, :forum_id, :hits_num, :is_comment, :is_fixed, :is_good, :is_recommend, :last_comment_time, :last_comment_user_id, :last_comment_user_name
-  attr_accessible :content,:activity_data,:post_data,:together_data
+  attr_accessible :from_form,:content,:activity_data,:post_data,:together_data
   belongs_to :forum, :foreign_key => "forum_id"
   belongs_to :user
   belongs_to :subject_category, :foreign_key => "subject_id"
@@ -19,7 +19,7 @@ class Topic < ActiveRecord::Base
 
   #自定义验证方法
   validate  do
-    if self.subject_id==2
+    if self.subject_id==2 && self[:from_form]
       self.errors.add(:base, '目的地不能为空') if self.together_data['address'].blank?
       self.errors.add(:base, '日期不能为空') if self.together_data['start_at'].blank?
       self.errors.add(:base, '详细说明不能为空') if self.content.blank?
@@ -58,6 +58,12 @@ class Topic < ActiveRecord::Base
   end
 
   #自定义活动字段
+  def from_form
+    @from_form
+  end
+  def from_form(boolean=false)
+    @from_form=boolean
+  end
 
   def together_data
     @together_data
@@ -86,9 +92,10 @@ class Topic < ActiveRecord::Base
 
     if self.subject_id==2
       together=Together.new
+      together.topic_id=self.id
+      together.address=self.together_data['address']
       together.start_at=self.together_data['start_at']
       together.finish_at=self.together_data['finish_at']
-      together.topic_id=self.id
       together.content=@content
       together.save
     end
