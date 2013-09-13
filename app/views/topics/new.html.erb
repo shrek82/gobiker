@@ -12,6 +12,9 @@
 
 <%= block_alert @topic %>
 <% @topic.forum_id=params[:fid] %>
+<h1 id="hello-seajs" style="font-size: 50px">
+  Hello SeaJS
+</h1>
 <form action="<%= topics_path %>" id="forum_form" style="margin:10px 0" method="post">
 
   <input type="hidden" name="topic[forum_id]" value="<%= @topic.forum_id %>"/>
@@ -66,8 +69,11 @@
 <% content_for:script do %>
     <script type="text/javascript">
 
-        readyScript.bindForm = function () {
 
+        seajs.use("application/dist/application");
+
+
+        readyScript.bindForm = function () {
             forums.changeSubject();
             $('#forum_form').bind("submit", function (e) {
                 e.preventDefault();
