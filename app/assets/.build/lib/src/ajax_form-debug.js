@@ -1,4 +1,4 @@
-define("js_modules/lib/src/ajax_form", [], function(require, exports, moudles) {
+define("js_modules/lib/src/ajax_form-debug", [], function(require, exports, moudles) {
     return function(jquery) {
         (function($) {
             "use strict";

@@ -20,9 +20,8 @@ module.exports = function (grunt) {
       },
       lib: {
         options: {
-          idleading: 'dist/lib/'
+          idleading: 'js_modules/lib/'
         },
-
         files: [
           {
             cwd: 'lib/',
@@ -34,9 +33,8 @@ module.exports = function (grunt) {
       },
       ajaxForm: {
         options: {
-          idleading: 'dist/ajaxForm/'
+          idleading: 'js_modules/ajaxForm/'
         },
-
         files: [
           {
             cwd: 'ajaxForm/',
@@ -46,32 +44,16 @@ module.exports = function (grunt) {
           }
         ]
       },
-      styles: {
+      main: {
         options: {
-          idleading: 'dist/styles/'
+          idleading: 'js_modules/main/'
         },
-
         files: [
           {
-            cwd: 'styles/',
+            cwd: 'main',
             src: '**/*',
             filter: 'isFile',
-            dest: '.build/styles'
-          }
-        ]
-      },
-
-      app1: {
-        options: {
-          idleading: 'app1/'
-        },
-
-        files: [
-          {
-            cwd: 'app',
-            src: '**/*',
-            filter: 'isFile',
-            dest: '.build/app'
+            dest: '.build/main'
           }
         ]
       }
@@ -104,26 +86,16 @@ module.exports = function (grunt) {
           }
         ]
       },
-      styles: {
-        files: [
-          {
-            expand: true,
-            cwd: '.build/',
-            src: ['styles/**/*.js'],
-            dest: 'concat/',
-            ext: '.js'
-          }
-        ]
-      },
-      app1: {
+      main: {
         options: {
-          include: 'all'
+          //paths: ['.'],
+          //include: 'all'
         },
         files: [
           {
             expand: true,
             cwd: '.build/',
-            src: ['app/**/*.js'],
+            src: ['main/**/*.js'],
             dest: 'concat/',
             ext: '.js'
           }
@@ -138,7 +110,7 @@ module.exports = function (grunt) {
             expand: true,
             cwd: 'concat/',
             src: ['lib/**/*.js', '!lib/**/*-debug.js'],
-            dest: 'dist/',
+            dest: '../../public/js_modules/',
             ext: '.js'
           }
         ]
@@ -147,9 +119,9 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: 'dist/',
+            cwd: 'concat/',
             src: ['ajaxForm/**/*.js', '!ajaxForm/**/*-debug.js'],
-            dest: 'dist/',
+            dest: '../../public/js_modules/',
             ext: '.js'
           }
         ]
@@ -158,20 +130,20 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: 'dist/',
+            cwd: 'concat/',
             src: ['styles/**/*.js', '!styles/**/*-debug.js'],
-            dest: 'dist/',
+            dest: '../../public/js_modules/',
             ext: '.js'
           }
         ]
       },
-      app1: {
+      main: {
         files: [
           {
             expand: true,
-            cwd: 'dist/',
-            src: ['app/**/*.js', '!app/**/*-debug.js'],
-            dest: 'dist/',
+            cwd: 'concat/',
+            src: ['main/**/*.js', '!main/**/*-debug.js'],
+            dest: '../../public/js_modules/',
             ext: '.js'
           }
         ]
@@ -190,7 +162,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build-lib', ['transport:lib', 'concat:lib', 'uglify:lib']);
   //grunt.registerTask('build-styles', ['transport:styles', 'concat:styles', 'uglify:styles']);
-  //grunt.registerTask('build-app1', ['transport:app1', 'concat:app1', 'uglify:app1']);
+  grunt.registerTask('build-main', ['transport:main', 'concat:main', 'uglify:main']);
   //grunt.registerTask('build-ajaxForm', ['transport:ajaxForm', 'concat:ajaxForm', 'uglify:ajaxForm']);
 
   //grunt.registerTask('default', ['clean']);

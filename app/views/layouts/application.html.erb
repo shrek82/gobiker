@@ -8,8 +8,9 @@
   <%= favicon_link_tag 'http://www.qyer.com/favicon.ico' %>
   <link rel="stylesheet" href="/css/common/base.css"/>
   <link rel="stylesheet" href="/css/common/headfoot.css"/>
-  <%= yield :style %><%= javascript_include_tag "/js/jquery-1.7.1.min.js","/js/jquery.form.js","/js/lib.js","/js/global.js","/js/benchmark.js","/js_modules/seajs/sea.js"%>
+  <%= yield :style %><%# javascript_include_tag "/js/jquery-1.7.1.min.js","/js/jquery.form.js","/js/lib.js","/js/global.js","/js/benchmark.js","/js_modules/seajs/2.1.1/sea.js"%>
   <%= yield :head %>
+  <script type="text/javascript" src="/js_modules/seajs/2.1.1/sea.js"></script>
 </head>
 <body>
 <%= render :template => 'global/header' %>
@@ -24,11 +25,14 @@
 <% if cookies[:uid] && cookies[:email] && cookies[:username] %>
 <script type="text/javascript">user={'uid':<%=cookies[:uid]%>,'username':'<%=cookies[:username]%>'};</script>
 <% end %>
-<%= yield :script %>
+<script src="/js_modules/seajs/2.1.1/sea.js" ></script>
+<script src="/js_modules/seajs_config.js"></script>
 <script type="text/javascript">
-    $(function(){
-        runReadyScript();
+    // 加载多个模块，在加载完成时，执行回调
+    seajs.use(['main'], function() {
+        console.log('seajs loaded');
     });
 </script>
+<%= yield :script %>
 </body>
 </html>

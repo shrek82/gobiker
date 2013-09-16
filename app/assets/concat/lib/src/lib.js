@@ -1,4 +1,4 @@
-define("dist/lib/src/lib", [ "gallery/jquery/1.8.2/jquery", "./popup", "./ajax_form" ], function(require, exports, module) {
+define("js_modules/lib/src/lib", [ "gallery/jquery/1.8.2/jquery", "./popup", "./ajax_form" ], function(require, exports, module) {
     //引入jquery
     var jquery = require("gallery/jquery/1.8.2/jquery");
     window.$ = window.jQuery = jquery;
@@ -12,7 +12,7 @@ define("dist/lib/src/lib", [ "gallery/jquery/1.8.2/jquery", "./popup", "./ajax_f
     module.exports = lib;
 });
 
-define("dist/lib/src/popup", [], function(require, exports, module) {
+define("js_modules/lib/src/popup", [], function(require, exports, module) {
     var popup = function(opt) {
         var opt = opt || {};
         var title = opt.title ? opt.title : "提示";
@@ -125,7 +125,7 @@ define("dist/lib/src/popup", [], function(require, exports, module) {
     module.exports = popup;
 });
 
-define("dist/lib/src/ajax_form", [], function(require, exports, moudles) {
+define("js_modules/lib/src/ajax_form", [], function(require, exports, moudles) {
     return function(jquery) {
         (function($) {
             "use strict";

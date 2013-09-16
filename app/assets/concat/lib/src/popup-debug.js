@@ -1,4 +1,4 @@
-define("dist/lib/src/popup-debug", [], function(require, exports, module) {
+define("js_modules/lib/src/popup-debug", [], function(require, exports, module) {
     var popup = function(opt) {
         var opt = opt || {};
         var title = opt.title ? opt.title : "提示";
