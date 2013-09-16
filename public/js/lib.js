@@ -21,16 +21,6 @@ function log(msg) {
   }
 }
 
-//判断变量是否定义
-function is_defined(obj) {
-  if (typeof(obj) != 'undefined' && obj != false) {
-    return true;
-  }
-  else{
-    return false;
-  }
-}
-
 //返回一个jquery对象，没有则方法创建并再次返回
 function fetchObj(id, createFun) {
   var obj = $('#' + id);
