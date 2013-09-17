@@ -1,1 +1,0 @@
-define("js_modules/main/src/main",["lib/src/lib","jquery","lib/src/popup","lib/src/ajax_form"],function(i){i("lib/src/lib"),console.log("main function;")});

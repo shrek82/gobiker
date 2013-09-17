@@ -1,0 +1,1 @@
+define("dist/gobiker/global/src/global",["gallery/jquery/1.8.2/jquery","dist/lib/src/lib"],function(l){var r=l("gallery/jquery/1.8.2/jquery");window.$=window.jQuery=r,l("dist/lib/src/lib"),console.log("hello world!")});
