@@ -2,6 +2,8 @@
 
 Gobiker::Application.routes.draw do
 
+  get "seajs/index"
+
   get "install/setting"
 
   get "install/user"

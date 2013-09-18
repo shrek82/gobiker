@@ -1,0 +1,1 @@
+define("gobiker/index/src/index",["gallery/jquery/1.8.2/jquery"],function(r){var e=r("gallery/jquery/1.8.2/jquery");window.$=window.jQuery=e});
