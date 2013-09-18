@@ -1,9 +1,9 @@
-/*! lib(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-18 16:30:31*/
+/*! lib(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-18 16:59:39*/
 define("lib/latest/lib-debug", [ "gallery/jquery/1.8.2/jquery-debug", "./popup-debug", "./ajax_form-debug" ], function(require, exports, module) {
-    var $ = require("gallery/jquery/1.8.2/jquery-debug");
-    //基础弹出窗
+    window.$ = window.jQuery = require("gallery/jquery/1.8.2/jquery-debug");
+    //弹出层
     var popup = require("./popup-debug");
-    //引入常用插件
+    //ajax提交插件
     require("./ajax_form-debug")($);
     //定义基本功能
     var lib = {};

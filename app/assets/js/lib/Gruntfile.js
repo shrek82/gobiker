@@ -148,18 +148,18 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
-  //执行开发模式所有任务(合并不压缩)
+  //执行开发模式所有任务(开发模式不压缩)
   grunt.registerTask('build', ['transport:curfile','transport:latestfile','concat:curfile','concat:latestfile','copy:curfile','copy:latestfile']);
-  //执行发布产品模式所有任务(压缩后转至产品目录)
-  grunt.registerTask('build-release', ['uglify:curfile','copy:curfile']);
+  //执行发布产品模式所有任务(一条龙服务)
+  grunt.registerTask('build-all', ['transport:curfile','transport:latestfile','concat:curfile','concat:latestfile','uglify:curfile','uglify:latestfile','copy:curfile','copy:latestfile']);
   //提取依赖名转换为具名模块
   grunt.registerTask('build-tran', ['transport:curfile','transport:latestfile']);
   //合并
-  grunt.registerTask('build-concat', ['concat:curfile']);
+  grunt.registerTask('build-concat', ['concat:curfile','concat:latestfile']);
   //压缩
-  grunt.registerTask('build-uglify', ['uglify:curfile']);
+  grunt.registerTask('build-uglify', ['uglify:curfile','uglify:latestfile']);
   //拷贝至产品目录
-  grunt.registerTask('build-copy', ['copy:curfile']);
+  grunt.registerTask('build-copy', ['copy:curfile','copy:latestfile']);
   //清楚临时文件
   grunt.registerTask('build-clean', ['clean']);
 

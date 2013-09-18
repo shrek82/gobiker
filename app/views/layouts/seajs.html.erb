@@ -27,8 +27,8 @@
 <script src="/assets/js_modules/seajs_config.js"></script>
 <script type="text/javascript">
     // 加载多个模块，在加载完成时，执行回调
-    seajs.use(['lib'], function() {
-        console.log('seajs loaded');
+    seajs.use(['global'], function() {
+        console.log('seajs global loaded~~');
     });
 </script>
 <%= yield :script %>

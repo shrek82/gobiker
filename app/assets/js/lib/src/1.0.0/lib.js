@@ -1,11 +1,11 @@
 define(function(require, exports, module) {
 
-  var $=require('jquery');
+  window.$=window.jQuery=require('jquery');
 
-  //基础弹出窗
+  //弹出层
   var popup=require("./popup");
 
-  //引入常用插件
+  //ajax提交插件
   require("./ajax_form")($);
 
   //定义基本功能

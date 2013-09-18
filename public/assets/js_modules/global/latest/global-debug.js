@@ -1,6 +1,7 @@
-/*! global(latest) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-18 16:34:52*/
+/*! global(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-18 17:01:02*/
 define("global/latest/global-debug", [ "lib/latest/lib-debug" ], function(require, exports, module) {
     var lib = require("lib/latest/lib-debug");
+    console.log("hello gobiker!");
 });
 
 
