@@ -61,7 +61,7 @@
     height: 38px;
     overflow: hidden;
     line-height: 300px;
-    background: url(http://static.qyer.com/images/bbs/two/postbtns2.png) no-repeat 0 0
+    background: url(/images/forum/postbtns2.png) no-repeat 0 0
 }
 
 .btn_newbbs2:hover {
@@ -163,7 +163,7 @@ a {
     border: 1px solid #ccc;
     font-size: 14px;
     line-height: 20px;
-    background: url(http://static.qyer.com/images/bbs/two/icon_search.png) no-repeat 215px center;
+    background: url(/images/forum/icon_search.png) no-repeat 215px center;
     color: #323232
 }
 

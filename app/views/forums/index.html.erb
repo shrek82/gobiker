@@ -451,106 +451,10 @@
 </div>
 </div>
 
-<script type="text/javascript">
-    //最近读到js脚本
-    function clear_history_read_thread(thiz, tid) {
-        if (typeof tid == "undefined") {
-            return false;
-        }
-        jQuery.getScript("http://static.qyer.com/js/common/jquery.json-2.3.min.js", function () {
-            var history_read_threads = [];
-            var new_history_read_threads = [];
-            if (typeof localStorage.history_read_threads !== "undefined") {
-                history_read_threads = jQuery.evalJSON(localStorage.history_read_threads);
-                jQuery.each(history_read_threads, function (k, v) {
-                    if (typeof v !== "undefined" && v.tid != tid) {
-                        new_history_read_threads.push(v);
-                    }
-
-                });
-            }
-
-            new_history_read_threads.splice(5);
-            window.localStorage.setItem('history_read_threads', jQuery.toJSON(new_history_read_threads));
-            //console.log(jQuery(thiz).parents("li"));
-            jQuery(thiz).parents("li").remove();
-            if (jQuery("#bbs_lastread_laylist").html() == '') {
-                jQuery("#bbs_lastread_laylist").html('<p class="null">暂无搜索记录</p>');
-            }
-            tips.show("已经清除!");
-        });
-    }
-    jQuery(function ($) {
-
-        if (window.localStorage) {
-            jQuery.getScript("http://static.qyer.com/js/common/jquery.json-2.3.min.js", function () {
-                var history_read_threads = [];
-                var history_html = '';
-                if (typeof localStorage.history_read_threads !== "undefined") {
-                    history_read_threads = jQuery.evalJSON(localStorage.history_read_threads);
-                    jQuery.each(history_read_threads, function (k, v) {
-                        if (typeof v !== "undefined") {
-                            history_html = history_html + '<li class="item">' +
-                                    '<p class="tit"><a href="' + v.indexhref + '" data-bn-ipg="bbs-historylist-' + (k + 1) + '" title="' + v.subject + '">' + v.subject + '</a></p>' +
-                                    '<p class="info"><span class="del"><a href="javascript:void(0)" onclick="clear_history_read_thread(this,' + v.tid + ');" data-bn-ipg="bbs-historyclear-' + (k + 1) + '">清除</a></span><span class="page">第' + v.page + '/' + v.totalpage + '页</span>' +
-                                    '<span class="link"><a href="' + v.href + '" data-bn-ipg="bbs-historyread-' + (k + 1) + '">继续阅读</a></span></p>' +
-                                    '</li>';
-                        }
-                    });
-
-                } else {
-                    history_html = '<p class="null">暂无搜索记录</p>';
-                }
-
-                if (!history_html) {
-                    history_html = '<p class="null">暂无搜索记录</p>';
-                }
-                if (history_html) {
-
-                    jQuery("#bbs_lastread_laylist").html(history_html);
-                    jQuery("#bbs_lastread").show();
-
-
-                    var gaptime; //间隔时间
-                    var lastread_tit = jQuery("#bbs_lastread_tit");
-                    var lastread_lay = jQuery("#bbs_lastread_lay");
-
-                    function hideFn() {
-                        lastread_lay.hide();
-                    }
-
-                    lastread_tit.hover(function () {
-                        clearTimeout(gaptime);
-                        jQuery("#bbs_lastread_lay").show();
-                    }, function () {
-                        gaptime = setTimeout(hideFn, 200);
-                    });
-
-                    lastread_lay.hover(function () {
-                        clearTimeout(gaptime);
-                        jQuery(this).show();
-                    }, function () {
-                        gaptime = setTimeout(hideFn, 200);
-                    });
-
-                    jQuery("#bbs_lastread_laylist .item").hover(function () {
-                        jQuery(this).addClass("itemhv");
-                    }, function () {
-                        jQuery(this).removeClass("itemhv");
-                    });
-                }
-
-            });
-        }
-
-
-    });
-</script>
-
 <% content_for:script do %>
     <script type="text/javascript">
-        readyScript.postButton = function () {
-            forums.post_button();
-        };
+        seajs.use(['forum/latest/forum'], function(forum) {
+            forum.post_button();
+        });
     </script>
 <% end %>

@@ -16,7 +16,7 @@
     "alias": {
       "jquery": "gallery/jquery/1.8.2/jquery",
       "global": "global/latest/global",
-      "lib": "lib/latest/lib"
+      "lib": "../lib/src/1.0.0/lib"
     }
   },
   "devDependencies": {

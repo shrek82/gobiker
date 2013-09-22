@@ -1,13 +1,13 @@
 <% @title=Gobiker::Application.config.site_name %>
 <% content_for:style do %>
     <link rel="stylesheet" href="/css/index/style.css"/>
-    <link rel="stylesheet" href="/css/jquery.ui.datepicker.css"/>
 <% end %>
 <% content_for:script do %>
-    <script src="/js/slides.jquery.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/js/jquery.ui.core.js"></script>
-    <script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
-    <script type="text/javascript" src="/js/main/module.js"></script>
+    <script type="text/javascript">
+        seajs.use(['index/latest/index'], function() {
+            console.log('index loaded!');
+        });
+    </script>
 <% end %>
 
 <% content_for:full_body do %>
