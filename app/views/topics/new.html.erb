@@ -68,20 +68,15 @@
 
 <% content_for:script do %>
     <script type="text/javascript">
-
-
-        seajs.use("application/dist/application");
-
-
-        readyScript.bindForm = function () {
-            forums.changeSubject();
+        seajs.use(['lib','forum/latest/forum'], function(lib,forum) {
+            forum.changeSubject();
             $('#forum_form').bind("submit", function (e) {
                 e.preventDefault();
-                new ajaxForm($(this), {
+                new lib.ajaxForm($(this), {
                     submitButton: 'topic_submit_button',
                     dataType: 'json'
                 }).send();
             });
-        }
+        });
     </script>
-<% end ; %>
+<% end %>

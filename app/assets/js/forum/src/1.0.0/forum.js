@@ -76,14 +76,15 @@ define(function (require, exports, module) {
           });
           //绑定点击
           $pop_html_box_list.find("a").click(function () {
-            $(this).addClass('current').parent().siblings().find("a").removeClass('current');
-            $post_link.attr('defid', $(this).attr('fid'));
+            //$(this).addClass('current').parent().siblings().find("a").removeClass('current');
+            //$post_link.attr('defid', $(this).attr('fid'));
+            window.location.href = "/forums/topics/post?fid=" + $(this).attr('fid');
           });
           //绑定确定按钮
           $post_link.click(function () {
-            forum_pop.close();
+            //forum_pop.close();
             setTimeout(function () {
-              window.location.href = "/forums/topics/post?fid=" + $post_link.attr('defid');
+              //window.location.href = "/forums/topics/post?fid=" + $post_link.attr('defid');
             }, 600);
           });
         }, 150);

@@ -302,7 +302,7 @@ a {
     height: 13px;
     overflow: hidden;
     line-height: 200px;
-    background: url(http://static.qyer.com/images/bbs/two/pagination.png) no-repeat -25px 0;
+    background: url(/images/forum/pagination.png) no-repeat -25px 0;
     margin: 0 6px
 }
 
@@ -327,7 +327,7 @@ li {
     font-size: 16px;
     line-height: 32px;
     padding-left: 16px;
-    background: url(http://static.qyer.com/images/bbs/two/li_icon1.png) no-repeat 0 center;
+    background: url(/images/forum/li_icon1.png) no-repeat 0 center;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -562,7 +562,7 @@ dd {
 .bbs_lastread_tit
 span {
     padding-right: 17px;
-    background: url(http://static.qyer.com/images/bbs/two/icon01.png) no-repeat right center;
+    background: url(/images/forum/icon01.png) no-repeat right center;
     color: #636363
 }
 
@@ -688,7 +688,7 @@ a {
 
 .bbs_writeren
 .bbs_sidetit {
-    background: url(http://static.qyer.com/images/bbs/two/sidetit.png) no-repeat 0 1px
+    background: url(/images/forum/sidetit.png) no-repeat 0 1px
 }
 
 .bbs_writeren
@@ -744,7 +744,7 @@ li {
     font-size: 14px;
     line-height: 18px;
     border-top: 1px dashed #ddd;
-    background: url(http://static.qyer.com/images/bbs/two/li1234.png) no-repeat 0 14px;
+    background: url(/images/forum/li1234.png) no-repeat 0 14px;
     word-wrap: break-word;
     word-break: break-all
 }
@@ -796,7 +796,7 @@ a {
 
 .bbs_hot24
 .bbs_sidetit {
-    background: url(http://static.qyer.com/images/bbs/two/sidetit.png) no-repeat 0 -28px
+    background: url(/images/forum/sidetit.png) no-repeat 0 -28px
 }
 
 .bbs_lianhot {
@@ -804,7 +804,7 @@ a {
 
 .bbs_lianhot
 .bbs_sidetit {
-    background: url(http://static.qyer.com/images/bbs/two/sidetit.png) no-repeat 0 -58px
+    background: url(/images/forum/sidetit.png) no-repeat 0 -58px
 }
 
 .bbs_btmlists {
@@ -997,12 +997,12 @@ li {
 
 .bbs_listfocus .slide
 .iconhot {
-    background: url(http://static.qyer.com/images/bbs/two/hottie2.png) no-repeat right top
+    background: url(/images/forum/hottie2.png) no-repeat right top
 }
 
 .bbs_listfocus .slide
 .iconact {
-    background: url(http://static.qyer.com/images/bbs/two/activity2.png) no-repeat right top
+    background: url(/images/forum/activity2.png) no-repeat right top
 }
 
 .bbs_listfocus
@@ -1023,7 +1023,7 @@ a {
     height: 13px;
     overflow: hidden;
     line-height: 200px;
-    background: url(http://static.qyer.com/images/bbs/two/pagination.png) no-repeat -25px 0;
+    background: url(/images/forum/pagination.png) no-repeat -25px 0;
     margin: 0 6px
 }
 
@@ -1052,7 +1052,7 @@ span {
     padding-left: 28px;
     font-size: 20px;
     line-height: 22px;
-    background: url(http://static.qyer.com/images/bbs/two/topstory.png) no-repeat 0 4px
+    background: url(/images/forum/topstory.png) no-repeat 0 4px
 }
 
 .bbs_ctbds
@@ -1067,7 +1067,7 @@ li {
     font-size: 14px;
     border-top: 1px dotted #d7d7d7;
     padding: 10px 0 10px 21px;
-    background: url(http://static.qyer.com/images/bbs/two/topstory.png) no-repeat 0 -35px;
+    background: url(/images/forum/topstory.png) no-repeat 0 -35px;
     word-wrap: break-word;
     word-break: break-all
 }
@@ -1091,7 +1091,7 @@ a {
 .bbs_ctbds .btm
 a {
     padding-right: 12px;
-    background: url(http://static.qyer.com/images/bbs/two/more_arrow.png) no-repeat right 5px
+    background: url(/images/forum/more_arrow.png) no-repeat right 5px
 }
 
 .bbs_ctbds .btm
@@ -1146,7 +1146,7 @@ dd {
     width: 600px;
     padding: 0 15px 0 65px;
     overflow: hidden;
-    background: #63a674 url(http://static.qyer.com/images/bbs/two/tabnav_bg.png) repeat-x;
+    background: #63a674 url(/images/forum/tabnav_bg.png) repeat-x;
     margin-bottom: 15px
 }
 
@@ -1156,7 +1156,7 @@ li {
     padding: 0 10px;
     font-size: 14px;
     line-height: 26px;
-    background: url(http://static.qyer.com/images/bbs/two/tabgap.png) no-repeat 0 center
+    background: url(/images/forum/tabgap.png) no-repeat 0 center
 }
 
 .bbs_tabnav
@@ -1217,7 +1217,7 @@ a {
     display: inline-block;
     height: 24px;
     padding: 0 6px 0 26px;
-    background: url(http://static.qyer.com/images/bbs/two/listtype.png) no-repeat
+    background: url(/images/forum/listtype.png) no-repeat
 }
 
 .bbs_listinfos .types .icons .text, .bbs_listinfos .types .icons .ontext:hover {
@@ -1268,7 +1268,7 @@ a {
     padding: 0 10px;
     border: 1px solid #c0c0c0;
     color: #b6b6b6;
-    background: url(http://static.qyer.com/images/bbs/two/drop.png) no-repeat 110px center
+    background: url(/images/forum/drop.png) no-repeat 110px center
 }
 
 .bbs_listinfos .orders_lay {
@@ -1389,7 +1389,7 @@ a {
 
 .bbs_threadlist .info .views, .bbs_threadlist .info
 .sum {
-    background: url(http://static.qyer.com/images/bbs/two/listinfo.png) no-repeat
+    background: url(/images/forum/listinfo.png) no-repeat
 }
 
 .bbs_threadlist .info
@@ -1490,13 +1490,13 @@ a {
 .bbs_seeksolve .titmore
 a {
     padding-left: 17px;
-    background: url(http://static.qyer.com/images/bbs/two/title_morebg.png) no-repeat 0 center
+    background: url(/images/forum/title_morebg.png) no-repeat 0 center
 }
 
 .bbs_seeksolve
 .bbs_sidetit {
     padding-left: 16px;
-    background: url(http://static.qyer.com/images/bbs/two/sidetit.png) no-repeat 0 -88px
+    background: url(/images/forum/sidetit.png) no-repeat 0 -88px
 }
 
 .bbs_seeksolve
@@ -1556,7 +1556,7 @@ img {
 
 .bbs_starer
 .bbs_sidetit {
-    background: url(http://static.qyer.com/images/bbs/two/sidetit.png) no-repeat 0 -118px
+    background: url(/images/forum/sidetit.png) no-repeat 0 -118px
 }
 
 .bbs_starer
@@ -1584,7 +1584,7 @@ img {
 .bbs_strpast
 .bbs_sidetit {
     padding-left: 23px;
-    background: url(http://static.qyer.com/images/bbs/two/sidetit.png) no-repeat 0 -148px
+    background: url(/images/forum/sidetit.png) no-repeat 0 -148px
 }
 
 .ui_page{float:left}
@@ -1593,7 +1593,7 @@ img {
 .bbspup_box { padding:20px;}
 .bbspup_box .forumnav { float:left; width:138px;}
 .bbspup_box .forumnav li { padding:5px 0; border:1px solid #fff; font-size:14px; line-height:24px; font-weight:700;}
-.bbspup_box .forumnav a { display:block; width:120px; height:24px; padding-left:10px; border-radius:5px; background:url(http://static.qyer.com/images/bbs/two/arrow_r.png) no-repeat 115px center; color:#636363;}
+.bbspup_box .forumnav a { display:block; width:120px; height:24px; padding-left:10px; border-radius:5px; background:url(/images/forum/arrow_r.png) no-repeat 115px center; color:#636363;}
 .bbspup_box .forumnav a:hover { background-color:#e6f5e5; text-decoration:none;}
 .bbspup_box .forumnav .current { position:relative; left:1px; border-color:#ccc; border-right-color:#fff;}
 .bbspup_box .forumnav .current a:hover { background-color:#fff; cursor:default;}

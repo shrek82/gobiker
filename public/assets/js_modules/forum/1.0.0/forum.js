@@ -1,4 +1,4 @@
-/*! forum(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-22 8:38:02*/
+/*! forum(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-23 8:11:07*/
 define("forum/1.0.0/forum", [ "lib/latest/lib", "global/latest/global" ], function(require, exports, module) {
     var lib = require("lib/latest/lib");
     var global = require("global/latest/global");
@@ -73,15 +73,14 @@ define("forum/1.0.0/forum", [ "lib/latest/lib", "global/latest/global" ], functi
                     });
                     //绑定点击
                     $pop_html_box_list.find("a").click(function() {
-                        $(this).addClass("current").parent().siblings().find("a").removeClass("current");
-                        $post_link.attr("defid", $(this).attr("fid"));
+                        //$(this).addClass('current').parent().siblings().find("a").removeClass('current');
+                        //$post_link.attr('defid', $(this).attr('fid'));
+                        window.location.href = "/forums/topics/post?fid=" + $(this).attr("fid");
                     });
                     //绑定确定按钮
                     $post_link.click(function() {
-                        forum_pop.close();
-                        setTimeout(function() {
-                            window.location.href = "/forums/topics/post?fid=" + $post_link.attr("defid");
-                        }, 600);
+                        //forum_pop.close();
+                        setTimeout(function() {}, 600);
                     });
                 }, 150);
             });
