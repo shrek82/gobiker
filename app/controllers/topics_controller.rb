@@ -10,6 +10,7 @@ class TopicsController < ApplicationController
 
   def new
     @topic=Topic.new
+    @topic[:subject_id]=1
     @subject_categories=SubjectCategory.order('order_num ASC')
   end
 
