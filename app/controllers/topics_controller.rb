@@ -12,6 +12,7 @@ class TopicsController < ApplicationController
     @topic=Topic.new
     @topic[:subject_id]=1
     @subject_categories=SubjectCategory.order('order_num ASC')
+    @forum= Forum.find_by_id(params[:fid])
   end
 
   def edit

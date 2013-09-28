@@ -7,22 +7,23 @@
 <body>
 <h1>This is blogs create page</h1>
 
-<form id="form">
-    <div>
-        <input type="text" name="title"/>
-    </div>
-    <div>
-        <textarea name="content" rows="10"></textarea>
-    </div>
-    <div>
-        <input type="submit" value="提交"/>
-    </div>
-</form>
+<script type="text/javascript">
+//this所在的函数是指向那个对象的，this就是指向这个对象，
+// 当new一个实例后，this所有的方法也指向这个实例，所以this就指向这个实例（或副本）
+function a(){
+    this.name='a function';
+    this.age=200;
+}
 
-<script src="/js/sea-modules/sea.js"></script>
-<script src="/js/sea-modules/seajs-config.js"></script>
-<script>
-//seajs.use('/js/'+(seajs.production?'':'/js/') + 'example/blogs/new');
+a.prototype.address=function(){
+    console.log(this);
+};
+
+a();
+var b=new a();
+b.age=300;
+b.address();
+
 </script>
 </body>
 </html>

@@ -114,11 +114,13 @@
 <div class="cb"></div>
 </div>
 
-
 <% content_for:script do %>
     <script type="text/javascript">
-      readyScript.show=function(){
-          forums.floatTool();
-      }
+        seajs.use(['lib','forum/latest/forum'], function(lib,forum) {
+            forum.floatTool();
+            $('#forum_form').bind("submit", function (e) {
+                e.preventDefault();
+            });
+        });
     </script>
-<%end %>
+<% end %>

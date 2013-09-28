@@ -1,5 +1,5 @@
-/*! lib(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-22 9:09:44*/
-define("lib/1.0.0/ajaxForm-debug", [ "./jquery_form-debug" ], function(require, exports, module) {
+/*! lib(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-28 15:11:57*/
+define("lib/1.0.0/ajaxForm-debug", [ "./jquery_form-debug.js" ], function(require, exports, module) {
     //ajax提交插件
     require("./jquery_form-debug")($);
     //ajaxForm表单提交
@@ -210,6 +210,7 @@ define("lib/1.0.0/ajaxForm-debug", [ "./jquery_form-debug" ], function(require, 
     }
     //ajax提交表单
     ajaxForm.prototype.send = function() {
+        console.trace();
         this.opts.before();
         this.form.ajaxSubmit(this.opts);
         return false;

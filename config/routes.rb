@@ -105,6 +105,8 @@ Gobiker::Application.routes.draw do
   match 'register' => 'users#register', :as => 'register'
   post 'users/create' => 'users#create'
   post 'users/ajax' => 'users#ajax'
+  get 'user/logout' => 'users#logout'
+
 
   #会员个人主页
   resources :u, :only => [:show] do |u|

@@ -15,24 +15,20 @@
       <form method="post" id="comment_form" action="<%= comments_path %>" style="margin-bottom:10px">
         <div style="line-height:1.7em;font-size:14px;padding:15px 0">
           <textarea name="comment[content]" id="cmt_textarea" cols="30" rows="10" style="width:800px;height:150px"></textarea>
-          <%= render 'global/ueditor', :id => 'cmt_textarea', :options => {:initialFrameHeight => '150',:toolbars=>"[['FullScreen','Undo','Bold','ForeColor','FontSize','Italic','StrikeThrough','Link','Emotion','InsertImage','Attachment','InsertVideo','JustifyLeft','JustifyCenter','JustifyRight','ClearDoc','InsertTable','DeleteTable','Source']]"} %>
+          <%= render 'global/ueditor', :id => 'cmt_textarea', :options => {:initialFrameHeight => '150', :toolbars => "[['FullScreen','Undo','Bold','ForeColor','FontSize','Italic','StrikeThrough','Link','Emotion','InsertImage','Attachment','InsertVideo','JustifyLeft','JustifyCenter','JustifyRight','ClearDoc','InsertTable','DeleteTable','Source']]"} %>
         </div>
         <div class="post-toolbar">
-          <% @hidden_field.each do |key,value| %>
+          <% @hidden_field.each do |key, value| %>
               <input type="hidden" name="comment[<%= key %>]" value="<%= value %>"/>
           <% end %>
-          <button class="btn btn-mint" type="submit" id="cmt_submit_button">发布评论</button>
+          <button class="btn btn-mint" type="button" id="cmt_submit_button">发布评论</button>
         </div>
       </form>
     </td>
   </tr>
 </table>
 
-<% content_for:script do %>
-    <script type="text/javascript">
-        readyScript.loadcmt_and_form = function () {
-            loadComments('<%=@query_param.to_param %>');
-            bindCmtForm('<%=@query_param.to_param %>');
-        }
-    </script>
+<% content_for:seajs_global do %>
+global.loadComments('<%=@query_param.to_param %>');
+global.bindCmtForm('<%=@query_param.to_param %>');
 <% end %>

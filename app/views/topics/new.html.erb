@@ -6,7 +6,7 @@
 
 <div class="qyer_head_crumbg">
   <div class="qyer_head_crumb">
-    <a href="<%= main_path %>">首页</a>&nbsp;&gt;&nbsp;<a href="<%= forums_path %>">论坛</a>&nbsp;&gt; &nbsp;发新话题
+    <a href="<%= main_path %>">首页</a>&nbsp;&gt;&nbsp;<a href="<%= forums_path %>">论坛</a><% if @forum %>&nbsp;&gt;&nbsp;<a href="<%= list_forums_path @forum.id %>"><%= @forum[:name] %></a><% end %>&nbsp;&gt;&nbsp;发新话题
   </div>
 </div>
 
@@ -23,20 +23,20 @@
     <li><a href="javascript:;" sid="5">比赛</a></li>
   </ul>
 
+  <ul>
+    <li><label>标题：</label><input name="topic[title]" id="form_title" type="text" class="ui_input" style="width:700px"/></li>
+  </ul>
 
   <ul id="subject1" subject="topic" >
-    <li><label>标题：</label><input name="topic[title]" id="form_title" type="text" class="ui_input" style="width:700px"/></li>
   </ul>
 
   <ul id="subject2" subject="together" style="display:none">
     <li>
-      <label>目的地：</label><input name="topic[together_data][address]" type="text" class="ui_input ui_input_address" style="width:700px"/>&nbsp;&nbsp;&nbsp;<span class="required">*</span>
-    </li>
-    <li>
       <label>日期：</label><input name="topic[together_data][start_at]" type="text" class="ui_input ui_input_calendar" style="width:340px;margin-right: 10px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00',skin:'twoer'})"/><input name="topic[together_data][finish_at]" type="text" class="ui_input ui_input_calendar" style="width:340px;margin-right: 10px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00',skin:'twoer'})"/><span class="required">*</span>
     </li>
-    <li><label>标题：</label><input name="topic[together_data][title]" type="text" class="ui_input" style="width:700px"/></li>
-
+    <li>
+      <label>目的地：</label><input name="topic[together_data][address]" type="text" class="ui_input ui_input_address" style="width:700px"/>&nbsp;&nbsp;&nbsp;<span style="color:#999">可选，多个请用空格隔开</span>
+    </li>
   </ul>
 
   <ul id="subject3" subject="activity" style="display:none">

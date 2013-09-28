@@ -267,6 +267,7 @@ define(function (require, exports, module) {
 
   //ajax提交表单
   ajaxForm.prototype.send = function () {
+    console.trace();
     this.opts.before();
     this.form.ajaxSubmit(this.opts);
     return false;

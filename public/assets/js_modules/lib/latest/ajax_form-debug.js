@@ -1,4 +1,4 @@
-/*! lib(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-22 9:09:47*/
+/*! lib(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-28 15:11:58*/
 define("lib/latest/ajax_form-debug", [], function(require, exports, moudles) {
     return function(jquery) {
         (function($) {
@@ -957,4 +957,5 @@ define("lib/latest/ajax_form-debug", [], function(require, exports, moudles) {
         })(jQuery);
     };
 });
+
 

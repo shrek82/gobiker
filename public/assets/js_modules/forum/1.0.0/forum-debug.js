@@ -1,4 +1,4 @@
-/*! forum(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-23 8:11:07*/
+/*! forum(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-28 12:16:28*/
 define("forum/1.0.0/forum-debug", [ "lib/latest/lib-debug", "global/latest/global-debug" ], function(require, exports, module) {
     var lib = require("lib/latest/lib-debug");
     var global = require("global/latest/global-debug");
@@ -48,42 +48,36 @@ define("forum/1.0.0/forum-debug", [ "lib/latest/lib-debug", "global/latest/globa
             }
         });
     };
-    forums.post_button = function() {
-        $("#forums_post_button").click(function() {
-            if (!user.uid) {
-                global.plogin();
-                return false;
-            }
-            var forum_pop = new lib.popup({
-                title: "选择要发布到版块："
-            });
-            forum_pop.ajax("/forums/select_forums", "600", function() {
-                setTimeout(function() {
-                    //绑定tab切换
-                    $pop_html_box = $("#pop_html_box");
-                    $pop_html_box_navli = $pop_html_box.find("ul.forumnav li");
-                    $pop_html_box_list = $pop_html_box.find("div.subcnt ul.list");
-                    $post_link = $("#post_link");
-                    var cur_tab;
-                    $pop_html_box_navli.mouseover(function() {
-                        cur_tab = $(this);
-                        $(this).addClass("current");
-                        $(this).siblings().removeClass("current");
-                        $pop_html_box_list.eq(cur_tab.index()).show().siblings().hide();
-                    });
-                    //绑定点击
-                    $pop_html_box_list.find("a").click(function() {
-                        //$(this).addClass('current').parent().siblings().find("a").removeClass('current');
-                        //$post_link.attr('defid', $(this).attr('fid'));
-                        window.location.href = "/forums/topics/post?fid=" + $(this).attr("fid");
-                    });
-                    //绑定确定按钮
-                    $post_link.click(function() {
-                        //forum_pop.close();
-                        setTimeout(function() {}, 600);
-                    });
-                }, 150);
-            });
+    forums.post_topic = function() {
+        var forum_pop = new lib.popup({
+            title: "选择要发布到版块："
+        });
+        forum_pop.ajax("/forums/select_forums", "600", function() {
+            setTimeout(function() {
+                //绑定tab切换
+                $pop_html_box = $("#pop_html_box");
+                $pop_html_box_navli = $pop_html_box.find("ul.forumnav li");
+                $pop_html_box_list = $pop_html_box.find("div.subcnt ul.list");
+                $post_link = $("#post_link");
+                var cur_tab;
+                $pop_html_box_navli.mouseover(function() {
+                    cur_tab = $(this);
+                    $(this).addClass("current");
+                    $(this).siblings().removeClass("current");
+                    $pop_html_box_list.eq(cur_tab.index()).show().siblings().hide();
+                });
+                //绑定点击
+                $pop_html_box_list.find("a").click(function() {
+                    //$(this).addClass('current').parent().siblings().find("a").removeClass('current');
+                    //$post_link.attr('defid', $(this).attr('fid'));
+                    window.location.href = "/forums/topics/post?fid=" + $(this).attr("fid");
+                });
+                //绑定确定按钮
+                $post_link.click(function() {
+                    //forum_pop.close();
+                    setTimeout(function() {}, 600);
+                });
+            }, 150);
         });
     };
     //详细页浮动收藏条
@@ -115,4 +109,5 @@ define("forum/1.0.0/forum-debug", [ "lib/latest/lib-debug", "global/latest/globa
     };
     module.exports = forums;
 });
+
 

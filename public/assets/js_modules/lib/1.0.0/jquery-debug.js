@@ -1,4 +1,4 @@
-/*! lib(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-22 9:09:44*/
+/*! lib(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-28 15:11:57*/
 define("lib/1.0.0/jquery-debug", [], function(require, exports, module) {
     /*!
    * jQuery JavaScript Library v1.8.2
@@ -7141,4 +7141,5 @@ define("lib/1.0.0/jquery-debug", [], function(require, exports, module) {
     })(window);
     return $.noConflict(true);
 });
+
 

@@ -56,12 +56,15 @@ class UsersController < ApplicationController
     if request.method=='POST'
       u=User.login params[:login]
       if u[:error]
+        cookies[:uid]=nil
+        cookies[:email]=nil
+        cookies[:username]=nil
         respond :error => u[:error]
       elsif u[:uid]
         cookies[:uid]=u[:uid]
         cookies[:email]=u[:user][:email]
         cookies[:username]=u[:user][:username]
-        respond :uid => u[:uid], :success => '登录成功!'
+        respond :uid => u[:uid],:username=>u[:user][:username],:success => '登录成功!'
       end
     end
   end

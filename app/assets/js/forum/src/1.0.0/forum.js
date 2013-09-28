@@ -49,16 +49,8 @@ define(function (require, exports, module) {
     });
   };
 
-
-  forums.post_button = function () {
-
-    $("#forums_post_button").click(function () {
-
-      if (!user.uid) {
-        global.plogin();
-        return false;
-      }
-
+   //首页发布新话题按钮
+  forums.post_topic = function () {
       var forum_pop = new lib.popup({title: '选择要发布到版块：'});
       forum_pop.ajax('/forums/select_forums', '600', function () {
         setTimeout(function () {
@@ -89,8 +81,6 @@ define(function (require, exports, module) {
           });
         }, 150);
       });
-    });
-
   }
 
 //详细页浮动收藏条

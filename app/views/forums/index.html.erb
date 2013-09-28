@@ -85,10 +85,7 @@
         </div>
       </dd>
   <% end %>
-
 </dl>
-
-
 
 </div>
 <div class="lay_side">
@@ -227,8 +224,10 @@
 
 <% content_for:script do %>
     <script type="text/javascript">
-        seajs.use(['forum/latest/forum'], function(forum) {
-            forum.post_button();
+        seajs.use(['global','forum/latest/forum'], function(global,forum) {
+            global.logged_button('forums_post_button',function(){
+                forum.post_topic();
+            })
         });
     </script>
 <% end %>

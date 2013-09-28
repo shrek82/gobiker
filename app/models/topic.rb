@@ -19,6 +19,7 @@ class Topic < ActiveRecord::Base
 
   #保存验证
   validate do
+    #来自保单操作
     if self[:from_form]
       if self.subject_id==1
         self.errors.add(:base, '作者不能为空') if self.user_id.blank?
@@ -27,7 +28,7 @@ class Topic < ActiveRecord::Base
         self.errors.add(:base, '内容不能为空') if self.content.blank?
         self.errors.add(:base, '内容字符至少10个字符') if (self.content.blank?)==false && self.content.size<10
       elsif self.subject_id==2
-        self.errors.add(:base, '目的地不能为空') if self.together_data['address'].blank?
+        self.errors.add(:base, '标题不能为空') if self.title.blank?
         self.errors.add(:base, '日期不能为空') if self.together_data['start_at'].blank?
         self.errors.add(:base, '详细说明不能为空') if self.content.blank?
       elsif self.subject_id==3
@@ -46,6 +47,7 @@ class Topic < ActiveRecord::Base
 
   #belongs_to :forum,:touch=>true
 
+  #查询基本字段
   scope :base_field, select("topics.id,topics.title,topics.forum_id,topics.subject_id,topics.user_id,topics.title_color,topics.last_comment_user_id,topics.last_comment_time,topics.hits_num,topics.comments_num,topics.is_fixed,topics.is_good,topics.created_at")
 
   #自定义详情字段

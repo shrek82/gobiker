@@ -1,16 +1,13 @@
-<% content_for:script do %>
-    <script type="text/javascript">
-        var ueditor_options = {};
-        <%
-        unless options.class=="nilClass"
-           options.each do |key,value|
-        %>
-        ueditor_options.<%= key %> =<%=raw value %>;
+<% content_for:seajs_global do %>
+    var ueditor_options = {};
+    <%
+       unless options.class=="nilClass"
+         options.each do |key, value|
+    %>
+            ueditor_options.<%= key %> =<%= raw value %>;
         <%
            end
-        end
+           end
         %>
-        //实例化编辑器
-        window.ueditor = UE.getEditor('<%=id %>', ueditor_options);
-    </script>
+    window.ueditor = UE.getEditor('<%= id %>', ueditor_options);
 <% end %>
