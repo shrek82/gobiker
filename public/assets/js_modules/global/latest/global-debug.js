@@ -1,4 +1,4 @@
-/*! global(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-28 13:52:11*/
+/*! global(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-05 9:30:37*/
 define("global/latest/global-debug", [ "lib/latest/lib-debug" ], function(require, exports, module) {
     var lib = require("lib/latest/lib-debug");
     var global = {};
@@ -263,5 +263,4 @@ define("global/latest/global-debug", [ "lib/latest/lib-debug" ], function(requir
     //返回模块
     module.exports = global;
 });
-
 
