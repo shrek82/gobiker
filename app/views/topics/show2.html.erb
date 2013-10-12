@@ -20,7 +20,7 @@
     </div>
 
 <div style="text-align:right;margin-bottom:10px">
-  <a class="btn btn-orange" href="javascript:;" data-href="/forums/topics/post?fid=<%=@topic.forum_id %>" id="new_comment_button"><span class="icon-comment"></span> 发表评论</a>
+  <a class="btn btn-orange" href="javascript:;" id="comment_form_position"><span class="icon-comment"></span> 发表评论</a>
   <a class="btn btn-blue" href="javascript:;" data-href="/forums/topics/post?fid=<%=@topic.forum_id %>" id="new_topic_button"><span class="icon-plus"></span> 发表新帖</a>
 </div>
 
@@ -60,6 +60,7 @@
 <%= comment_list :hidden_field => {:topic_id => @topic.id}, :query_param => {:topic_id => @topic.id,:topic=>true} %>
 
 <% content_for:seajs_global do %>
-global.logged_button('new_comment_button');
+global.logged_button('new_topic_button');
+global.scroll_to_position('#comment_form_position','#cmt_submit_button');
 <% end %>
 

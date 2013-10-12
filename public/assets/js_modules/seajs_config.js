@@ -4,6 +4,8 @@ seajs.config({
     "jquery": "gallery/jquery/1.8.2/jquery",
     "lib": "lib/latest/lib",
     "global": "global/latest/global",
+    "study": "study/latest/study",
+    "template": "artTemplate/latest/artTemplate",
     "slides":"jquery_slides/latest/slides_jquery"
   },
   debug: true

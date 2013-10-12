@@ -2,6 +2,8 @@
 
 Gobiker::Application.routes.draw do
 
+  get "study/index"
+
   get "seajs/index"
 
   get "install/setting"

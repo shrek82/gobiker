@@ -1,4 +1,4 @@
-/*! global(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-05 9:30:37*/
+/*! global(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-09 16:30:49*/
 define("global/1.0.0/global-debug", [ "lib/latest/lib-debug" ], function(require, exports, module) {
     var lib = require("lib/latest/lib-debug");
     var global = {};
@@ -10,6 +10,15 @@ define("global/1.0.0/global-debug", [ "lib/latest/lib-debug" ], function(require
         }, function() {
             $(this).removeClass("qyer_head_nav_item_current");
             $(this).find(".qyer_head_subnav_bg").hide();
+        });
+    };
+    //滚动到评论表单位置
+    global.scroll_to_position = function(btn_obj, position, speed) {
+        var speed = speed || 500;
+        $(btn_obj).click(function() {
+            $("html,body").animate({
+                scrollTop: $(btn_obj === position ? this : position).offset().top
+            }, speed);
         });
     };
     //注册滚动到顶部时间
@@ -260,7 +269,31 @@ define("global/1.0.0/global-debug", [ "lib/latest/lib-debug" ], function(require
             });
         }
     };
+    //1、放大模式
+    //学习js方法模式(在不改变原有global类代码的同时，添加一个新方法)
+    global = function(obj) {
+        //保护realname
+        var str = "js方法模式";
+        obj.log = function() {
+            console.log(str);
+        };
+        return obj;
+    }(global);
+    //给global添加新方法,在嵌入式js中可以不污染环境中的变量
+    (function(obj) {
+        //保护realname
+        var str = "js方法模式2";
+        obj.logs = function() {
+            console.log(str);
+        };
+    })(global);
+    //2、宽放大模式（Loose augmentation）
+    //在浏览器环境中，模块的各个部分通常都是从网上获取的，有时无法知道哪个部分会先加载。如果采用上一节的写法，第一个执行的部分有可能加载一个不存在空对象，这时就要采用"宽放大模式"。
+    var global = function(mod) {
+        return mod;
+    }(global || {});
     //返回模块
     module.exports = global;
 });
+
 
