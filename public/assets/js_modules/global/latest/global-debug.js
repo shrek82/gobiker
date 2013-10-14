@@ -1,5 +1,5 @@
-/*! global(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-09 16:30:49*/
-define("global/latest/global-debug", [ "lib/latest/lib-debug" ], function(require, exports, module) {
+/*! global(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-13 8:15:30*/
+define("global/latest/global-debug", [ "lib/latest/lib-debug", "./comment-debug" ], function(require, exports, module) {
     var lib = require("lib/latest/lib-debug");
     var global = {};
     //网站二级导航菜单
@@ -280,20 +280,26 @@ define("global/latest/global-debug", [ "lib/latest/lib-debug" ], function(requir
         return obj;
     }(global);
     //给global添加新方法,在嵌入式js中可以不污染环境中的变量
-    (function(obj) {
+    global = function(obj) {
         //保护realname
         var str = "js方法模式2";
         obj.logs = function() {
             console.log(str);
         };
-    })(global);
+        return obj;
+    }(global);
     //2、宽放大模式（Loose augmentation）
     //在浏览器环境中，模块的各个部分通常都是从网上获取的，有时无法知道哪个部分会先加载。如果采用上一节的写法，第一个执行的部分有可能加载一个不存在空对象，这时就要采用"宽放大模式"。
     var global = function(mod) {
         return mod;
     }(global || {});
+    global.comment = require("./comment-debug");
     //返回模块
     module.exports = global;
 });
 
-
+//对global进行扩展
+define("global/latest/comment-debug", [], function(require, exports, module) {
+    var comment = {};
+    module.exports = comment;
+});

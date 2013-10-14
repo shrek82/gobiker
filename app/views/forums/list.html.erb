@@ -19,7 +19,8 @@
 <% content_for:script do %>
     <script type="text/javascript">
         seajs.use(['global','forum/latest/forum'], function(global,forum) {
-            global.button('place_href_button');
+            //global.button('place_href_button');
+            global.logged_button('post_href_button');
             forum.list_events();
             forum.post_button();
         });

@@ -3,6 +3,8 @@
 }
 h2 {
   color: #4d926f;
+  border-radius: 5px;
+
 }
 #header {
   -webkit-border-radius: 5px;

@@ -283,13 +283,14 @@
 <% content_for:script do %>
     <script type="text/javascript">
         seajs.use(['global', 'forum/latest/forum', 'template'], function (global, forum, template) {
+            global.log();
+            global.logs();
+            //global.editComment();
+
             global.logged_button('forums_post_button', function () {
                 forum.post_topic();
             });
 
-
-            global.log();
-            global.logs();
             var data = {
                 title: '标签',
                 list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
