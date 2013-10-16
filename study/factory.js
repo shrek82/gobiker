@@ -88,7 +88,7 @@ var mondeo = new Car("Ford Mondeo", 2010, 5000);
 console.log(civic.toString());
 console.log(mondeo.toString());
 
-var newboj=function(){
+
+var ajaxForm=function(){
     
 }
-
