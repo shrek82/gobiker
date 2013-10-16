@@ -1,5 +1,5 @@
-/*! global(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-13 8:15:30*/
-define("global/latest/global-debug", [ "lib/latest/lib-debug", "./comment-debug" ], function(require, exports, module) {
+/*! global(1.1.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-15 15:51:50*/
+define("global/latest/global-debug", [ "lib/latest/lib-debug", "./ueditor_config-debug" ], function(require, exports, module) {
     var lib = require("lib/latest/lib-debug");
     var global = {};
     //网站二级导航菜单
@@ -177,6 +177,30 @@ define("global/latest/global-debug", [ "lib/latest/lib-debug", "./comment-debug"
             }, 500);
         });
     };
+    //1、放大模式
+    //学习js方法模式(在不改变原有global类代码的同时，添加一个新方法)
+    global = function(obj) {
+        //保护realname
+        var str = "js方法模式";
+        obj.log = function() {
+            console.log(str);
+        };
+        return obj;
+    }(global);
+    //给global添加新方法,在嵌入式js中可以不污染环境中的变量
+    global = function(obj) {
+        //保护realname
+        var str = "js方法模式2";
+        obj.logs = function() {
+            console.log(str);
+        };
+        return obj;
+    }(global);
+    //2、宽放大模式（Loose augmentation）
+    //在浏览器环境中，模块的各个部分通常都是从网上获取的，有时无法知道哪个部分会先加载。如果采用上一节的写法，第一个执行的部分有可能加载一个不存在空对象，这时就要采用"宽放大模式"。
+    var global = function(mod) {
+        return mod;
+    }(global || {});
     //载入某条评论
     global.loadComments = function(query_param) {
         $.ajax({
@@ -226,10 +250,11 @@ define("global/latest/global-debug", [ "lib/latest/lib-debug", "./comment-debug"
     //绑定评论表单
     global.bindCmtForm = function(add_param) {
         var add_param = add_param ? add_param + "&" : "";
-        var sub_comment = function() {
-            //      $('#comment_form').bind("submit", function (e) {
-            //        e.preventDefault();
-            //      });
+        //$('#comment_form').bind("submit", function (e) {
+        //e.preventDefault();
+        //});
+        //为确定按钮绑定登录操作事件
+        global.logged_button("cmt_submit_button", function() {
             new lib.ajaxForm($("#comment_form"), {
                 dataType: "json",
                 submitButton: "cmt_submit_button",
@@ -257,49 +282,28 @@ define("global/latest/global-debug", [ "lib/latest/lib-debug", "./comment-debug"
                     });
                 }
             }).send();
-        };
-        this.logged_button("cmt_submit_button", function() {
-            console.log("submit comment");
-            sub_comment();
         });
-        if (!user.uid) {
-            //$('#cmt_submit_button').prop('type', 'button');
-            $("#cmt_textarea").click(function() {
-                global.plogin();
-            });
-        }
     };
-    //1、放大模式
-    //学习js方法模式(在不改变原有global类代码的同时，添加一个新方法)
-    global = function(obj) {
-        //保护realname
-        var str = "js方法模式";
-        obj.log = function() {
-            console.log(str);
-        };
-        return obj;
-    }(global);
-    //给global添加新方法,在嵌入式js中可以不污染环境中的变量
-    global = function(obj) {
-        //保护realname
-        var str = "js方法模式2";
-        obj.logs = function() {
-            console.log(str);
-        };
-        return obj;
-    }(global);
-    //2、宽放大模式（Loose augmentation）
-    //在浏览器环境中，模块的各个部分通常都是从网上获取的，有时无法知道哪个部分会先加载。如果采用上一节的写法，第一个执行的部分有可能加载一个不存在空对象，这时就要采用"宽放大模式"。
-    var global = function(mod) {
-        return mod;
-    }(global || {});
-    global.comment = require("./comment-debug");
+    global.ueditor_config = require("./ueditor_config-debug");
     //返回模块
     module.exports = global;
 });
 
-//对global进行扩展
-define("global/latest/comment-debug", [], function(require, exports, module) {
-    var comment = {};
-    module.exports = comment;
+define("global/latest/ueditor_config-debug", [], function(require, exports, module) {
+    //ueditor默认配置
+    var config = {};
+    //简单配置
+    config.simple = {
+        initialStyle: "body{font-size:14px;}p{margin-bottom:10px}",
+        toolbars: [ [ "FullScreen", "Undo", "Bold", "ForeColor", "FontSize", "Italic", "StrikeThrough", "Link", "Emotion", "InsertImage", "Attachment", "InsertVideo", "JustifyLeft", "JustifyCenter", "JustifyRight", "ClearDoc", "InsertTable", "DeleteTable", "Source" ] ],
+        enterTag: "p",
+        initialFrameHeight: 300
+    };
+    //完全配置
+    config.full = {
+        initialStyle: "body{font-size:14px;}p{margin-bottom:10px}",
+        toolbars: [ [ "FullScreen", "Undo", "Redo", "FontSize", "FontFamily", "ForeColor", "Bold", "Italic", "Underline", "BackColor", "StrikeThrough", "Emotion", "InsertImage", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyJustify", "lineheight", "RemoveFormat", "FormatMatch", "PastePlain", "ImageNone", "ImageLeft", "ImageRight", "ImageCenter", "Superscript", "Subscript", "InsertVideo", "Attachment", "Date", "Time", "Map", "Spechars", "InsertTable", "DeleteTable", "MergeRight", "MergeDown", "SplittoRows", "SplittoCols", "SplittoCells", "MergeCells", "InsertCol", "InsertRow", "DeleteCol", "DeleteRow", "InsertParagraphBeforeTable", "InsertUnorderedList", "InsertOrderedList", "horizontal", "indent", "Link", "Unlink", "ClearDoc", "SelectAll", "SearchReplace", "Preview", "Source" ] ],
+        initialFrameHeight: 300
+    };
+    module.exports = config;
 });

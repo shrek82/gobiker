@@ -1,5 +1,5 @@
 <% content_for:seajs_global do %>
-    var ueditor_options = {};
+    var ueditor_options = global.ueditor_config.simple;
     <%
        unless options.class=="nilClass"
          options.each do |key, value|

@@ -32,8 +32,10 @@ class Topic < ActiveRecord::Base
         self.errors.add(:base, '日期不能为空') if self.together_data['start_at'].blank?
         self.errors.add(:base, '详细说明不能为空') if self.content.blank?
       elsif self.subject_id==3
-        self.errors.add(:base, '目的地不能为空') if self.together_data['address'].blank?
-        self.errors.add(:base, '日期不能为空') if self.together_data['start_at'].blank?
+        self.errors.add(:base, '标题不能为空') if self.title.blank?
+        self.errors.add(:base, '开始日期不能为空') if self.activity_data['start_at'].blank?
+        self.errors.add(:base, '结束不能为空') if self.activity_data['finish_at'].blank?
+        self.errors.add(:base, '活动地址不能为空') if self.activity_data['address'].blank?
         self.errors.add(:base, '详细说明不能为空') if self.content.blank?
       end
     end
@@ -102,9 +104,7 @@ class Topic < ActiveRecord::Base
       post.topic_id=self.id
       post.content=@content
       post.save
-    end
-
-    if self.subject_id==2
+    elsif self.subject_id==2
       together=Together.new
       together.topic_id=self.id
       together.address=self.together_data['address']
@@ -112,6 +112,14 @@ class Topic < ActiveRecord::Base
       together.finish_at=self.together_data['finish_at']
       together.content=@content
       together.save
+    elsif self.subject_id==3
+      activity=Activity.new
+      activity.topic_id=self.id
+      activity.address=self.activity_data['address']
+      activity.start_at=self.activity_data['start_at']
+      activity.finish_at=self.activity_data['finish_at']
+      activity.content=@content
+      activity.save
     end
 
   end

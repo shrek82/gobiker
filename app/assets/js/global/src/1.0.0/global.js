@@ -33,14 +33,12 @@ define(function(require, exports, module) {
 
     var doc = $(document);
     var win = $(window);
-
     var foot = $("div.qyer_footer");
     var foot_h = foot.height();
     var isfoot = foot.length;
     var doc_w = doc.width();
     var left = (doc_w - 980) / 2 + 1040; //距离左侧距离
     var right = 10; //距离右侧距离
-
     var doc_h, win_h, top, max_h, scroll_top;
 
     icon.css({

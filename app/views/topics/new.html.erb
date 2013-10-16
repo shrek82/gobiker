@@ -24,7 +24,7 @@
   </ul>
 
   <ul>
-    <li><label>标题：</label><input name="topic[title]" id="form_title" type="text" class="ui_input" style="width:700px"/></li>
+    <li><label>标题：</label><input name="topic[title]" id="form_title" type="text" class="ui_input" style="width:700px"/>&nbsp;&nbsp;&nbsp;<span class="required">*</span></li>
   </ul>
 
   <ul id="subject1" subject="topic" >
@@ -32,7 +32,7 @@
 
   <ul id="subject2" subject="together" style="display:none">
     <li>
-      <label>日期：</label><input name="topic[together_data][start_at]" type="text" class="ui_input ui_input_calendar" style="width:340px;margin-right: 10px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00',skin:'twoer'})"/><input name="topic[together_data][finish_at]" type="text" class="ui_input ui_input_calendar" style="width:340px;margin-right: 10px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00',skin:'twoer'})"/><span class="required">*</span>
+      <label>日期：</label><input name="topic[together_data][start_at]" type="text" class="ui_input ui_input_calendar" style="width:340px;margin-right: 10px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00',skin:'twoer'})"/><input name="topic[together_data][finish_at]" type="text" class="ui_input ui_input_calendar" style="width:340px;margin-right: 10px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00',skin:'twoer'})"/>&nbsp;&nbsp;&nbsp;<span class="required">*</span>
     </li>
     <li>
       <label>目的地：</label><input name="topic[together_data][address]" type="text" class="ui_input ui_input_address" style="width:700px"/>&nbsp;&nbsp;&nbsp;<span style="color:#999">可选，多个请用空格隔开</span>
@@ -40,9 +40,14 @@
   </ul>
 
   <ul id="subject3" subject="activity" style="display:none">
-    <li><label>标题：</label><input name="topic[activity_data][title]" type="text" class="ui_input" style="width:700px"/> &nbsp;&nbsp;&nbsp;<span class="required">*</span> </li>
     <li>
       <label>日期：</label><input name="topic[activity_data][start_at]" type="text" class="ui_input ui_input_calendar" style="width:340px;margin-right: 10px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00',skin:'twoer'})"/><input name="topic[activity_data][finish_at]" type="text" class="ui_input ui_input_calendar" style="width:340px;margin-right: 10px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00',skin:'twoer'})"/><span class="required">*</span>
+    </li>
+    <li>
+      <label>地址：</label><input name="topic[activity_data][address]" type="text" class="ui_input ui_input_address" style="width:700px"/>&nbsp;&nbsp;&nbsp;<span style="color:#999">填写活动地址或目的地</span>
+    </li>
+    <li>
+      <label>名额：</label><input name="topic[activity_data][sign_limit]" type="text" class="ui_input ui_input_address" style="width:700px"/>&nbsp;&nbsp;&nbsp;<span style="color:#999">填写活动名额，不填为不限</span>
     </li>
    </ul>
 

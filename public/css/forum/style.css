@@ -1619,6 +1619,7 @@ td.view_content .view_tools a{color:#67A079}
 td.view_content .view_tools a:hover{text-decoration:none;color:#588f68 }
 td.view_content .view_tools a span{font-size:13px}
 #nodata_topic{padding:10px 2px;color:#999}
+td.view_content p{margin-bottom: 15px}
 
 /*new_topic*/
 #forum_form label{width:50px;text-align:right;display: inline-block}

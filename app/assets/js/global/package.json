@@ -1,6 +1,6 @@
 {
   "name": "global",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "gobiker global functions",
   "main": "global.js",
   "scripts": {

@@ -2,14 +2,6 @@
     <link rel="stylesheet" href="/css/place/style201209.css"/>
 <% end %>
 
-<% content_for:script do %>
-    <script type="text/javascript">
-        seajs.use(['place/latest/place'], function() {
-            console.log('place loaded!');
-        });
-    </script>
-<% end %>
-
 <div class="qyer_head_crumbg">
   <div class="qyer_head_crumb">
     <span class="text"><%= link_to '首页', main_path %></span>
@@ -43,3 +35,21 @@
 </div>
 </div>
 </div>
+<div id="star"></div>
+<% content_for:script do %>
+    <script type="text/javascript">
+        seajs.use(['place/latest/place','slides','raty'], function(place,slides,raty) {
+            place.index();
+            //滚动焦点图插件
+            slides($);
+            $("#gui_focus").slides({
+                play: 5000,
+                pause: 2500,
+                hoverPause: true
+            });
+            //评分
+            raty($);
+            $('#star').raty();
+        });
+    </script>
+<% end %>

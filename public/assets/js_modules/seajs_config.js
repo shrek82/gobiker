@@ -6,7 +6,9 @@ seajs.config({
     "global": "global/latest/global",
     "study": "study/latest/study",
     "template": "artTemplate/latest/artTemplate",
-    "slides":"jquery_slides/latest/slides_jquery"
+    "slides":"jquery_slides/latest/slides_jquery",
+    "raty":"jquery_raty/latest/slides_raty",
+    "raty2":"jquery_raty/latest/raty"
   },
   debug: true
 });

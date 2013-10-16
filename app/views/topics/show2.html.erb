@@ -47,6 +47,8 @@
             <%= raw @topic.post.content %>
         <% elsif @topic.together %>
             <%= raw @topic.together.content %>
+        <% elsif @topic.activity %>
+            <%= raw @topic.activity.content %>
         <% end %>
       </div>
 

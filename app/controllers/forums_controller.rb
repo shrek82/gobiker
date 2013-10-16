@@ -16,13 +16,17 @@ class ForumsController < ApplicationController
       f[:topics_num]=f.topics.count
     end
 
+    @hot_cities2=Topic.select('topics.id,topics.forum_id,(select count()')
+
   end
 
   def list
 
     @forum= Forum.find(params[:id])
 
+    #bug:开发环境下缓存文件需要先载入
     SubjectCategory
+    #读取缓存
     @subject_categories=Rails.cache.fetch('topic_categories', :expires_in => 1.hours) do
       SubjectCategory.order('order_num ASC')
     end
