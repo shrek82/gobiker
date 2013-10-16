@@ -90,5 +90,5 @@ console.log(mondeo.toString());
 
 
 var ajaxForm=function(){
-    
+    this.opt={};
 }
