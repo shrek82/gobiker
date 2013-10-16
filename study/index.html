@@ -1,0 +1,26 @@
+<script type="text/javascript">
+/*
+错误机制
+ */
+try {
+  if (window.console && window.console.log) {
+    console.log("window cosole");
+  }
+} catch (e) {
+  console.log(e);
+}
+
+/*
+构造器模式
+在面向对象编程中，构造器是一个当新建对象的内存被分配后，用来初始化该对象的一个特殊函数。在Javascript中几乎所有的东西都是对象，我们经常会对对象的构造器十分感兴趣。
+对象构造器是被用来创建特殊类型的对象的，首先它要准备使用的对象，其次在对象初次被创建时，通过接收参数，构造器要用来对成员的属性和方法进行赋值。
+*/
+
+var object1 = new Object();
+var people = Object.create(null);
+people.name = 1;
+//man继承了people
+var man = Object.create(people);
+console.log(man.prototype);
+</script>
+
