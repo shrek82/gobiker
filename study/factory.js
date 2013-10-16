@@ -91,4 +91,5 @@ console.log(mondeo.toString());
 
 var ajaxForm=function(){
     this.opt={};
+    this.age=23;
 }
