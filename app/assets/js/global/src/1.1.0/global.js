@@ -310,9 +310,9 @@ define(function(require, exports, module) {
         }
       }).send();
     });
-
   }
 
+  //引入ueditor配置
   global.ueditor_config = require('./ueditor_config');
 
   //返回模块

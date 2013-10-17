@@ -88,8 +88,3 @@ var mondeo = new Car("Ford Mondeo", 2010, 5000);
 console.log(civic.toString());
 console.log(mondeo.toString());
 
-
-var ajaxForm=function(){
-    this.opt={};
-    this.age=23;
-}
