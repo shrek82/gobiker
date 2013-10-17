@@ -1,4 +1,4 @@
-/*! global(1.1.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-15 15:51:50*/
+/*! global(1.1.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-17 16:40:03*/
 define("global/latest/global", [ "lib/latest/lib", "./ueditor_config" ], function(require, exports, module) {
     var lib = require("lib/latest/lib");
     var global = {};
@@ -284,6 +284,7 @@ define("global/latest/global", [ "lib/latest/lib", "./ueditor_config" ], functio
             }).send();
         });
     };
+    //引入ueditor配置
     global.ueditor_config = require("./ueditor_config");
     //返回模块
     module.exports = global;
