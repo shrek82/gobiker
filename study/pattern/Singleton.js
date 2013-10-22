@@ -37,7 +37,12 @@ var obj = (function () {
     age: age,
     say: function (num) {
       add(num);
-      console.log('age is' + age);
+      console.log('age is：' + age);
     }
   }
 })();
+
+
+var singleton=obj;
+singleton.say(2);
+console.log(singleton.age);
