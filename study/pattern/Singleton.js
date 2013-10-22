@@ -7,7 +7,7 @@ var obj = {
   say: function () {
     //方法源码
   }
-}
+};
 
 /*
  模块模式则是为单例模式创建私有变量和公有方法，从而增强可访问性
@@ -22,7 +22,7 @@ var obj = (function () {
 
   return function say() {
     console.log(name);
-  }
+  };
 })();
 
 var obj = (function () {
@@ -41,10 +41,3 @@ var obj = (function () {
     }
   }
 })();
-
-
-
-
-
-
-
