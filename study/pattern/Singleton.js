@@ -46,3 +46,9 @@ var obj = (function () {
 var singleton=obj;
 singleton.say(2);
 console.log(singleton.age);
+
+(function(){
+  console.log("这里闭包匿名函数");
+})();
+
+
