@@ -2,12 +2,9 @@
   <library name="jQuery1.10" type="javaScript">
     <properties>
       <option name="frameworkName" value="jQuery" />
-      <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/../../../../lib/jquery-1.10.2.js" />
-      </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../../../../lib/jquery-1.10.2.js" />
+      <root url="file:///lib/jquery-1.10.2.js" />
     </CLASSES>
     <DOCUMENTATION>
       <root url="file://$USER_HOME$/.WebStorm7/system/extLibs/http_api.jquery.com_resources_api.xml.xml" />
