@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$/module.js" libraries="{Node.js v0.10.10 Core Modules}" />
-    <file url="file://$PROJECT_DIR$/pattern/singleton.js" libraries="{Node.js v0.10.10 Core Modules}" />
-    <file url="PROJECT" libraries="{Node.js v0.10.10 Core Modules, jQuery1.10}" />
-  </component>
-</project>
-
