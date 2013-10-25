@@ -1,10 +1,10 @@
-/*! lib(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-14 11:04:47*/
+/*! lib(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-23 16:08:43*/
 define("lib/1.0.0/popup-debug", [], function(require, exports, module) {
     var popup = function(opt) {
         var opt = opt || {};
         var title = opt.title ? opt.title : "提示";
         this.popup = {};
-        this.pup_code = "<div id='ui_pupBox_bg' class='ui_pupBox_bg' ><div class='ui_pupBox'><div class='ui_pupBox_close'></div><div class='ui_pupBox_main'><div class='ui_pupBox_head'> <ul class='ui_pupBox_headtag'> <li id='tab_login' class='current'><span>" + title + "</span></li> </ul> </div> <div class='ui_pupBox_tag_cnt' id='pop_html_box'><p style='color:#999;text-align: center;margin:15px'>努力加载中...</p></div></div></div></div>";
+        this.pup_code = "<div id='ui_pupBox_bg' class='ui_pupBox_bg' ><div class='ui_pupBox'><div class='ui_pupBox_close'></div><div class='ui_pupBox_main'><div class='ui_pupBox_head'> <ul class='ui_pupBox_headtag'> <li id='tab_login' class='current'><span>" + title + "</span></li> </ul> </div> <div class='ui_pupBox_tag_cnt' id='pop_html_box'><p style='color:#999;text-align: center;margin:15px'>正在用绳命加载中...</p></div></div></div></div>";
         this.box = null;
         this.wintop = $(window).scrollTop();
     };

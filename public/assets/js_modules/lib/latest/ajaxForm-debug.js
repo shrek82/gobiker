@@ -1,4 +1,4 @@
-/*! lib(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-14 11:04:48*/
+/*! lib(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-23 16:08:44*/
 define("lib/latest/ajaxForm-debug", [ "./jquery_form-debug.js" ], function(require, exports, module) {
     //ajax提交插件
     require("./jquery_form-debug")($);
