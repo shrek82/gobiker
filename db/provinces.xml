@@ -1,0 +1,309 @@
+<?xml version="1.0" standalone="yes"?>
+<RECORDS>
+<RECORD>
+<id>110000</id>
+<name>北京市</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.468750</updated_at>
+<province_id>110000</province_id>
+<group></group>
+<pinyin>beijing</pinyin>
+</RECORD>
+<RECORD>
+<id>120000</id>
+<name>天津市</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.468750</updated_at>
+<province_id>120000</province_id>
+<group></group>
+<pinyin>tianjin</pinyin>
+</RECORD>
+<RECORD>
+<id>130000</id>
+<name>河北省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.484375</updated_at>
+<province_id>130000</province_id>
+<group></group>
+<pinyin>hebeisheng</pinyin>
+</RECORD>
+<RECORD>
+<id>140000</id>
+<name>山西省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.500000</updated_at>
+<province_id>140000</province_id>
+<group></group>
+<pinyin>shanxisheng</pinyin>
+</RECORD>
+<RECORD>
+<id>150000</id>
+<name>内蒙古自治区</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:31:52.046875</updated_at>
+<province_id>150000</province_id>
+<group></group>
+<pinyin>neimengguzizhiqu</pinyin>
+</RECORD>
+<RECORD>
+<id>210000</id>
+<name>辽宁省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.515625</updated_at>
+<province_id>210000</province_id>
+<group></group>
+<pinyin>liaoningsheng</pinyin>
+</RECORD>
+<RECORD>
+<id>220000</id>
+<name>吉林省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.515625</updated_at>
+<province_id>220000</province_id>
+<group></group>
+<pinyin>jilinsheng</pinyin>
+</RECORD>
+<RECORD>
+<id>230000</id>
+<name>黑龙江省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.515625</updated_at>
+<province_id>230000</province_id>
+<group></group>
+<pinyin>heilongjiangsheng</pinyin>
+</RECORD>
+<RECORD>
+<id>310000</id>
+<name>上海市</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.531250</updated_at>
+<province_id>310000</province_id>
+<group></group>
+<pinyin>shanghai</pinyin>
+</RECORD>
+<RECORD>
+<id>320000</id>
+<name>江苏省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.531250</updated_at>
+<province_id>320000</province_id>
+<group></group>
+<pinyin>jiangsusheng</pinyin>
+</RECORD>
+<RECORD>
+<id>330000</id>
+<name>浙江省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.531250</updated_at>
+<province_id>330000</province_id>
+<group></group>
+<pinyin>zhejiangsheng</pinyin>
+</RECORD>
+<RECORD>
+<id>340000</id>
+<name>安徽省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.546875</updated_at>
+<province_id>340000</province_id>
+<group></group>
+<pinyin>anhuisheng</pinyin>
+</RECORD>
+<RECORD>
+<id>350000</id>
+<name>福建省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.546875</updated_at>
+<province_id>350000</province_id>
+<group></group>
+<pinyin>fujiansheng</pinyin>
+</RECORD>
+<RECORD>
+<id>360000</id>
+<name>江西省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.546875</updated_at>
+<province_id>360000</province_id>
+<group></group>
+<pinyin>jiangxisheng</pinyin>
+</RECORD>
+<RECORD>
+<id>370000</id>
+<name>山东省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.546875</updated_at>
+<province_id>370000</province_id>
+<group></group>
+<pinyin>shandongsheng</pinyin>
+</RECORD>
+<RECORD>
+<id>410000</id>
+<name>河南省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.562500</updated_at>
+<province_id>410000</province_id>
+<group></group>
+<pinyin>henansheng</pinyin>
+</RECORD>
+<RECORD>
+<id>420000</id>
+<name>湖北省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.562500</updated_at>
+<province_id>420000</province_id>
+<group></group>
+<pinyin>hubeisheng</pinyin>
+</RECORD>
+<RECORD>
+<id>430000</id>
+<name>湖南省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.562500</updated_at>
+<province_id>430000</province_id>
+<group></group>
+<pinyin>hunansheng</pinyin>
+</RECORD>
+<RECORD>
+<id>440000</id>
+<name>广东省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.578125</updated_at>
+<province_id>440000</province_id>
+<group></group>
+<pinyin>guangdongsheng</pinyin>
+</RECORD>
+<RECORD>
+<id>450000</id>
+<name>广西壮族自治区</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:31:52.125000</updated_at>
+<province_id>450000</province_id>
+<group></group>
+<pinyin>guangxizhuangzuzizhiqu</pinyin>
+</RECORD>
+<RECORD>
+<id>460000</id>
+<name>海南省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.578125</updated_at>
+<province_id>460000</province_id>
+<group></group>
+<pinyin>hainansheng</pinyin>
+</RECORD>
+<RECORD>
+<id>500000</id>
+<name>重庆市</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.578125</updated_at>
+<province_id>500000</province_id>
+<group></group>
+<pinyin>zhongqing</pinyin>
+</RECORD>
+<RECORD>
+<id>510000</id>
+<name>四川省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.593750</updated_at>
+<province_id>510000</province_id>
+<group></group>
+<pinyin>sichuansheng</pinyin>
+</RECORD>
+<RECORD>
+<id>520000</id>
+<name>贵州省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.593750</updated_at>
+<province_id>520000</province_id>
+<group></group>
+<pinyin>guizhousheng</pinyin>
+</RECORD>
+<RECORD>
+<id>530000</id>
+<name>云南省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.593750</updated_at>
+<province_id>530000</province_id>
+<group></group>
+<pinyin>yunnansheng</pinyin>
+</RECORD>
+<RECORD>
+<id>540000</id>
+<name>西藏自治区</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:31:52.156250</updated_at>
+<province_id>540000</province_id>
+<group></group>
+<pinyin>xicangzizhiqu</pinyin>
+</RECORD>
+<RECORD>
+<id>610000</id>
+<name>陕西省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.609375</updated_at>
+<province_id>610000</province_id>
+<group></group>
+<pinyin>shanxisheng</pinyin>
+</RECORD>
+<RECORD>
+<id>620000</id>
+<name>甘肃省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.609375</updated_at>
+<province_id>620000</province_id>
+<group></group>
+<pinyin>gansusheng</pinyin>
+</RECORD>
+<RECORD>
+<id>630000</id>
+<name>青海省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.609375</updated_at>
+<province_id>630000</province_id>
+<group></group>
+<pinyin>qinghaisheng</pinyin>
+</RECORD>
+<RECORD>
+<id>640000</id>
+<name>宁夏回族自治区</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:31:52.234375</updated_at>
+<province_id>640000</province_id>
+<group></group>
+<pinyin>ningxiahuizuzizhiqu</pinyin>
+</RECORD>
+<RECORD>
+<id>650000</id>
+<name>新疆维吾尔自治区</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:31:52.234375</updated_at>
+<province_id>650000</province_id>
+<group></group>
+<pinyin>xinjiangweiwuerzizhiqu</pinyin>
+</RECORD>
+<RECORD>
+<id>710000</id>
+<name>台湾省</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:33:36.625000</updated_at>
+<province_id>710000</province_id>
+<group></group>
+<pinyin>taiwansheng</pinyin>
+</RECORD>
+<RECORD>
+<id>810000</id>
+<name>香港特别行政区</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:31:52.250000</updated_at>
+<province_id>810000</province_id>
+<group></group>
+<pinyin>xianggangtebiexingzhengqu</pinyin>
+</RECORD>
+<RECORD>
+<id>820000</id>
+<name>澳门特别行政区</name>
+<created_at></created_at>
+<updated_at>2013-08-08 17:31:52.250000</updated_at>
+<province_id>820000</province_id>
+<group></group>
+<pinyin>aomentebiexingzhengqu</pinyin>
+</RECORD>
+</RECORDS>
