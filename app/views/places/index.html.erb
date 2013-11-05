@@ -6,39 +6,40 @@
   <div class="qyer_head_crumb">
     <span class="text"><%= link_to '首页', main_path %></span>
     <span class="space">&gt;</span>
+
     <h1 class="current">目的地</h1>
   </div>
 </div>
 
 
 <div class="main">
-<div class="gui_top">
-  <img src="/images/place/jn_title.png" width="960" height="72" alt="穷游锦囊">
-</div>
-<div class="clearfix pr">
-<!--目的地导航开始-->
-  <%= render 'navbox' %>
-  <!--结束-->
-<!--幻灯片开始-->
-  <%= render 'focus' %>
-  <!--结束-->
-</div>
-<div class="clearfix mt30">
-<%= render 'recommended' %>
-</div>
-<div class="clearfix mt30">
-<div class="aside fl">
-<%= render 'index_sidebar' %>
-</div>
-<div class="content fr">
-<%= render 'index_right' %>
-</div>
-</div>
+  <div class="gui_top">
+    <img src="/images/place/jn_title.png" width="960" height="72" alt="穷游锦囊">
+  </div>
+  <div class="clearfix pr">
+    <!--目的地导航开始-->
+    <%= render 'navbox' %>
+    <!--结束-->
+    <!--幻灯片开始-->
+    <%= render 'focus' %>
+    <!--结束-->
+  </div>
+  <div class="clearfix mt30">
+    <%= render 'recommended' %>
+  </div>
+  <div class="clearfix mt30">
+    <div class="aside fl">
+      <%= render 'index_sidebar' %>
+    </div>
+    <div class="content fr">
+      <%= render 'index_right' %>
+    </div>
+  </div>
 </div>
 <div id="star"></div>
 <% content_for:script do %>
     <script type="text/javascript">
-        seajs.use(['place/latest/place','slides','raty'], function(place,slides,raty) {
+        seajs.use(['place/latest/place', 'slides'], function (place, slides) {
             place.index();
             //滚动焦点图插件
             slides($);
@@ -47,9 +48,6 @@
                 pause: 2500,
                 hoverPause: true
             });
-            //评分
-            raty($);
-            $('#star').raty();
         });
     </script>
 <% end %>
