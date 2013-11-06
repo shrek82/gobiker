@@ -34,11 +34,19 @@
 
 <% content_for:script do %>
     <script type="text/javascript">
-        readyScript.loadcmt_and_form = function () {
-            loadComments('<%=@query_param.to_param %>');
-            bindCmtForm('<%=@query_param.to_param %>');
-            $.fn.raty.defaults.path = '/plugins/raty-2.5.2/lib/img/';
-            $('#starbox').raty({ score: 3, scoreName: 'comment[userful_num]', hints: ['很差', '差', '一般', '很好', '非常好']});
-        }
+      seajs.use(['global','raty'],function(global,raty){
+          global.loadComments('<%=@query_param.to_param %>');
+          global.bindCmtForm('<%=@query_param.to_param %>');
+          raty($);
+          $.fn.raty.defaults.path = '/plugins/raty-2.5.2/lib/img/';
+          $('#starbox').raty({ score: 3, scoreName: 'comment[userful_num]', hints: ['很差', '差', '一般', '很好', '非常好']});
+
+      })
+//        readyScript.loadcmt_and_form = function () {
+//            loadComments('<%=@query_param.to_param %>');
+//            bindCmtForm('<%=@query_param.to_param %>');
+//            $.fn.raty.defaults.path = '/plugins/raty-2.5.2/lib/img/';
+//            $('#starbox').raty({ score: 3, scoreName: 'comment[userful_num]', hints: ['很差', '差', '一般', '很好', '非常好']});
+//        }
     </script>
 <% end %>

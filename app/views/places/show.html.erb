@@ -324,7 +324,7 @@
 
 <% content_for:script do %>
     <script type="text/javascript">
-        seajs.use(['lib', 'raty'], function (lib, raty) {
+        seajs.use(['lib'], function (lib) {
             $("#pl_topbox_want a").click(function () {
                 var $wanta = $(this);
                 $(this).parent().find('span.tips').show().animate({'opacity': 0, 'top': '-50px'}, 400, 'linear', function () {
