@@ -1,4 +1,4 @@
-/*! global(1.1.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-10-17 16:40:03*/
+/*! global(1.1.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-11-06 20:24:37*/
 define("global/latest/global-debug", [ "lib/latest/lib-debug", "./ueditor_config-debug" ], function(require, exports, module) {
     var lib = require("lib/latest/lib-debug");
     var global = {};
@@ -260,7 +260,13 @@ define("global/latest/global-debug", [ "lib/latest/lib-debug", "./ueditor_config
                 submitButton: "cmt_submit_button",
                 successLabel: "发表成功",
                 callback: function(data) {
-                    ueditor.setContent("<p></p>");
+                    //清空文本框内容
+                    if (typeof ueditor != "undefined") {
+                        ueditor.setContent("<p></p>");
+                    } else {
+                        $("#cmt_textarea").val("");
+                    }
+                    //载入新评论
                     $.ajax({
                         url: "/comments/getone",
                         dataType: "html",

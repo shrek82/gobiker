@@ -1,14 +1,14 @@
-define(function(require, exports, module) {
+define(function (require, exports, module) {
 
   var lib = require('lib');
   var global = {};
 
   //网站二级导航菜单
-  global.subNav = function() {
-    $("#qyer_head_nav_item_yd").hover(function() {
+  global.subNav = function () {
+    $("#qyer_head_nav_item_yd").hover(function () {
       $(this).addClass("qyer_head_nav_item_current");
       $(this).find(".qyer_head_subnav_bg").show();
-    }, function() {
+    }, function () {
       $(this).removeClass("qyer_head_nav_item_current");
       $(this).find(".qyer_head_subnav_bg").hide();
     });
@@ -16,9 +16,9 @@ define(function(require, exports, module) {
 
 
   //滚动到评论表单位置
-  global.scroll_to_position = function(btn_obj, position, speed) {
+  global.scroll_to_position = function (btn_obj, position, speed) {
     var speed = speed || 500;
-    $(btn_obj).click(function() {
+    $(btn_obj).click(function () {
       $("html,body").animate({
         scrollTop: $(btn_obj === position ? this : position).offset().top
       }, speed);
@@ -26,7 +26,7 @@ define(function(require, exports, module) {
   }
 
   //注册滚动到顶部时间
-  global.scrollToTop = function() {
+  global.scrollToTop = function () {
     //返回顶部
     var icon = $("<div class='ui_upward_wrapper' id='ui_gotop'><a class='arrow_icon'>回顶部</a></div>");
     icon.appendTo("body");
@@ -47,7 +47,7 @@ define(function(require, exports, module) {
       "right": right
     });
 
-    win.on("scroll", function() {
+    win.on("scroll", function () {
       doc_h = doc.height();
       win_h = win.height();
       top = win_h - icon_h - 30;
@@ -71,7 +71,7 @@ define(function(require, exports, module) {
       }
     });
 
-    icon.click(function() {
+    icon.click(function () {
       $("body,html").animate({
         scrollTop: 0
       });
@@ -79,26 +79,27 @@ define(function(require, exports, module) {
   }
 
   //检测登录状态
-  global.check_user = function() {
+  global.check_user = function () {
     $.ajax({
       url: '/users/check_user',
       dataType: 'html',
-      success: function(res) {
+      success: function (res) {
         $('#asynclogininfo').html(res);
       }
     });
   }
 
   //登录后可以执行的按钮
-  global.logged_button = function(btn_id, callback) {
+  global.logged_button = function (btn_id, callback) {
     var btn = $('#' + btn_id);
     if (btn.length) {
       //按钮原本事件
-      var button_event = function() {
+      var button_event = function () {
         if (typeof callback == 'function') {
           try {
             callback();
-          } catch (ex) {}
+          } catch (ex) {
+          }
         } //跳转到url
         else if (btn.attr('data-href')) {
           window.location.href = btn.attr('data-href');
@@ -107,7 +108,7 @@ define(function(require, exports, module) {
         }
       };
       //绑定按钮点击事件，为登录先登录然后执行按钮事件
-      btn.click(function() {
+      btn.click(function () {
         if (!user.uid) {
           //传递登录后回调方法
           global.plogin(button_event);
@@ -119,7 +120,7 @@ define(function(require, exports, module) {
   };
 
   //弹出登录窗口(登录成功后执行的回调方法)
-  global.plogin = function(callback) {
+  global.plogin = function (callback) {
     var strVar = "";
     strVar += "<div class=\"reg_main\">";
     strVar += "  <div class=\"clearfix\"><strong class=\"fl f16 fontYaHei fb cGray\">使用穷游帐号登录<\/strong><span class=\"fr cGray\">没有帐号？<a id=\"tab_register_sw\" href=\"javascript:void(0);\">立即注册<\/a><\/span><\/div>";
@@ -155,11 +156,11 @@ define(function(require, exports, module) {
     var popup_login = new lib.popup({
       title: '登陆'
     });
-    popup_login.html(strVar, '440', function() {
-      setTimeout(function() {
+    popup_login.html(strVar, '440', function () {
+      setTimeout(function () {
         var $submit_button = $('#login_submit_button');
         $submit_button.prop('type', 'submit');
-        $('#login_form').submit(function(e) {
+        $('#login_form').submit(function (e) {
           e.preventDefault();
           new lib.ajaxForm($(this), {
             dataType: 'json',
@@ -167,7 +168,7 @@ define(function(require, exports, module) {
             successLabel: '登录成功',
             sendingLabel: '验证中..',
             errorLabel: '重试登录',
-            callback: function(json_data) {
+            callback: function (json_data) {
               if (json_data.uid && json_data.username) {
                 user = {
                   'uid': json_data.uid,
@@ -178,8 +179,10 @@ define(function(require, exports, module) {
                 if (typeof callback == 'function') {
                   try {
                     callback();
-                  } catch (ex) {}
-                };
+                  } catch (ex) {
+                  }
+                }
+                ;
 
               }
             }
@@ -192,20 +195,20 @@ define(function(require, exports, module) {
 
   //1、放大模式
   //学习js方法模式(在不改变原有global类代码的同时，添加一个新方法)
-  global = (function(obj) {
+  global = (function (obj) {
     //保护realname
     var str = 'js方法模式';
-    obj.log = function() {
+    obj.log = function () {
       console.log(str);
     }
     return obj;
   })(global);
 
   //给global添加新方法,在嵌入式js中可以不污染环境中的变量
-  global = (function(obj) {
+  global = (function (obj) {
     //保护realname
     var str = 'js方法模式2';
-    obj.logs = function() {
+    obj.logs = function () {
       console.log(str);
     };
     return obj;
@@ -214,23 +217,23 @@ define(function(require, exports, module) {
   //2、宽放大模式（Loose augmentation）
   //在浏览器环境中，模块的各个部分通常都是从网上获取的，有时无法知道哪个部分会先加载。如果采用上一节的写法，第一个执行的部分有可能加载一个不存在空对象，这时就要采用"宽放大模式"。
 
-  var global = (function(mod) {
+  var global = (function (mod) {
     return mod;
   })(global || {});
 
 
   //载入某条评论
-  global.loadComments = function(query_param) {
+  global.loadComments = function (query_param) {
     $.ajax({
       url: '/comments/list',
       dataType: 'html',
       type: 'get',
       data: query_param + '&_format=html',
-      success: function(data) {
-        $('#cmt_loading').hide(10, function() {
+      success: function (data) {
+        $('#cmt_loading').hide(10, function () {
           $("#ajax_list").html($(data).fadeIn(400));
         });
-        setTimeout(function() {
+        setTimeout(function () {
           global.cmtpage();
         }, 1200);
       }
@@ -238,32 +241,32 @@ define(function(require, exports, module) {
   }
 
   //滚动到评论表单位置
-  global.scroll_to_cmtform = function() {
+  global.scroll_to_cmtform = function () {
     var $comment_form = $("#comment_form");
     var scroll_top = $comment_form.offset().top - 32;
     $('html, body').animate({
       scrollTop: scroll_top
-    }, function() {
+    }, function () {
       //$comment_form.find('textarea').focus();
     });
 
   }
 
   //评论分页
-  global.cmtpage = function(url) {
-    $('div.ui_page a').bind('click', function(e) {
+  global.cmtpage = function (url) {
+    $('div.ui_page a').bind('click', function (e) {
       e.preventDefault();
       $.ajax({
         url: $(this).attr('url'),
         dataType: 'html',
         type: 'get',
-        success: function(data) {
+        success: function (data) {
           var ajax_list = $("#ajax_list").offset().top - 42;
           $('html, body').animate({
             scrollTop: ajax_list
           });
           $("#ajax_list").html($(data).fadeIn(400));
-          setTimeout(function() {
+          setTimeout(function () {
             global.cmtpage();
           }, 200);
         }
@@ -272,7 +275,7 @@ define(function(require, exports, module) {
   }
 
   //绑定评论表单
-  global.bindCmtForm = function(add_param) {
+  global.bindCmtForm = function (add_param) {
     var add_param = add_param ? add_param + '&' : '';
 
     //$('#comment_form').bind("submit", function (e) {
@@ -280,19 +283,26 @@ define(function(require, exports, module) {
     //});
 
     //为确定按钮绑定登录操作事件
-    global.logged_button('cmt_submit_button', function() {
+    global.logged_button('cmt_submit_button', function () {
       new lib.ajaxForm($('#comment_form'), {
         dataType: 'json',
         submitButton: 'cmt_submit_button',
         successLabel: '发表成功',
-        callback: function(data) {
-          ueditor.setContent('<p></p>');
+        callback: function (data) {
+          //清空文本框内容
+          if (typeof ueditor != 'undefined') {
+            ueditor.setContent('<p></p>');
+          }
+          else{
+            $('#cmt_textarea').val('');
+          }
+          //载入新评论
           $.ajax({
             url: '/comments/getone',
             dataType: 'html',
             type: 'get',
             data: add_param + '_format=html&id=' + data.comment.id,
-            success: function(html) {
+            success: function (html) {
               $("#nodata_topic").remove();
               $li = $(html);
               $("#cmts_pager").before($li);
@@ -301,9 +311,9 @@ define(function(require, exports, module) {
                 opacity: 0,
                 height: 0
               }).animate({
-                opacity: 1,
-                height: height
-              }, 600);
+                  opacity: 1,
+                  height: height
+                }, 600);
               //$("#cmts_pager").before($(data).css('height','0').animate({height:"68px",opacity: 'toggle'},350));
             }
           });

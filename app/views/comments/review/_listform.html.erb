@@ -24,7 +24,7 @@
             <textarea name="comment[content]"  id="cmt_textarea"></textarea>
           </div>
           <div class="post-toolbar">
-            <button class="btn btn-mint" type="submit" id="cmt_submit_button">发布评论</button>
+            <button class="btn btn-mint" type="button" id="cmt_submit_button">发布评论</button>
           </div>
         </form>
       </div>
@@ -40,13 +40,6 @@
           raty($);
           $.fn.raty.defaults.path = '/plugins/raty-2.5.2/lib/img/';
           $('#starbox').raty({ score: 3, scoreName: 'comment[userful_num]', hints: ['很差', '差', '一般', '很好', '非常好']});
-
       })
-//        readyScript.loadcmt_and_form = function () {
-//            loadComments('<%=@query_param.to_param %>');
-//            bindCmtForm('<%=@query_param.to_param %>');
-//            $.fn.raty.defaults.path = '/plugins/raty-2.5.2/lib/img/';
-//            $('#starbox').raty({ score: 3, scoreName: 'comment[userful_num]', hints: ['很差', '差', '一般', '很好', '非常好']});
-//        }
     </script>
 <% end %>

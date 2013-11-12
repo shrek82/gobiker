@@ -5,7 +5,7 @@
   #这里会报错，奇怪了
   #load_and_authorize_resource
 
-  def index
+  def v1
     #Setting.home_focus_limit
     @focus=Recommend.focus.cat('home').limit(5)
     @hot_place=Place.hot.limit(3)
@@ -15,7 +15,7 @@
     #binding.pry
   end
 
-  def v1
+  def index
     @focus=Recommend.focus.cat('home').limit(5)
     @hot_place=Place.hot.limit(3)
 
