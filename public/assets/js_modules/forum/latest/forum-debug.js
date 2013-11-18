@@ -1,4 +1,4 @@
-/*! forum(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-09-28 12:16:28*/
+/*! forum(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-11-15 10:22:04*/
 define("forum/latest/forum-debug", [ "lib/latest/lib-debug", "global/latest/global-debug" ], function(require, exports, module) {
     var lib = require("lib/latest/lib-debug");
     var global = require("global/latest/global-debug");
@@ -48,6 +48,7 @@ define("forum/latest/forum-debug", [ "lib/latest/lib-debug", "global/latest/glob
             }
         });
     };
+    //首页发布新话题按钮
     forums.post_topic = function() {
         var forum_pop = new lib.popup({
             title: "选择要发布到版块："
@@ -109,5 +110,4 @@ define("forum/latest/forum-debug", [ "lib/latest/lib-debug", "global/latest/glob
     };
     module.exports = forums;
 });
-
 
