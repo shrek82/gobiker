@@ -12,3 +12,10 @@
   </div>
 </div>
 
+<% content_for:script do %>
+    <script type="text/javascript">
+        seajs.use(['user/latest/user'], function (user) {
+            user.bindLoginForm();
+        });
+    </script>
+<% end %>

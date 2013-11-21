@@ -1,14 +1,14 @@
 {
-  "name": "forum",
+  "name": "user",
   "version": "1.0.0",
-  "description": "gobiker forum functions",
-  "main": "forum.js",
+  "description": "gobiker user js",
+  "main": "user.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "",
   "keywords": [
-    "forum.js"
+    "user.js"
   ],
   "author": "JianGang Zhao <zhaojiangang@gmail.com>",
   "license": "BSD",
