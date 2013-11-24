@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
-
+  
+  var lib=require('lib');
 
   //用户登录注册等方法
   var user = {};
@@ -21,7 +22,5 @@ define(function (require, exports, module) {
     });
   }
 
-  //注册相关事件
-  user.reg=require('./register');
 
 });

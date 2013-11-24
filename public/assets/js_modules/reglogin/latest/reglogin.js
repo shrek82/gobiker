@@ -1,7 +1,12 @@
-/*! user(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-11-21 23:40:05*/
-define("user/latest/user-debug", [ "lib/latest/lib-debug", "global/latest/global-debug" ], function(require, exports, module) {
-    var lib = require("lib/latest/lib-debug");
-    var global = require("global/latest/global-debug");
+/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-11-23 13:37:28*/
+define("reglogin/latest/reglogin", [ "lib/latest/lib", "./login", "./register" ], function(require, exports, module) {
+    var lib = require("lib/latest/lib");
+    exports.login = require("./login");
+    exports.register = require("./register");
+});
+
+define("reglogin/latest/login", [ "lib/latest/lib" ], function(require, exports, module) {
+    var lib = require("lib/latest/lib");
     //用户登录注册等方法
     var user = {};
     module.exports = user;
@@ -20,8 +25,10 @@ define("user/latest/user-debug", [ "lib/latest/lib-debug", "global/latest/global
             }).send();
         });
     };
-    //注册相关事件
-    user.reg = {
+});
+
+define("reglogin/latest/register", [], function(require, exports, module) {
+    var reg = {
         //显示错误
         showError: function(id, text) {
             var obj = $("#" + id);
@@ -90,17 +97,17 @@ define("user/latest/user-debug", [ "lib/latest/lib-debug", "global/latest/global
             //验证邮箱地址输入
             email: function(email) {
                 if (email.length == 0) {
-                    user.reg.showError("reg_email", "请输入email");
+                    reg.showError("reg_email", "请输入email");
                     return false;
                 }
-                user.reg.showloading("reg_email");
+                reg.showloading("reg_email");
                 if (email.indexOf("_") == 0) {
-                    user.reg.showError("reg_email", "请不要以下划线开头");
+                    reg.showError("reg_email", "请不要以下划线开头");
                     return false;
                 }
                 var res = /^([a-zA-Z0-9]+[_|\_|\.-]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.-]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,6}$/;
                 if (!res.test(email)) {
-                    user.reg.showError("reg_email", "email格式不正确");
+                    reg.showError("reg_email", "email格式不正确");
                     return false;
                 }
                 $.ajax({
@@ -110,16 +117,16 @@ define("user/latest/user-debug", [ "lib/latest/lib-debug", "global/latest/global
                     data: "email=" + email,
                     success: function(res) {
                         if (res.error) {
-                            user.reg.showError("reg_email", res.error);
+                            reg.showError("reg_email", res.error);
                             $("#reg_submit").attr("disabled", "disabled").val("请重试");
                             return false;
                         } else {
-                            user.reg.showSuccess("reg_email");
+                            reg.showSuccess("reg_email");
                             $("#reg_submit").attr("disabled", false).val("立即注册");
                         }
                     }
                 });
-                user.reg.showSuccess("reg_email");
+                reg.showSuccess("reg_email");
                 email_is_valid = true;
                 return true;
             },
@@ -127,20 +134,20 @@ define("user/latest/user-debug", [ "lib/latest/lib-debug", "global/latest/global
             username: function(username) {
                 var len = $("#reg_username").val().length;
                 if (len == 0) {
-                    return user.reg.showError("reg_username", "请输入用户名");
+                    return reg.showError("reg_username", "请输入用户名");
                 }
                 if (len < 3) {
-                    return user.reg.showError("reg_username", "用户名最少3个字符");
+                    return reg.showError("reg_username", "用户名最少3个字符");
                 }
                 for (var i = 0; i < username.length; i++) {
                     var reg = /^[^a-zA-Z0-9_]+$/;
                     if (reg.test(username) && (username.charCodeAt(i) < 19968 || username.charCodeAt(i) > 40869)) {
-                        return user.reg.showError("reg_username", "使用中文、英文、数字、下划线,最大15个字符");
+                        return reg.showError("reg_username", "使用中文、英文、数字、下划线,最大15个字符");
                     }
                 }
-                user.reg.showloading("reg_username");
+                reg.showloading("reg_username");
                 if (username.indexOf("_") == 0) {
-                    user.reg.showError("reg_email", "请不要以下划线开头");
+                    reg.showError("reg_email", "请不要以下划线开头");
                     return false;
                 }
                 name_is_valid = false;
@@ -155,7 +162,7 @@ define("user/latest/user-debug", [ "lib/latest/lib-debug", "global/latest/global
                     success: function(res) {
                         if (res.error) {
                             name_is_valid = false;
-                            return user.reg.showError("reg_username", res.error);
+                            return reg.showError("reg_username", res.error);
                         } else {
                             name_is_valid = true;
                         }
@@ -165,7 +172,7 @@ define("user/latest/user-debug", [ "lib/latest/lib-debug", "global/latest/global
                     async: true
                 });
                 if (name_is_valid) {
-                    return user.reg.showSuccess("reg_username");
+                    return reg.showSuccess("reg_username");
                 } else {
                     return false;
                 }
@@ -173,45 +180,45 @@ define("user/latest/user-debug", [ "lib/latest/lib-debug", "global/latest/global
             //验证密码输入
             password: function(password) {
                 if (0 >= password.length) {
-                    return user.reg.showError("reg_password", "请输入登录密码");
+                    return reg.showError("reg_password", "请输入登录密码");
                 }
                 if (5 > password.length) {
-                    return user.reg.showError("reg_password", "密码长度5-16位，区分大小写");
+                    return reg.showError("reg_password", "密码长度5-16位，区分大小写");
                 }
-                return user.reg.showSuccess("reg_password");
+                return reg.showSuccess("reg_password");
             },
             repassword: function() {
                 var password = $("#reg_password").val();
                 var repassword = $("#reg_repassword").val();
                 if (5 > password.length) {
-                    user.reg.showError("reg_password", "密码长度5-16位，区分大小写");
+                    reg.showError("reg_password", "密码长度5-16位，区分大小写");
                 }
                 if (password != repassword) {
-                    return user.reg.showError("reg_repassword", "两次密码不一致");
+                    return reg.showError("reg_repassword", "两次密码不一致");
                 }
-                return user.reg.showSuccess("reg_repassword");
+                return reg.showSuccess("reg_repassword");
             },
             //验证码检查
             verify: function(verify) {
                 if (0 == verify.length) {
-                    return user.reg.showError("reg_verify", "请填写验证码");
+                    return reg.showError("reg_verify", "请填写验证码");
                 }
-                user.reg.showloading("reg_verify");
+                reg.showloading("reg_verify");
                 $.postJSON(file + "?act=checkverify", "is_ajax=1&verify=" + verify, function(res) {
                     if ("0" != res.error) {
-                        return user.reg.showError("reg_verify", res.error);
+                        return reg.showError("reg_verify", res.error);
                     } else {
-                        return user.reg.showSuccess("reg_verify");
+                        return reg.showSuccess("reg_verify");
                     }
                 });
-                return user.reg.showSuccess("reg_verify");
+                return reg.showSuccess("reg_verify");
             }
         },
         //为注册第一步绑定验证
         bind_check_email: function() {
             $("#reg_email").blur(function() {
                 var email = $(this).val();
-                if (!user.reg.check.email(email)) {
+                if (!reg.check.email(email)) {
                     $("#reg_submit").attr("disabled", false).removeClass("ui_btn_big_load ui_btn_big_disabled").addClass("ui_btn_big").val("重试");
                     return false;
                 } else {
@@ -220,5 +227,5 @@ define("user/latest/user-debug", [ "lib/latest/lib-debug", "global/latest/global
             });
         }
     };
+    module.exports = reg;
 });
-

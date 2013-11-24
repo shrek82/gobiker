@@ -1,7 +1,7 @@
 {
   "name": "reglogin",
   "version": "1.0.0",
-  "description": "gobiker user js",
+  "description": "gobiker login and register js",
   "main": "reglogin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

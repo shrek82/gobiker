@@ -32,9 +32,9 @@
 </form >
 <% content_for:script do %>
     <script type="text/javascript">
-        readyScript.check_email=function(){
-            ureg.check_email();
-            ureg.bindActiveButton();
-        }
+        seajs.use(['reglogin/latest/reglogin'], function (reglogin) {
+            reglogin.register.bind_check_email();
+            reglogin.register.bindActiveButton();
+        });
     </script>
 <% end %>

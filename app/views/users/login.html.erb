@@ -14,8 +14,8 @@
 
 <% content_for:script do %>
     <script type="text/javascript">
-        seajs.use(['user/latest/user'], function (user) {
-            user.bindLoginForm();
+        seajs.use(['reglogin/latest/reglogin'], function (reglogin) {
+            reglogin.login.bindLoginForm();
         });
     </script>
 <% end %>
