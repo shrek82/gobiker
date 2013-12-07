@@ -31,9 +31,6 @@ class Admin::PlacesController < AdminController
     @place = Place.new(params[:place])
     @place.is_fixed=params[:is_fixed]
     @place.is_recommended=params[:is_recommended]
-    @place.province_id=params[:province_id]
-    @place.city_id=params[:city_id]
-    @place.area_id=params[:area_id]
     if @place.save
       respond :redirect_to => admin_places_path, :success => '目的地添加成功'
     else
@@ -51,9 +48,6 @@ class Admin::PlacesController < AdminController
     @place = Place.find(params[:id])
     @place.is_fixed=params[:is_fixed]
     @place.is_recommended=params[:is_recommended]
-    @place.province_id=params[:province_id]
-    @place.city_id=params[:city_id]
-    @place.area_id=params[:area_id]
     if @place.update_attributes(params[:place])
       respond :redirect_to => admin_places_path, :success => '资料修改成功'
     else
