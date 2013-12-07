@@ -5,10 +5,12 @@ class Place < ActiveRecord::Base
   #default_scope :order => 'id'
   #字段白名单，可以通过parrt[:place]
   #会影响rake db:seed数据导入
-  attr_accessible :name, :content, :tags, :category_id, :img_path, :img_ids, :province_id, :city_id, :area_id, :address, :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num, :intro, :content, :user_id,:wantgoto_num,:beengo_num
+  #attr_accessible相当于是白名单，定义哪些属性可以被mass assignment（大量赋值）
+  attr_accessible :name, :content, :tags, :category_id, :img_path, :img_ids, :province_id, :city_id, :area_id, :address,:intro, :content, :user_id
 
   #黑名单
-  #attr_protected :is_recommended, :interested_num, :favorites_num, :hits_num, :good_num
+  #attr_protected相当于是黑名单，定义哪些属性不可以被mass assignment
+  attr_protected :is_recommended,:is_fixed,:interested_num, :favorites_num, :hits_num, :good_num,:wantgoto_num,:beengo_num
 
   #不允许为空
   validates_presence_of :content, :message => '不能为空'
@@ -36,8 +38,10 @@ class Place < ActiveRecord::Base
 
   #自动创建一个相册
   after_create :create_album
+  #更新后自动更新相册照片数量
   after_update :update_album
 
+  #默认排序方式
   default_scope :order => '`places`.id DESC'
 
   #还可以这样追加model的方法
