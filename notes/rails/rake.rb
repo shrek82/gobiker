@@ -59,3 +59,4 @@ db:version 检索当前模式下的版本
 #创建生产数据库
 #rake db:create RAILS_ENV=production
 #rake db:migrate RAILS_ENV=production
+#rake db:migrate RAILS_ENV=production
