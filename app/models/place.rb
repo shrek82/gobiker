@@ -59,6 +59,11 @@ class Place < ActiveRecord::Base
   has_many :want_to_places
   has_many :albums
 
+  #获取目的地总数
+  def self.getCount()
+    Place.count()
+  end
+
   #获取记录
   def self.get(*args)
     options = args.extract_options!

@@ -16,6 +16,12 @@
   end
 
   def index
+    #总数
+    @places_count=Place.getCount
+    @topics_count=Topic.count
+    @asks_count=Asks.getCount
+    #目的地点评
+    @reviews_places=Comment.reviewsPlaces(10)
     @focus=Recommend.focus.cat('home').limit(5)
     @hot_place=Place.hot.limit(3)
 

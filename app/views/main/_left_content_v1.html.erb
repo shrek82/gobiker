@@ -36,34 +36,13 @@
   <div class="con_title"><h2 class="name">目的地点评</h2>（<a href="http://place.qyer.com" title="更多目的地">更多</a>）</div>
   <div class="scroll_box_roll" id="citycommentindex">
     <ul class="scroll_box_list" style="padding: 0">
-      <li>
-        <a href="#"><img src="http://qycenter.qyer.com/avatar.php?uid=1645514&amp;size=48&amp;_116499" width="48" height="48" alt="big_being" title="big_being"></a>
-        <a href="#">big_being</a> 在 <a href="http://place.qyer.com/city_id_50" title="香港" class="fb">香港</a> 说：
-        <div>大约每两个月来一次。我觉得这个地方是有历史有文化而不是只剩尖沙咀广东道的名牌店</div>
-      </li>
-      <li>
-        <a href="#"><img src="http://qycenter.qyer.com/avatar.php?uid=1054627&amp;size=48&amp;_441183" width="48" height="48" alt="yifan_chen412" title="yifan_chen412"></a>
-        <a href="scroll_box1054627">yifan_chen412</a> 在
-        <a href="http://place.qyer.com/city_id_69" title="纽约" class="fb">纽约</a> 说：
-        <div>酒店去雅高看看，太多了，各有各的优势，纽约这么大还要看你住在什么区域。个人感觉啊，帝国大厦、洛克菲勒、百老汇说什么也得进去看看，我很喜欢杜莎夫人蜡像馆，比香港的大...</div>
-      </li>
-      <li>
-        <a href="#"><img src="http://qycenter.qyer.com/avatar.php?uid=1455759&amp;size=48&amp;_523432" width="48" height="48" alt="小宏宝儿" title="小宏宝儿"></a>
-        <a href="#">小宏宝儿</a> 在 <a href="http://place.qyer.com/city_id_67" title="首尔" class="fb">首尔</a> 说：
-        <div>正在准备2013年4月的7天（不包括往返）首尔行，有要一起的吗？</div>
-      </li>
-      <li>
-        <a href="#"><img src="http://qycenter.qyer.com/avatar.php?uid=1611988&amp;size=48&amp;_601186" width="48" height="48" alt="琦仔00" title="琦仔00"></a>
-        <a href="#">琦仔00</a> 在 <a href="http://place.qyer.com/city_id_8707" title="高尔" class="fb">高尔</a> 说：
-        <div>好像丽江的殖民城堡，凭栏远眺的雨季</div>
-      </li>
-      <li>
-        <a href="#"><img src="http://qycenter.qyer.com/avatar.php?uid=1663784&amp;size=48&amp;_280314" width="48" height="48" alt="少妇猫" title="少妇猫"></a>
-        <a href="#">少妇猫</a> 在 <a href="http://place.qyer.com/city_id_8420" title="皇家奇特旺公园" class="fb">皇家奇特旺公园</a> 说：
-        <div>刚从尼泊尔回来，奇特旺是个值得一去再去的地方，有机会一定得带家人去那儿度假~~</div>
-      </li>
-
-
+      <% @reviews_places.each do |c| %>
+          <li>
+            <a href="#"><img src="http://qycenter.qyer.com/avatar.php?uid=1645514&amp;size=48&amp;_116499" width="48" height="48" alt="big_being" title="big_being"></a>
+            <a href="#"><%= c.user.username %></a> 在 <a href="http://place.qyer.com/city_id_50" title="香港" class="fb"><%= c.place.name %></a> 说：
+            <div><%= c.content.html_safe %></div>
+          </li>
+      <% end %>
     </ul>
   </div>
 </div>
@@ -80,6 +59,7 @@
       <div class="cover"><a href=""><img src="uploads/pics/201212/19/200.jpg" width="150" alt="迷失在京都" title="迷失在京都"></a>
       </div>
       <h3><a href="#" title="迷失在京都">迷失在京都</a></h3>
+
       <p>照片 137 | 查看 3950<br>来自：<a href="http://user.qyer.com/user_uid_1639659">文乃香</a></p>
     </li>
     <li>
@@ -100,6 +80,7 @@
       <div class="cover"><a href=""><img src="uploads/pics/201212/19/200.jpg" width="150" alt="迷失在京都" title="迷失在京都"></a>
       </div>
       <h3><a href="#" title="迷失在京都">迷失在京都</a></h3>
+
       <p>照片 137 | 查看 3950<br>来自：<a href="http://user.qyer.com/user_uid_1639659">文乃香</a></p>
     </li>
   </ul>
