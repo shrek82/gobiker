@@ -7,7 +7,7 @@ class PlacesController < ApplicationController
       Place.get_recommended(6)
     end
 
-    @places = Place.paginate(:page => params[:page], :per_page => 12, :order => "places.id DESC")
+    @places = Place.paginate(:page => params[:page], :per_page => 12, :order => "places.id DESC",:include=>[:province,:city,:comments])
 
     respond_to do |format|
       format.html
@@ -26,6 +26,8 @@ class PlacesController < ApplicationController
   #显示目的地
   def show
     @place=Place.find(params[:id])
+    @place.hits_num=@place.hits_num+1
+    @place.save()
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @place }

@@ -70,13 +70,13 @@
               <tr id="record_<%= r.id %>">
                 <td class="record-checkbox"><input type="checkbox" name="cid[]" value="1"></td>
                 <td class="record-title"><a href="<%= edit_admin_place_path(r, :format => 'html') %>"><%= r.name %></a></td>
-                <td class="record-cmthit"><span><%= r.comments_num %></span>/<%= r.hits_num %>/<%= r.wantgoto_num.to_i %>/<%= r.beengo_num.to_i %></td>
+                <td class="record-cmthit"><span><%= r.comments.size %></span>/<%= r.hits_num %></td>
                 <td class="record-cmthit"><%= r.wantgoto_num.to_i %>/<%= r.beengo_num.to_i %></td>
                 <td class="record-author"><%= r.user.username if r.user %></td>
                 <td class="record-date"><%= to_pretty(r.created_at) %>
                   <% r.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
                 <td class="record-operate">
-                  <a href="<%= admin_place_path(r) %>"><i class="icon-search"></i></a>
+                  <a href="<%= place_path(r) %>" target="_blank"><i class="icon-search"></i></a>
                   <a href="<%= edit_admin_place_path(r) %>"><i class="icon-edit"></i></a>
                   <a href="javascript:;"><i class="icon-remove" cid="<%= r.id %>"></i></a>
                 </td>
