@@ -75,9 +75,9 @@ class Place < ActiveRecord::Base
 
   #推荐目的地
   def self.get_recommended(limit=6, options={})
-    def_opt={:select => 'id,name,img_path', :where => ["is_recommended=?", true], :order => 'id DESC'}
+    def_opt={:select => 'id,name,img_path,beengo_num,province_id,city_id', :where => ["is_recommended=?", true], :order => 'id DESC'}
     opt=def_opt.merge! options
-    Place.select(opt[:select]).where(opt[:where]).limit(limit).order(opt[:order])
+    Place.select(opt[:select]).where(opt[:where]).includes(:province,:city).limit(limit).order(opt[:order])
   end
 
   private

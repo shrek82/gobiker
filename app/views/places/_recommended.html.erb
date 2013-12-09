@@ -12,7 +12,7 @@
               </div>
               <p class="gui_jnlist_item_tit"><%= link_to p.name, p, {:target => '_blank'} %></p>
 
-              <p class="gui_jnlist_item_text">中国<br><span class="sum">27</span>人去过</p>
+              <p class="gui_jnlist_item_text"><%= p.province.name %><%= p.city.name %><br><span class="sum"><%= p.beengo_num.to_i.to_s %></span>人去过</p>
             </li>
         <% end %>
   </ul>

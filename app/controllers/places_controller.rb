@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
 
   def index
 
-    @recommended=Rails.cache.fetch('place_home_recommended', :expires_in => 30.minutes) do
+    @recommended=Rails.cache.fetch('place_home_recommendeds', :expires_in => 30.minutes) do
       Place.get_recommended(6)
     end
 

@@ -33,13 +33,13 @@
 </div>
 <!--滚动评论 -->
 <div class="scroll_box">
-  <div class="con_title"><h2 class="name">目的地点评</h2>（<a href="http://place.qyer.com" title="更多目的地">更多</a>）</div>
+  <div class="con_title"><h2 class="name">目的地点评</h2>（<a href="<%= places_path %>" title="更多目的地">更多</a>）</div>
   <div class="scroll_box_roll" id="citycommentindex">
     <ul class="scroll_box_list" style="padding: 0">
       <% @reviews_places.each do |c| %>
           <li>
-            <a href="#"><img src="http://qycenter.qyer.com/avatar.php?uid=1645514&amp;size=48&amp;_116499" width="48" height="48" alt="big_being" title="big_being"></a>
-            <a href="#"><%= c.user.username %></a> 在 <a href="http://place.qyer.com/city_id_50" title="香港" class="fb"><%= c.place.name %></a> 说：
+            <a href="#"><img src="/images/14_avatar_middle.jpg" width="48" height="48" alt="big_being" title="big_being"></a>
+            <a href="#"><%= c.user.username %></a> 在 <a href="<%= place_path(c.place_id) %>" title="香港" class="fb"><%= c.place.name %></a> 说：
             <div><%= truncate(c.content.html_safe,:length=>100) %></div>
           </li>
       <% end %>
