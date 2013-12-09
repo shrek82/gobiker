@@ -40,7 +40,7 @@
           <li>
             <a href="#"><img src="http://qycenter.qyer.com/avatar.php?uid=1645514&amp;size=48&amp;_116499" width="48" height="48" alt="big_being" title="big_being"></a>
             <a href="#"><%= c.user.username %></a> 在 <a href="http://place.qyer.com/city_id_50" title="香港" class="fb"><%= c.place.name %></a> 说：
-            <div><%= truncate(c.content.html_safe,:lenght=>40) %></div>
+            <div><%= truncate(c.content.html_safe,:length=>100) %></div>
           </li>
       <% end %>
     </ul>
