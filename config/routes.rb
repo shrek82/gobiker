@@ -2,18 +2,8 @@
 
 Gobiker::Application.routes.draw do
 
-  get "study/index"
-
-  get "seajs/index"
-
   get "install/setting"
-
   get "install/user"
-
-  get "install/forum"
-
-  get "install/manager"
-
   get "guides/"=>'guides#index'
 
   #show、new、edit、update、destroy是单数，对单一元素操作

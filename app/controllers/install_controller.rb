@@ -5,6 +5,7 @@ class InstallController < ApplicationController
 
   include UsersHelper
 
+  #初始化项目基本信息，如已经设置，则不会生效
   def setting
     Setting[:site_name] = '骑趣网' # 站点名称，如: Rabel
     Setting[:welcome_tip] = '欢迎访问<strong>Rabel</strong>' # 网站欢迎语, 支持html标签
@@ -37,6 +38,7 @@ class InstallController < ApplicationController
     Setting[:latest_topics_heading] = '最新讨论'
     Setting[:topic_list_style] = 'complex'
 
+    #推荐信息
     rec=Recommend.all
     if rec.blank?
       Recommend.create(:name => 'temp', :img_path => '/images/f6b7381ea54496ea1c667308c0d09048.jpg', :category => 'home', :redirect => '/places', :is_close => false)
@@ -46,6 +48,7 @@ class InstallController < ApplicationController
       Recommend.create(:name => 'temp', :img_path => '/images/fb4dcc4f8d5cc03502dfe2b29d23dbf9.jpg', :category => 'home', :redirect => '/places', :is_close => false)
     end
 
+    #话题类型
     subject=SubjectCategory.all
     if subject.blank?
       SubjectCategory.create(:name => '话题', :order_num => 1)
@@ -55,6 +58,18 @@ class InstallController < ApplicationController
       SubjectCategory.create(:name => '比赛', :order_num => 5)
     end
 
+    #攻略类型
+    guide_categorys=GuideCategory.all
+    if guide_categorys.blank?
+      categorys=[['分类一',1],['分类二',2],['分类三',3]]
+      categorys.each do |name,order_num|
+        GuideCategory.create(name:name,order_num:order_num) do |c|
+          c.created_at=Date.current.to_default_s
+        end
+      end
+    end
+
+    #模拟用户
     user=User.all
     if user.blank?
       %w[seeyoup hmily dongbeige zhaojg wanghao meis huahua tiantian xiang dong pei sheng fage lily yaoyao alan donghua xishi qiuyue guifei xiaoqiao].each do |key|
@@ -64,6 +79,7 @@ class InstallController < ApplicationController
       end
     end
 
+    #话题板块
     forums=Forum.all
     if forums.blank?
       (1..15).each do |i|
@@ -98,6 +114,7 @@ class InstallController < ApplicationController
 
     end
 
+    #管理员
     manager=Manager.all
     if manager.blank?
       Manager.create(email: 'seeyoup@qq.com', name: 'admin', password: '1234567', role: 'admin')
