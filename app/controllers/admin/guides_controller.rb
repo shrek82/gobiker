@@ -27,6 +27,8 @@ class Admin::GuidesController < AdminController
   def create
 
     @guide = Guide.new(params[:guide])
+    @guide.is_fixed=params[:is_fixed]
+    @guide.is_recommended=params[:is_recommended]
     if @guide.save
       respond :redirect_to => admin_guides_path, :success => '目的地添加成功'
     else
