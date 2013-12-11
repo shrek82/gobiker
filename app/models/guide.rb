@@ -10,4 +10,6 @@ class Guide < ActiveRecord::Base
     self.is_fixed ||= 0
     self.is_recommended ||= 0
   end
+
+
 end
