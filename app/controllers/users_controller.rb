@@ -84,7 +84,7 @@ class UsersController < ApplicationController
 
     #验证帐号是否被注册
     if @email && @act=='checkemail'
-      user=User.exists?(@email)
+      user=User.exists?(:email=>@email)
       if user
         respond :error => '该帐号已经被注册了!', :_format => 'json'
       else

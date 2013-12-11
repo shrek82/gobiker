@@ -19,7 +19,7 @@ class Admin::ArticlesController < AdminController
   #编辑记录
   def edit
     @article = Article.find(params[:id])
-    @pics=(@article.img_ids.blank?) ? [] : Attached.where(:id => @article.img_ids.split(','))
+    @pics=(@article.img_ids.blank?) ? [] : Photo.where(:id => @article.img_ids.split(','))
   end
 
   #提交新建

@@ -1,4 +1,4 @@
-/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-11-23 13:37:28*/
+/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-11 22:48:32*/
 define("reglogin/latest/reglogin", [ "lib/latest/lib", "./login", "./register" ], function(require, exports, module) {
     var lib = require("lib/latest/lib");
     exports.login = require("./login");
@@ -32,38 +32,24 @@ define("reglogin/latest/register", [], function(require, exports, module) {
         //显示错误
         showError: function(id, text) {
             var obj = $("#" + id);
-            obj.parents(".input_div").removeClass("i_focus");
-            obj.parents(".input_div").removeClass("index11");
-            obj.parents(".input_div").removeClass("i_finish");
-            obj.parents(".input_div").removeClass("i_focus");
-            obj.parents(".input_div").removeClass("i_loading");
-            obj.parents(".input_div").addClass("i_error");
-            obj.nextAll(".i_tips").html("<div class='i_jt'>箭头</div>" + text).show();
+            obj.parents(".input_div").removeClass("i_focus index11 i_finish i_focus i_loading i_error");
+            obj.parent().find(".i_tips").html("<div class='i_jt'>箭头</div>" + text).show();
             setTimeout(function() {
-                obj.nextAll(".i_tips").fadeOut(100);
-            }, 2e3);
+                obj.parent().find(".i_tips").fadeOut(100);
+            }, 3e3);
             return false;
         },
         //显示loading
         showloading: function(id) {
             var obj = $("#" + id);
-            obj.parents(".input_div").removeClass("i_focus");
-            obj.parents(".input_div").removeClass("index11");
-            obj.parents(".input_div").removeClass("i_finish");
-            obj.parents(".input_div").removeClass("i_focus");
-            obj.parents(".input_div").removeClass("i_error");
-            obj.parents(".input_div").addClass("i_loading ");
+            obj.parents(".input_div").removeClass("i_focus index11 i_finish i_focus i_error i_loading");
             obj.nextAll(".i_tips").html("").hide();
         },
         //显示成功信息
         showSuccess: function(id) {
             var obj = $("#" + id);
-            obj.parents(".input_div").addClass("i_focus");
-            obj.parents(".input_div").addClass("index11");
-            obj.parents(".input_div").removeClass("i_error");
-            obj.parents(".input_div").removeClass("i_loading");
-            obj.parents(".input_div").removeClass("i_focus");
-            obj.parents(".input_div").addClass("i_finish");
+            obj.parents(".input_div").addClass("i_focus index11 i_finish");
+            obj.parents(".input_div").removeClass("i_error i_loading");
             obj.nextAll(".i_tips").html("").hide();
             return true;
         },
@@ -86,7 +72,7 @@ define("reglogin/latest/register", [], function(require, exports, module) {
             obj.nextAll(".i_tips").hide();
         },
         resetVerify: function() {
-            var url = file + "?act=captcha&_";
+            var url = "/users/ajax?act=captcha&_";
             $("#refucaptcha").attr("src", function() {
                 var t = Math.round(new Date().getTime());
                 return url + t;
@@ -111,7 +97,7 @@ define("reglogin/latest/register", [], function(require, exports, module) {
                     return false;
                 }
                 $.ajax({
-                    url: file + "?act=checkemail",
+                    url: "/users/ajax?act=checkemail",
                     type: "POST",
                     typeDate: "json",
                     data: "email=" + email,
@@ -155,7 +141,7 @@ define("reglogin/latest/register", [], function(require, exports, module) {
                     async: false
                 });
                 $.ajax({
-                    url: file + "?act=checkusername",
+                    url: "/users/ajax?act=checkusername",
                     type: "POST",
                     data: "username=" + encodeURI(username),
                     dataType: "json",
@@ -204,7 +190,7 @@ define("reglogin/latest/register", [], function(require, exports, module) {
                     return reg.showError("reg_verify", "请填写验证码");
                 }
                 reg.showloading("reg_verify");
-                $.postJSON(file + "?act=checkverify", "is_ajax=1&verify=" + verify, function(res) {
+                $.postJSON("/users/ajax?act=checkverify", "is_ajax=1&verify=" + verify, function(res) {
                     if ("0" != res.error) {
                         return reg.showError("reg_verify", res.error);
                     } else {
@@ -219,11 +205,55 @@ define("reglogin/latest/register", [], function(require, exports, module) {
             $("#reg_email").blur(function() {
                 var email = $(this).val();
                 if (!reg.check.email(email)) {
-                    $("#reg_submit").attr("disabled", false).removeClass("ui_btn_big_load ui_btn_big_disabled").addClass("ui_btn_big").val("重试");
+                    $("#reg_submit").attr("disabled", false).removeClass("ui_btn_big_load ui_btn_big_disabled").addClass("").val("重试");
                     return false;
                 } else {
                     return true;
                 }
+            });
+        },
+        //提交激活邮件账号进入发送
+        bindActiveButton: function() {
+            $("#reg_checkbox_agree").live("click", function() {
+                if ($(this).attr("checked")) {
+                    $("#reg_submit").attr("disabled", false).removeClass("ui_btn_big_disabled").addClass("ui_btn_big");
+                } else {
+                    $("#reg_submit").attr("disabled", "disabled").removeClass("ui_btn_big").addClass("ui_btn_big_disabled");
+                }
+            });
+            $("#reg_submit").live("click", function() {
+                var email = $("#reg_email").val();
+                if (!email_is_valid) {
+                    return false;
+                }
+                $(this).removeClass("ui_btn_big").addClass("ui_btn_big_load").val("");
+                $.ajax({
+                    url: "/users/ajax?act=sendmail",
+                    type: "POST",
+                    dataType: "html",
+                    data: "_format=html&email=" + email,
+                    success: function(res) {
+                        $("#content_reg_email").html(res);
+                        reg.reRendActiveMail();
+                    },
+                    error: function() {}
+                });
+                return false;
+            });
+        },
+        //绑定重发激活邮件
+        reRendActiveMail: function() {
+            $("#resentcode a").live("click", function() {
+                $(this).html("正在重发激活邮件...");
+                $.ajax({
+                    url: "/users/ajax?act=resentcode",
+                    type: "POST",
+                    dataType: "json",
+                    data: "email=" + $(this).attr("to"),
+                    success: function(res) {
+                        $(this).html("激活有点发送成功!");
+                    }
+                });
             });
         }
     };

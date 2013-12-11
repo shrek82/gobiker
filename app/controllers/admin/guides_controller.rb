@@ -19,7 +19,7 @@ class Admin::GuidesController < AdminController
   #编辑记录
   def edit
     @guide = Guide.find(params[:id])
-    @pics=(@guide.img_ids.blank?) ? [] : Attached.where(:id => @guide.img_ids.split(','))
+    @pics=(@guide.img_ids.blank?) ? [] : Photo.where(:id => @guide.img_ids.split(','))
   end
 
   #提交新建

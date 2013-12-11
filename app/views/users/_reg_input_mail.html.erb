@@ -22,7 +22,6 @@
         <span class="i_tips" ></span >
       </div >
     </div >
-
     <div class="clearfix mt10 cGray reg_checkbox" >
       <label ><input type="checkbox" checked="checked" id="reg_checkbox_agree" />我同意接受穷游网
         <a target="_blank" href="/pages/member.html" >会员条款</a > 和
@@ -34,7 +33,7 @@
     <script type="text/javascript">
         seajs.use(['reglogin/latest/reglogin'], function (reglogin) {
             reglogin.register.bind_check_email();
-            reglogin.register.bindActiveButton();
+            //reglogin.register.bindActiveButton();
         });
     </script>
 <% end %>

@@ -1,6 +1,5 @@
-/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-11 22:48:32*/
-define("reglogin/1.0.0/login-debug", [ "lib/latest/lib-debug" ], function(require, exports, module) {
-    var lib = require("lib/latest/lib-debug");
+/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-11 22:09:49*/
+define("reglogin/latest/user", [ "./register" ], function(require, exports, module) {
     //用户登录注册等方法
     var user = {};
     module.exports = user;
@@ -19,5 +18,7 @@ define("reglogin/1.0.0/login-debug", [ "lib/latest/lib-debug" ], function(requir
             }).send();
         });
     };
+    //注册相关事件
+    user.reg = require("./register");
 });
 

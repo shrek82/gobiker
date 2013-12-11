@@ -359,7 +359,7 @@ var loginReg = function () {
   }
 
   //提交激活邮件账号进入发送
-  this.bindActiveButton = function () {
+  this.file = function () {
 
     $("#reg_checkbox_agree").live("click", function () {
       if ($(this).attr("checked")) {
