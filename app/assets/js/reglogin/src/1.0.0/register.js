@@ -223,6 +223,7 @@ define(function (require, exports, module) {
           beforeSend:function(){
             console.log($(this).length);;
             "修改过的";
+            "2012";
           },
           success: function (res) {
             $("#content_reg_email").html(res);
