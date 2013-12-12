@@ -97,6 +97,8 @@ class UsersController < ApplicationController
                  :url => "http://"+request.host_with_port+"/register?act="+@email+"&code="+generate_activecode(@email)
       }
       UserMailer.activation_mail(mail_data).deliver
+      @mail_domain=@email.split("@")[1]
+      @mail_domain=@mail_domain=='gmail.com'?'www.gmail.com':"mail."+@mail_domain
       respond :action => 'reg_active_mail', :layout => false
       #检查用户名是否被注册
     elsif @act=='checkusername' && @username

@@ -1,4 +1,4 @@
-/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-12 13:53:44*/
+/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-12 23:12:26*/
 define("reglogin/latest/login", [ "lib/latest/lib" ], function(require, exports, module) {
     var lib = require("lib/latest/lib");
     //用户登录注册等方法

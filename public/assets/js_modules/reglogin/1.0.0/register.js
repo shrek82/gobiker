@@ -1,4 +1,4 @@
-/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-12 13:53:44*/
+/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-12 23:12:25*/
 define("reglogin/1.0.0/register", [], function(require, exports, module) {
     var reg = {
         email_is_valid: false,
@@ -75,9 +75,6 @@ define("reglogin/1.0.0/register", [], function(require, exports, module) {
                     type: "POST",
                     typeDate: "json",
                     data: "email=" + email,
-                    beforeSend: function() {
-                        reg.showloading("reg_email");
-                    },
                     success: function(res) {
                         if (res.error) {
                             reg.showError("reg_email", res.error);
@@ -199,23 +196,24 @@ define("reglogin/1.0.0/register", [], function(require, exports, module) {
                     $("#reg_submit").attr("disabled", true);
                 }
             });
+            //绑定注册提交按钮
             $("#reg_submit").live("click", function() {
                 var email = $("#reg_email").val();
                 if (!reg.email_is_valid) {
                     return false;
                 }
-                $(this).attr("disabled", true).val("正在发送激活邮件...");
                 $.ajax({
                     url: "/users/ajax?act=sendmail",
                     type: "POST",
                     dataType: "html",
                     data: "_format=html&email=" + email,
                     beforeSend: function() {
-                        console.log($(this).length);
+                        $(this).attr("disabled", true).val("正在发送激活邮件...");
                     },
                     success: function(res) {
                         $("#content_reg_email").html(res);
                         reg.reRendActiveMail();
+                        console.log("reRendActiveMail");
                     },
                     error: function() {}
                 });
@@ -237,6 +235,7 @@ define("reglogin/1.0.0/register", [], function(require, exports, module) {
                         $(this).html("激活有点发送成功!");
                     }
                 });
+                console.log("send mail");
             });
         }
     };
