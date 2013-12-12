@@ -1,28 +1,29 @@
-/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-11 22:48:32*/
+/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-12 10:09:29*/
 define("reglogin/latest/register", [], function(require, exports, module) {
     var reg = {
+        email_is_valid: false,
         //显示错误
         showError: function(id, text) {
             var obj = $("#" + id);
-            obj.parents(".input_div").removeClass("i_focus index11 i_finish i_focus i_loading i_error");
-            obj.parent().find(".i_tips").html("<div class='i_jt'>箭头</div>" + text).show();
-            setTimeout(function() {
-                obj.parent().find(".i_tips").fadeOut(100);
-            }, 3e3);
+            obj.parents(".input_div").removeClass("i_focus index11 i_finish i_loading").addClass("i_error");
+            obj.parent().find(".i_tips").html("<div class='i_jt'>箭头</div>" + text).fadeIn(400, function() {
+                setTimeout(function() {
+                    $(this).fadeOut(200);
+                }, 5e3);
+            });
             return false;
         },
         //显示loading
         showloading: function(id) {
             var obj = $("#" + id);
-            obj.parents(".input_div").removeClass("i_focus index11 i_finish i_focus i_error i_loading");
-            obj.nextAll(".i_tips").html("").hide();
+            obj.parents(".input_div").removeClass("i_focus index11 i_finish i_focus i_error").addClass("i_loading");
+            obj.parent().find(".i_tips").html("").hide();
         },
         //显示成功信息
         showSuccess: function(id) {
             var obj = $("#" + id);
-            obj.parents(".input_div").addClass("i_focus index11 i_finish");
-            obj.parents(".input_div").removeClass("i_error i_loading");
-            obj.nextAll(".i_tips").html("").hide();
+            obj.parents(".input_div").removeClass("i_error i_loading").addClass("i_focus index11 i_finish");
+            obj.parent().find(".i_tips").html("").hide();
             return true;
         },
         //显示提示
@@ -58,7 +59,6 @@ define("reglogin/latest/register", [], function(require, exports, module) {
                     reg.showError("reg_email", "请输入email");
                     return false;
                 }
-                reg.showloading("reg_email");
                 if (email.indexOf("_") == 0) {
                     reg.showError("reg_email", "请不要以下划线开头");
                     return false;
@@ -68,11 +68,16 @@ define("reglogin/latest/register", [], function(require, exports, module) {
                     reg.showError("reg_email", "email格式不正确");
                     return false;
                 }
+                //验证帐号是否被注册
+                reg.showloading("reg_email");
                 $.ajax({
                     url: "/users/ajax?act=checkemail",
                     type: "POST",
                     typeDate: "json",
                     data: "email=" + email,
+                    beforeSend: function() {
+                        reg.showloading("reg_email");
+                    },
                     success: function(res) {
                         if (res.error) {
                             reg.showError("reg_email", res.error);
@@ -85,7 +90,7 @@ define("reglogin/latest/register", [], function(require, exports, module) {
                     }
                 });
                 reg.showSuccess("reg_email");
-                email_is_valid = true;
+                reg.email_is_valid = true;
                 return true;
             },
             //验证用户名输入
@@ -177,7 +182,7 @@ define("reglogin/latest/register", [], function(require, exports, module) {
             $("#reg_email").blur(function() {
                 var email = $(this).val();
                 if (!reg.check.email(email)) {
-                    $("#reg_submit").attr("disabled", false).removeClass("ui_btn_big_load ui_btn_big_disabled").addClass("").val("重试");
+                    $("#reg_submit").attr("disabled", false).val("重试");
                     return false;
                 } else {
                     return true;
@@ -186,24 +191,27 @@ define("reglogin/latest/register", [], function(require, exports, module) {
         },
         //提交激活邮件账号进入发送
         bindActiveButton: function() {
+            //注册协议
             $("#reg_checkbox_agree").live("click", function() {
                 if ($(this).attr("checked")) {
-                    $("#reg_submit").attr("disabled", false).removeClass("ui_btn_big_disabled").addClass("ui_btn_big");
+                    $("#reg_submit").attr("disabled", false);
                 } else {
-                    $("#reg_submit").attr("disabled", "disabled").removeClass("ui_btn_big").addClass("ui_btn_big_disabled");
+                    $("#reg_submit").attr("disabled", true);
                 }
             });
             $("#reg_submit").live("click", function() {
                 var email = $("#reg_email").val();
-                if (!email_is_valid) {
+                if (!reg.email_is_valid) {
                     return false;
                 }
-                $(this).removeClass("ui_btn_big").addClass("ui_btn_big_load").val("");
                 $.ajax({
                     url: "/users/ajax?act=sendmail",
                     type: "POST",
                     dataType: "html",
                     data: "_format=html&email=" + email,
+                    beforeSend: function() {
+                        $(this).attr("disabled", true).val("请稍候...");
+                    },
                     success: function(res) {
                         $("#content_reg_email").html(res);
                         reg.reRendActiveMail();
@@ -216,12 +224,14 @@ define("reglogin/latest/register", [], function(require, exports, module) {
         //绑定重发激活邮件
         reRendActiveMail: function() {
             $("#resentcode a").live("click", function() {
-                $(this).html("正在重发激活邮件...");
                 $.ajax({
                     url: "/users/ajax?act=resentcode",
                     type: "POST",
                     dataType: "json",
                     data: "email=" + $(this).attr("to"),
+                    beforeSend: function() {
+                        $(this).html("正在重发激活邮件...");
+                    },
                     success: function(res) {
                         $(this).html("激活有点发送成功!");
                     }

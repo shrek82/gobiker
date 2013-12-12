@@ -71,13 +71,3 @@ Gobiker::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
 
-
-ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-    :address => "smtp.163.com",
-    :port => 25,
-    :domain => "163.com",
-    :authentication => :login,
-    :user_name => "hmilyo2008@163.com",
-    :password => "orange320"
-}
