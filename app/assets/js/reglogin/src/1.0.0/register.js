@@ -221,7 +221,8 @@ define(function (require, exports, module) {
           dataType: 'html',
           data: '_format=html&email=' + email,
           beforeSend:function(){
-            console.log($(this).length);
+            console.log($(this).length);;
+            "修改过的";
           },
           success: function (res) {
             $("#content_reg_email").html(res);
