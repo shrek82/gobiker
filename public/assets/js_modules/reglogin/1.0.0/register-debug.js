@@ -1,4 +1,4 @@
-/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-12 10:09:29*/
+/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-12 13:53:44*/
 define("reglogin/1.0.0/register-debug", [], function(require, exports, module) {
     var reg = {
         email_is_valid: false,
@@ -204,13 +204,14 @@ define("reglogin/1.0.0/register-debug", [], function(require, exports, module) {
                 if (!reg.email_is_valid) {
                     return false;
                 }
+                $(this).attr("disabled", true).val("正在发送激活邮件...");
                 $.ajax({
                     url: "/users/ajax?act=sendmail",
                     type: "POST",
                     dataType: "html",
                     data: "_format=html&email=" + email,
                     beforeSend: function() {
-                        $(this).attr("disabled", true).val("请稍候...");
+                        console.log($(this).length);
                     },
                     success: function(res) {
                         $("#content_reg_email").html(res);

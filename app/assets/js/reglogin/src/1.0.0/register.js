@@ -214,13 +214,14 @@ define(function (require, exports, module) {
         if (!reg.email_is_valid) {
           return false;
         }
+        $(this).attr("disabled", true).val("正在发送激活邮件...");
         $.ajax({
           url: "/users/ajax?act=sendmail",
           type: 'POST',
           dataType: 'html',
           data: '_format=html&email=' + email,
-          beforeSend: function () {
-            $(this).attr("disabled", true).val("请稍候...");
+          beforeSend:function(){
+            console.log($(this).length);
           },
           success: function (res) {
             $("#content_reg_email").html(res);
