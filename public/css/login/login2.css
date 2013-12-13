@@ -170,6 +170,7 @@
     top:-6px;
     line-height:200px;
     overflow:hidden;
+    z-index: 99;
 }
 
 .input_div{
@@ -190,6 +191,7 @@
     height:30px;
     background-repeat:no-repeat;
     background-position:center center;
+    z-index: 100;
 }
 
 .i_loading, .i_error, .i_focus, .i_finish{
