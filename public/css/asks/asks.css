@@ -36,7 +36,7 @@
     padding: 0 0 0 10px;
     display: inline-block;
     color: #02734a;
-    background: url(/static/images/asks/tag_ask.png) no-repeat 0 0;
+    background: url(/images/asks/tag_ask.png) no-repeat 0 0;
     margin: 5px 0;
     white-space: nowrap
 }
@@ -45,7 +45,7 @@
 .ask_tag_strong {
     display: inline-block;
     padding: 0 10px 0 0;
-    background: url(/static/images/asks/tag_ask.png) no-repeat right -36px;
+    background: url(/images/asks/tag_ask.png) no-repeat right -36px;
     white-space: nowrap;
     font-family: \5b8b\4f53, sans-serif
 }
@@ -58,7 +58,7 @@ span {
 .ask_tag_list
 a {
     float: left;
-    background: url(/static/images/asks/ask_tag_close.png) no-repeat 2px 2px;
+    background: url(/images/asks/ask_tag_close.png) no-repeat 2px 2px;
     width: 10px;
     height: 10px;
     line-height: 300%;
@@ -69,7 +69,7 @@ a {
 }
 
 .ask_tag_list a:hover {
-    background: url(/static/images/asks/ask_tag_closehover.png) no-repeat
+    background: url(/images/asks/ask_tag_closehover.png) no-repeat
 }
 
 .ask_tag_select {
@@ -92,7 +92,7 @@ a {
     height: 26px;
     line-height: 26px;
     float: left;
-    background: url(/static/images/asks/search_bg.png) no-repeat 5px 5px;
+    background: url(/images/asks/search_bg.png) no-repeat 5px 5px;
     padding-left: 30px
 }
 
@@ -140,7 +140,7 @@ li {
     right: 8px;
     top: 8px;
     display: block;
-    background: url(/static/images/asks/ask_tootip_close.png) no-repeat;
+    background: url(/images/asks/ask_tootip_close.png) no-repeat;
     cursor: pointer
 }
 
@@ -153,7 +153,7 @@ strong {
     left: 18px;
     bottom: -5px;
     display: block;
-    background: url(/static/images/asks/ask_tootip_fx.png) no-repeat
+    background: url(/images/asks/ask_tootip_fx.png) no-repeat
 }
 
 .ask_top_detail {
@@ -185,7 +185,7 @@ p {
 
 .ask_search {
     height: 100px;
-    background: url(/static/images/asks/ask_addask_bg.png) no-repeat right bottom;
+    background: url(/images/asks/ask_addask_bg.png) no-repeat right bottom;
     margin-top: 20px
 }
 
@@ -217,7 +217,7 @@ p {
     border: 0;
     height: 28px;
     width: 44px;
-    background: url(/static/images/asks/ask_search_btn.png) no-repeat;
+    background: url(/images/asks/ask_search_btn.png) no-repeat;
     padding: 0;
     border-left: 1px solid #ccc;
     float: left;
@@ -376,7 +376,7 @@ li {
     top: -12px;
     width: 222px;
     height: 36px;
-    background: url(/static/images/asks/ask_detail_hover_tag.png) no-repeat;
+    background: url(/images/asks/ask_detail_hover_tag.png) no-repeat;
     border-right: 1px solid #ffcf92;
     padding: 6px 7px 7px 13px
 }
@@ -393,7 +393,7 @@ span {
     width: 11px;
     height: 11px;
     text-indent: -9999px;
-    background: url(/static/images/asks/ask_tootip_close.png) no-repeat;
+    background: url(/images/asks/ask_tootip_close.png) no-repeat;
     cursor: pointer;
     margin-top: 3px
 }
@@ -431,7 +431,7 @@ span {
     width: 11px;
     height: 11px;
     text-indent: -9999px;
-    background: url(/static/images/asks/ask_tootip_close.png) no-repeat;
+    background: url(/images/asks/ask_tootip_close.png) no-repeat;
     cursor: pointer;
     margin-top: 3px
 }
@@ -441,7 +441,7 @@ span {
     width: 5px;
     height: 9px;
     position: absolute;
-    background: url(/static/images/asks/ask_quiz_tag_jt.png) no-repeat;
+    background: url(/images/asks/ask_quiz_tag_jt.png) no-repeat;
     left: -12px;
     top: 10px
 }
@@ -470,7 +470,7 @@ div {
     height: 40px;
     padding: 7px 7px 0;
     margin-top: 5px;
-    background: url(/static/images/asks/ask_detail_click_tag.png) no-repeat
+    background: url(/images/asks/ask_detail_click_tag.png) no-repeat
 }
 
 .ask_detail_yes .ask_detail_click
@@ -484,7 +484,7 @@ p {
 span {
     float: right;
     cursor: pointer;
-    background: url(/static/images/asks/ask_tootip_close.png) no-repeat;
+    background: url(/images/asks/ask_tootip_close.png) no-repeat;
     width: 11px;
     height: 11px;
     margin: 4px 0 0 0;
@@ -705,7 +705,7 @@ object {
 
 .ask_append_title
 a {
-    background: url(/static/images/asks/temp/ask_append_title_icon.png) no-repeat 0 center;
+    background: url(/images/asks/temp/ask_append_title_icon.png) no-repeat 0 center;
     padding-left: 18px
 }
 
@@ -1058,7 +1058,7 @@ span {
 }
 
 .ask_tagmain_list_bbs_select_title1 {
-    background: url(/static/images/asks/ask_tagmain_list_bbs_select_title.png) no-repeat -2px -4px;
+    background: url(/images/asks/ask_tagmain_list_bbs_select_title.png) no-repeat -2px -4px;
     float: right;
     margin: 7px 7px;
     height: 8px;
@@ -1066,7 +1066,7 @@ span {
 }
 
 .ask_tagmain_list_bbs_select_title2 {
-    background: url(/static/images/asks/ask_tagmain_list_bbs_select_title.png) no-repeat 0 0;
+    background: url(/images/asks/ask_tagmain_list_bbs_select_title.png) no-repeat 0 0;
     float: right;
     margin: 9px 5px;
     height: 4px;
@@ -1097,7 +1097,7 @@ strong {
 
 .ask_tagmain_list_bbs_select_list ul li
 .ask_tagmain_list_bbs_select_list_s {
-    background: #e6f4d9 url(/static/images/asks/ask_tagmain_list_bbs_select_list.png) 200px center no-repeat
+    background: #e6f4d9 url(/images/asks/ask_tagmain_list_bbs_select_list.png) 200px center no-repeat
 }
 
 .ask_tagmain_list_bbs_select_list ul li

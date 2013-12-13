@@ -22,8 +22,8 @@
     <div class="ask_search_text">
       <input id="type" name="type" type="hidden" value="index">
       <form action="/search" method="get" id="formsearch">
-        <input id="keyword" name="q" type="text" style="width:600px;" value="" placeholder="提问前请先搜索，看看你的问题其他穷游er是否已经问过" class="ui_input" autocomplete="off">
-        <input type="button" value=" " onclick="if($.trim($('#keyword').val())!='' &amp;&amp; $.trim($('#keyword').val())!='提问前请先搜索，看看你的问题其他穷游er是否已经问过'){$('#formsearch').submit();}" class="ask_button" data-bn-ipg="4-4">
+        <input id="keyword" name="q" type="text" style="width:600px;" value="" placeholder="提问前请先搜索，看看你的问题其他穷游er是否已经问过" class="ui_input" autocomplete="off" style="border-width: 0;height: 30px">
+        <input type="button" value=" " onclick="if($.trim($('#keyword').val())!='' &amp;&amp; $.trim($('#keyword').val())!='提问前请先搜索，看看你的问题其他穷游er是否已经问过'){$('#formsearch').submit();}" class="ask_button" >
       </form>
       <div id="search_menu"></div>
     </div>		</div>
