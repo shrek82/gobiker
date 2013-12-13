@@ -24,6 +24,8 @@
     @reviews_places=Comment.reviewsPlaces(10)
     @focus=Recommend.focus.cat('home').limit(5)
     @hot_place=Place.hot.limit(3)
+    #热门板块
+    @hot_forums=Forum.hot_forums(5)
 
     render :template => 'main/index_v1'
   end

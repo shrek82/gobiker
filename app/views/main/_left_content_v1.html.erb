@@ -154,50 +154,16 @@
     </ul>
   </div>
   <div class="ind_hotbbs float_right">
-    <div class="con_title"><h2 class="name">论坛热门版块</h2>（<a href="http://bbs.qyer.com" title="更多论坛板块">更多</a>）</div>
+    <div class="con_title"><h2 class="name">论坛热门版块</h2>（<a href="<%= forums_path %>" title="更多论坛板块">更多</a>）</div>
     <ul class="ind_hotbbs_list">
+      <% @hot_forums.each do |f| %>
       <li>
-        <a href="http://bbs.qyer.com/forum-106-1.html"><img src="/images/forum/jyt.jpg" width="48" height="48" alt="泰国" title="泰国"></a>
-
-        <h3 class="ind_hotbbs_list_title"><a href="http://bbs.qyer.com/forum-106-1.html" title="泰国">泰国</a></h3>
-
-        <div class="ind_hotbbs_list_info">冬荫功汤、四面佛和国王</div>
-        <div class="gray">16187个主题</div>
+        <a href="<%= list_forums_path f.id %>"><img src="<%= f.ico_path %>" width="48" height="48" ></a>
+        <h3 class="ind_hotbbs_list_title"><a href="<%= list_forums_path f.id %>" ><%= f.name %></a></h3>
+        <div class="ind_hotbbs_list_info"><%= truncate(f.intro,:length=>10) %></div>
+        <div class="gray"><%= f.topics_num %>个主题</div>
       </li>
-      <li>
-        <a href="http://bbs.qyer.com/forum-107-1.html"><img src="/images/forum/jyt.jpg" width="48" height="48" alt="越南/柬埔寨/老挝/缅甸" title="越南/柬埔寨/老挝/缅甸"></a>
-
-        <h3 class="ind_hotbbs_list_title">
-          <a href="http://bbs.qyer.com/forum-107-1.html" title="越南/柬埔寨/老挝/缅甸">越南/柬埔寨/老挝/缅甸</a></h3>
-
-        <div class="ind_hotbbs_list_info">它们都在中南半岛</div>
-        <div class="cGray">7432个主题</div>
-      </li>
-      <li>
-        <a href="http://bbs.qyer.com/forum-108-1.html"><img src="/images/forum/jyt.jpg" width="48" height="48" alt="新加坡/马来西亚/文莱" title="新加坡/马来西亚/文莱"></a>
-
-        <h3 class="ind_hotbbs_list_title">
-          <a href="http://bbs.qyer.com/forum-108-1.html" title="新加坡/马来西亚/文莱">新加坡/马来西亚/文莱</a></h3>
-
-        <div class="ind_hotbbs_list_info">狮身鱼尾、肉骨茶和双子塔</div>
-        <div class="cGray">15661个主题</div>
-      </li>
-      <li>
-        <a href="http://bbs.qyer.com/forum-14-1.html"><img src="/images/forum/jyt.jpg" width="48" height="48" alt="法国/摩纳哥" title="法国/摩纳哥"></a>
-
-        <h3 class="ind_hotbbs_list_title"><a href="http://bbs.qyer.com/forum-14-1.html" title="法国/摩纳哥">法国/摩纳哥</a></h3>
-
-        <div class="ind_hotbbs_list_info">浪漫就在身边</div>
-        <div class="cGray">29086个主题</div>
-      </li>
-      <li>
-        <a href="http://bbs.qyer.com/forum-53-1.html"><img src="/images/forum/jyt.jpg" width="48" height="48" alt="美国" title="美国"></a>
-
-        <h3 class="ind_hotbbs_list_title"><a href="http://bbs.qyer.com/forum-53-1.html" title="美国">美国</a></h3>
-
-        <div class="ind_hotbbs_list_info">多元、都市和自然</div>
-        <div class="cGray">23401个主题</div>
-      </li>
+      <% end %>
     </ul>
   </div>
   <div class="clear"></div>
