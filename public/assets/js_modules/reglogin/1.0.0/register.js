@@ -1,4 +1,4 @@
-/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-13 16:07:42*/
+/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-13 17:08:41*/
 define("reglogin/1.0.0/register", [], function(require, exports, module) {
     var reg = {
         email_is_valid: false,
@@ -177,35 +177,45 @@ define("reglogin/1.0.0/register", [], function(require, exports, module) {
                 }
             });
             //绑定注册提交按钮
-            $("#reg_submit").live("click", function(e) {
+            $("#reg_form").live("submit", function(e) {
                 e.preventDefault();
+                $("#reg_submit").attr("disabled", true).val("重试");
+                return false;
                 var email = $("#reg_email").val();
                 var $reg_submit = $(this);
                 if (!reg.check.email(email)) {
                     return false;
                 }
+                var verified = false;
                 //验证帐号是否被注册
                 $.ajax({
                     url: "/users/ajax?act=checkemail",
                     type: "POST",
                     typeDate: "json",
+                    async: false,
                     data: "email=" + email,
                     beforeSend: function() {
-                        reg.showloading("reg_email");
                         $("#reg_submit").attr("disabled", true).val("正在验证帐号..");
+                        reg.showloading("reg_email");
                     },
                     success: function(res) {
                         if (res.error) {
-                            reg.showError("reg_email", res.error);
                             $("#reg_submit").attr("disabled", false).val("重试");
+                            reg.showError("reg_email", res.error);
                             return false;
+                        } else {
+                            verified = true;
                         }
                     }
                 });
+                if (!verified) {
+                    return false;
+                }
                 //发送激活邮件
                 $.ajax({
                     url: "/users/ajax?act=sendmail",
                     type: "POST",
+                    async: false,
                     dataType: "html",
                     data: "_format=html&email=" + email,
                     beforeSend: function() {
