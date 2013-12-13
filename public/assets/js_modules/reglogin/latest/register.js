@@ -1,4 +1,4 @@
-/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-12 23:12:26*/
+/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-13 10:18:37*/
 define("reglogin/latest/register", [], function(require, exports, module) {
     var reg = {
         email_is_valid: false,

@@ -1,4 +1,4 @@
-/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-12 23:12:25*/
+/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-13 10:18:37*/
 define("reglogin/1.0.0/reglogin", [ "lib/latest/lib", "./login", "./register" ], function(require, exports, module) {
     var lib = require("lib/latest/lib");
     exports.login = require("./login");
