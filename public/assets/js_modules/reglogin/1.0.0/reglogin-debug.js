@@ -1,4 +1,4 @@
-/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-13 17:08:41*/
+/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-13 20:33:19*/
 define("reglogin/1.0.0/reglogin-debug", [ "lib/latest/lib-debug", "./login-debug", "./register-debug" ], function(require, exports, module) {
     var lib = require("lib/latest/lib-debug");
     exports.login = require("./login-debug");
@@ -96,8 +96,27 @@ define("reglogin/1.0.0/register-debug", [], function(require, exports, module) {
                     reg.showError("reg_email", "email格式不正确");
                     return false;
                 }
-                reg.showSuccess("reg_email");
-                return true;
+                //验证帐号是否被注册
+                var verified = false;
+                $.ajax({
+                    url: "/users/ajax?act=checkemail",
+                    type: "POST",
+                    typeDate: "json",
+                    async: false,
+                    data: "email=" + email,
+                    beforeSend: function() {
+                        reg.showloading("reg_email");
+                    },
+                    success: function(res) {
+                        if (res.error) {
+                            reg.showError("reg_email", res.error);
+                        } else {
+                            verified = true;
+                            reg.showSuccess("reg_email");
+                        }
+                    }
+                });
+                return verified;
             },
             //验证用户名输入
             username: function(username) {
@@ -183,78 +202,39 @@ define("reglogin/1.0.0/register-debug", [], function(require, exports, module) {
                 return reg.showSuccess("reg_verify");
             }
         },
-        //为注册第一步绑定验证
-        bind_check_email: function() {
-            $("#reg_email").blur(function() {
-                var email = $(this).val();
-                if (!reg.check.email(email)) {
-                    return false;
-                } else {
-                    return true;
-                }
-            });
-        },
         //提交激活邮件账号进入发送
         bindActiveButton: function(e) {
+            var $submit_button = $("#reg_submit");
             //绑定注册协议
             $("#reg_checkbox_agree").live("click", function() {
                 if ($(this).attr("checked")) {
-                    $("#reg_submit").attr("disabled", false);
+                    $submit_button.attr("disabled", false);
                 } else {
-                    $("#reg_submit").attr("disabled", true);
+                    $submit_button.attr("disabled", true);
                 }
             });
             //绑定注册提交按钮
             $("#reg_form").live("submit", function(e) {
                 e.preventDefault();
-                $("#reg_submit").attr("disabled", true).val("重试");
-                return false;
+                $submit_button.attr("disabled", true).val("提交中...");
                 var email = $("#reg_email").val();
-                var $reg_submit = $(this);
                 if (!reg.check.email(email)) {
-                    return false;
-                }
-                var verified = false;
-                //验证帐号是否被注册
-                $.ajax({
-                    url: "/users/ajax?act=checkemail",
-                    type: "POST",
-                    typeDate: "json",
-                    async: false,
-                    data: "email=" + email,
-                    beforeSend: function() {
-                        $("#reg_submit").attr("disabled", true).val("正在验证帐号..");
-                        reg.showloading("reg_email");
-                    },
-                    success: function(res) {
-                        if (res.error) {
-                            $("#reg_submit").attr("disabled", false).val("重试");
-                            reg.showError("reg_email", res.error);
-                            return false;
-                        } else {
-                            verified = true;
-                        }
-                    }
-                });
-                if (!verified) {
+                    $submit_button.attr("disabled", false).val("重试");
                     return false;
                 }
                 //发送激活邮件
                 $.ajax({
                     url: "/users/ajax?act=sendmail",
                     type: "POST",
-                    async: false,
                     dataType: "html",
                     data: "_format=html&email=" + email,
-                    beforeSend: function() {
-                        $reg_submit.attr("disabled", true).val("正在发送激活邮件...");
-                    },
                     success: function(res) {
-                        $("#content_reg_email").html(res);
-                        reg.reRendActiveMail();
+                        setTimeout(function() {
+                            $("#content_reg_email").html(res);
+                            reg.reRendActiveMail();
+                        }, 500);
                     }
                 });
-                return false;
             });
         },
         //绑定重发激活邮件

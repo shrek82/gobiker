@@ -68,8 +68,28 @@ define(function (require, exports, module) {
           reg.showError('reg_email', "email格式不正确");
           return false;
         }
-        reg.showSuccess('reg_email');
-        return true;
+        //验证帐号是否被注册
+        var verified = false;
+        $.ajax({
+          url: "/users/ajax?act=checkemail",
+          type: 'POST',
+          typeDate: 'json',
+          async: false,
+          data: 'email=' + email,
+          beforeSend: function () {
+            reg.showloading('reg_email');
+          },
+          success: function (res) {
+            if (res.error) {
+              reg.showError('reg_email', res.error);
+            }
+            else {
+              verified = true;
+              reg.showSuccess('reg_email');
+            }
+          }
+        });
+        return verified;
       },
       //验证用户名输入
       username: function (username) {
@@ -106,7 +126,7 @@ define(function (require, exports, module) {
               name_is_valid = false;
               return reg.showError('reg_username', res.error);
             }
-            else{
+            else {
               name_is_valid = true;
             }
           }
@@ -119,7 +139,7 @@ define(function (require, exports, module) {
         if (name_is_valid) {
           return reg.showSuccess('reg_username')
         }
-        else{
+        else {
           return false;
         }
       },
@@ -154,95 +174,49 @@ define(function (require, exports, module) {
           if ('0' != res.error) {
             return reg.showError('reg_verify', res.error);
           }
-          else{
+          else {
             return reg.showSuccess('reg_verify');
           }
         });
         return reg.showSuccess('reg_verify');
       }
     },
-    //为注册第一步绑定验证
-    bind_check_email: function () {
-      $("#reg_email").blur(function () {
-        var email = $(this).val();
-        if (!reg.check.email(email)) {
-          return false;
-        }
-        else{
-          return true;
-        }
-      });
-    },
     //提交激活邮件账号进入发送
     bindActiveButton: function (e) {
+      var $submit_button = $('#reg_submit');
 
       //绑定注册协议
       $("#reg_checkbox_agree").live("click", function () {
         if ($(this).attr("checked")) {
-          $("#reg_submit").attr("disabled", false);
+          $submit_button.attr("disabled", false);
         }
-        else{
-          $("#reg_submit").attr("disabled", true);
+        else {
+          $submit_button.attr("disabled", true);
         }
       });
 
       //绑定注册提交按钮
       $("#reg_form").live('submit', function (e) {
         e.preventDefault();
-
-        $("#reg_submit").attr("disabled",true).val('重试');
-        return false;
-
+        $submit_button.attr("disabled", true).val("提交中...");
         var email = $("#reg_email").val();
-        var $reg_submit = $(this);
         if (!reg.check.email(email)) {
+          $submit_button.attr("disabled", false).val("重试");
           return false;
         }
-
-        var verified=false;
-        //验证帐号是否被注册
-        $.ajax({
-          url: "/users/ajax?act=checkemail",
-          type: 'POST',
-          typeDate: 'json',
-          async:false,
-          data: 'email=' + email,
-          beforeSend: function () {
-            $("#reg_submit").attr("disabled", true).val('正在验证帐号..');
-            reg.showloading("reg_email");
-          },
-          success: function (res) {
-            if (res.error) {
-              $("#reg_submit").attr("disabled",false).val('重试');
-              reg.showError('reg_email', res.error);
-              return false;
-            }
-            else{
-              verified=true;
-            }
-          }
-        });
-
-        if(!verified){
-          return false;
-        }
-
         //发送激活邮件
         $.ajax({
           url: "/users/ajax?act=sendmail",
           type: 'POST',
-          async:false,
           dataType: 'html',
           data: '_format=html&email=' + email,
-          beforeSend: function () {
-            $reg_submit.attr("disabled", true).val("正在发送激活邮件...");
-          },
           success: function (res) {
-            $("#content_reg_email").html(res);
-            reg.reRendActiveMail();
+            setTimeout(function () {
+              $("#content_reg_email").html(res);
+              reg.reRendActiveMail();
+            }, 500);
           }
         });
-        return false;
       });
     },
     //绑定重发激活邮件
@@ -264,89 +238,89 @@ define(function (require, exports, module) {
       });
     },
     //验证用户名和密码
-    check_name_pws:function () {
-    $("#reg_username").blur(function () {
-      var username = $(this).val();
-      return reg.check.username(username);
-    });
-    $("#reg_password").blur(function () {
-      var password = $(this).val();
-      return reg.check.password(password);
-    });
-    $("#reg_repassword").blur(function () {
-      var repassword = $(this).val();
-      return reg.check.repassword(repassword);
-    });
-    $("#reg_username").focus(function () {
-      reg.hidetips("reg_password", "reg_repassword");
-    });
-    $("#reg_password").focus(function () {
-      reg.hidetips("reg_username", "reg_repassword");
-    });
-    $("#reg_repassword").focus(function () {
-      reg.hidetips("reg_password", "reg_username");
-    });
-    $("#reg_username").hover(function () {
-      reg.showtips("reg_username");
-    });
-    $("#reg_password").hover(function () {
-      reg.showtips("reg_password");
-    });
-    $("#reg_repassword").hover(function () {
-      reg.showtips("reg_repassword");
-    });
-    $(".i_zt").hover(function () {
-      if ($(this).next("span").html() != "") {
-        $(this).next("span").show();
-      }
-    });
-    $(".i_zt").mouseleave(function () {
-      $(this).next("span").hide();
-    });
-    $("#reg_email").hover(function () {
-      reg.showtips("reg_email");
-    });
-    $("#reg_email").mouseleave(function () {
-      reg.timeouttips("reg_email");
-    });
-    $("#reg_username").mouseleave(function () {
-      reg.timeouttips("reg_username");
-    });
-    $("#reg_password").mouseleave(function () {
-      reg.timeouttips("reg_password");
-    });
-    $("#reg_repassword").mouseleave(function () {
-      reg.timeouttips("reg_repassword");
-    });
-  },
+    check_name_pws: function () {
+      $("#reg_username").blur(function () {
+        var username = $(this).val();
+        return reg.check.username(username);
+      });
+      $("#reg_password").blur(function () {
+        var password = $(this).val();
+        return reg.check.password(password);
+      });
+      $("#reg_repassword").blur(function () {
+        var repassword = $(this).val();
+        return reg.check.repassword(repassword);
+      });
+      $("#reg_username").focus(function () {
+        reg.hidetips("reg_password", "reg_repassword");
+      });
+      $("#reg_password").focus(function () {
+        reg.hidetips("reg_username", "reg_repassword");
+      });
+      $("#reg_repassword").focus(function () {
+        reg.hidetips("reg_password", "reg_username");
+      });
+      $("#reg_username").hover(function () {
+        reg.showtips("reg_username");
+      });
+      $("#reg_password").hover(function () {
+        reg.showtips("reg_password");
+      });
+      $("#reg_repassword").hover(function () {
+        reg.showtips("reg_repassword");
+      });
+      $(".i_zt").hover(function () {
+        if ($(this).next("span").html() != "") {
+          $(this).next("span").show();
+        }
+      });
+      $(".i_zt").mouseleave(function () {
+        $(this).next("span").hide();
+      });
+      $("#reg_email").hover(function () {
+        reg.showtips("reg_email");
+      });
+      $("#reg_email").mouseleave(function () {
+        reg.timeouttips("reg_email");
+      });
+      $("#reg_username").mouseleave(function () {
+        reg.timeouttips("reg_username");
+      });
+      $("#reg_password").mouseleave(function () {
+        reg.timeouttips("reg_password");
+      });
+      $("#reg_repassword").mouseleave(function () {
+        reg.timeouttips("reg_repassword");
+      });
+    },
 
     //绑定注册按钮
-    bindCreateForm:function () {
-    $('#regist_form').bind("submit", function (e) {
-      e.preventDefault();
-      var password = $("#reg_password").val();
-      var username = $("#reg_username").val();
-      if (!reg.check.username(username)) {
-        return false;
-      }
-      if (5 > password.length) {
-        return reg.showError('reg_password', "密码长度5-16位，区分大小写");
-      }
-      if (!reg.check.repassword()) {
-        return false;
-      }
+    bindCreateForm: function () {
+      $('#regist_form').bind("submit", function (e) {
+        e.preventDefault();
+        var password = $("#reg_password").val();
+        var username = $("#reg_username").val();
+        if (!reg.check.username(username)) {
+          return false;
+        }
+        if (5 > password.length) {
+          return reg.showError('reg_password', "密码长度5-16位，区分大小写");
+        }
+        if (!reg.check.repassword()) {
+          return false;
+        }
 
-      new lib.ajaxForm('regist_form', {
-        dataType: 'json'
-      }).send();
+        new lib.ajaxForm('regist_form', {
+          dataType: 'json'
+        }).send();
 
-    });
-  }
-
-
+      });
+    }
 
 
-};
+
+
+  };
 
   module.exports = reg;
 
