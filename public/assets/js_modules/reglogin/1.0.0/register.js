@@ -1,4 +1,4 @@
-/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-13 11:18:48*/
+/*! reglogin(1.0.0) - JianGang Zhao <zhaojiangang@gmail.com> - 2013-12-13 16:07:42*/
 define("reglogin/1.0.0/register", [], function(require, exports, module) {
     var reg = {
         email_is_valid: false,
@@ -167,7 +167,7 @@ define("reglogin/1.0.0/register", [], function(require, exports, module) {
             });
         },
         //提交激活邮件账号进入发送
-        bindActiveButton: function() {
+        bindActiveButton: function(e) {
             //绑定注册协议
             $("#reg_checkbox_agree").live("click", function() {
                 if ($(this).attr("checked")) {
@@ -177,7 +177,8 @@ define("reglogin/1.0.0/register", [], function(require, exports, module) {
                 }
             });
             //绑定注册提交按钮
-            $("#reg_submit").live("click", function() {
+            $("#reg_submit").live("click", function(e) {
+                e.preventDefault();
                 var email = $("#reg_email").val();
                 var $reg_submit = $(this);
                 if (!reg.check.email(email)) {
@@ -234,6 +235,82 @@ define("reglogin/1.0.0/register", [], function(require, exports, module) {
                         $resenda.html("激活有点发送成功!");
                     }
                 });
+            });
+        },
+        //验证用户名和密码
+        check_name_pws: function() {
+            $("#reg_username").blur(function() {
+                var username = $(this).val();
+                return reg.check.username(username);
+            });
+            $("#reg_password").blur(function() {
+                var password = $(this).val();
+                return reg.check.password(password);
+            });
+            $("#reg_repassword").blur(function() {
+                var repassword = $(this).val();
+                return reg.check.repassword(repassword);
+            });
+            $("#reg_username").focus(function() {
+                reg.hidetips("reg_password", "reg_repassword");
+            });
+            $("#reg_password").focus(function() {
+                reg.hidetips("reg_username", "reg_repassword");
+            });
+            $("#reg_repassword").focus(function() {
+                reg.hidetips("reg_password", "reg_username");
+            });
+            $("#reg_username").hover(function() {
+                reg.showtips("reg_username");
+            });
+            $("#reg_password").hover(function() {
+                reg.showtips("reg_password");
+            });
+            $("#reg_repassword").hover(function() {
+                reg.showtips("reg_repassword");
+            });
+            $(".i_zt").hover(function() {
+                if ($(this).next("span").html() != "") {
+                    $(this).next("span").show();
+                }
+            });
+            $(".i_zt").mouseleave(function() {
+                $(this).next("span").hide();
+            });
+            $("#reg_email").hover(function() {
+                reg.showtips("reg_email");
+            });
+            $("#reg_email").mouseleave(function() {
+                reg.timeouttips("reg_email");
+            });
+            $("#reg_username").mouseleave(function() {
+                reg.timeouttips("reg_username");
+            });
+            $("#reg_password").mouseleave(function() {
+                reg.timeouttips("reg_password");
+            });
+            $("#reg_repassword").mouseleave(function() {
+                reg.timeouttips("reg_repassword");
+            });
+        },
+        //绑定注册按钮
+        bindCreateForm: function() {
+            $("#regist_form").bind("submit", function(e) {
+                e.preventDefault();
+                var password = $("#reg_password").val();
+                var username = $("#reg_username").val();
+                if (!reg.check.username(username)) {
+                    return false;
+                }
+                if (5 > password.length) {
+                    return reg.showError("reg_password", "密码长度5-16位，区分大小写");
+                }
+                if (!reg.check.repassword()) {
+                    return false;
+                }
+                new lib.ajaxForm("regist_form", {
+                    dataType: "json"
+                }).send();
             });
         }
     };
