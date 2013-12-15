@@ -24,10 +24,13 @@ class UsersController < ApplicationController
       else
         flash[:success]='恭喜您，您的邮箱已经验证通过'
       end
-      #正式注册
+    #正式注册
     elsif request.method=='POST' && params[:user]
       @user =User.new(params[:user])
       if @user.save
+        cookies[:uid]=@user[:uid]
+        cookies[:email]=@user[:email]
+        cookies[:username]=@user[:username]
         respond :redirect_to => main_path, :success => '恭喜您注册成功!'
       else
         respond :action => 'register', :error => @user.errors.full_messages
