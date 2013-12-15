@@ -10,7 +10,7 @@
             <div class="img">
               <a href="<%= place_path(p) %>"><%= image_tag(p.img_path, {:width => '100px', :height => '75px', :alt => p.name}) %></a>
             </div>
-            <h3><a href="<%= place_path(p) %>"><%= truncate(p.name,:lenght=>6) %></a></h3>
+            <h3><a href="<%= place_path(p) %>"><%= truncate(p.name, :lenght => 6) %></a></h3>
             <span class="date"><%= p.created_at.to_formatted_s(:ymd) %></span>
           </li>
       <% end %>
@@ -40,7 +40,7 @@
           <li>
             <a href="#"><img src="/images/14_avatar_middle.jpg" width="48" height="48" alt="big_being" title="big_being"></a>
             <a href="#"><%= c.user.username %></a> 在 <a href="<%= place_path(c.place_id) %>" title="香港" class="fb"><%= c.place.name %></a> 说：
-            <div><%= truncate(c.content.html_safe,:length=>100) %></div>
+            <div><%= truncate(c.content.html_safe, :length => 100) %></div>
           </li>
       <% end %>
     </ul>
@@ -95,74 +95,35 @@
       （<a href="<%= guides_url %>" title="更多游记攻略" rel="nofollow">更多</a>）
     </div>
     <ul class="ind_travels_list">
-      <li>
-        <a href="#"><img src="/avatar/def.jpg" width="48" height="48" alt="sunqin70" title="sunqin70"></a>
+      <% if @guides.blank? %>
+      <% else %>
+<% @guides.each do |g| %>
+          <li>
+            <a href="#"><img src="/avatar/def.jpg" width="48" height="48" alt="sunqin70" title="sunqin70"></a>
 
-        <h3 class="ind_travels_list_title">
-          <a href="http://bbs.qyer.com/thread-749978-1.html" title="2012年国庆土耳其游图文记（完整篇）">2012年国庆土耳其游图文记（完整篇）</a></h3>
+            <h3 class="ind_travels_list_title">
+              <a href="<%= show_topics_path g.id %>" ><%= g.title %></a></h3>
 
-        <div class="ind_travels_list_info">
-          <span class="float_right">查看 1118</span><a href="http://user.qyer.com/user_uid_675931">sunqin70</a> 来自
-          <a href="http://bbs.qyer.com/forum-26-1.html" title="希腊/土耳其/塞浦路斯/马耳他">希腊/土耳其/塞浦路斯/马耳他</a></div>
-      </li>
-
-      <li>
-        <a href="#"><img src="/avatar/def.jpg" width="48" height="48" alt="翎羽" title="翎羽"></a>
-
-        <h3 class="ind_travels_list_title">
-          <a href="http://bbs.qyer.com/thread-748919-1.html" title="寻找《伦敦的爱情》（英伦10日游记）">寻找《伦敦的爱情》（英伦10日游记）</a></h3>
-
-        <div class="ind_travels_list_info">
-          <span class="float_right">查看 1876</span><a href="http://user.qyer.com/user_uid_641495">翎羽</a> 来自
-          <a href="http://bbs.qyer.com/forum-16-1.html" title="英国/爱尔兰">英国/爱尔兰</a></div>
-      </li>
-
-      <li>
-        <a href="#"><img src="/avatar/def.jpg" width="48" height="48" alt="蓝色简宁" title="蓝色简宁"></a>
-
-        <h3 class="ind_travels_list_title">
-          <a href="http://bbs.qyer.com/thread-748707-1.html" title="秋之独游--纽约不是任何人的梦(三) 完">秋之独游--纽约不是任何人的梦(三) 完</a></h3>
-
-        <div class="ind_travels_list_info">
-          <span class="float_right">查看 4238</span><a href="http://user.qyer.com/user_uid_269071">蓝色简宁</a> 来自
-          <a href="http://bbs.qyer.com/forum-53-1.html" title="美国">美国</a></div>
-      </li>
-
-      <li>
-        <a href="#"><img src="/avatar/def.jpg" width="48" height="48" alt="糖糖chica" title="糖糖chica"></a>
-
-        <h3 class="ind_travels_list_title">
-          <a href="http://bbs.qyer.com/thread-743565-1.html" title="【糖糖chica】童话百分百-法国阿尔萨斯 (美食美景美酒介绍)">【糖糖chica】童话百分百-法国阿尔萨斯
-            (美食美景美酒介绍)</a></h3>
-
-        <div class="ind_travels_list_info">
-          <span class="float_right">查看 8617</span><a href="http://user.qyer.com/user_uid_36752">糖糖chica</a> 来自
-          <a href="http://bbs.qyer.com/forum-14-1.html" title="法国/摩纳哥">法国/摩纳哥</a></div>
-      </li>
-
-      <li>
-        <a href="#"><img src="/avatar/def.jpg" width="48" height="48" alt="熊顺" title="熊顺"></a>
-
-        <h3 class="ind_travels_list_title">
-          <a href="http://bbs.qyer.com/thread-741986-1.html" title="两个白痴闯泰国！清迈/普吉/曼谷/大城/美功/安帕瓦完全游记">两个白痴闯泰国！清迈/普吉/曼谷/大城/美功/安帕瓦完全游记</a>
-        </h3>
-
-        <div class="ind_travels_list_info">
-          <span class="float_right">查看 67848</span><a href="http://user.qyer.com/user_uid_1419406">熊顺</a> 来自
-          <a href="http://bbs.qyer.com/forum-106-1.html" title="泰国">泰国</a></div>
-      </li>
+            <div class="ind_travels_list_info">
+              <span class="float_right">查看 <%= g.hits_num %></span><a href="u_path g.user_id"></a> 来自
+              <a href="<%= list_forums_path g.forum_id %>" ><%= g.forum.name %></a></div>
+          </li>
+              <% end %>
+      <% end %>
     </ul>
   </div>
   <div class="ind_hotbbs float_right">
     <div class="con_title"><h2 class="name">论坛热门版块</h2>（<a href="<%= forums_path %>" title="更多论坛板块">更多</a>）</div>
     <ul class="ind_hotbbs_list">
       <% @hot_forums.each do |f| %>
-      <li>
-        <a href="<%= list_forums_path f.id %>"><img src="<%= f.ico_path %>" width="48" height="48" ></a>
-        <h3 class="ind_hotbbs_list_title"><a href="<%= list_forums_path f.id %>" ><%= f.name %></a></h3>
-        <div class="ind_hotbbs_list_info"><%= truncate(f.intro,:length=>10) %></div>
-        <div class="gray"><%= f.topics_num %>个主题</div>
-      </li>
+          <li>
+            <a href="<%= list_forums_path f.id %>"><img src="<%= f.ico_path %>" width="48" height="48"></a>
+
+            <h3 class="ind_hotbbs_list_title"><a href="<%= list_forums_path f.id %>"><%= f.name %></a></h3>
+
+            <div class="ind_hotbbs_list_info"><%= truncate(f.intro, :length => 10) %></div>
+            <div class="gray"><%= f.topics_num %>个主题</div>
+          </li>
       <% end %>
     </ul>
   </div>

@@ -127,7 +127,7 @@ class Topic < ActiveRecord::Base
 
   #首页攻略
   def self.guides(limit=5)
-    Topic.base_field.where(:subject_id=>4).includes(:user).order("topics.id DESC").limit(5)
+    Topic.base_field.where(:subject_id=>4).includes(:user,:forum).order("topics.id DESC").limit(5)
   end
 
 end
