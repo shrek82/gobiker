@@ -136,8 +136,9 @@ class Topic < ActiveRecord::Base
   end
 
   #热门话题
-  def self.hot(limit=5)
-    Topic.base_field.where(:subject_id=>1).where("date_sub(curdate(), INTERVAL 30 DAY) <= date(topics.created_at)").includes(:user).order("topics.comments_num DESC").limit(limit)
+  def self.hot(limit=5,month_ago=1)
+    begin_date=(month_ago).month.ago.to_s(:db)
+    Topic.base_field.where(:subject_id=>1).where("topics.created_at>=?",begin_date).includes(:user).order("topics.comments_num DESC").limit(limit)
   end
 
 end

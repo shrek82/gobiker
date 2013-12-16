@@ -44,6 +44,8 @@ d=Date.current
 d.to_default_s
 #=>"2013-07-18"
 
+DateTime.now.strftime("%Y-%m-%d")
+
 date.to_formatted_s(:db)            # => "2007-11-10"
 date.to_s(:db)                      # => "2007-11-10"
 date.to_formatted_s(:short)         # => "10 Nov"
@@ -130,9 +132,22 @@ prev_year()
 sunday()
 
 #明天
-tomorrow()
+Date.tomorrow()
+
+#一年前
+1.year.ago
+#一月前
+1.month.ago
+3.months.ago
+#一天前
+1.day.ago
+#几天前或几天后
+Date.today+30
+Date.today-30
 
 
+1.month.ago.beginning_of_month..1.month.ago.end_of_month
+#=>Fri, 01 Nov 2013 00:00:00 CST +08:00..Sat, 30 Nov 2013 23:59:59 CST +08:00
 
-
-
+Date.today.beginning_of_month..Date.today.end_of_month
+#Sun, 01 Dec 2013..Tue, 31 Dec 2013
