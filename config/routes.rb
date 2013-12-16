@@ -4,6 +4,7 @@ Gobiker::Application.routes.draw do
 
   get "install/setting"
   get "install/user"
+  get "install/setcity"
   get "guides/"=>'guides#index'
 
   #show、new、edit、update、destroy是单数，对单一元素操作

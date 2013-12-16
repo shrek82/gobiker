@@ -127,12 +127,17 @@ class Topic < ActiveRecord::Base
 
   #首页攻略
   def self.guides(limit=5)
-    Topic.base_field.where(:subject_id=>4).includes(:user,:forum).order("topics.id DESC").limit(5)
+    Topic.base_field.where(:subject_id=>4).includes(:user,:forum).order("topics.id DESC").limit(limit)
   end
 
   #首页活动
-  def self.activities
-    Topic.base_field.where(:subject_id=>3).includes(:user,:forum).order("topics.id DESC").limit(5)
+  def self.activities(limit=5)
+    Topic.base_field.where(:subject_id=>3).includes(:user,:forum).order("topics.id DESC").limit(limit)
+  end
+
+  #热门话题
+  def self.hot(limit=5)
+    Topic.base_field.where(:subject_id=>1).where("date_sub(curdate(), INTERVAL 30 DAY) <= date(topics.created_at)").includes(:user).order("topics.comments_num DESC").limit(limit)
   end
 
 end

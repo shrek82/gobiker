@@ -122,5 +122,24 @@ class InstallController < ApplicationController
 
   end
 
+  def setcity
+
+    #华北
+    Province.where("name like '%辽宁%' OR name like '%吉林%' OR name like '%黑龙江%'").update_all(:group => 1)
+    #华东
+    Province.where("name like '%山东%' OR name like '%江苏%' OR name like '%安徽%' OR name like '%浙江%' OR name like '%台湾%' OR name like '%福建%' OR name like '%江西%' OR name like '%上海%'").update_all(:group => 2)
+    #华中
+    Province.where("name like '%河南%' OR name like '%湖北%' OR name like '%湖南%'").update_all(:group => 3)
+    #华南
+    Province.where("name like '%广东%' OR name like '%广西%' OR name like '%海南%' OR name like '%香港%' OR name like '%澳门%'").update_all(:group => 4)
+    #东北
+    Province.where("name like '%河北%' OR name like '%山西%' OR name like '%内蒙古%' OR name like '%北京%' OR name like '%天津%'").update_all(:group => 5)
+    #西南
+    Province.where("name like '%云南%' OR name like '%贵州%' OR name like '%四川%' OR name like '%西藏%'").update_all(:group => 6)
+    #西北
+    Province.where("name like '%新疆%' OR name like '%陕西%' OR name like '%宁夏%' OR name like '%青海%' OR name like '%甘肃%'").update_all(:group => 7)
+    render :nothing => true
+  end
+
 
 end

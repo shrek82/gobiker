@@ -94,9 +94,11 @@
     <div class="con_title"><h2 class="name">骑行攻略</h2>
       （<a href="<%= guides_url %>" title="更多游记攻略" rel="nofollow">更多</a>）
     </div>
-    <ul class="ind_travels_list">
+
       <% if @guides.blank? %>
-      <% else %>
+      <div>暂无内容</div>
+
+      <% else %> <ul class="ind_travels_list">
 <% @guides.each do |g| %>
           <li>
             <a href="#"><img src="/avatar/def.jpg" width="48" height="48" alt="sunqin70" title="sunqin70"></a>
@@ -108,9 +110,9 @@
               <span class="float_right">查看 <%= g.hits_num %></span><a href="u_path g.user_id"></a> 来自
               <a href="<%= list_forums_path g.forum_id %>" ><%= g.forum.name %></a></div>
           </li>
-              <% end %>
+              <% end %></ul>
       <% end %>
-    </ul>
+
   </div>
   <div class="ind_hotbbs float_right">
     <div class="con_title"><h2 class="name">论坛热门版块</h2>（<a href="<%= forums_path %>" title="更多论坛板块">更多</a>）</div>
@@ -134,86 +136,26 @@
 <!--tag -->
 <div class="ind_askbox">
   <div class="ind_ask float_left">
-    <div class="con_title"><h2 class="name">穷游问答</h2>（<a href="http://ask.qyer.com/" title="更多穷游问答">更多</a>）</div>
+    <div class="con_title"><h2 class="name">热门话题</h2>（<a href="<%= forums_url %>" >更多</a>）</div>
     <ul class="ind_ask_list">
+      <% @hots_topics.each do |f| %>
       <li>
         <h3 class="ind_ask_list_title">
-          <a href="http://ask.qyer.com/question/372888.html" title="关于驾照翻译的问题">关于驾照翻译的问题</a></h3>
-
+          <a href="<%= show_topics_path f.id %>" title="<%= f.title %>"><%= f.title %></a></h3>
         <div class="ind_ask_list_info">
-          <span class="float_right">回答 7</span><a href="http://user.qyer.com/user_uid_797248">gloriahu</a> |
-          <span>2012-12-19</span></div>
+          <span class="float_right">评论 <%= f.comments_num %></span><a href="<%= u_path f.user_id %>"><%= f.user.username %></a> |
+          <span><%= f.created_at.to_formatted_s(:ymd) %></span></div>
       </li>
-      <li>
-        <h3 class="ind_ask_list_title">
-          <a href="http://ask.qyer.com/question/372865.html" title="由于急于买亚航打折机票，请问护照上的姓名全是拼音大写吗？">由于急于买亚航打折机票，请问护照上的姓名全是拼音大写吗？</a>
-        </h3>
-
-        <div class="ind_ask_list_info">
-          <span class="float_right">回答 5</span><a href="http://user.qyer.com/user_uid_1522980">龙松空也</a> |
-          <span>2012-12-19</span></div>
-      </li>
-      <li>
-        <h3 class="ind_ask_list_title"><a href="http://ask.qyer.com/question/372847.html" title="关于德铁的电子票">关于德铁的电子票</a>
-        </h3>
-
-        <div class="ind_ask_list_info">
-          <span class="float_right">回答 6</span><a href="http://user.qyer.com/user_uid_1617747">Clytze128</a> |
-          <span>2012-12-19</span></div>
-      </li>
-      <li>
-        <h3 class="ind_ask_list_title"><a href="http://ask.qyer.com/question/372781.html" title="关于泰国签证。">关于泰国签证。</a>
-        </h3>
-
-        <div class="ind_ask_list_info">
-          <span class="float_right">回答 5</span><a href="http://user.qyer.com/user_uid_1676944">SUPER蹦</a> |
-          <span>2012-12-19</span></div>
-      </li>
-      <li>
-        <h3 class="ind_ask_list_title">
-          <a href="http://ask.qyer.com/question/372496.html" title="AGODA和BOOKING真的是最便宜的了么？">AGODA和BOOKING真的是最便宜的了么？</a>
-        </h3>
-
-        <div class="ind_ask_list_info">
-          <span class="float_right">回答 6</span><a href="http://user.qyer.com/user_uid_1648478">1963056528</a> |
-          <span>2012-12-18</span></div>
-      </li>
-
+     <% end %>
     </ul>
   </div>
   <div class="ind_hottag float_right">
-    <div class="con_title"><h2 class="name">问答热门标签</h2>（<a href="http://ask.qyer.com/tags/" title="更多问答标签">更多</a>）</div>
+    <div class="con_title"><h2 class="name">热门城市</h2>（<a href="<%= places_path %>" >更多</a>）</div>
     <div class="ind_hottag_list">
-      <a class="green_tag" href="http://ask.qyer.com/tag/签证"><strong class="green_tag_strong">签证</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/机票"><strong class="green_tag_strong">机票</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/机场"><strong class="green_tag_strong">机场</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/行程"><strong class="green_tag_strong">行程</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/亚航"><strong class="green_tag_strong">亚航</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/酒店"><strong class="green_tag_strong">酒店</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/住宿"><strong class="green_tag_strong">住宿</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/交通"><strong class="green_tag_strong">交通</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/吉隆坡"><strong class="green_tag_strong">吉隆坡</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/意大利"><strong class="green_tag_strong">意大利</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/巴黎"><strong class="green_tag_strong">巴黎</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/泰国"><strong class="green_tag_strong">泰国</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/曼谷"><strong class="green_tag_strong">曼谷</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/火车"><strong class="green_tag_strong">火车</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/瑞士"><strong class="green_tag_strong">瑞士</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/德国"><strong class="green_tag_strong">德国</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/香港"><strong class="green_tag_strong">香港</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/美国"><strong class="green_tag_strong">美国</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/转机"><strong class="green_tag_strong">转机</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/法国"><strong class="green_tag_strong">法国</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/路线"><strong class="green_tag_strong">路线</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/火车票"><strong class="green_tag_strong">火车票</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/自驾"><strong class="green_tag_strong">自驾</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/马来西亚"><strong class="green_tag_strong">马来西亚</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/北京"><strong class="green_tag_strong">北京</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/租车"><strong class="green_tag_strong">租车</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/新加坡"><strong class="green_tag_strong">新加坡</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/英国"><strong class="green_tag_strong">英国</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/罗马"><strong class="green_tag_strong">罗马</strong></a>
-      <a class="green_tag" href="http://ask.qyer.com/tag/国际学生证"><strong class="green_tag_strong">国际学生证</strong></a>
+      <a class="green_tag" href="/places/city/hangzhou/"><strong class="green_tag_strong">杭州</strong></a>
+      <a class="green_tag" href="/places/city/suzhou/"><strong class="green_tag_strong">苏州</strong></a>
+      <a class="green_tag" href="/places/city/beijing/"><strong class="green_tag_strong">北京</strong></a>
+
     </div>
   </div>
   <div class="clear"></div>

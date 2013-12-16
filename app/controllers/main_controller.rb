@@ -28,6 +28,8 @@
     @guides=Topic.guides(5)
     #热门板块
     @hot_forums=Forum.hot_forums(5)
+    #热门话题
+    @hots_topics=Topic.hot(5)
 
     render :template => 'main/index_v1'
   end
