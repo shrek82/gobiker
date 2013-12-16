@@ -130,4 +130,9 @@ class Topic < ActiveRecord::Base
     Topic.base_field.where(:subject_id=>4).includes(:user,:forum).order("topics.id DESC").limit(5)
   end
 
+  #首页活动
+  def self.activities
+    Topic.base_field.where(:subject_id=>3).includes(:user,:forum).order("topics.id DESC").limit(5)
+  end
+
 end
