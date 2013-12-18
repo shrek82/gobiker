@@ -9,6 +9,11 @@ class PlacesController < ApplicationController
 
     @places = Place.paginate(:page => params[:page], :per_page => 12, :order => "places.id DESC",:include=>[:province,:city,:comments])
 
+    @provinces=Array.new
+    Province.group.each_with_index do |p,key|
+      @provinces[key]=Province.where(:group => key).includes(:cities)
+    end
+
     respond_to do |format|
       format.html
       format.json { render json: @places }
