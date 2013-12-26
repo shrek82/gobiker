@@ -26,6 +26,7 @@ class PlacesController < ApplicationController
     @city=not_found do
       City.find_by_pinyin(@name)
     end
+    @hot_place=Place.base_field.hot.limit(6)
   end
 
   #显示目的地

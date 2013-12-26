@@ -24,7 +24,7 @@ class Place < ActiveRecord::Base
 
   #validates_format_of :name, :with => /^[\w\.]+$/,
   #一般查询预览字段
-  scope :base_field, select("places.id,places.name,place.img_path,place.rating")
+  scope :base_field, select("places.id,places.name,places.img_path,places.rating")
   #范围快捷设置
   scope :recommended, where(:is_recommended => true)
   #用户信息

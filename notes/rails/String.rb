@@ -147,3 +147,6 @@ str.last(6) #=> "hello"
 #截取字符串，剩余用...代替
 'Once upon a time in a world far far away'.truncate(27)
 # => "Once upon a time in a wo..."
+
+"hello".upcase
+"HELLO".downcase
