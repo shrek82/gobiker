@@ -5,19 +5,17 @@
 <% end %>
 <% content_for:script do %>
     <script srcc="/js/place/crumbbox.js" type="text/javascript"></script>
-
 <% end %>
 
 <div class="qyer_head_crumbg">
   <div class="qyer_head_crumb">
     <span class="text"><a href="<%= main_path %>">首页</a></span>
     <span class="space">&gt;</span>
-    <span class="text drop"><a href="<%= places_path %>">目的地</a><em class="arrow" data="crumb_continents"></em></span>
+    <span class="text"><a href="<%= places_path %>">目的地</a></span>
     <% if @place.province && @place.city %>
-        <span class="space">&gt;</span><span class="text drop"><a href="<%= city_places_path @place.city.pinyin %>" data-bn-ipg="3-3"><%= @place.province.name %></a><em class="arrow" data="crumb_country"></em></span><span class="space">&gt;</span><span class="text drop"><a href="<%= city_places_path @place.city.pinyin %>" data-bn-ipg="3-4"><%= @place.city.name %></a><em class="arrow" data="crumb_city"></em></span>
+        <span class="space">&gt;</span><span class="text"><a href="<%= area_places_path @place.city.province.pinyin %>"><%= @place.province.name %></a></span><span class="space">&gt;</span><span class="text"><a href="<%= city_places_path @place.city.pinyin %>" data-bn-ipg="3-4"><%= @place.city.name %></a></span>
     <% end %>
     <span class="space">&gt;</span>
-
     <h1 class="current"><%= @place.name %></h1>
   </div>
 </div>
