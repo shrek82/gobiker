@@ -26,7 +26,7 @@ class PlacesController < ApplicationController
     @province=not_found do
       Province.find_by_pinyin(@name)
     end
-    @hot_city=City.select("cities.id,cities.name,cities.pinyin,(select count(places.id) from places where places.city_id=cities.id) as places_count").where("cities.province_id=? and places_count>?",@province.id,0).order("places_count DESC").limit(10)
+    @hot_city=City.select("cities.id,cities.name,cities.pinyin,(select count(places.id) from places where places.city_id=cities.id) as places_count").where("cities.province_id=?",@province.id).order("places_count DESC").limit(10)
   end
 
   #按城市查看
