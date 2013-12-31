@@ -1,0 +1,28 @@
+系统是：Windows7 X64
+需要用到的文件：
+1.mysql-5.5.20-winx64.msi #MySQL数据库安装包。X86系统用win32版。
+2.mysql-connector-c-6.0.2-win32.msi #因为Ruby on Rails环境是Win32的，必须是win32，否则搭配Ruby on Rails环境照成错误。
+3.railsinstaller-2.0.1.exe # Ruby on Rails环境。
+第一步：安装mysql-5.5.20-winx64.msi，配置向导中注意设置数据库密码；
+第二步：安装railsinstaller-2.0.1.exe
+第三步：安装mysql-connector-c-6.0.2-win32.msi
+第四步：通过cmd执行gem update -y 或者gem update --system，升级gem
+
+第五步：根据第五步的路径
+复制 C:\Program Files (x86)\MySQL\MySQL Connector C 6.0.2\lib\opt 下的 libmysql.dll 到
+安装好的Ruby on Rails环境目录下 Ruby1.9.2\bin 文件夹中
+
+
+第六步：在桌面创建 文本文档 复制以下代码：
+ 
+gem install mysql2 -- '--with-mysql-include="C:\Program Files (x86)\MySQL\MySQL Connector C 6.0.2\include" --with-mysql-lib="C:\Program Files (x86)\MySQL\MySQL Connector C 6.0.2\lib\opt"'
+ 
+粘贴到文档中，注意其中的路径或许需要修改，保存该文档，重命名为 文件名.bat 的后缀形式，双击运行，等待完成
+ 
+ 
+第七步：创建Rails项目，修改其中config/database.yml文件中的数据库密码；
+第八步：通过cmd执行 rake db:create 不出任何提示再次显示光标，表示环境安装成功。
+ 
+ 
+补充：不管怎么安装环境，都一定要安装mysql-connector-c-6.0.2-win32.msi。
+比如我现在用的是xampp环境带的mysql，再安装railsinstaller，然后执行第5-6步，就可正常连接上mysql2。
