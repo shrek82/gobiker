@@ -1,0 +1,38 @@
+<% content_for:head do %>
+    <link rel="stylesheet" type="text/css" href="/static/uploadify/uploadify.css">
+<% end %>
+
+<div class="qyer_head_crumbg">
+  <div class="qyer_head_crumb">
+    <span class="text"><%= link_to '首页', main_path %></span>
+    <span class="space">&gt;</span>
+
+    <h1 class="current">上传照片</h1>
+  </div>
+</div>
+
+<div class="control-group">
+  <div class="controls">
+    <%= text_field :img_ids, :class => 'input-xxlarge', :id => "img_ids" %>
+    <%= text_field :img_path, :class => 'input-xxlarge', :id => "img_path" %>
+    <input type="file" name="file_upload" id="file_upload"/>
+  </div>
+</div>
+
+<div class="control-group" id="uploadify_preview" style="display:block">
+  <div class="controls">
+    <ul>
+      <li id="includBefore" style="display: none"></li>
+    </ul>
+  </div>
+</div>
+
+<% content_for:script do %>
+<script type="text/javascript">
+    seajs.use(['upload/latest/upload'], function (upload) {
+        var uploader = upload.uploaders;
+        //uploader.bindPreview();
+        uploader.bindUpload();
+    });
+</script>
+<% end %>

@@ -6,4 +6,19 @@ class UController < ApplicationController
       format.json { render json: @user}
     end
   end
+
+  #个人相册
+  def albums
+
+  end
+
+  #个人相册详情
+  def album
+
+  end
+
+  #上传照片
+  def albums_upload
+
+  end
 end

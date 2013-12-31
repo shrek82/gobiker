@@ -103,7 +103,13 @@ Gobiker::Application.routes.draw do
 
   #会员个人主页
   resources :u, :only => [:show] do |u|
-    resources :places, :only => [:index, :show]
+    member do
+      #get 'albums'
+      match '/albums'=>'u#albums',:as=>'albums',:via=>[:get]
+      match '/albums_upload'=>'u#albums_upload',:as=>'albums_upload',:via=>[:get,:post]
+      match '/album/:aid' => 'u#album', :constraints => {:aid => /\d/}, :as => 'album_show'
+
+    end
   end
 
   #核心功能
