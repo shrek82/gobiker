@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130830075344) do
+ActiveRecord::Schema.define(:version => 20131229021443) do
 
   create_table "activities", :force => true do |t|
     t.integer  "category_id"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20130830075344) do
     t.boolean  "is_recommended",                :default => false
     t.datetime "created_at",                                                          :null => false
     t.datetime "updated_at",                                                          :null => false
+    t.integer  "city_id"
   end
 
   add_index "albums", ["activity_id"], :name => "index_albums_on_event_id"
@@ -194,6 +195,7 @@ ActiveRecord::Schema.define(:version => 20130830075344) do
     t.datetime "updated_at",  :null => false
     t.integer  "city_id"
     t.string   "pinyin"
+    t.string   "img_path"
   end
 
   add_index "cities", ["province_id"], :name => "index_cities_on_province_id"
