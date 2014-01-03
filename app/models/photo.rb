@@ -23,9 +23,13 @@ class Photo < ActiveRecord::Base
   def set_img_path
     file_extension=self.img_file_name[/\.[a-z]{3,4}$/]
     img_path='/uploads/photos/'+self.img_updated_at.strftime('%Y')+'/'+self.img_updated_at.strftime('%m%d')+'/'+self.id.to_s+'_thumb'+file_extension
+    original_path='/uploads/photos/'+self.img_updated_at.strftime('%Y')+'/'+self.img_updated_at.strftime('%m%d')+'/'+self.id.to_s+'_original'+file_extension
     update_attr={:img_path=>img_path}
     update_attr.store('title',self.img_file_name.sub(/\.[a-z]{3,4}$/,'')) if self.title.nil?
     self.update_attributes(update_attr)
+    #为原图添加水印
+    watermark('public'+original_path,'public/images/water.png',position: 'bottom_right')
+    #watermark('public'+original_path,'public/images/water.png',position: 'bottom_right',save_to:'public'+original_path)
   end
 
   def expire_cache_by_name
@@ -34,6 +38,11 @@ class Photo < ActiveRecord::Base
 
   def expire_cache_by_id
     #Rails.cache.expire("my_object:#{self.id}")
+  end
+
+  #添加水印
+  def watermark(img_path,watermark_path, options = {})
+    ImageClipper::Image.new(img_path).watermarking(watermark_path,options)
   end
 
 end
