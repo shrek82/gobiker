@@ -59,7 +59,6 @@ Gobiker::Application.routes.draw do
       match 'city/:name' => 'places#city', :constraints => {:name => /[a-zA-z1-9]+/}, :as => 'city'
       match 'area/:name' => 'places#area', :constraints => {:name => /[a-zA-z1-9]+/}, :as => 'area'
     end
-
   end
 
   #论坛
@@ -108,7 +107,6 @@ Gobiker::Application.routes.draw do
       match '/albums'=>'u#albums',:as=>'albums',:via=>[:get]
       match '/albums_upload'=>'u#albums_upload',:as=>'albums_upload',:via=>[:get,:post]
       match '/album/:aid' => 'u#album', :constraints => {:aid => /\d/}, :as => 'album_show'
-
     end
   end
 

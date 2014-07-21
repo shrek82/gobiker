@@ -61,9 +61,9 @@ class InstallController < ApplicationController
     #攻略类型
     guide_categorys=GuideCategory.all
     if guide_categorys.blank?
-      categorys=[['分类一',1],['分类二',2],['分类三',3]]
-      categorys.each do |name,order_num|
-        GuideCategory.create(name:name,order_num:order_num) do |c|
+      categorys=[['分类一', 1], ['分类二', 2], ['分类三', 3]]
+      categorys.each do |name, order_num|
+        GuideCategory.create(name: name, order_num: order_num) do |c|
           c.created_at=Date.current.to_default_s
         end
       end
@@ -120,10 +120,6 @@ class InstallController < ApplicationController
       Manager.create(email: 'seeyoup@qq.com', name: 'admin', password: '1234567', role: 'admin')
     end
 
-  end
-
-  def setcity
-
     #华北
     Province.where("name like '%辽宁%' OR name like '%吉林%' OR name like '%黑龙江%'").update_all(:group => 1)
     #华东
@@ -138,7 +134,7 @@ class InstallController < ApplicationController
     Province.where("name like '%云南%' OR name like '%贵州%' OR name like '%四川%' OR name like '%西藏%'").update_all(:group => 6)
     #西北
     Province.where("name like '%新疆%' OR name like '%陕西%' OR name like '%宁夏%' OR name like '%青海%' OR name like '%甘肃%'").update_all(:group => 7)
-    render :nothing => true
+
   end
 
 

@@ -1,28 +1,31 @@
-ÏµÍ³ÊÇ£ºWindows7 X64
-ĞèÒªÓÃµ½µÄÎÄ¼ş£º
-1.mysql-5.5.20-winx64.msi #MySQLÊı¾İ¿â°²×°°ü¡£X86ÏµÍ³ÓÃwin32°æ¡£
-2.mysql-connector-c-6.0.2-win32.msi #ÒòÎªRuby on Rails»·¾³ÊÇWin32µÄ£¬±ØĞëÊÇwin32£¬·ñÔò´îÅäRuby on Rails»·¾³ÕÕ³É´íÎó¡£
-3.railsinstaller-2.0.1.exe # Ruby on Rails»·¾³¡£
-µÚÒ»²½£º°²×°mysql-5.5.20-winx64.msi£¬ÅäÖÃÏòµ¼ÖĞ×¢ÒâÉèÖÃÊı¾İ¿âÃÜÂë£»
-µÚ¶ş²½£º°²×°railsinstaller-2.0.1.exe
-µÚÈı²½£º°²×°mysql-connector-c-6.0.2-win32.msi
-µÚËÄ²½£ºÍ¨¹ıcmdÖ´ĞĞgem update -y »òÕßgem update --system£¬Éı¼¶gem
+ï»¿ç³»ç»Ÿæ˜¯ï¼šWindows7 X64
+éœ€è¦ç”¨åˆ°çš„æ–‡ä»¶ï¼š
+1.mysql-5.5.20-winx64.msi #MySQLæ•°æ®åº“å®‰è£…åŒ…ã€‚X86ç³»ç»Ÿç”¨win32ç‰ˆã€‚
+2.mysql-connector-c-6.0.2-win32.msi #å› ä¸ºRuby on Railsç¯å¢ƒæ˜¯Win32çš„ï¼Œå¿…é¡»æ˜¯win32ï¼Œå¦åˆ™æ­é…Ruby on Railsç¯å¢ƒç…§æˆé”™è¯¯ã€‚
+3.railsinstaller-2.0.1.exe # Ruby on Railsç¯å¢ƒã€‚
+ç¬¬ä¸€æ­¥ï¼šå®‰è£…mysql-5.5.20-winx64.msiï¼Œé…ç½®å‘å¯¼ä¸­æ³¨æ„è®¾ç½®æ•°æ®åº“å¯†ç ï¼›
+ç¬¬äºŒæ­¥ï¼šå®‰è£…railsinstaller-2.0.1.exe
+ç¬¬ä¸‰æ­¥ï¼šå®‰è£…mysql-connector-c-6.0.2-win32.msi
+ç¬¬å››æ­¥ï¼šé€šè¿‡cmdæ‰§è¡Œgem update -y æˆ–è€…gem update --systemï¼Œå‡çº§gem
 
-µÚÎå²½£º¸ù¾İµÚÎå²½µÄÂ·¾¶
-¸´ÖÆ C:\Program Files (x86)\MySQL\MySQL Connector C 6.0.2\lib\opt ÏÂµÄ libmysql.dll µ½
-°²×°ºÃµÄRuby on Rails»·¾³Ä¿Â¼ÏÂ Ruby1.9.2\bin ÎÄ¼ş¼ĞÖĞ
+ç¬¬äº”æ­¥ï¼šæ ¹æ®ç¬¬äº”æ­¥çš„è·¯å¾„
+å¤åˆ¶ C:\Program Files (x86)\MySQL\MySQL Connector C 6.0.2\lib\opt ä¸‹çš„ libmysql.dll åˆ°
+å®‰è£…å¥½çš„Ruby on Railsç¯å¢ƒç›®å½•ä¸‹ Ruby1.9.2\bin æ–‡ä»¶å¤¹ä¸­
 
 
-µÚÁù²½£ºÔÚ×ÀÃæ´´½¨ ÎÄ±¾ÎÄµµ ¸´ÖÆÒÔÏÂ´úÂë£º
+ç¬¬å…­æ­¥ï¼šåœ¨æ¡Œé¢åˆ›å»º æ–‡æœ¬æ–‡æ¡£ å¤åˆ¶ä»¥ä¸‹ä»£ç ï¼š
  
 gem install mysql2 -- '--with-mysql-include="C:\Program Files (x86)\MySQL\MySQL Connector C 6.0.2\include" --with-mysql-lib="C:\Program Files (x86)\MySQL\MySQL Connector C 6.0.2\lib\opt"'
  
-Õ³Ìùµ½ÎÄµµÖĞ£¬×¢ÒâÆäÖĞµÄÂ·¾¶»òĞíĞèÒªĞŞ¸Ä£¬±£´æ¸ÃÎÄµµ£¬ÖØÃüÃûÎª ÎÄ¼şÃû.bat µÄºó×ºĞÎÊ½£¬Ë«»÷ÔËĞĞ£¬µÈ´ıÍê³É
+ç²˜è´´åˆ°æ–‡æ¡£ä¸­ï¼Œæ³¨æ„å…¶ä¸­çš„è·¯å¾„æˆ–è®¸éœ€è¦ä¿®æ”¹ï¼Œä¿å­˜è¯¥æ–‡æ¡£ï¼Œé‡å‘½åä¸º æ–‡ä»¶å.bat çš„åç¼€å½¢å¼ï¼ŒåŒå‡»è¿è¡Œï¼Œç­‰å¾…å®Œæˆ
  
  
-µÚÆß²½£º´´½¨RailsÏîÄ¿£¬ĞŞ¸ÄÆäÖĞconfig/database.ymlÎÄ¼şÖĞµÄÊı¾İ¿âÃÜÂë£»
-µÚ°Ë²½£ºÍ¨¹ıcmdÖ´ĞĞ rake db:create ²»³öÈÎºÎÌáÊ¾ÔÙ´ÎÏÔÊ¾¹â±ê£¬±íÊ¾»·¾³°²×°³É¹¦¡£
+ç¬¬ä¸ƒæ­¥ï¼šåˆ›å»ºRailsé¡¹ç›®ï¼Œä¿®æ”¹å…¶ä¸­config/database.ymlæ–‡ä»¶ä¸­çš„æ•°æ®åº“å¯†ç ï¼›
+ç¬¬å…«æ­¥ï¼šé€šè¿‡cmdæ‰§è¡Œ rake db:create ä¸å‡ºä»»ä½•æç¤ºå†æ¬¡æ˜¾ç¤ºå…‰æ ‡ï¼Œè¡¨ç¤ºç¯å¢ƒå®‰è£…æˆåŠŸã€‚
  
  
-²¹³ä£º²»¹ÜÔõÃ´°²×°»·¾³£¬¶¼Ò»¶¨Òª°²×°mysql-connector-c-6.0.2-win32.msi¡£
-±ÈÈçÎÒÏÖÔÚÓÃµÄÊÇxampp»·¾³´øµÄmysql£¬ÔÙ°²×°railsinstaller£¬È»ºóÖ´ĞĞµÚ5-6²½£¬¾Í¿ÉÕı³£Á¬½ÓÉÏmysql2¡£
+è¡¥å……ï¼šä¸ç®¡æ€ä¹ˆå®‰è£…ç¯å¢ƒï¼Œéƒ½ä¸€å®šè¦å®‰è£…mysql-connector-c-6.0.2-win32.msiã€‚
+æ¯”å¦‚æˆ‘ç°åœ¨ç”¨çš„æ˜¯xamppç¯å¢ƒå¸¦çš„mysqlï¼Œå†å®‰è£…railsinstallerï¼Œç„¶åæ‰§è¡Œç¬¬5-6æ­¥ï¼Œå°±å¯æ­£å¸¸è¿æ¥ä¸Šmysql2ã€‚
+
+---------------------------------------------------------------------
+å¦‚ç¼ºå°‘Kitdevæç¤ºï¼Œå®‰è£…è½¯ä»¶ç¯å¢ƒé‡Œé¢çš„kitdev

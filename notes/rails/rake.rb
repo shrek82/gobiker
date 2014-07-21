@@ -1,5 +1,7 @@
 #coding:utf-8
 
+#为mysql创建单独用户
+GRANT ALL PRIVILEGES ON gobiker_test.* TO gobiker@localhost IDENTIFIED BY '123456';
 
 #其他学习
 =begin
@@ -57,6 +59,6 @@ db:version 检索当前模式下的版本
 
 
 #创建生产数据库
-#rake db:create RAILS_ENV=production
+#rake db:create RAILS_ENV=development
 #rake db:migrate RAILS_ENV=production
-#rake db:migrate RAILS_ENV=production
+#rake db:migrate RAILS_ENV=test
