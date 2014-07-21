@@ -1,0 +1,10 @@
+在python引用MySQLdb模块后，报错信息如下：
+Library not loaded: libmysqlclient.18.dylib
+这个跟在liunx下面报错是一样的，解决方式也一样。
+不过就是变量名称不同，在liunx下是LD_LIBRARY_PATH
+而在MAC OS下面是DYLD_LIBRARY_PATH
+
+建议配置在.bash_profile文件里即可。就能解决此问题了。
+补充解决问题：
+sudo ln -s /usr/local/mysql/lib/libmysqlclient.18.dylib /usr/lib/libmysqlclient.18.dylib
+需要运行下以上命令，不然在程序运行中，还会有错误。
